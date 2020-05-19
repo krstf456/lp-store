@@ -19,6 +19,10 @@ const UserSchema = new Schema({
         type: Number,
         required: true
     },
+    adress: {
+        type: Number,
+        required: true
+    },
     isAdmin: {
         type: booelan,
         required: true,
