@@ -1,1 +1,1 @@
-// Create connection
+// Create connection and connect with server.js
