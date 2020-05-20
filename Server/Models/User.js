@@ -15,13 +15,23 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    phone: {
-        type: Number,
-        required: true
-    },
     adress: {
-        type: Number,
-        required: true
+        city: {
+            type: String,
+            required: true
+        },
+        street: {
+            type: String,
+            required: true
+        },
+        street_number: {
+            type: Number,
+            required: true
+        },
+        postcode: {
+            type: Number,
+            required: true
+        }
     },
     isAdmin: {
         type: booelan,
