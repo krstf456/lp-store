@@ -4,15 +4,25 @@ const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
     adress: {
-        type: String,
-        required: true
+        city: {
+            type: String,
+            required: true
+        },
+        street: {
+            type: String,
+            required: true
+        },
+        street_number: {
+            type: Number,
+            required: true
+        },
+        postcode: {
+            type: Number,
+            required: true
+        }
     },
     phone: {
         type: Number,
-        required: true
-    },
-    shipping: {
-        type: String,
         required: true
     },
     sent: {
@@ -21,6 +31,10 @@ const OrderSchema = new Schema({
     },
     payment_method: {
         type: String,
+        required: true
+    },
+    total_price: {
+        type: Number,
         required: true
     }
 })
