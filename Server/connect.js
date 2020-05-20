@@ -1,10 +1,14 @@
 let mongoose = require('mongoose')
-const options = { useNewUrlParser: true, useUnifiedTopology: true }
+const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 
-mongoose.connect('atlasUrlGoesHere', options)
+require('dotenv').config()
 
-let db = mongoose.connection
+const uri = process.env.ATLAS_URI
+mongoose.connect(uri, options)
+
+const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error'))
-db.once('open', function () {
-    console.log('Database is connected')
+
+db.once('open', () => {
+    console.log("MongoDB database connection established succesfully")
 })
