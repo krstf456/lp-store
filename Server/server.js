@@ -1,9 +1,32 @@
-require('./connect')
 
 const express = require('express')
+const cors = require('cors')
+const mongoose = require('mongoose')
+
+require('dotenv').config()
 
 const app = express()
 const port = process.env.PORT || 5000
 
+app.use(cors())
+app.use(express.json())
 
-app.listen(port, () => console.log(`Server is running on http://localhost:${port}`))
+const uri = process.env.ATLAS_URI
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+
+const connection = mongoose.connection
+connection.once('open', () => {
+    console.log("MongoDB database connection established succesfully")
+})
+
+const loginRouter = require('./routes/loginRoute')
+const orderRouter = require('./routes/orderRoute')
+const productRouter = require('./routes/productRoute')
+const userRouter = require('./routes/userRoute')
+
+app.use('/login', loginRouter)
+app.use('/order', orderRouter)
+app.use('/product', productRouter)
+app.use('/user', userRouter)
+
+app.listen(port, () => console.log(`Server is running on port: ${port}`))
