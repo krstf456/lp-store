@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from "../modal/Modal";
 
 const Context = React.createContext();
 
@@ -6,7 +7,7 @@ export class Provider extends React.Component {
     constructor() {
         super();
         this.state = {
-            showModal: false
+            showModal: false,
         }
     }
 
