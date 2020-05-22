@@ -22,7 +22,7 @@ app.use(
 
 //app.use('/login', loginRouter)
 //app.use('/order', orderRouter)
-//app.use('/product', productRouter)
+//app.use('/products', productRouter)
 //app.use('/user', userRouter)
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`))

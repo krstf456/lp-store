@@ -3,7 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const ProductSchema = new Schema({
-    product_name: {
+    artist: {
+        type: String,
+        required: true
+    },
+    album_name: {
         type: String,
         required: true
     },
