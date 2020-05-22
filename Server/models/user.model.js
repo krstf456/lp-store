@@ -16,22 +16,9 @@ const UserSchema = new Schema({
         required: true
     },
     adress: {
-        city: {
-            type: String,
-            required: true
-        },
-        street: {
-            type: String,
-            required: true
-        },
-        street_number: {
-            type: Number,
-            required: true
-        },
-        postcode: {
-            type: Number,
-            required: true
-        }
+        type: 'ObjectId',
+        ref: 'Adress' 
+        
     },
     isAdmin: {
         type: booelan,
