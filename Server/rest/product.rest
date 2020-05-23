@@ -1,29 +1,16 @@
-GET http://localhost:5000/products
+GET http://localhost:5000/products/products
 
 ###
 
-POST http://localhost:5000/products/addProduct
+POST http://localhost:5000/products/products
 Content-Type: application/json
 
 {   
     "artist": "Jimi Hendrix",
-    "album_name": "Electric Ladyland",
-    "description": ,
-    "price": "199",
-    "stock_quantity": "2",
+    "album": "Electric Ladyland",
+    "description": "Great album",
+    "price": 199,
+    "stock_quantity": 2,
     "image": "www",
     "genre": "Rock"
 }
-
-###
-
-PUT http://localhost:5000/products
-Content-Type: application/json
-
-{
-    
-}
-
-###
-
-DELETE http://localhost:5000/products

@@ -7,7 +7,7 @@ const ProductSchema = new Schema({
         type: String,
         required: true
     },
-    album_name: {
+    album: {
         type: String,
         required: true
     },
