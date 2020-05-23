@@ -6,11 +6,11 @@ POST http://localhost:5000/products/products
 Content-Type: application/json
 
 {   
-    "artist": "Jimi Hendrix",
-    "album": "Electric Ladyland",
+    "artist": "David Bowie",
+    "album": "Young Americans",
     "description": "Great album",
     "price": 199,
-    "stock_quantity": 2,
+    "stock_quantity": 4,
     "image": "www",
-    "genre": "Rock"
+    "genre": "Pop"
 }
