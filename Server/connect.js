@@ -1,5 +1,5 @@
 let mongoose = require('mongoose')
-const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+const options = { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
 
 require('dotenv').config()
 
