@@ -30,4 +30,22 @@ try {
     res.status(500).send(err)
   }
 }
+
+updateProduct = async (req, res) => {
+
+try {
+    const id = req.params.id
+    const product = await productModel.findByIdAndUpdate(id, req.body)
+    await product.save()
+    
+    res.json({
+      old: product,
+      new: req.body  
+    })
+  
+  } catch (err) {
+    res.status(500).send(err)
+  }
+}
+
 module.exports = { addProduct, getAllProducts}

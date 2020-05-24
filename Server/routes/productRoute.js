@@ -4,13 +4,12 @@ const router = express.Router()
 const { addProduct, getAllProducts } = require('../controllers/productController')
 
 // Create
-router.post('/products', addProduct, async (req, res,) => {
-   
-  })
+router.post('/products', addProduct, async (req, res,) => {})
 
 // Read
-router.get('/products', getAllProducts, async (req, res) => {
-    
-  })
+router.get('/products', getAllProducts, async (req, res) => {})
+
+// Update
+router.put('/products/:id', updateProduct, async (req, res) => {})
  
 module.exports = router
