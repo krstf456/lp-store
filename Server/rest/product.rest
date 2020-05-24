@@ -6,11 +6,11 @@ POST http://localhost:5000/products/products
 Content-Type: application/json
 
 {   
-    "artist": "David Bowie",
-    "album": "Young Americans",
+    "artist": "Bob Dylan",
+    "album": "Dylan",
     "description": "Great album",
-    "price": 199,
-    "stock_quantity": 4,
+    "price": 299,
+    "stock_quantity": 5,
     "image": "www",
-    "genre": "Pop"
+    "genre": "Rock"
 }
