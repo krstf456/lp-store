@@ -84,11 +84,10 @@ getGenre = async (req, res) => {
     }
   };
 
-=======
 module.exports = {
   addProduct,
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getGenre,
+  getGenre
 }

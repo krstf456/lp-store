@@ -4,9 +4,9 @@ POST http://localhost:5000/users/register
  Content-Type: application/json
 
  {   
-    "username": "BobD",
+    "username": "Bowie",
     "password": "hi", 
-    "email": "testing13@test.com",
+    "email": "testing1@test.com",
     "adress": {
         "city": "hello",
         "street": "hello",

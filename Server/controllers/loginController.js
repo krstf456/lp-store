@@ -20,4 +20,5 @@ loginUser = async (req, res) => {
     }    
 }
 
+
 module.exports = { loginUser }
