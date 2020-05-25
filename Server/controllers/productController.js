@@ -1,6 +1,7 @@
 const productModel = require("../Models/Product.model");
+const { ErrorHandler } = require('../utils/errors')
 
-addProduct = async (req, res) => {
+addProduct = async (req, res, next) => {
   try {
     const product = new productModel(req.body);
     const findProduct = await productModel.findOne({ album: req.body.album });
@@ -10,10 +11,10 @@ addProduct = async (req, res) => {
       await product.save();
       res.send(product);
     } else {
-      res.status(400).json("Album already exists");
+      throw new ErrorHandler(404, "Album already exists");
     }
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
@@ -84,7 +85,6 @@ getGenre = async (req, res) => {
     }
   };
 
-=======
 module.exports = {
   addProduct,
   getAllProducts,
