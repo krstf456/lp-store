@@ -15,12 +15,12 @@ app.use(
         extended: false
     })
 )
-//const loginRouter = require('./routes/loginRoute')
+const loginRouter = require('./routes/loginRoute')
 //const orderRouter = require('./routes/orderRoute')
 const productRouter = require('./routes/productRoute')
 //const userRouter = require('./routes/userRoute')
 
-//app.use('/login', loginRouter)
+app.use('/login', loginRouter)
 //app.use('/order', orderRouter)
 app.use('/products', productRouter)
 //app.use('/user', userRouter)
