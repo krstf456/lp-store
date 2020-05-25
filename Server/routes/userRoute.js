@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const userModel = require('../Models/user.model')
 //const userModel = require('../Models/User.model')
 const { createNewUser } = require('../controllers/userController')
 
@@ -8,16 +7,7 @@ const { createNewUser } = require('../controllers/userController')
 
 router.post('/register', createNewUser, async (req, res) => {})
 
-router.get('/', async (req, res) => {
 
-    try {
-        const users = await userModel.find()
-        res.send(users)
-
-    } catch (err) {
-        res.status(500).send(err)
-    }
-})
 // // Get the the user
 // router.route('/').get((req, res) => {
 //     User.find()
