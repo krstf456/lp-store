@@ -89,5 +89,5 @@ module.exports = {
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getGenre,
+  getGenre
 }
