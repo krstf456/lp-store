@@ -5,39 +5,39 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: false
     },
     password: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
-        required: true
+        required: false
     },
     adress: {
         city: {
             type: String,
-            required: true
+            required: false
         },
         street: {
             type: String,
-            required: true
+            required: false
         },
         street_number: {
             type: Number,
-            required: true
+            required: false
         },
         postcode: {
             type: Number,
-            required: true
+            required: false
         }
     },
     isAdmin: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     }
-}, { versionKey: false })
+},{ versionKey: false })
 
 module.exports = User = mongoose.model('users', UserSchema)
