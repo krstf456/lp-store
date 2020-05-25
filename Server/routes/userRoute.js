@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-//const userModel = require('../Models/User.model')
+//const userModel = require('../models/User.model')
 const { createNewUser } = require('../controllers/userController')
 
 //Register a new user

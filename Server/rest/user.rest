@@ -6,7 +6,7 @@ POST http://localhost:5000/users/register
  {   
     "username": "BobD",
     "password": "hi", 
-    "email": "testing13@test.com",
+    "email": "lisa13@test.com",
     "adress": {
         "city": "hello",
         "street": "hello",
