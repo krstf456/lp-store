@@ -84,7 +84,6 @@ getGenre = async (req, res) => {
     }
   };
 
-=======
 module.exports = {
   addProduct,
   getAllProducts,
