@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
 
 const AdressSchema = new Schema({
@@ -21,4 +20,6 @@ const AdressSchema = new Schema({
     }
 })
 
-module.exports = Adress = mongoose.model('adress', AdressSchema)
+
+
+module.exports = AdressSchema
