@@ -1,3 +1,18 @@
 GET http://localhost:5000/tokenTest
 Content-Type: application/json
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0MTkwNjZ9.uit5MpS5CJ8hcKdBz4zkXAzDi6aB1jvBqflhH06EMb0
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0MzMzODcsImV4cCI6MTU5MDQzMzQwMn0.sZGshBRdWjXrTsq9fxo4TK8mqsaXSHLdjya2mJjNn-c
+
+
+####
+
+
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{   
+    "username": "Skurt",
+    "password": "123"
+}
+
+#####
+
