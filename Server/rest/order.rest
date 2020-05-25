@@ -1,0 +1,19 @@
+GET http://localhost:5000/orders
+
+###
+
+POST http://localhost:5000/orders/orders
+Content-Type: application/json
+
+{   
+    "first_name": "Lisa",
+    "last_name": "Test",
+    "adress": "adress",
+    "email": "testing1@test.com",
+    "phone": 1,
+    "sent": true,
+    "payment_method": "swish",
+    "total_price": 1
+}
+
+###

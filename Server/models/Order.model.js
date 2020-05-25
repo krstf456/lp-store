@@ -12,9 +12,13 @@ const OrderSchema = new Schema({
         required: true
     },
     adress: {
-        type: 'ObjectId',
-        ref: 'Adress' 
+        type: String,
+        required: true 
         
+    },
+    email: {
+        type: String,
+        required: true
     },
     phone: {
         type: Number,
@@ -34,4 +38,4 @@ const OrderSchema = new Schema({
     }
 })
 
-module.exports = Order = mongoose.model('order', OrderSchema)
+module.exports = Order = mongoose.model('orders', OrderSchema)

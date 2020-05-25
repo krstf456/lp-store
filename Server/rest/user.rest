@@ -3,12 +3,12 @@ GET http://localhost:5000/users
 ###
 
 POST http://localhost:5000/users/register
- Content-Type: application/json
+Content-Type: application/json
 
  {   
-    "username": "Bowie",
+    "username": "Lis",
     "password": "hi", 
-    "email": "testing1@test.com",
+    "email": "testtest1@test.com",
     "adress": {
         "city": "hello",
         "street": "hello",
