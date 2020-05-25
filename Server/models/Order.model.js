@@ -3,21 +3,20 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
-    first_name: {
-        type: String,
+    user_Id: {
+        type: mongoose.Types.ObjectId,
         required: true
     },
-    last_name: {
-        type: String,
+    product_Id: {
+        type: Array,
         required: true
     },
     adress: {
-        type: String,
-        required: true 
-        
+        type: mongoose.Types.ObjectId,
+        required: true     
     },
     email: {
-        type: String,
+        type: mongoose.Types.ObjectId,
         required: true
     },
     phone: {

@@ -3,7 +3,7 @@ const orderModel = require("../models/Order.model");
 createOrder = async (req, res) => {
     try {
       const orderData = new orderModel(req.body);
-      const findOrder = await orderModel.findOne({ email: req.body.email });
+      const findOrder = await orderModel.findOne({ user_Id: req.body.user_Id });
         
       if(!findOrder) {
          await orderData.save();

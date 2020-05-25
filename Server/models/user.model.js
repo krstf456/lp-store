@@ -16,6 +16,14 @@ const UserSchema = new Schema({
         required: false
     },
     adress: {
+        first_name: {
+            type: String,
+            required: true
+        },
+        last_name: {
+            type: String,
+            required: true
+        },
         city: {
             type: String,
             required: false
