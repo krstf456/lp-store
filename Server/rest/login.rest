@@ -1,4 +1,4 @@
-POST http://localhost:5000/login/login
+POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {"username": "Örjan" }
@@ -10,3 +10,8 @@ Content-Type: application/json
 GET http://localhost:5000/posts
 Authorization: Bearer 
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiw5ZyamFuIiwiaWF0IjoxNTkwMzk3NDkzfQ.zfPAAcU3ZYt5PikOA4k1YV-BWrUQEmKcGOtU_FCThng
+
+
+####
+
+POST http://localhost:5000/token
