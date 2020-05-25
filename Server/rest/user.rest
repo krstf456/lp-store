@@ -1,3 +1,21 @@
+GET http://localhost:5000/users/
+###
+POST http://localhost:5000/users/register
+ Content-Type: application/json
+
+ {   
+    "username": "BobD",
+    "password": "hi", 
+    "email": "testing13@test.com",
+    "adress": {
+        "city": "hello",
+        "street": "hello",
+        "street_number": "38",
+        "postcode": "43370"
+    },
+    "isAdmin": false
+    }
+
 GET http://localhost:5000/users/users
 
 ###
@@ -9,3 +27,4 @@ Content-Type: application/json
     "username": "Bob Dylan",
     "password": "Dylan"
 }
+
