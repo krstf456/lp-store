@@ -1,5 +1,7 @@
-GET http://localhost:5000/users/
+GET http://localhost:5000/users
+
 ###
+
 POST http://localhost:5000/users/register
  Content-Type: application/json
 
@@ -16,7 +18,6 @@ POST http://localhost:5000/users/register
     "isAdmin": false
     }
 
-GET http://localhost:5000/users/users
 
 ###
 
@@ -24,7 +25,18 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {   
-    "username": "Bob Dylan",
-    "password": "Dylan"
+    "username": "Bowie",
+    "password": "hi"
+}
+
+###
+
+DELETE http://localhost:5000/users/logout
+
+Content-Type: application/json
+
+{
+    "username": "Bowie",
+    "password": "hi"
 }
 
