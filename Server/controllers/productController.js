@@ -60,7 +60,7 @@ getGenre = async (req, res) => {
   try {
     //Find genre and read
     const genre = await productModel.find({ genre: req.params.genre });
-    if (!genre) {
+    if (genre.length == 0) {
       res.status(404).send("Genre not found");
     } else {
       res.status(200).send(genre);
