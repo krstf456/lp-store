@@ -1,11 +1,12 @@
 // User route
-const Users = require('express').Router()
-const userModel = require('../Models/User.model')
+const express = require('express')
+const router = express.Router()
+//const userModel = require('../Models/User.model')
 const { createNewUser } = require('../controllers/userController')
 
 //Register a new user
 
-Users.post('/user', createNewUser, async (req, res) => {})
+router.post('/register', createNewUser, async (req, res) => {})
 
 
 // // Get the the user

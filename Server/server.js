@@ -18,11 +18,11 @@ app.use(
 //const loginRouter = require('./routes/loginRoute')
 //const orderRouter = require('./routes/orderRoute')
 const productRouter = require('./routes/productRoute')
-//const userRouter = require('./routes/userRoute')
+const userRouter = require('./routes/userRoute')
 
 //app.use('/login', loginRouter)
 //app.use('/order', orderRouter)
 app.use('/products', productRouter)
-//app.use('/user', userRouter)
+app.use('/users', userRouter)
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`))

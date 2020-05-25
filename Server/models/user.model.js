@@ -18,10 +18,9 @@ const UserSchema = new Schema({
     adress: {
         type: 'ObjectId',
         ref: 'Adress' 
-        
-     },
+    },
     isAdmin: {
-        type: booelan,
+        type: Boolean,
         required: true,
         default: false
     }

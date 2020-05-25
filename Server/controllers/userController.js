@@ -11,6 +11,7 @@ createNewUser = async (req, res) => {
                 await bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
                     findUser.create(userData)
+                            .save(userData)
                             .then(user => {
                                 res.status(200).send({ status: user.email + ' Registered'})
                             })
@@ -25,7 +26,8 @@ createNewUser = async (req, res) => {
             res.send('error: ' + err)
 
         }
-    }   
+    }  
+ 
        
    
-module.exports = { createNewUser }
+module.exports = { createNewUser } = users
