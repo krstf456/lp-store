@@ -6,13 +6,13 @@ POST http://localhost:5000/products/products
 Content-Type: application/json
 
 {   
-    "artist": "Bob Dylan",
-    "album": "Dylan",
-    "description": "Great album",
-    "price": 299,
-    "stock_quantity": 8,
+    "artist": "The Birds",
+    "album": "Mr. Tambourine Man",
+    "description": "Mr. Tambourine",
+    "price": 279,
+    "stock_quantity": 7,
     "image": "www",
-    "genre": "Rock"
+    "genre": "Blues"
 }
 
 ###
