@@ -1,7 +1,7 @@
 const express = require('express')
 const productModel = require('../Models/Product.model')
 const router = express.Router()
-const { addProduct, getAllProducts, updateProduct, deleteProduct } = require('../controllers/productController')
+const { addProduct, getAllProducts, updateProduct, deleteProduct, getGenre } = require('../controllers/productController')
 
 // Create
 router.post('/products', addProduct, async (req, res,) => {})
@@ -14,5 +14,8 @@ router.put('/products/:id', updateProduct, async (req, res) => {})
 
 // Delete
 router.delete('/products/:id', deleteProduct, async (req, res) => {})
+
+// Read genre
+router.get('/products/:genre', getGenre, async (req, res) => {})
  
 module.exports = router
