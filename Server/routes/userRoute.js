@@ -1,6 +1,6 @@
 // User route
 const router = require('express').Router()
-let User = require('../Models/User.model')
+let User = require('../Models/user.model')
 
 
 // Get the the user
