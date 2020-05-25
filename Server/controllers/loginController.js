@@ -11,7 +11,6 @@ loginUser = async (req, res) => {
        
         } else {
             // jwt session here
-       
            res.status(200).json('You are logged in')
         }
    
