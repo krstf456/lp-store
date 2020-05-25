@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-let userModel = require('../Models/user.model')
-
+const userModel = require('../Models/user.model')
+const { loginUser } = require('../controllers/loginController')
 
 // Login user
-router.post('/login', async (req, res,) => {})
+router.post('/login', loginUser, async (req, res,) => {})
 
 module.exports = router
