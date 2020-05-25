@@ -1,0 +1,35 @@
+GET http://localhost:5000/products/products
+
+###
+
+POST http://localhost:5000/products/products
+Content-Type: application/json
+
+{   
+    "artist": "Bob Dylan",
+    "album": "Dylan",
+    "description": "Great album",
+    "price": 299,
+    "stock_quantity": 8,
+    "image": "www",
+    "genre": "Rock"
+}
+
+###
+
+PUT http://localhost:5000/products/products/5eca7175e5c7e116ccdd9e9b
+Content-Type: application/json
+
+{
+    "artist": "Bob Dylan",
+    "album": "Self Portrait",
+    "description": "Great album",
+    "price": 299,
+    "stock_quantity": 6,
+    "image": "www",
+    "genre": "Rock"
+}
+
+###
+
+DELETE http://localhost:5000/products/products/5eca7175e5c7e116ccdd9e9b
