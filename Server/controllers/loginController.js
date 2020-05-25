@@ -10,21 +10,14 @@ loginUser = async (req, res) => {
     //    if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
     //        return res.status(401).json('Wrong username or password')
        
-    //     }
-        
-        if (user) {
-           
-res.send('hejhej')         }
-        
-        else {
-            // JWT Session here
-            const username = req.body.username
-            const user = { name: username}
-            // const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-            const accessToken = generateAccessToken(user)
-            const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
-            
-            res.json({accessToken: accessToken, refreshToken: refreshToken})
+        } else {
+            // JVT Session here
+            // Create and assign token
+            //import auth controller?
+            const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET)
+            res.header('auth-token', token).send(token)
+
+
         //    res.status(200).json('You are logged in')
         }
    

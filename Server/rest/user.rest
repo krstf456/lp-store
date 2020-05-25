@@ -4,14 +4,14 @@ POST http://localhost:5000/users/register
  Content-Type: application/json
 
  {   
-    "username": "BobD",
-    "password": "hi", 
-    "email": "testing13@test.com",
+    "username": "Skurt",
+    "password": "123", 
+    "email": "testmail@testdomain.com",
     "adress": {
-        "city": "hello",
-        "street": "hello",
-        "street_number": "38",
-        "postcode": "43370"
+        "city": "stan",
+        "street": "lurgatan",
+        "street_number": "1",
+        "postcode": "1337"
     },
     "isAdmin": false
     }
@@ -24,7 +24,7 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {   
-    "username": "Bob Dylan",
-    "password": "Dylan"
+    "username": "Skurt",
+    "password": "123"
 }
 

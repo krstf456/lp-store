@@ -1,2 +1,3 @@
-POST http://localhost:5000/user/register
-# Content-Type: 
+GET http://localhost:5000/tokenTest
+Content-Type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0MTkwNjZ9.uit5MpS5CJ8hcKdBz4zkXAzDi6aB1jvBqflhH06EMb0
