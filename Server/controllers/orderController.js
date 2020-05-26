@@ -1,16 +1,17 @@
 const orderModel = require("../models/Order.model");
+const { ErrorHandler } = require('../utils/errors')
 
-getAllOrders = async (req, res) => {
+getAllOrders = async (req, res, next) => {
   try {
     // Get all orders
     const order = await orderModel.find();
     res.send(order);
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
-createOrder = async (req, res) => {
+createOrder = async (req, res, next) => {
   // TODO: add user to order
   try {
     const orderData = new orderModel(req.body);
@@ -20,10 +21,10 @@ createOrder = async (req, res) => {
       await orderData.save();
       res.send(orderData);
     } else {
-      res.status(400).json("Cannot create duplicate order");
+      throw new ErrorHandler(400, "Cannot create duplicate order");
     }
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 

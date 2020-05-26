@@ -1,6 +1,7 @@
-const productModel = require("../models/Product.model");
+const productModel = require("../Models/Product.model");
+const { ErrorHandler } = require('../utils/errors')
 
-addProduct = async (req, res) => {
+addProduct = async (req, res, next) => {
   try {
     const product = new productModel(req.body);
     const findProduct = await productModel.findOne({ album: req.body.album });
@@ -10,24 +11,24 @@ addProduct = async (req, res) => {
       await product.save();
       res.send(product);
     } else {
-      res.status(400).json("Album already exists");
+      throw new ErrorHandler(404, "Album already exists");
     }
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
-getAllProducts = async (req, res) => {
+getAllProducts = async (req, res, next) => {
   try {
     // Get all products
     const product = await productModel.find();
     res.send(product);
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
-updateProduct = async (req, res) => {
+updateProduct = async (req, res, next) => {
   try {
     // Find album to update and save
     const id = req.params.id;
@@ -40,33 +41,33 @@ updateProduct = async (req, res) => {
       new: req.body,
     });
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
-deleteProduct = async (req, res) => {
+deleteProduct = async (req, res, next) => {
   try {
     // Find album and delete
     const product = await productModel.findByIdAndDelete(req.params.id);
 
-    if (!product) res.status(404).json("No item found");
+    if (!product) throw new ErrorHandler(404, "No item found");
     res.status(200).json("Album has been deleted");
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
-getGenre = async (req, res) => {
+getGenre = async (req, res, next) => {
   try {
     //Find genre and read
     const genre = await productModel.find({ genre: req.params.genre });
     if (genre.length == 0) {
-      res.status(404).send("Genre not found");
+      throw new ErrorHandler(404, "Genre not found");
     } else {
       res.status(200).send(genre);
     }
   } catch (err) {
-    res.status(500).send(err);
+    next(err);
   }
 };
 
@@ -81,7 +82,7 @@ getGenre = async (req, res) => {
       shoppingCart.push(productToCart)
 
     } catch (err) {
-      res.status(500).send(err);
+      next(err);
     }
 
     console.log(shoppingCart)
