@@ -16,12 +16,12 @@ app.use(
     })
 )
 const loginRouter = require('./routes/loginRoute')
-//const orderRouter = require('./routes/orderRoute')
+const orderRouter = require('./routes/orderRoute')
 const productRouter = require('./routes/productRoute')
 const userRouter = require('./routes/userRoute')
 
 app.use('/users', loginRouter)
-//app.use('/order', orderRouter)
+app.use('/orders', orderRouter)
 app.use('/products', productRouter)
 app.use('/users', userRouter)
 

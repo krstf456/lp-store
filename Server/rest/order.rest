@@ -1,0 +1,19 @@
+GET http://localhost:5000/orders/orders
+
+###
+
+POST http://localhost:5000/orders/orders
+Content-Type: application/json
+
+{   
+   // "user_Id
+    "products": ["5eca606e2f99fa34e40b7507", "5eca606e2f99fa34e40b7507"],
+    "email": "",
+    "adress": {},
+    "phone": 1,
+    "sent": true,
+    "payment_method": "swish",
+    "total_price": 1
+}
+
+###

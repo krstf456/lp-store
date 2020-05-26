@@ -37,8 +37,13 @@ DELETE http://localhost:5000/products/products/5eca7175e5c7e116ccdd9e9b
 ###
 
 
-// GET one specific genre 
+// GET/read one specific genre 
 GET http://localhost:5000/products/products/Soul
 
 ###
+
+//Fake shoppingcart: adds specific product to shoppingCart[]
+GET http://localhost:5000/products/cart/5ecbb14151a0903c625703b1
+
+
 

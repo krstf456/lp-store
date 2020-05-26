@@ -12,7 +12,7 @@ const ShippingSchema = new Schema({
         required: true
     },
     shipping_time: {
-        type: Date,
+        type: Number,
         required: true
     }
 })
