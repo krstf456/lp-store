@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 const OrderSchema = new Schema({
     user_Id: {
         type: mongoose.Types.ObjectId,
+        ref: "users",
         required: true
     },
     shoppingCart: {

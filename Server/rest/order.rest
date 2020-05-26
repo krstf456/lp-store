@@ -1,4 +1,4 @@
-GET http://localhost:5000/orders
+GET http://localhost:5000/orders/orders
 
 ###
 
@@ -6,10 +6,10 @@ POST http://localhost:5000/orders/orders
 Content-Type: application/json
 
 {   
-    "user_Id": "",
+    "user_Id": "5ecba898ff4f8a3af0eaf7da",
     "shoppingCart": [],
-    "email": "testing1@test.com",
-    "adress": "adress",
+    "email": "",
+    "adress": {},
     "phone": 1,
     "sent": true,
     "payment_method": "swish",

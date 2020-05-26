@@ -6,9 +6,9 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
  {   
-    "username": "Test",
-    "password": "hi", 
-    "email": "adtest12@test.com",
+    "username": "Lisa",
+    "password": "123", 
+    "email": "lisa@test.com",
     "adress": {
         "first_name": "Lisa",
         "last_name": "Test",
@@ -17,7 +17,7 @@ Content-Type: application/json
         "street_number": "38",
         "postcode": "43370"
     },
-    "isAdmin": false
+    "isAdmin": true
     }
 
 

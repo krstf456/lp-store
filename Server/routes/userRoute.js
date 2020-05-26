@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-//const userModel = require('../models/User.model')
+const userModel = require('../models/User.model')
 const { createNewUser, getAllUsers } = require('../controllers/userController')
 
 //Get all users
