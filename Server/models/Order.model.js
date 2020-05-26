@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const AdressSchema = require('./Adress.model')
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
@@ -11,11 +11,9 @@ const OrderSchema = new Schema({
         type: String,
         required: true
     },
-    adress: {
-        type: 'ObjectId',
-        ref: 'Adress' 
-        
-    },
+    adress:  
+        [AdressSchema]
+    ,
     phone: {
         type: Number,
         required: true

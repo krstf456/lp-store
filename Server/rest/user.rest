@@ -8,7 +8,7 @@ POST http://localhost:5000/users/register
  {   
     "username": "Bowie",
     "password": "hi", 
-    "email": "testing1@test.com",
+    "email": "adresstest12@test.com",
     "adress": {
         "city": "hello",
         "street": "hello",
