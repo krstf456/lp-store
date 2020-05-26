@@ -22,6 +22,6 @@ PUT http://localhost:5000/products/products/5eccdced52ae746468b66868
 Content-Type: application/json
 
 {
-    "stock_quantity": 10
+    "stock_quantity": 9
 }
 

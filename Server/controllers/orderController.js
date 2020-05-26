@@ -32,12 +32,13 @@ updateStockQuantity = async (req, res) => {
   //const findStock = await productModel.findOneAndUpdate({ stock_quantity: req.body.stock_quantity });
   try {
     const id = req.params.id;
-    const productStock = await productModel.findByIdAndUpdate(id, req.body.math(-1));
+    const productStock = new productModel.findByIdAndUpdate(id, req.body.stock_quantity );
+    //const stock = await productModel({ stock_quantity: req.body.stock_quantity })
     await productStock.save();
 
     res.json({
       old: productStock,
-      new: req.body,
+      new: req.body.stock_quantity -1,
     });
   } catch (err) {
     next(err);
