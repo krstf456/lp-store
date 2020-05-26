@@ -6,8 +6,8 @@ POST http://localhost:5000/orders/orders
 Content-Type: application/json
 
 {   
-    "user_Id": "5ecba898ff4f8a3af0eaf7da",
-    "shoppingCart": [],
+   // "user_Id
+    "products": ["5eca606e2f99fa34e40b7507", "5eca606e2f99fa34e40b7507"],
     "email": "",
     "adress": {},
     "phone": 1,

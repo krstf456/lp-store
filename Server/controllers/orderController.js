@@ -11,6 +11,7 @@ getAllOrders = async (req, res) => {
 };
 
 createOrder = async (req, res) => {
+  // TODO: add user to order
   try {
     const orderData = new orderModel(req.body);
     const findOrder = await orderModel.findOne({ user_Id: req.body.user_Id });

@@ -8,8 +8,9 @@ const OrderSchema = new Schema({
         ref: "users",
         required: true
     },
-    shoppingCart: {
-        type: Array,
+    products: {
+        type: [mongoose.Types.ObjectId],
+        ref: "products",
         required: true
     },
     email: {
