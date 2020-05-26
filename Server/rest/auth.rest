@@ -1,6 +1,18 @@
+
+###Route with jwt auth middleware
+### GET userID
 GET http://localhost:5000/tokenTest
 Content-Type: application/json
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0MzMzODcsImV4cCI6MTU5MDQzMzQwMn0.sZGshBRdWjXrTsq9fxo4TK8mqsaXSHLdjya2mJjNn-c
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1MDkzNzYsImV4cCI6MTU5MDUxMjk3Nn0.TrlhXEDTYTLD9fb-pleQck3QSdebWhIVCBMycgvNp24
+
+
+
+### get orders test with jwt auth middleware
+### GET Users Order based on user ID
+
+GET http://localhost:5000/tokenTest/userOrders
+Content-Type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1MDkxOTAsImV4cCI6MTU5MDUxMjc5MH0.HP1iDZveFPluqAosiyvUSlBKuLY_peU2erlets8RtWk
 
 
 ####
@@ -21,5 +33,5 @@ POST http://localhost:5000/token
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0OTc2MjN9.0Yh-h4QzLe_sMoqTY_wH7GDsEN2lftrdCDzA_B1i6UU"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0OTc5MzF9.R7cAcmDOFO7zP_59DUf6y6jVvdUYjXlTVSU6oGtaBG0"
 }

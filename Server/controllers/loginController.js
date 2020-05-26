@@ -15,11 +15,9 @@ loginUser = async (req, res) => {
        
         } else {
             // JVT Session here
-            // Create and assign token
-            //import auth controller?
-            
+            // Create and send token            
             //1
-            const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
+            const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
             const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
             // res.header('auth-token', token).send(token)
             

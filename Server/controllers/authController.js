@@ -40,14 +40,14 @@ refreshToken = async (req, res) => {
         const refreshToken = req.body.token
 
         if (refreshToken == null) {
-            return res.status(401).json('Unauthorized: No Token')
+            return res.sendStatus(401).json('Unauthorized: No Token')
         }
         if (!refreshTokens.includes(refreshToken)) {
-            return res.status(403).json('Forbidden: Invalid Token')
+            return res.sendStatus(403).json('Forbidden: Invalid Token')
         } else {
             jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, userID) => {
-                if(err) return res.status(403)
-                console.log('HEEEJ')
+                if(err) return res.sendStatus(403)
+                console.log('ÄggFlärp')
                 const accessToken = generateAccessToken({_id: userID})
                 console.log('Tokens Array:', refreshTokens.length)
                 res.json({accessToken: accessToken})
@@ -67,14 +67,16 @@ refreshToken = async (req, res) => {
 //     const token = authHeader && authHeader.split(' ')[1]
 //     if (token == null) return res.sendStatus(401)
 //     try {
+//         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+//             if (err) return res.sendStatus(403)
+//             req.user = user
+//             console.log(user._id)
+//             next()
+
+//     }  catch(err) {
 
 //     }
-//     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-//         if (err) return res.sendStatus(403)
-//         req.user = user
-//         console.log(user._id)
-//         next()
-//     })
+    
 // }
 
 
