@@ -8,10 +8,10 @@ Content-Type: application/json
 {   
    // "user_Id
     "products": ["5eca606e2f99fa34e40b7507", "5eca606e2f99fa34e40b7507"],
-    "email": "",
-    "adress": {},
-    "phone": 1,
-    "sent": true,
+    "email": "lis@test.com",
+    "adress": [],
+    "phone": 123,
+    "sent": false,
     "payment_method": "swish",
     "total_price": 1
 }

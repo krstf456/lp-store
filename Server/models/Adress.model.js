@@ -4,27 +4,27 @@ const Schema = mongoose.Schema
 const AdressSchema = new Schema({
     first_name: {
         type: String,
-        required: true
+        required: false
     },
     last_name: {
         type: String,
-        required: true
+        required: false
     },
     city: {
         type: String,
-        required: true
+        required: false
     },
     street: {
         type: String,
-        required: true
+        required: false
     },
     street_number: {
         type: Number,
-        required: true
+        required: false
     },
     postcode: {
         type: Number,
-        required: true
+        required: false
     }
 })
 

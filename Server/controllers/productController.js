@@ -71,8 +71,8 @@ getGenre = async (req, res, next) => {
   }
 };
 
-  addToCart = async (req, res) => {
-    const shoppingCart = []
+  /* addToCart = async (req, res) => {
+    const products = []
 
     try {
       // Find product to add to cart
@@ -85,8 +85,8 @@ getGenre = async (req, res, next) => {
       next(err);
     }
 
-    console.log(shoppingCart)
-  };
+    console.log(products)
+  }; */
 
 
 module.exports = {
@@ -94,6 +94,5 @@ module.exports = {
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getGenre,
-  addToCart,
+  getGenre
 }
