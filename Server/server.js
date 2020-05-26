@@ -24,9 +24,6 @@ app.use('/users', loginRouter)
 //app.use('/order', orderRouter)
 app.use('/products', productRouter)
 app.use('/users', userRouter)
-
-app.use((err, req, res, next) => {
-    handleError(err, res);
-});
+app.use((err, req, res, next) => {handleError(err, res);});
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`))
