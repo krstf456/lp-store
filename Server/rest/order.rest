@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {   
    // "user_Id
-    "products": ["5eca606e2f99fa34e40b7507", "5eca606e2f99fa34e40b7507"],
+    "products": ["5eccdced52ae746468b66868"],
     "email": "lis@test.com",
     "adress": [],
     "phone": 123,
@@ -17,3 +17,11 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:5000/products/products/5eccdced52ae746468b66868
+Content-Type: application/json
+
+{
+    "stock_quantity": 10
+}
+
