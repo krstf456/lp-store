@@ -1,4 +1,23 @@
-GET http://localhost:5000/users/users
+GET http://localhost:5000/users
+
+###
+
+POST http://localhost:5000/users/register
+ Content-Type: application/json
+
+ {   
+    "username": "Bowie",
+    "password": "hi", 
+    "email": "adresstest12@test.com",
+    "adress": {
+        "city": "hello",
+        "street": "hello",
+        "street_number": "38",
+        "postcode": "43370"
+    },
+    "isAdmin": false
+    }
+
 
 ###
 
@@ -6,6 +25,18 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {   
-    "username": "Bob Dylan",
-    "password": "Dylan"
+    "username": "Bowie",
+    "password": "hi"
 }
+
+###
+
+DELETE http://localhost:5000/users/logout
+
+Content-Type: application/json
+
+{
+    "username": "Bowie",
+    "password": "hi"
+}
+

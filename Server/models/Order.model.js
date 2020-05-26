@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const AdressSchema = require('./Adress.model')
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
@@ -11,24 +11,9 @@ const OrderSchema = new Schema({
         type: String,
         required: true
     },
-    adress: {
-        city: {
-            type: String,
-            required: true
-        },
-        street: {
-            type: String,
-            required: true
-        },
-        street_number: {
-            type: Number,
-            required: true
-        },
-        postcode: {
-            type: Number,
-            required: true
-        }
-    },
+    adress:  
+        [AdressSchema]
+    ,
     phone: {
         type: Number,
         required: true
