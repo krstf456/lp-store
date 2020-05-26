@@ -1,8 +1,9 @@
 const userModel = require('../Models/user.model')
 const bcrypt = require('bcrypt')
+const { ErrorHandler } = require('../utils/errors')
 
 
-createNewUser = async (req, res) => {
+createNewUser = async (req, res, next) => {
         try {
             const userData = new userModel(req.body)
             const findUser = await userModel.findOne ({ email: req.body.email })
@@ -15,14 +16,14 @@ createNewUser = async (req, res) => {
                                 res.status(200).send({ status: user.email + ' Registered'})
                             })
                             .catch(err => {
-                                res.send('error: ' + err)
+                                next(err)
                             })
                 })
             } else {
-                res.status(401).send('User is already registered!')
+                throw new ErrorHandler(401, "User is already registered!")
             } 
         } catch (err){
-            res.send('error: ' + err)
+            next(err);
 
         }
     }  

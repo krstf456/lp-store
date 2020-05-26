@@ -3,6 +3,7 @@ const { GeneralError } = require('../utils/errors');
 const handleErrors = (err, req, res, next) => {
 
   if (err instanceof GeneralError) {
+    console.log(err)
     return res.status(err.getCode()).json({
       status: 'error',
       message: err.message
@@ -11,7 +12,7 @@ const handleErrors = (err, req, res, next) => {
 
   return res.status(500).json({
     status: 'error',
-    message: err.message || 'Something went wrong..'
+    message: 'Something went wrong..'
   });
 }
 
