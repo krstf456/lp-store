@@ -71,24 +71,29 @@ getGenre = async (req, res, next) => {
   }
 };
 
-getGenre = async (req, res, next) => {
+  addToCart = async (req, res) => {
+    const shoppingCart = []
+
     try {
-      //Find genre and read
-      const genre = await productModel.find({ genre: req.params.genre });
-      if (genre.length == 0) {
-        throw new ErrorHandler(404, "Genre not found");
-      } else {
-        res.status(200).send(genre);
-      }
+      // Find product to add to cart
+      const id = req.params.id;
+      const productToCart = await productModel.findById(id, req.body);
+      res.send(productToCart)
+      shoppingCart.push(productToCart)
+
     } catch (err) {
       next(err);
     }
+
+    console.log(shoppingCart)
   };
+
 
 module.exports = {
   addProduct,
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getGenre
+  getGenre,
+  addToCart,
 }

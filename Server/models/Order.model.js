@@ -3,12 +3,18 @@ const AdressSchema = require('./Adress.model')
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
-    first_name: {
-        type: String,
+    user_Id: {
+        type: mongoose.Types.ObjectId,
+        ref: "users",
         required: true
     },
-    last_name: {
-        type: String,
+    products: {
+        type: [mongoose.Types.ObjectId],
+        ref: "products",
+        required: true
+    },
+    email: {
+        type: mongoose.Types.ObjectId,
         required: true
     },
     adress:  
@@ -32,4 +38,4 @@ const OrderSchema = new Schema({
     }
 })
 
-module.exports = Order = mongoose.model('order', OrderSchema)
+module.exports = Order = mongoose.model('orders', OrderSchema)
