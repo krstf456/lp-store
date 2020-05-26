@@ -21,17 +21,11 @@ const handleErrors = (err, req, res, next) => {
 }
 
 function endpointError (err, req, res, next) {
-  return res.status(400).json({
-    status: 'error',
-    message: "Sorry, can't find that!"
-  })
+  throw new ErrorHandler(400, "Sorry, can't find that!")
 }
 
 function serverError (err, req, res, next) {
-  return res.status(500).json({
-    status: 'error',
-    message: 'Something went wrong...'
-  })
+  throw new ErrorHandler(500, 'Something went wrong...')
 }
 
 
