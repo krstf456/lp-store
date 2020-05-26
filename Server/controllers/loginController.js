@@ -1,7 +1,7 @@
 const userModel = require('../Models/user.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { auth, generateAccessToken } = require('./authController')
+const { auth, generateAccessToken, refreshTokens } = require('./authController')
 
 
 
@@ -22,6 +22,12 @@ loginUser = async (req, res) => {
             const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
             const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
             // res.header('auth-token', token).send(token)
+            
+            //2
+            // const accessToken = generateAccessToken(user._id)
+            // const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
+            refreshTokens.push(refreshToken)
+
             res.header('auth-token', token).json({accessToken: token, refreshToken: refreshToken})
 
            //2 

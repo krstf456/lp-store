@@ -20,7 +20,7 @@ const loginRouter = require('./routes/loginRoute')
 //const orderRouter = require('./routes/orderRoute')
 const productRouter = require('./routes/productRoute')
 const userRouter = require('./routes/userRoute')
-// const authRouter = require('./routes/verifyToken')
+const authRouter = require('./routes/authRoute')
 const tokenTestRoute = require('./routes/tokenTestRoute')
 app.use('/tokenTest', tokenTestRoute)
 
@@ -29,6 +29,6 @@ app.use('/users', loginRouter)
 app.use('/products', productRouter)
 app.use('/users', userRouter)
 
-// app.use('/user', authRouter)
+app.use('/token', authRouter)
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`))

@@ -16,3 +16,10 @@ Content-Type: application/json
 
 #####
 
+## REFRESH TOKEN
+POST http://localhost:5000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0OTc2MjN9.0Yh-h4QzLe_sMoqTY_wH7GDsEN2lftrdCDzA_B1i6UU"
+}

@@ -16,24 +16,51 @@ function auth(req, res, next) {
 }
 
 
-function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '15s'
-    })
+function generateAccessToken(userID) {
+    console.log('userID:', userID)
+    return jwt.sign({_id:userID}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
 }
+
+function generateRefreshToken(userID) {
+
+}
+
+//move to mongoDB?
+let refreshTokens = [
+
+]
+
 
 
 refreshToken = async (req, res) => {
+    
+    try {
+
+
         const refreshToken = req.body.token
 
+        if (refreshToken == null) {
+            return res.status(401).json('Unauthorized: No Token')
+        }
+        if (!refreshTokens.includes(refreshToken)) {
+            return res.status(403).json('Forbidden: Invalid Token')
+        } else {
+            jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, userID) => {
+                if(err) return res.status(403)
+                console.log('HEEEJ')
+                const accessToken = generateAccessToken({_id: userID})
+                console.log('Tokens Array:', refreshTokens.length)
+                res.json({accessToken: accessToken})
+            })
+        }
 
-      
+    } catch (err) {
+        res.status(500).send(err)
+    }
+
 }
 
 
-
-module.exports = {
-refreshToken}
 
 // function authenticateToken(req, res, next) {
 //     const authHeader = req.headers['authorization']
@@ -65,6 +92,9 @@ refreshToken}
 module.exports = {
     auth,
     generateAccessToken,
+    refreshToken,
+    refreshTokens
+
 
 
 }
