@@ -74,7 +74,7 @@ getGenre = async (req, res) => {
     const shoppingCart = []
 
     try {
-      // Find album
+      // Find product to add to cart
       const id = req.params.id;
       const productToCart = await productModel.findById(id, req.body);
       res.send(productToCart)

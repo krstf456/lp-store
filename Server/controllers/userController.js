@@ -1,6 +1,15 @@
 const userModel = require('../models/User.model')
 const bcrypt = require('bcrypt')
 
+getAllUsers = async (req, res) => {
+    try {
+        // Get all users
+        const user = await userModel.find();
+        res.send(user);
+      } catch (err) {
+        res.status(500).send(err);
+      }
+};
 
 createNewUser = async (req, res) => {
         try {
@@ -29,4 +38,4 @@ createNewUser = async (req, res) => {
  
        
    
-module.exports = { createNewUser }
+module.exports = { createNewUser, getAllUsers }

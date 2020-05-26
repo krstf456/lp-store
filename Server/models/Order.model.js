@@ -7,10 +7,6 @@ const OrderSchema = new Schema({
         type: mongoose.Types.ObjectId,
         required: true
     },
-    product_Id: {
-        type: Array,
-        required: true
-    },
     shoppingCart: {
         type: Array,
         required: true

@@ -1,4 +1,4 @@
-GET http://localhost:5000/users
+GET http://localhost:5000/users/users
 
 ###
 
@@ -6,10 +6,12 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
  {   
-    "username": "Lis",
+    "username": "Test",
     "password": "hi", 
-    "email": "adresstest12@test.com",
+    "email": "adtest12@test.com",
     "adress": {
+        "first_name": "Lisa",
+        "last_name": "Test",
         "city": "hello",
         "street": "hello",
         "street_number": "38",
