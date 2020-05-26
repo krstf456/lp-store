@@ -1,5 +1,6 @@
 require('./connect')
 const { handleError } = require('./utils/errors')
+const { logErrors, endpointError, serverError} = require('./handlers/handleErrors')
 
 const express = require('express')
 const cors = require('cors')
@@ -24,6 +25,11 @@ app.use('/users', loginRouter)
 app.use('/orders', orderRouter)
 app.use('/products', productRouter)
 app.use('/users', userRouter)
+
+//error handlers
+app.use(logErrors)
+app.use(endpointError)
 app.use((err, req, res, next) => {handleError(err, res);});
+app.use(serverError)
 
 app.listen(port, () => console.log(`Server is running on port: ${port}`))

@@ -1,4 +1,4 @@
-const productModel = require("../Models/Product.model");
+const productModel = require("../models/Product.model");
 const { ErrorHandler } = require('../utils/errors')
 
 addProduct = async (req, res, next) => {
@@ -71,7 +71,7 @@ getGenre = async (req, res, next) => {
   }
 };
 
-  addToCart = async (req, res) => {
+  addToCart = async (req, res, next) => {
     const shoppingCart = []
 
     try {
