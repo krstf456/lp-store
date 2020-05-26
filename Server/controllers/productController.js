@@ -70,24 +70,29 @@ getGenre = async (req, res) => {
   }
 };
 
-getGenre = async (req, res) => {
+  addToCart = async (req, res) => {
+    const shoppingCart = []
+
     try {
-      //Find genre and read
-      const genre = await productModel.find({ genre: req.params.genre });
-      if (genre.length == 0) {
-        res.status(404).send("Genre not found");
-      } else {
-        res.status(200).send(genre);
-      }
+      // Find album
+      const id = req.params.id;
+      const productToCart = await productModel.findById(id, req.body);
+      res.send(productToCart)
+      shoppingCart.push(productToCart)
+
     } catch (err) {
       res.status(500).send(err);
     }
+
+    console.log(shoppingCart)
   };
+
 
 module.exports = {
   addProduct,
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getGenre
+  getGenre,
+  addToCart,
 }

@@ -42,3 +42,8 @@ GET http://localhost:5000/products/products/Soul
 
 ###
 
+//Fake shoppingcart
+GET http://localhost:5000/products/cart/5ecbb14151a0903c625703b1
+
+
+

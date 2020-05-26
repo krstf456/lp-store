@@ -11,13 +11,17 @@ const OrderSchema = new Schema({
         type: Array,
         required: true
     },
-    adress:  
-        [AdressSchema]
-    ,
+    shoppingCart: {
+        type: Array,
+        required: true
+    },
     email: {
         type: mongoose.Types.ObjectId,
         required: true
     },
+    adress:  
+        [AdressSchema]
+    ,
     phone: {
         type: Number,
         required: true
