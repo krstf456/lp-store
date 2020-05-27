@@ -75,11 +75,7 @@ updateStockQuantity = async (req, res) => {
     const id = req.params.id
     const productStock = await productModel.findByIdAndUpdate(id, {$inc: { stock_quantity: -1 }})
     productStock.save()
-
-    res.json({
-      old: productStock.stock_quantity,
-      new: req.body.stock_quantity
-    });
+    res.status(200).json("The stock quantity has been updated")
 
   } catch (err) {
     res.status(500).send(err)
