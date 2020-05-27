@@ -71,6 +71,26 @@ getGenre = async (req, res, next) => {
   }
 };
 
+updateStockQuantity = async (req, res) => {
+  //const productStock = new productModel({ stock_quantity: req.body.stock_quantity })
+  //const findStock = await productModel.findOneAndUpdate({ stock_quantity: req.body.stock_quantity });
+  try {
+    const id = req.params.id
+    const productStock = await productModel.findByIdAndUpdate(id, {artist: req.params.artist = "The Birds"})
+    
+    await productStock.save()
+
+     // Display old and new info about album
+     res.json({
+      old: productStock,
+      new: req.body
+    });
+
+  } catch (err) {
+    next(err);
+  }
+}
+
   /* addToCart = async (req, res) => {
     const products = []
 
@@ -92,7 +112,8 @@ getGenre = async (req, res, next) => {
 module.exports = {
   addProduct,
   getAllProducts,
-  updateProduct,
+  //updateProduct,
   deleteProduct,
-  getGenre
+  getGenre,
+  updateStockQuantity
 }

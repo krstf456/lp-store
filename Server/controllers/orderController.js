@@ -27,22 +27,4 @@ createOrder = async (req, res, next) => {
   }
 };
 
-updateStockQuantity = async (req, res) => {
-  //const productStock = new productModel({ stock_quantity: req.body.stock_quantity })
-  //const findStock = await productModel.findOneAndUpdate({ stock_quantity: req.body.stock_quantity });
-  try {
-    const id = req.params.id;
-    const productStock = new productModel.findByIdAndUpdate(id, req.body.stock_quantity );
-    //const stock = await productModel({ stock_quantity: req.body.stock_quantity })
-    await productStock.save();
-
-    res.json({
-      old: productStock,
-      new: req.body.stock_quantity -1,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
-module.exports = { createOrder, getAllOrders, updateStockQuantity };
+module.exports = { createOrder, getAllOrders };

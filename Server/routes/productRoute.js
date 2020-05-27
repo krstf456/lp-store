@@ -1,7 +1,7 @@
 const express = require('express')
 const productModel = require('../models/Product.model')
 const router = express.Router()
-const { addProduct, getAllProducts, updateProduct, deleteProduct, getGenre } = require('../controllers/productController')
+const { addProduct, getAllProducts, updateProduct, deleteProduct, getGenre, updateStockQuantity } = require('../controllers/productController')
 
 // Create
 router.post('/products', addProduct, async (req, res,) => {})
@@ -10,7 +10,7 @@ router.post('/products', addProduct, async (req, res,) => {})
 router.get('/products', getAllProducts, async (req, res) => {})
 
 // Update
-router.put('/products/:id', updateProduct, async (req, res) => {})
+//router.put('/products/:id', updateProduct, async (req, res) => {})
 
 // Delete
 router.delete('/products/:id', deleteProduct, async (req, res) => {})
@@ -20,5 +20,6 @@ router.get('/products/:genre', getGenre, async (req, res) => {})
 
 //router.get('/cart/:id', addToCart, async (req, res,) => {})
 
+router.put('/products/:id', updateStockQuantity, async (req, res) => {})
  
 module.exports = router
