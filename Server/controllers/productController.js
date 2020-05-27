@@ -71,7 +71,7 @@ getGenre = async (req, res, next) => {
   }
 };
 
-  addToCart = async (req, res) => {
+  addToCart = async (req, res, next) => {
     const shoppingCart = []
 
     try {
