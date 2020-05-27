@@ -1,4 +1,5 @@
 const { GeneralError } = require('../utils/errors');
+const ErrorHandler = require('../utils/errors')
 
 const handleErrors = (err, req, res, next) => {
   if (err instanceof GeneralError) {
