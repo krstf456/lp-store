@@ -73,12 +73,12 @@ getGenre = async (req, res) => {
 updateStockQuantity = async (req, res) => {
   try {
     const id = req.params.id
-    const productStock = await productModel.findByIdAndUpdate(id, { "$set": { stock_quantity: req.body.stock_quantity = 12 }})
+    const productStock = await productModel.findByIdAndUpdate(id, {$inc: { stock_quantity: -1 }})
     productStock.save()
 
     res.json({
       old: productStock.stock_quantity,
-      new: req.body.stock_quantity,
+      new: req.body.stock_quantity
     });
 
   } catch (err) {
