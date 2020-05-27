@@ -1,10 +1,5 @@
 const { GeneralError } = require('../utils/errors');
 
-function logErrors (err, req, res, next) {
-  console.error(err.stack)
-  next(err)
-}
-
 const handleErrors = (err, req, res, next) => {
   if (err instanceof GeneralError) {
     console.log(err)
@@ -30,7 +25,6 @@ function serverError (err, req, res, next) {
 
 
 module.exports = { 
-  logErrors,
   handleErrors,
   endpointError,
   serverError
