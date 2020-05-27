@@ -19,20 +19,22 @@ loginUser = async (req, res) => {
             // JVT Session here
             // Create and send token            
             //1
-            const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
+            // const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
+           
             const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
             // res.header('auth-token', token).send(token)
             
             //2
-            // const accessToken = generateAccessToken(user._id)
+            const accessToken = generateAccessToken({_id: user._id})
+            console.log('GenerateToken', accessToken)
             // const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
             refreshTokens.push(refreshToken)
 
-            res.header('auth-token', token).json({accessToken: token, refreshToken: refreshToken})
+            // res.header('auth-token', token).json({accessToken: token, refreshToken: refreshToken})
+                res.header('auth-token', accessToken).json({accessToken: accessToken, refreshToken: refreshToken})
 
-           //2 
+         
 
-        //    const accessToken = generateAccessToken(user)
 
         //    res.status(200).json('You are logged in')
         }

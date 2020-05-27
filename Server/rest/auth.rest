@@ -3,7 +3,7 @@
 ### GET userID
 GET http://localhost:5000/tokenTest
 Content-Type: application/json
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1MDkzNzYsImV4cCI6MTU5MDUxMjk3Nn0.TrlhXEDTYTLD9fb-pleQck3QSdebWhIVCBMycgvNp24
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1OTg5MTAsImV4cCI6MTU5MDU5ODkyNX0.oBKoOXThdyiz9UOVKe-FwYFstcm7nHvlcYJmYkil2n0
 
 
 
@@ -12,7 +12,7 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDU
 
 GET http://localhost:5000/tokenTest/userOrders
 Content-Type: application/json
-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1MDkxOTAsImV4cCI6MTU5MDUxMjc5MH0.HP1iDZveFPluqAosiyvUSlBKuLY_peU2erlets8RtWk
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1OTg5NDcsImV4cCI6MTU5MDU5ODk2Mn0.AI-kybsnzJKMQF6H_jXsMvSadgg74ktuvqI5w8Of8dM
 
 
 ####
@@ -33,5 +33,5 @@ POST http://localhost:5000/token
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA0OTc5MzF9.R7cAcmDOFO7zP_59DUf6y6jVvdUYjXlTVSU6oGtaBG0"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJpYXQiOjE1OTA1OTg5MDB9.wJw-_ZN15DyeHdj9BBPpm3JGJ-XQBAlFsFiDL4S3V9I"
 }

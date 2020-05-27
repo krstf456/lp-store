@@ -16,9 +16,9 @@ function auth(req, res, next) {
 }
 
 
-function generateAccessToken(userID) {
-    console.log('userID:', userID)
-    return jwt.sign({_id:userID}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
+function generateAccessToken(user) {
+    console.log('userID:', user._id)
+    return jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
 }
 
 function generateRefreshToken(userID) {
@@ -45,19 +45,26 @@ refreshToken = async (req, res) => {
         if (!refreshTokens.includes(refreshToken)) {
             return res.sendStatus(403).json('Forbidden: Invalid Token')
         } else {
-            jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, userID) => {
+            jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
                 if(err) return res.sendStatus(403)
                 console.log('ÄggFlärp')
-                const accessToken = generateAccessToken({_id: userID})
+                const accessToken = generateAccessToken({_id: user._id})
                 console.log('Tokens Array:', refreshTokens.length)
                 res.json({accessToken: accessToken})
             })
         }
 
     } catch (err) {
-        res.status(500).send(err)
+        res.status(500)
     }
 
+}
+
+
+
+logout = async (req, res) => {
+const { token } = req.body
+refreshTokens = refreshTokens.filter(token => t !== token )
 }
 
 
