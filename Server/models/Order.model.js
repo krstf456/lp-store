@@ -6,35 +6,36 @@ const OrderSchema = new Schema({
     user_Id: {
         type: mongoose.Types.ObjectId,
         ref: "users",
-        required: true
+        required: false
     },
     products: {
         type: [mongoose.Types.ObjectId],
         ref: "products",
-        required: true
+        required: false
     },
     email: {
         type: mongoose.Types.ObjectId,
-        required: true
+        ref: "users",
+        required: false
     },
     adress:  
         [AdressSchema]
     ,
     phone: {
         type: Number,
-        required: true
+        required: false
     },
     sent: {
         type: Boolean,
-        required: true
+        required: false
     },
     payment_method: {
         type: String,
-        required: true
+        required: false
     },
     total_price: {
         type: Number,
-        required: true
+        required: false
     }
 })
 

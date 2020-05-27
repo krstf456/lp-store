@@ -17,17 +17,17 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/products/products/5eca7175e5c7e116ccdd9e9b
+PUT http://localhost:5000/products/products/5ece3babc7f90af1142c599e
 Content-Type: application/json
 
 {
-    "artist": "Bob Dylan",
-    "album": "Self Portrait",
-    "description": "Great album",
+    "artist": "Stevie Wonder",
+    "album": "Love",
+    "description": "Inresistable",
     "price": 299,
-    "stock_quantity": 6,
+    "stock_quantity": 7,
     "image": "www",
-    "genre": "Rock"
+    "genre": "Soul"
 }
 
 ###

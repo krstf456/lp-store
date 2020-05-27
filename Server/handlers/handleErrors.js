@@ -1,5 +1,6 @@
 const { GeneralError } = require('../utils/errors');
 
+
 const handleErrors = (err, req, res, next) => {
   if (err instanceof GeneralError) {
     console.log(err)

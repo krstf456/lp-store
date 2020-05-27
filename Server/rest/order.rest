@@ -7,13 +7,18 @@ Content-Type: application/json
 
 {   
    // "user_Id
-    "products": ["5eca606e2f99fa34e40b7507", "5eca606e2f99fa34e40b7507"],
-    "email": "",
-    "adress": {},
-    "phone": 1,
-    "sent": true,
+    "products": ["5eccdced52ae746468b66868"],
+    "email": "lo@test.com",
+    "adress": [],
+    "phone": 123,
+    "sent": false,
     "payment_method": "swish",
     "total_price": 1
 }
+
+###
+
+PUT http://localhost:5000/products/stock/5eccdced52ae746468b66868
+Content-Type: application/json
 
 ###
