@@ -70,22 +70,23 @@ getGenre = async (req, res) => {
   }
 };
 
-updateStockQuantity = async (req, res, next) => {
-  //const productStock = new productModel({ stock_quantity: req.body.stock_quantity })
-  //const findStock = await productModel.findOneAndUpdate({ stock_quantity: req.body.stock_quantity });
+updateStockQuantity = async (req, res) => {
   try {
     const id = req.params.id
-    const stock_quantity = req.params.stock_quantity
-    const productStock = await productModel.findByIdAndUpdate(id, stock_quantity-1)
-    
-    await productStock.save()
+    const productStock = await productModel.findByIdAndUpdate(id, { "$set": { stock_quantity: req.body.stock_quantity = 12 }})
+    productStock.save()
+
+    res.json({
+      old: productStock.stock_quantity,
+      new: req.body.stock_quantity,
+    });
 
   } catch (err) {
-    next(err);
+    res.status(500).send(err)
   }
 }
 
-  /* addToCart = async (req, res) => {
+/*    addToCart = async (req, res) => {
     const products = []
 
     try {
@@ -93,7 +94,7 @@ updateStockQuantity = async (req, res, next) => {
       const id = req.params.id;
       const productToCart = await productModel.findById(id, req.body);
       res.send(productToCart)
-      shoppingCart.push(productToCart)
+      products.push(productToCart)
 
     } catch (err) {
       res.status(500).send(err)
@@ -106,7 +107,7 @@ updateStockQuantity = async (req, res, next) => {
 module.exports = {
   addProduct,
   getAllProducts,
-  //updateProduct,
+  updateProduct,
   deleteProduct,
   getGenre,
   updateStockQuantity

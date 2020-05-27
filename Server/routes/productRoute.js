@@ -10,7 +10,7 @@ router.post('/products', addProduct, async (req, res,) => {})
 router.get('/products', getAllProducts, async (req, res) => {})
 
 // Update
-//router.put('/products/:id', updateProduct, async (req, res) => {})
+router.put('/products/:id', updateProduct, async (req, res) => {})
 
 // Delete
 router.delete('/products/:id', deleteProduct, async (req, res) => {})
@@ -18,8 +18,9 @@ router.delete('/products/:id', deleteProduct, async (req, res) => {})
 // Read genre
 router.get('/products/:genre', getGenre, async (req, res) => {})
 
+// Update stock
+router.put('/stock/:id', updateStockQuantity, async (req, res) => {})
+
 //router.get('/cart/:id', addToCart, async (req, res,) => {})
 
-router.put('/products/:id', updateStockQuantity, async (req, res) => {})
- 
 module.exports = router

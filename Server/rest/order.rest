@@ -18,9 +18,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/products/products/5eccdced52ae746468b66868
+PUT http://localhost:5000/products/stock/5eccdced52ae746468b66868
 Content-Type: application/json
 
-{   
-  "id": "5eccdced52ae746468b66868"
-}
+###
