@@ -1,5 +1,5 @@
 import React from "react";
-import Context from "../context/Context";
+import Context from "../context/context";
 
 class Header extends React.Component {
     //This will enable the use of context-functions and states

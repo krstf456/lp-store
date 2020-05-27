@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import MainPage from "./components/mainPage/MainPage";
-import Header from "../src/components/header/Header";
-import { Provider } from "./components/context/Context";
+import MainPage from "./components/mainPage/mainPage";
+import Header from "../src/components/header/header";
+import { Provider } from "./components/context/context";
 
 class App extends React.Component {
   render() {
