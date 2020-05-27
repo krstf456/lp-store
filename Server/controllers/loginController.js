@@ -1,17 +1,18 @@
-const userModel = require('../Models/user.model')
+const userModel = require('../models/User.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { auth, generateAccessToken, refreshTokens } = require('./authController')
 
 
+const { ErrorHandler } = require('../utils/errors')
 
-loginUser = async (req, res) => {
+loginUser = async (req, res, next) => {
 
     try {
         const user = await userModel.findOne({ username: req.body.username })
    
        if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
-           return res.status(401).json('Wrong username or password')
+           throw new ErrorHandler(401, "Wrong username or password");
        
         } else {
             // JVT Session here
@@ -36,13 +37,20 @@ loginUser = async (req, res) => {
         }
    
     } catch (err) {
-           res.status(500).send(err)
+        next(err);
     }    
 }
 
-module.exports = { loginUser }
+logoutUser = async (req, res, next) => {
 
+    try {
+        // jwt session = null ?
+        res.status(200).json('You are now logged out!')
 
+    } catch (err) {
+        next(err);
+    }
+}
 
-
-
+module.exports = { loginUser, logoutUser }
+module.exports = { loginUser, logoutUser }

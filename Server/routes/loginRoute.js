@@ -1,10 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const userModel = require('../Models/user.model')
-const { loginUser } = require('../controllers/loginController')
+const userModel = require('../models/User.model')
+const { loginUser, logoutUser } = require('../controllers/loginController')
 
 router.use(express.json())
 // Login user
 router.post('/login', loginUser, async (req, res,) => {})
+
+// Logout user
+router.delete('/logout', logoutUser, async (req, res) => {})
 
 module.exports = router

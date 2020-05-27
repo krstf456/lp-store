@@ -1,12 +1,14 @@
-GET http://localhost:5000/users/
+GET http://localhost:5000/users
+
 ###
+
 POST http://localhost:5000/users/register
  Content-Type: application/json
 
  {   
-    "username": "Skurt",
-    "password": "123", 
-    "email": "testmail@testdomain.com",
+    "username": "Bowie",
+    "password": "hi", 
+    "email": "adresstest12@test.com",
     "adress": {
         "city": "stan",
         "street": "lurgatan",
@@ -16,7 +18,6 @@ POST http://localhost:5000/users/register
     "isAdmin": false
     }
 
-GET http://localhost:5000/users/users
 
 ###
 
@@ -24,8 +25,19 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {   
-    "username": "Skurt",
-    "password": "123"
+    "username": "Bowie",
+    "password": "hi"
+}
+
+###
+
+DELETE http://localhost:5000/users/logout
+
+Content-Type: application/json
+
+{
+    "username": "Bowie",
+    "password": "hi"
 }
 
 #####
