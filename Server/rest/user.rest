@@ -10,10 +10,10 @@ POST http://localhost:5000/users/register
     "password": "hi", 
     "email": "adresstest12@test.com",
     "adress": {
-        "city": "hello",
-        "street": "hello",
-        "street_number": "38",
-        "postcode": "43370"
+        "city": "stan",
+        "street": "lurgatan",
+        "street_number": "1",
+        "postcode": "1337"
     },
     "isAdmin": false
     }
@@ -39,4 +39,6 @@ Content-Type: application/json
     "username": "Bowie",
     "password": "hi"
 }
+
+#####
 
