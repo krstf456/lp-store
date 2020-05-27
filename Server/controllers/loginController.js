@@ -6,13 +6,14 @@ const { auth, generateAccessToken, refreshTokens } = require('./authController')
 
 const { ErrorHandler } = require('../utils/errors')
 
-loginUser = async (req, res, next) => {
+loginUser = async (req, res) => {
 
     try {
         const user = await userModel.findOne({ username: req.body.username })
    
        if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
-           throw new ErrorHandler(401, "Wrong username or password");
+           //throw new ErrorHandler(401, "Wrong username or password");
+           res.status(401).send("Wrong username or password")
        
         } else {
             // JVT Session here
@@ -37,7 +38,7 @@ loginUser = async (req, res, next) => {
         }
    
     } catch (err) {
-        next(err);
+        res.status(500).send(err)
     }    
 }
 
@@ -48,7 +49,7 @@ logoutUser = async (req, res, next) => {
         res.status(200).json('You are now logged out!')
 
     } catch (err) {
-        next(err);
+        res.status(500).send(err)
     }
 }
 

@@ -1,7 +1,6 @@
 const productModel = require("../models/Product.model");
-const { ErrorHandler } = require('../utils/errors')
 
-addProduct = async (req, res, next) => {
+addProduct = async (req, res) => {
   try {
     const product = new productModel(req.body);
     const findProduct = await productModel.findOne({ album: req.body.album });
@@ -11,24 +10,24 @@ addProduct = async (req, res, next) => {
       await product.save();
       res.send(product);
     } else {
-      throw new ErrorHandler(404, "Album already exists");
+      res.status(404).send("Album already exists")
     }
   } catch (err) {
-    next(err);
+    res.status(500).send(err)
   }
 };
 
-getAllProducts = async (req, res, next) => {
+getAllProducts = async (req, res) => {
   try {
     // Get all products
     const product = await productModel.find();
     res.send(product);
   } catch (err) {
-    next(err);
+    res.status(500).send(err)
   }
 };
 
-updateProduct = async (req, res, next) => {
+updateProduct = async (req, res) => {
   try {
     // Find album to update and save
     const id = req.params.id;
@@ -41,33 +40,33 @@ updateProduct = async (req, res, next) => {
       new: req.body,
     });
   } catch (err) {
-    next(err);
+    res.status(500).send(err)
   }
 };
 
-deleteProduct = async (req, res, next) => {
+deleteProduct = async (req, res) => {
   try {
     // Find album and delete
     const product = await productModel.findByIdAndDelete(req.params.id);
 
-    if (!product) throw new ErrorHandler(404, "No item found");
+    if (!product) res.status(404).json("No item found");
     res.status(200).json("Album has been deleted");
   } catch (err) {
-    next(err);
+    res.status(500).send(err)
   }
 };
 
-getGenre = async (req, res, next) => {
+getGenre = async (req, res) => {
   try {
     //Find genre and read
     const genre = await productModel.find({ genre: req.params.genre });
     if (genre.length == 0) {
-      throw new ErrorHandler(404, "Genre not found");
+      res.status(404).json("Genre not found")
     } else {
       res.status(200).send(genre);
     }
   } catch (err) {
-    next(err);
+    res.status(500).send(err)
   }
 };
 
@@ -97,7 +96,7 @@ updateStockQuantity = async (req, res, next) => {
       shoppingCart.push(productToCart)
 
     } catch (err) {
-      next(err);
+      res.status(500).send(err)
     }
 
     console.log(products)

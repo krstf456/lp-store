@@ -6,8 +6,8 @@ POST http://localhost:5000/products/products
 Content-Type: application/json
 
 {   
-    "artist": "The Birds",
-    "album": "Mr. Tambourine Man",
+    "artist": "Leif",
+    "album": "sds",
     "description": "Mr. Tambourine",
     "price": 279,
     "stock_quantity": 7,
@@ -38,7 +38,7 @@ DELETE http://localhost:5000/products/products/ghwdwd
 
 
 // GET/read one specific genre 
-GET http://localhost:5000/products/products/Soul
+GET http://localhost:5000/products/products/Rock
 
 ###
 

@@ -17,11 +17,11 @@ const handleErrors = (err, req, res, next) => {
 }
 
 function endpointError (err, req, res, next) {
-  throw new ErrorHandler(400, "Sorry, can't find that!")
+  res.status(404).send("Sorry, can't find that!")
 }
 
 function serverError (err, req, res, next) {
-  throw new ErrorHandler(500, 'Something went wrong...')
+  res.status(500).send("Something broke...")
 }
 
 
