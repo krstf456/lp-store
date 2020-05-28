@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {   
    // "user_Id
-    "products": ["5eccdced52ae746468b66868"],
+    "products": ["5ecd0528bbbbe912a584a6cc"],
     "email": "lis@test.com",
     "adress": [],
     "phone": 12345,
