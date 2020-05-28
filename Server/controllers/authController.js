@@ -55,14 +55,14 @@ refreshToken = async (req, res,next) => {
         }
 
     } catch (err) {
-        next(500)
+        next(err)
     }
 
 }
 
 
 
-logout = async (req, res) => {
+logout = async (req, res, next) => {
 const { token } = req.body
 refreshTokens = refreshTokens.filter(token => t !== token )
 }
