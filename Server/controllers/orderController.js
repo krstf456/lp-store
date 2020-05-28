@@ -14,16 +14,12 @@ createOrder = async (req, res) => {
   // TODO: add user to order
   try {
     const orderData = new orderModel(req.body);
+   
+    await orderData.save();
+    res.send(orderData);
 
-    if (!findOrder) {
-      await orderData.save();
-      res.send(orderData);
-    } else {
-      return res.status(400).send("Cannot create duplicate order")
-    }
   } catch (err) {
     res.status(500).send(err)
   }
 };
-
 module.exports = { createOrder, getAllOrders };
