@@ -35,12 +35,10 @@ let refreshTokens = [
 refreshToken = async (req, res,next) => {
     
     try {
-
-
         const refreshToken = req.body.token
 
         if (refreshToken == null) {
-            return res.sendStatus(401).json('Unauthorized: No Token')
+            return res.status(401).json({message : 'Unauthorized: No Token'})
         }
         if (!refreshTokens.includes(refreshToken)) {
             return res.sendStatus(403).json('Forbidden: Invalid Token')

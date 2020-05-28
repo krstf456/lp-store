@@ -1,17 +1,17 @@
 const orderModel = require("../models/Order.model");
 const productModel =  require("../models/Product.model");
 
-getAllOrders = async (req, res) => {
+getAllOrders = async (req, res, next) => {
   try {
     // Get all orders
     const order = await orderModel.find();
     res.send(order);
   } catch (err) {
-    res.status(500).send(err)
+    next(err)
   }
 };
 
-createOrder = async (req, res) => {
+createOrder = async (req, res, next) => {
   // TODO: add user to order
   try {
     const orderData = new orderModel(req.body);
@@ -26,7 +26,7 @@ createOrder = async (req, res) => {
     res.send(orderData);
 
   } catch (err) {
-    res.status(500).send(err)
+    next(err)
   }
 };
 
