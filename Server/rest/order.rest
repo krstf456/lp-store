@@ -7,10 +7,10 @@ Content-Type: application/json
 
 {   
    // "user_Id
-    "products": ["5eccdced52ae746468b66868"],
-    "email": "lou@test.com",
+    "products": ["5ecd0528bbbbe912a584a6cc"],
+    "email": "lis@test.com",
     "adress": [],
-    "phone": 123,
+    "phone": 12345,
     "sent": false,
     "payment_method": "swish",
     "total_price": 1
