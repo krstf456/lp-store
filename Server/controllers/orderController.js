@@ -22,7 +22,6 @@ createOrder = async (req, res) => {
       await item.save();
     })
 
-    console.log(products)
     await orderData.save();
     res.send(orderData);
 

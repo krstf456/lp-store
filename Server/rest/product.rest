@@ -42,8 +42,4 @@ GET http://localhost:5000/products/products/Rock
 
 ###
 
-//Fake shoppingcart: adds specific product to shoppingCart[]
-GET http://localhost:5000/products/cart/5ecbb14151a0903c625703b1
-
-
 
