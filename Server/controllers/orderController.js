@@ -18,8 +18,9 @@ createOrder = async (req, res) => {
     if (!findOrder) {
       await orderData.save();
       res.send(orderData);
+      //updateStockQuantity();
     } else {
-      return res.status(400).send("Cannot create duplicate order")
+    res.status(400).send("Cannot create duplicate order")
     }
   } catch (err) {
     res.status(500).send(err)
