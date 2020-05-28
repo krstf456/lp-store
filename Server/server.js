@@ -21,6 +21,7 @@ const productRouter = require('./routes/productRoute')
 const userRouter = require('./routes/userRoute')
 const authRouter = require('./routes/authRoute')
 const tokenTestRoute = require('./routes/tokenTestRoute')
+const uploadRouter = require('./routes/uploadRoute')
 app.use('/tokenTest', tokenTestRoute)
 
 
@@ -29,6 +30,7 @@ app.use('/orders', orderRouter)
 app.use('/products', productRouter)
 app.use('/users', userRouter)
 app.use('/token', authRouter)
+app.use('/uploads', uploadRouter)
 
 
 //Error handlers

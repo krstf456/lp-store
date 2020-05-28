@@ -1,0 +1,16 @@
+GET http://localhost:5000/
+
+
+###
+
+POST http://localhost:5000/uploads/uploads
+Content-Type: multipart/form-data; boundary=FormDataRow
+--FormDataRow
+Content-Disposition: form-data; name="image"; filename="banan.jpeg"
+Content-Type: image/jpeg
+
+< ../uploads/banan.jpeg
+--FormDataRow--
+### Tänk på följande:
+### ALLA boundary's måste BÖRJA med --
+### SISTA boundary'n måste AVSLUTAS med -- 
