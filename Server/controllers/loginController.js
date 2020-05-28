@@ -17,22 +17,16 @@ loginUser = async (req, res) => {
        
         } else {
             // JVT Session here
-            // Create and send token            
-            //1
+
             const payload = {
                 _id: user._id,
                 username: user.username,
                 isAdmin: user.isAdmin,
+                email: user.email,
             }
             
-            const accessToken = generateAccessToken(payload)
-            const refreshToken = generateRefreshToken(payload)
-
-            refreshTokens.push(refreshToken)
-            res.status(500).header('auth-token', accessToken).json({accessToken: accessToken, refreshToken: refreshToken})
-
-         
-
+            const token = generateAccessToken(payload)
+            res.status(500).header('auth-token', token).json({token: token})
 
         //    res.status(200).json('You are logged in')
         }
