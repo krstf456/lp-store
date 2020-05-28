@@ -1,31 +1,16 @@
-const { GeneralError } = require('../utils/errors');
 
-const handleErrors = (err, req, res, next) => {
-  if (err instanceof GeneralError) {
-    console.log(err)
-    return res.status(err.getCode()).json({
-      status: 'error',
-      message: err.message
-    });
-  }
-
-  return res.status(500).json({
-    status: 'error',
-    message: 'Something went wrong...'
-  });
+function Error404Handler (req, res, next) {
+  res.status(404).json("Sorry, can't find that!")
 }
 
-function endpointError (err, req, res, next) {
-  res.status(404).send("Sorry, can't find that!")
-}
-
-function serverError (err, req, res, next) {
-  res.status(500).send("Something broke...")
+function errorHandler (err, req, res, next) {
+  const message = err.message || 'Something broke...'
+  const statusCode = err.status || 500
+  res.status(statusCode).json({message: message})
 }
 
 
 module.exports = { 
-  handleErrors,
-  endpointError,
-  serverError
+  Error404Handler,
+  errorHandler,
 };
