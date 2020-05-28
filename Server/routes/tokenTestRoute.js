@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { auth, authenticateToken } = require('./verifyToken')
+const { auth } = require('../controllers/authController')
 
 orders = [
     {userID: '5ecbcd3160a2c05320657a18',
@@ -9,6 +9,12 @@ orders = [
 ]
 
 router.get('/', auth, (req, res) => {
+
+    if (req.user.isAdmin == true) {
+        console.log('ADMIN')
+    } else {
+        console.log('INTE ADMIN')
+    }
 res.send(req.user)
 })
 
