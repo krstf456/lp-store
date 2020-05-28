@@ -70,22 +70,34 @@ getGenre = async (req, res) => {
   }
 };
 
-  addToCart = async (req, res) => {
-    const shoppingCart = []
+updateStockQuantity = async (req, res) => {
+  try {
+    const id = req.params.id
+    const productStock = await productModel.findByIdAndUpdate(id, {$inc: { stock_quantity: -1 }})
+    productStock.save()
+    res.status(200).json("The stock quantity has been updated")
+
+  } catch (err) {
+    res.status(500).send(err)
+  }
+}
+
+/*    addToCart = async (req, res) => {
+    const products = []
 
     try {
       // Find product to add to cart
       const id = req.params.id;
       const productToCart = await productModel.findById(id, req.body);
       res.send(productToCart)
-      shoppingCart.push(productToCart)
+      products.push(productToCart)
 
     } catch (err) {
       res.status(500).send(err)
     }
 
-    console.log(shoppingCart)
-  };
+    console.log(products)
+  }; */
 
 
 module.exports = {
@@ -94,5 +106,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   getGenre,
-  addToCart,
+  updateStockQuantity
 }
