@@ -17,12 +17,12 @@ function auth(req, res, next) {
 
 
 function generateAccessToken(user) {
-    console.log('userID:', user._id)
-    return jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
+    console.log('user:', user)
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
 }
 
-function generateRefreshToken(userID) {
-
+function generateRefreshToken(user) {
+   return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
 }
 
 //move to mongoDB?
@@ -101,6 +101,7 @@ refreshTokens = refreshTokens.filter(token => t !== token )
 module.exports = {
     auth,
     generateAccessToken,
+    generateRefreshToken,
     refreshToken,
     refreshTokens
 

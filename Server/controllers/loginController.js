@@ -1,7 +1,7 @@
 const userModel = require('../models/User.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { auth, generateAccessToken, refreshTokens } = require('./authController')
+const { auth, generateAccessToken, generateRefreshToken, refreshTokens } = require('./authController')
 
 
 const { ErrorHandler } = require('../utils/errors')
@@ -19,19 +19,17 @@ loginUser = async (req, res) => {
             // JVT Session here
             // Create and send token            
             //1
-            // const token = jwt.sign({_id: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
-           
-            const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
-            // res.header('auth-token', token).send(token)
+            const payload = {
+                _id: user._id,
+                username: user.username,
+                isAdmin: user.isAdmin,
+            }
             
-            //2
-            const accessToken = generateAccessToken({_id: user._id})
-            console.log('GenerateToken', accessToken)
-            // const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
-            refreshTokens.push(refreshToken)
+            const accessToken = generateAccessToken(payload)
+            const refreshToken = generateRefreshToken(payload)
 
-            // res.header('auth-token', token).json({accessToken: token, refreshToken: refreshToken})
-                res.header('auth-token', accessToken).json({accessToken: accessToken, refreshToken: refreshToken})
+            refreshTokens.push(refreshToken)
+            res.status(500).header('auth-token', accessToken).json({accessToken: accessToken, refreshToken: refreshToken})
 
          
 
