@@ -11,7 +11,7 @@ function auth(req, res, next) {
         req.user = verified
         next()
     } catch (err) {
-        res.status(400).send('Invalid Token')
+        res.status(400).json({message : 'Invalid Token'})
     }
 }
 
@@ -32,7 +32,7 @@ let refreshTokens = [
 
 
 
-refreshToken = async (req, res) => {
+refreshToken = async (req, res,next) => {
     
     try {
 
@@ -55,7 +55,7 @@ refreshToken = async (req, res) => {
         }
 
     } catch (err) {
-        res.status(500)
+        next(500)
     }
 
 }
