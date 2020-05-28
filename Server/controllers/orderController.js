@@ -14,8 +14,9 @@ getAllOrders = async (req, res, next) => {
 createOrder = async (req, res, next) => {
   // TODO: add user to order
   try {
+    const id = req.params.id
     const orderData = new orderModel(req.body);
-    const products = await productModel.find({_id: ["5ecd0528bbbbe912a584a6cc"]});
+    const products = await productModel.find(id);
 
     products.forEach(async item => {
       item.stock_quantity -= 1
@@ -29,7 +30,5 @@ createOrder = async (req, res, next) => {
     next(err)
   }
 };
-
-
 
 module.exports = { createOrder, getAllOrders };
