@@ -8,7 +8,7 @@ Content-Type: application/json
 {   
    // "user_Id
     "products": ["5eccdced52ae746468b66868"],
-    "email": "lo@test.com",
+    "email": "lou@test.com",
     "adress": [],
     "phone": 123,
     "sent": false,
