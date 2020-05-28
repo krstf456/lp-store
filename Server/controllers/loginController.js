@@ -3,13 +3,13 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { auth, generateAccessToken, generateRefreshToken, refreshTokens } = require('./authController')
 
-loginUser = async (req, res) => {
+loginUser = async (req, res, next) => {
 
     try {
         const user = await userModel.findOne({ username: req.body.username })
    
        if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
-           res.status(401).send("Wrong username or password")
+           res.status(401).json({message : "Wrong username or password"})
        
         } else {
             // JVT Session here
@@ -28,7 +28,7 @@ loginUser = async (req, res) => {
         }
    
     } catch (err) {
-        res.status(500).send(err)
+        next(err)
     }    
 }
 
@@ -39,7 +39,7 @@ logoutUser = async (req, res, next) => {
         res.status(200).json('You are now logged out!')
 
     } catch (err) {
-        res.status(500).send(err)
+        next(err)
     }
 }
 

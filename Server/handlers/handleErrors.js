@@ -1,6 +1,6 @@
 
 function Error404Handler (req, res, next) {
-  res.status(404).json("Sorry, can't find that!")
+  res.status(404).json({message : "Sorry, can't find that!"})
 }
 
 function errorHandler (err, req, res, next) {
