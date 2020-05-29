@@ -22,7 +22,7 @@ loginUser = async (req, res, next) => {
             }
             
             const token = generateAccessToken(payload)
-            res.status(500).header('auth-token', token).json({token: token})
+            res.status(200).header('auth-token', token).json({token: token})
 
         //    res.status(200).json('You are logged in')
         }
