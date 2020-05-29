@@ -5,7 +5,8 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTV
 
 POST http://localhost:5000/orders/orders
 Content-Type: application/json
-auth-token: 
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJ1c2VybmFtZSI6IlNrdXJ0IiwiZW1haWwiOiJ0ZXN0bWFpbEB0ZXN0ZG9tYWluLmNvbSIsImlhdCI6MTU5MDc0MTg2NywiZXhwIjoxNTkwODI4MjY3fQ.OOZB-HoI0TjB4ZIn2xvWac6w0N_k6WsKzijzaX0ojVg
+
 {   
    // "user_Id
     "products": ["5ecce53d823972c10044b197", "5ecd0528bbbbe912a584a6cc"],
