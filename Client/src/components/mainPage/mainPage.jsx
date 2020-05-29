@@ -1,16 +1,14 @@
 import React from "react";
 import Context from "../context/context";
 import { Box, ResponsiveContext } from "grommet";
-import ProductContainer from "../productContainer/productContainer";
 
 class MainPage extends React.Component {
   //This will enable the use of context-functions and states
   static contextType = Context;
 
-
-componentDidMount = () => {
+  componentDidMount = () => {
     this.context.getAllProducts();
-}
+  };
 
   render() {
     return (
@@ -18,8 +16,17 @@ componentDidMount = () => {
         {(size) => (
           <Box>
             <h1>All records</h1>
-            {this.context.displayAllProducts()}
-            <ProductContainer />
+            <Box
+            justify="center"
+            align="center"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
+              {this.context.displayAllProducts()}
+            </Box>
           </Box>
         )}
       </ResponsiveContext.Consumer>
