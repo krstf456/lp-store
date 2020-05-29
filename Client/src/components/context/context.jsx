@@ -32,6 +32,17 @@ export class Provider extends React.Component {
         return undefined;
       }
 
+      
+    fetch('/products').then((response) => {
+      return response.json()
+    }).then((products) => {
+        getAllProducts(products)
+    })
+
+    function getAllProducts() {
+      products.forEach(product => {
+      }
+    }
 
       render() {
         return (
