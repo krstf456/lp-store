@@ -1,6 +1,6 @@
 
 ### insert <src> after ..5000/
-GET http://localhost:5000/
+GET http://localhost:5000/uploadFile/bbe12a95-1da8-4fa3-b455-98c025f041d5banan.jpeg
 
 ###
 
