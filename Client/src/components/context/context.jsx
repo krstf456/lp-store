@@ -7,7 +7,7 @@ export class Provider extends React.Component {
     constructor() {
         super();
         this.state = {
-            showModal: false,
+            showModal: false
         }
     }
 
