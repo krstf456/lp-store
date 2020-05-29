@@ -6,28 +6,28 @@ POST http://localhost:5000/products/products
 Content-Type: application/json
 
 {   
-    "artist": "Leif",
-    "album": "sds",
-    "description": "Mr. Tambourine",
-    "price": 279,
-    "stock_quantity": 7,
+    "artist": "Bob Dylan",
+    "album": "Dylan",
+    "description": "Great album",
+    "price": 299,
+    "stock_quantity": 1,
     "image": "www",
-    "genre": "Blues"
+    "genre": "Rock"
 }
 
 ###
 
-PUT http://localhost:5000/products/products/5ece3babc7f90af1142c599e
+PUT http://localhost:5000/products/products/5ecf4fecc7f90af1142c599f
 Content-Type: application/json
 
 {
-    "artist": "Stevie Wonder",
-    "album": "Love",
-    "description": "Inresistable",
-    "price": 299,
-    "stock_quantity": 7,
+    "artist": "Leif",
+    "album": "sds",
+    "description": "Mr. Tambourine",
+    "price": 279,
+    "stock_quantity": 4,
     "image": "www",
-    "genre": "Soul"
+    "genre": "Blues"
 }
 
 ###
