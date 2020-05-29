@@ -1,0 +1,15 @@
+
+### insert <src> after ..5000/
+GET http://localhost:5000/
+
+###
+
+POST http://localhost:5000/uploads/uploads
+Content-Type: multipart/form-data; boundary=FormDataRow
+
+--FormDataRow
+Content-Disposition: form-data; name="image"; filename="banan.jpeg"
+Content-Type: FormData
+
+< ../banan.jpeg
+--FormDataRow--
