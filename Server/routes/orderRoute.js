@@ -11,7 +11,7 @@ const { auth } = require('../controllers/authController')
 router.get('/orders', auth, getAllOrders, async (req, res) => {})
 
 // Create an order
-router.post('/orders', createOrder, async (req, res) => {})
+router.post('/orders', auth, createOrder, async (req, res) => {})
 
 
 
