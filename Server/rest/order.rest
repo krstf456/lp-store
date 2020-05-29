@@ -5,7 +5,7 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTV
 
 POST http://localhost:5000/orders/orders
 Content-Type: application/json
-
+auth-token: 
 {   
    // "user_Id
     "products": ["5ecce53d823972c10044b197", "5ecd0528bbbbe912a584a6cc"],
