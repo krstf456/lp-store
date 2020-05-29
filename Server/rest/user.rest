@@ -6,16 +6,16 @@ POST http://localhost:5000/users/register
  Content-Type: application/json
 
  {   
-    "username": "Bowie",
-    "password": "hi", 
-    "email": "adresstest12@test.com",
+    "username": "Viktor",
+    "password": "123", 
+    "email": "vic@test.com",
     "adress": {
         "city": "stan",
         "street": "lurgatan",
         "street_number": "1",
         "postcode": "1337"
     },
-    "isAdmin": false
+    "isAdmin": true
     }
 
 
