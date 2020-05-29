@@ -1,5 +1,6 @@
 GET http://localhost:5000/orders/orders
-
+Content-Type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTVlZTE1OGMwMTciLCJ1c2VybmFtZSI6IlZpa3RvciIsImlzQWRtaW4iOnRydWUsImVtYWlsIjoidmljQHRlc3QuY29tIiwiaWF0IjoxNTkwNzM4MTQ5LCJleHAiOjE1OTA4MjQ1NDl9.O7hXbX1J9myoF9f5jwA4VvVepwCkO_WtHC4MSqVnkWQ
 ###
 
 POST http://localhost:5000/orders/orders
