@@ -1,11 +1,10 @@
 import React from 'react';
 import { Box, ResponsiveContext } from "grommet";
 import Context from "../context/context";
-import { Link } from "react-router-dom";
 
 
 
-class ProductContainer extends React.Component {
+class ProductPage extends React.Component {
     //This will enable the use of context-functions and states
     static contextType = Context;
   
@@ -13,16 +12,13 @@ class ProductContainer extends React.Component {
       return (
         <ResponsiveContext.Consumer>
         {size => (
-        <Link to="/productpage/">
-          <Box height="20rem" width="20rem" margin="large" background="purple">
-              <h1>Product</h1>
+          <Box>
+              <h1>ProductInfo</h1>
           </Box>
-        </Link>
         )}
         </ResponsiveContext.Consumer>
       );
     }
   }
   
-  export default ProductContainer;
-  
+  export default ProductPage;
