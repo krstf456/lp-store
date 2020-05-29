@@ -8,6 +8,9 @@ class MainPage extends React.Component {
   static contextType = Context;
 
 
+componentDidMount = () => {
+    this.context.getAllProducts();
+}
 
   render() {
     return (
@@ -15,6 +18,7 @@ class MainPage extends React.Component {
         {(size) => (
           <Box>
             <h1>All records</h1>
+            {this.context.displayAllProducts()}
             <ProductContainer />
           </Box>
         )}

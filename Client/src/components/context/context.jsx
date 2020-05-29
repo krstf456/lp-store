@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from "../modal/modal";
+import axios from "axios";
+
 
 const Context = React.createContext();
 
@@ -7,7 +9,10 @@ export class Provider extends React.Component {
     constructor() {
         super();
         this.state = {
-            showModal: false
+            showModal: false,
+            products: [],
+            getAllProducts: this.getAllProducts,
+            displayAllProducts: this.displayAllProducts,
         }
     }
 
@@ -32,7 +37,7 @@ export class Provider extends React.Component {
         return undefined;
       }
 
-      
+   /*    
     fetch('/products').then((response) => {
       return response.json()
     }).then((products) => {
@@ -42,6 +47,36 @@ export class Provider extends React.Component {
     function getAllProducts() {
       products.forEach(product => {
       }
+    } */
+
+    getAllProducts = () => {
+      axios
+      .get("http://localhost:5000/products/products")
+      .then((response) => {
+        console.log("response", response.data)
+        this.setState({ products: response.data });
+      })
+    }
+
+    displayAllProducts = () => {
+      if (!this.state.products.length) return null;
+
+      return this.state.products.map((product, index) => (
+        <div
+          key={index}
+          style={{
+            borderRadius: "1rem",
+            backgroundColor: "white",
+            margin: "0 3rem 1rem 3rem",
+            padding: "0.5rem",
+          }}
+        >
+          <h3 style={{ textAlign: "left", margin: "0.5rem" }}>
+            {product.album}
+          </h3>
+        </div>
+      ));
+
     }
 
       render() {
