@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "../modal/modal";
 import axios from "axios";
 import { Box } from "grommet";
 import { Link } from "react-router-dom";
@@ -10,7 +9,6 @@ export class Provider extends React.Component {
   constructor() {
     super();
     this.state = {
-      showModal: false,
       rock: [],
       soul: [],
       pop: [],
@@ -23,43 +21,29 @@ export class Provider extends React.Component {
     };
   }
 
-  //To open modal call this function on a button
-  toggleModal = () => {
-    this.setState({
-      showModal: !this.state.showModal,
+  getAllProducts = () => {
+    axios.get("http://localhost:5000/products").then((response) => {
+      this.setState({ products: response.data });
     });
   };
 
-  //Place modal-content in here
-  get modal() {
-    if (this.state.showModal) {
-      return (
-        <Modal>
-          <div>
-            <h1>MODAL WITH PRODUCTINFO</h1>
-          </div>
-        </Modal>
-      );
-    }
-    return undefined;
-  }
 
   getAllRock = () => {
-    axios.get("http://localhost:5000/products/products/Rock").then((response) => {
+    axios.get("http://localhost:5000/products/Rock").then((response) => {
       console.log("response", response.data);
       this.setState({ rock: response.data });
     });
   };
 
   getAllSoul = () => {
-    axios.get("http://localhost:5000/products/products/Soul").then((response) => {
+    axios.get("http://localhost:5000/products/Soul").then((response) => {
       console.log("response", response.data);
       this.setState({ soul: response.data });
     });
   };
 
   getAllPop = () => {
-    axios.get("http://localhost:5000/products/products/Pop").then((response) => {
+    axios.get("http://localhost:5000/products/Pop").then((response) => {
       console.log("response", response.data);
       this.setState({ pop: response.data });
     });
@@ -114,7 +98,6 @@ export class Provider extends React.Component {
     return (
       <Context.Provider value={this.state}>
         {this.props.children}
-        {this.modal}
       </Context.Provider>
     );
   }

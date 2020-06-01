@@ -19,7 +19,7 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDU
 
 ##LOGIN
 ##Recieve accessToken & refreshToken
-POST http://localhost:5000/users/login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {   

@@ -1,8 +1,8 @@
-GET http://localhost:5000/users/users
+GET http://localhost:5000/users
 
 ###
 
-POST http://localhost:5000/users/register
+POST http://localhost:5000/register
  Content-Type: application/json
 
  {   
@@ -21,7 +21,7 @@ POST http://localhost:5000/users/register
 
 ###
 
-POST http://localhost:5000/users/login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {   
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5000/users/logout
+DELETE http://localhost:5000/logout
 
 Content-Type: application/json
 
