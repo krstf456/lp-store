@@ -10,8 +10,6 @@ const port = process.env.PORT || 5000
 
 app.use(express.static("public"));
 
-
-app.use('/uploadFile', express.static('uploadFile'))
 app.use(fileUpload({createParentPath:true}))
 app.use(cors())
 app.use(express.json())

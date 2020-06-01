@@ -1,63 +1,44 @@
-const  uuid = require('uuid')
+//const  uuid = require('uuid') uninstall
 const uploadModel =  require("../models/Upload.model");
 
-uploadImage = async (req, res) => {
 
-  const uploadedImage = new uploadModel(req.files);
-  console.log(req.files)
-  console.log(uploadedImage)
-  //const uploadedImage = new uploadedFile(req.body)
-  //const id = uuid.v4()
-  //const imageName = id + req.files.image.name
-  //req.files.image.mv('./uploadFile/' + imageName)
-  //res.json({src: '/uploadFile/' + imageName})
-  await uploadedImage.save()
-  res.send(uploadedImage)
+getImage = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const doc = await uploadModel.findById(id, req.body);
+    console.log(doc)
+    res.contentType(doc.contentType);
+    res.send(doc.data)
+  } catch (err) {
+    next(err)
+  }
+};
+
+
+uploadImage = async (req, res) => {
+  try{
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).json({status: 'No files were uploaded.'});
+    }
+      const uploadedImage = new uploadModel({
+      name: req.files.image.name,
+      data: req.files.image.data,
+      contentType: req.files.image.mimetype
+    });
+    console.log(req.files.image)
+    await uploadedImage.save()
+    uploadedImage.data = undefined
+    res.status(200).json(uploadedImage)
+  } catch(err){
+    next(err)
+  }
 }
 
 module.exports = {
-  uploadImage
+  uploadImage,
+  getImage
 }
 
 
 
 
-
-/*
-// our model
-var A = mongoose.model('A', schema);
-
-
-
-
-    // store an img in binary in mongo
-    var a = new A;
-    a.img.data = fs.readFileSync(imgPath);
-    a.img.contentType = 'image/png';
-    a.save(function (err, a) {
-      if (err) throw err;
-
-      console.error('saved img to mongo');
-
-      // start a demo server
-      var server = express.createServer();
-      server.get('/', function (req, res, next) {
-        A.findById(a, function (err, doc) {
-          if (err) return next(err);
-          res.contentType(doc.img.contentType);
-          res.send(doc.img.data);
-        });
-      });
-
-
-  
-
-      process.on('SIGINT', function () {
-        server.close();
-      });
-    });
-  });
-
-});
-
-*/
