@@ -30,10 +30,10 @@ const uploadRouter = require('./routes/uploadRoute')
 app.use('/tokenTest', tokenTestRoute)
 
 
-app.use('/users', loginRouter)
+app.use(loginRouter)
 app.use('/orders', orderRouter)
 app.use('/products', productRouter)
-app.use('/users', userRouter)
+app.use(userRouter)
 app.use('/token', authRouter)
 app.use('/uploads', uploadRouter)
 

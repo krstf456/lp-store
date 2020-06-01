@@ -65,7 +65,7 @@ class Header1 extends React.Component {
     };
 
     axios({
-      url: "http://localhost:5000/users/register",
+      url: "http://localhost:5000/register",
       method: "POST",
       data: inputValues,
     })
