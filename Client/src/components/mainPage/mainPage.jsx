@@ -19,7 +19,7 @@ class MainPage extends React.Component {
       <ResponsiveContext.Consumer>
         {(size) => (
           <Box>
-            <h1>All records</h1>
+            <h1>Rock</h1>
             <Box
               justify="center"
               align="center"
@@ -31,6 +31,7 @@ class MainPage extends React.Component {
             >
               {this.context.displayAllRock()}
             </Box>
+            <h1>Soul</h1>
             <Box
               justify="center"
               align="center"
@@ -42,6 +43,7 @@ class MainPage extends React.Component {
             >
               {this.context.displayAllSoul()}
             </Box>
+            <h1>Pop</h1>
             <Box
               justify="center"
               align="center"
