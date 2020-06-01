@@ -7,26 +7,54 @@ class MainPage extends React.Component {
   static contextType = Context;
 
   componentDidMount = () => {
-    this.context.getAllProducts();
+    this.context.getAllRock();
+    this.context.getAllSoul();
+    this.context.getAllPop();
   };
+
+ 
 
   render() {
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
           <Box>
-            <h1>All records</h1>
+            <h1>Rock</h1>
             <Box
-            justify="center"
-            align="center"
+              justify="center"
+              align="center"
               style={{
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
               }}
             >
-              {this.context.displayAllProducts()}
+              {this.context.displayAllRock()}
             </Box>
+            <h1>Soul</h1>
+            <Box
+              justify="center"
+              align="center"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
+              {this.context.displayAllSoul()}
+            </Box>
+            <h1>Pop</h1>
+            <Box
+              justify="center"
+              align="center"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
+              {this.context.displayAllPop()}
+            </Box>  
           </Box>
         )}
       </ResponsiveContext.Consumer>
