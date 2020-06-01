@@ -60,13 +60,13 @@ export class Provider extends React.Component {
 
     return this.state.rock.map((product, index) => (
       <Link to="/productpage/">
-          <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-            <img src={product.image}/>
+        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
+          <img src={product.image}/>
           <h3>{product.album}</h3>
-        <h4>{product.artist}</h4>
-        <p>{product.price}</p>
-          </Box>
-        </Link>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+        </Box>
+      </Link>
     ));
   };
 
@@ -75,13 +75,13 @@ export class Provider extends React.Component {
 
     return this.state.soul.map((product, index) => (
       <Link to="/productpage/">
-          <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-            <img src={product.image}/>
+        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
+          <img src={product.image}/>
           <h3>{product.album}</h3>
-        <h4>{product.artist}</h4>
-        <p>{product.price}</p>
-          </Box>
-        </Link>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+        </Box>
+      </Link>
     ));
   };
 

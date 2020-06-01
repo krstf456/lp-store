@@ -7,8 +7,11 @@ class MainPage extends React.Component {
   static contextType = Context;
 
   componentDidMount = () => {
-    this.context.getAllProducts();
+    this.context.getAllRock();
+    this.context.getAllSoul();
   };
+
+ 
 
   render() {
     return (
@@ -25,8 +28,21 @@ class MainPage extends React.Component {
                 flexWrap: "wrap",
               }}
             >
-              {this.context.displayAllProducts()}
+              {this.context.displayRock()}
+
             </Box>
+            <Box
+            justify="center"
+            align="center"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
+              {this.context.displaySoul()}
+            </Box>
+            
           </Box>
         )}
       </ResponsiveContext.Consumer>
