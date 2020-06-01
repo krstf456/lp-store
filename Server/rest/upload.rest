@@ -1,5 +1,5 @@
 
-GET http://localhost:5000/uploads/uploads/5ed48db0f2b6ed41380a2c70
+GET http://localhost:5000/uploads/uploads/5ed4c2a812c15a4b0d7ddf67
 
 ###
 
@@ -8,7 +8,7 @@ Content-Type: multipart/form-data; boundary=FormDataRow
 
 --FormDataRow
 Content-Disposition: form-data; name="image"; filename="banan.jpeg"
-Content-Type: FormData
+Content-Type: image/jpeg
 
 < ../banan.jpeg
 --FormDataRow--

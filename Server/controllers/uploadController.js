@@ -1,4 +1,4 @@
-const  uuid = require('uuid')
+//const  uuid = require('uuid') uninstall
 const uploadModel =  require("../models/Upload.model");
 
 
@@ -6,11 +6,9 @@ getImage = async (req, res, next) => {
   try {
     const id = req.params.id;
     const doc = await uploadModel.findById(id, req.body);
-    console.log("hej")
-    //res.contentType(doc.image.contentType);
-    //res.send(doc.image.data)
-    let base64 = (doc.image.data.toString('base64'));
-    res.send(base64)
+    console.log(doc)
+    res.contentType(doc.contentType);
+    res.send(doc.data)
   } catch (err) {
     next(err)
   }
@@ -22,12 +20,15 @@ uploadImage = async (req, res) => {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).json({status: 'No files were uploaded.'});
     }
-  
-    const id = uuid.v4()
-    req.files.image.name = id + req.files.image.name
-    const uploadedImage = new uploadModel(req.files);
+      const uploadedImage = new uploadModel({
+      name: req.files.image.name,
+      data: req.files.image.data,
+      contentType: req.files.image.mimetype
+    });
+    console.log(req.files.image)
     await uploadedImage.save()
-    res.status(200).send('Image uploaded')
+    uploadedImage.data = undefined
+    res.status(200).json(uploadedImage)
   } catch(err){
     next(err)
   }
