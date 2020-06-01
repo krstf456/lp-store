@@ -29,13 +29,7 @@ class Header1 extends React.Component {
   //To open modal call this function on a button
   toggleModal = () => {
     this.setState({
-      showModal: true,
-    });
-  };
-
-  closeModal = () => {
-    this.setState({
-      showModal: false,
+      showModal: !this.state.showModal,
     });
   };
 
@@ -78,6 +72,7 @@ class Header1 extends React.Component {
       .then(() => {
         this.resetInputFields();
         this.successfullyCreatedUser();
+        this.toggleModal();
       })
       .catch(() => {
         alert("Username already taken, choose another one.");
@@ -102,6 +97,7 @@ class Header1 extends React.Component {
             height="30rem"
             align="center"
           >
+            <Button onClick={() => {this.toggleModal()}}>Close</Button>
             <h1>Register</h1>
             <Form onSubmit={this.submitRegister}>
               <FormField label="Username">
@@ -138,7 +134,6 @@ class Header1 extends React.Component {
                 type="submit"
               ></Button>
             </Form>
-            <Button onClick={() => {this.closeModal()}}>Close</Button>
           </Box>
         </Modal>
       );
@@ -182,7 +177,6 @@ class Header1 extends React.Component {
                   primary
                   label="Register"
                 ></Button>
-                <Button primary label="Sign in"></Button>
               </Box>
             </Header>
           )}
