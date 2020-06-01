@@ -71,14 +71,13 @@ class Header1 extends React.Component {
     };
 
     axios({
-      url: "http://localhost:users/users/register",
+      url: "http://localhost:5000/users/register",
       method: "POST",
       data: inputValues,
     })
       .then(() => {
         this.resetInputFields();
         this.successfullyCreatedUser();
-        this.closeModal();
       })
       .catch(() => {
         alert("Username already taken, choose another one.");
@@ -109,7 +108,7 @@ class Header1 extends React.Component {
                 <TextInput 
                 placeholder="type a username"
                 type="text"
-                name="email"
+                name="username"
                 value={this.state.username}
                 onChange={this.handelInputChange}
                 required />
@@ -128,7 +127,7 @@ class Header1 extends React.Component {
                 <TextInput 
                 placeholder="type a password"
                 type="password"
-                name="email"
+                name="password"
                 value={this.state.password}
                 onChange={this.handelInputChange}
                 required 
@@ -139,6 +138,7 @@ class Header1 extends React.Component {
                 type="submit"
               ></Button>
             </Form>
+            <Button onClick={() => {this.closeModal()}}>Close</Button>
           </Box>
         </Modal>
       );
