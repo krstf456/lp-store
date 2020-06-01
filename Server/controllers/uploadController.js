@@ -1,63 +1,43 @@
 const  uuid = require('uuid')
 const uploadModel =  require("../models/Upload.model");
 
-uploadImage = async (req, res) => {
 
-  const uploadedImage = new uploadModel(req.files);
-  console.log(req.files)
-  console.log(uploadedImage)
-  //const uploadedImage = new uploadedFile(req.body)
-  //const id = uuid.v4()
-  //const imageName = id + req.files.image.name
-  //req.files.image.mv('./uploadFile/' + imageName)
-  //res.json({src: '/uploadFile/' + imageName})
-  await uploadedImage.save()
-  res.send(uploadedImage)
+getImage = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const doc = await uploadModel.findById(id, req.body);
+    console.log("hej")
+    //res.contentType(doc.image.contentType);
+    //res.send(doc.image.data)
+    let base64 = (doc.image.data.toString('base64'));
+    res.send(base64)
+  } catch (err) {
+    next(err)
+  }
+};
+
+
+uploadImage = async (req, res) => {
+  try{
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).json({status: 'No files were uploaded.'});
+    }
+  
+    const id = uuid.v4()
+    req.files.image.name = id + req.files.image.name
+    const uploadedImage = new uploadModel(req.files);
+    await uploadedImage.save()
+    res.status(200).send('Image uploaded')
+  } catch(err){
+    next(err)
+  }
 }
 
 module.exports = {
-  uploadImage
+  uploadImage,
+  getImage
 }
 
 
 
 
-
-/*
-// our model
-var A = mongoose.model('A', schema);
-
-
-
-
-    // store an img in binary in mongo
-    var a = new A;
-    a.img.data = fs.readFileSync(imgPath);
-    a.img.contentType = 'image/png';
-    a.save(function (err, a) {
-      if (err) throw err;
-
-      console.error('saved img to mongo');
-
-      // start a demo server
-      var server = express.createServer();
-      server.get('/', function (req, res, next) {
-        A.findById(a, function (err, doc) {
-          if (err) return next(err);
-          res.contentType(doc.img.contentType);
-          res.send(doc.img.data);
-        });
-      });
-
-
-  
-
-      process.on('SIGINT', function () {
-        server.close();
-      });
-    });
-  });
-
-});
-
-*/

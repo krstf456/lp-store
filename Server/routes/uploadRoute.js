@@ -1,7 +1,10 @@
 const router = require('express').Router()
-const { uploadImage} = require('../controllers/uploadController')
+const { getImage, uploadImage} = require('../controllers/uploadController')
 
-// add image
-router.post('/uploads', uploadImage,  (req, res) => {})
+// Get Image
+router.get('/uploads/:id', getImage,  async (req, res) => {})
+
+// Add image
+router.post('/uploads', uploadImage,  async (req, res) => {})
 
 module.exports = router
