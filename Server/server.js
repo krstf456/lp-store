@@ -30,12 +30,12 @@ const uploadRouter = require('./routes/uploadRoute')
 app.use('/tokenTest', tokenTestRoute)
 
 
-app.use('/users', loginRouter)
-app.use('/orders', orderRouter)
-app.use('/products', productRouter)
-app.use('/users', userRouter)
+app.use(loginRouter)
+app.use(orderRouter)
+app.use(productRouter)
+app.use(userRouter)
 app.use('/token', authRouter)
-app.use('/uploads', uploadRouter)
+app.use(uploadRouter)
 
 
 //Error handlers
