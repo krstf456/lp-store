@@ -1,8 +1,8 @@
-GET http://localhost:5000/products/products
+GET http://localhost:5000/products
 
 ###
 
-POST http://localhost:5000/products/products
+POST http://localhost:5000/products
 Content-Type: application/json
 
 {   
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/products/products/5ecf4fecc7f90af1142c599f
+PUT http://localhost:5000/products/5ecf4fecc7f90af1142c599f
 Content-Type: application/json
 
 {
@@ -32,13 +32,13 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5000/products/products/ghwdwd
+DELETE http://localhost:5000/products/ghwdwd
 
 ###
 
 
 // GET/read one specific genre 
-GET http://localhost:5000/products/products/Rock
+GET http://localhost:5000/products/Rock
 
 ###
 

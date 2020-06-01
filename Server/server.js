@@ -10,8 +10,6 @@ const port = process.env.PORT || 5000
 
 app.use(express.static("public"));
 
-
-app.use('/uploadFile', express.static('uploadFile'))
 app.use(fileUpload({createParentPath:true}))
 app.use(cors())
 app.use(express.json())
@@ -32,12 +30,12 @@ const uploadRouter = require('./routes/uploadRoute')
 app.use('/tokenTest', tokenTestRoute)
 
 
-app.use('/users', loginRouter)
-app.use('/orders', orderRouter)
-app.use('/products', productRouter)
-app.use('/users', userRouter)
+app.use(loginRouter)
+app.use(orderRouter)
+app.use(productRouter)
+app.use(userRouter)
 app.use('/token', authRouter)
-app.use('/uploads', uploadRouter)
+app.use(uploadRouter)
 
 
 //Error handlers

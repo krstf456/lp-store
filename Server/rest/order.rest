@@ -1,9 +1,9 @@
-GET http://localhost:5000/orders/orders
+GET http://localhost:5000/orders
 Content-Type: application/json
 auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTVlZTE1OGMwMTciLCJ1c2VybmFtZSI6IlZpa3RvciIsImlzQWRtaW4iOnRydWUsImVtYWlsIjoidmljQHRlc3QuY29tIiwiaWF0IjoxNTkwNzM4MTQ5LCJleHAiOjE1OTA4MjQ1NDl9.O7hXbX1J9myoF9f5jwA4VvVepwCkO_WtHC4MSqVnkWQ
 ###
 
-POST http://localhost:5000/orders/orders
+POST http://localhost:5000/orders
 Content-Type: application/json
 auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDUzMjA2NTdhMTgiLCJ1c2VybmFtZSI6IlNrdXJ0IiwiZW1haWwiOiJ0ZXN0bWFpbEB0ZXN0ZG9tYWluLmNvbSIsImlhdCI6MTU5MDc0MTg2NywiZXhwIjoxNTkwODI4MjY3fQ.OOZB-HoI0TjB4ZIn2xvWac6w0N_k6WsKzijzaX0ojVg
 
@@ -20,7 +20,7 @@ auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNiY2QzMTYwYTJjMDU
 
 ###
 
-PUT http://localhost:5000/products/stock/5eccdced52ae746468b66868
+PUT http://localhost:5000/stock/5eccdced52ae746468b66868
 Content-Type: application/json
 
 ###
