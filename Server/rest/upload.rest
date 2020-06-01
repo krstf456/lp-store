@@ -1,9 +1,9 @@
 
-GET http://localhost:5000/uploads/uploads/5ed4c2a812c15a4b0d7ddf67
+GET http://localhost:5000/uploads/5ed4c2a812c15a4b0d7ddf67
 
 ###
 
-POST http://localhost:5000/uploads/uploads
+POST http://localhost:5000/uploads
 Content-Type: multipart/form-data; boundary=FormDataRow
 
 --FormDataRow

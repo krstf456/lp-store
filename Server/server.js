@@ -35,7 +35,7 @@ app.use(orderRouter)
 app.use(productRouter)
 app.use(userRouter)
 app.use('/token', authRouter)
-app.use('/uploads', uploadRouter)
+app.use(uploadRouter)
 
 
 //Error handlers
