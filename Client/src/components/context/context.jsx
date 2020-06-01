@@ -9,6 +9,7 @@ export class Provider extends React.Component {
   constructor() {
     super();
     this.state = {
+      products: [],
       rock: [],
       soul: [],
       pop: [],
@@ -17,7 +18,7 @@ export class Provider extends React.Component {
       getAllPop: this.getAllPop,
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
-      displayAllPop: this.displayAllPop
+      displayAllPop: this.displayAllPop,
     };
   }
 
@@ -25,37 +26,71 @@ export class Provider extends React.Component {
     axios.get("http://localhost:5000/products").then((response) => {
       this.setState({ products: response.data });
     });
+    console.log("response", this.state.products)
   };
-
 
   getAllRock = () => {
     axios.get("http://localhost:5000/products/Rock").then((response) => {
-      console.log("response", response.data);
+      console.log("response", response.data)
       this.setState({ rock: response.data });
     });
   };
 
   getAllSoul = () => {
     axios.get("http://localhost:5000/products/Soul").then((response) => {
-      console.log("response", response.data);
       this.setState({ soul: response.data });
     });
   };
 
   getAllPop = () => {
     axios.get("http://localhost:5000/products/Pop").then((response) => {
-      console.log("response", response.data);
       this.setState({ pop: response.data });
     });
+  };
+
+  displayAllProducts = () => {
+    console.log(this.state.products)
+    if (!this.state.products.length) return null;
+
+    return this.state.products.map((product, index) => (
+      <Link
+        to={{
+          pathname: "/productpage/" + this.state.products._Id,
+        }}
+      >
+        <Box
+          key={index}
+          height="20rem"
+          width="20rem"
+          margin="large"
+          background="purple"
+        >
+          <img src={product.image} />
+          <h3>{product.album}</h3>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+        </Box>
+      </Link>
+    ));
   };
 
   displayAllRock = () => {
     if (!this.state.rock.length) return null;
 
     return this.state.rock.map((product, index) => (
-      <Link to="/productpage/">
-        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-          <img src={product.image}/>
+      <Link
+        to={{
+          pathname: "/productpage/" + this.state.rock._Id
+        }}
+      >
+        <Box
+          key={index}
+          height="20rem"
+          width="20rem"
+          margin="large"
+          background="purple"
+        >
+          <img src={product.image} />
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
@@ -69,8 +104,14 @@ export class Provider extends React.Component {
 
     return this.state.soul.map((product, index) => (
       <Link to="/productpage/">
-        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-          <img src={product.image}/>
+        <Box
+          key={index}
+          height="20rem"
+          width="20rem"
+          margin="large"
+          background="purple"
+        >
+          <img src={product.image} />
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
@@ -84,8 +125,14 @@ export class Provider extends React.Component {
 
     return this.state.pop.map((product, index) => (
       <Link to="/productpage/">
-        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-          <img src={product.image}/>
+        <Box
+          key={index}
+          height="20rem"
+          width="20rem"
+          margin="large"
+          background="purple"
+        >
+          <img src={product.image} />
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>

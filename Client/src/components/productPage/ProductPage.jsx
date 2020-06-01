@@ -9,6 +9,7 @@ class ProductPage extends React.Component {
     static contextType = Context;
   
     render() {
+  console.log(this.context.state)
       return (
         <ResponsiveContext.Consumer>
         {size => (
