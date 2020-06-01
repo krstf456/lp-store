@@ -4,13 +4,14 @@ import axios from 'axios'
 import { Box } from 'grommet'
 import { Link } from 'react-router-dom'
 
-const Context = React.createContext()
+const UserContext = React.createContext()
 
-export class Provider extends React.Component {
+export class UserProvider extends React.Component {
 	constructor() {
 		super()
 		this.state = {
 			showModal: false,
+			test: 'TESTBAJS',
 			products: [],
 			getAllProducts: this.getAllProducts,
 			displayAllProducts: this.displayAllProducts,
@@ -70,14 +71,13 @@ export class Provider extends React.Component {
 
 	render() {
 		return (
-			<Context.Provider value={this.state}>
+			<UserContext.Provider value={this.state}>
 				{this.props.children}
 				{this.modal}
-			</Context.Provider>
+			</UserContext.Provider>
 		)
 	}
 }
 
-export default userContext
-
-export const Consumer = userContext.Consumer
+export default UserContext
+export const Consumer = UserContext.Consumer

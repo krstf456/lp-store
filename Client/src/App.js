@@ -8,12 +8,15 @@ import Checkout from '../src/components/checkout/Checkout'
 import ProductPage from '../src/components/productPage/ProductPage'
 import Dashboard from './components/dashboard/Dashboard'
 import { Provider } from './components/context/context'
+import {UserProvider} from './components/context/userContext'
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class App extends React.Component {
 	render() {
 		return (
 			<BrowserRouter>
+			<UserProvider value={this.state}>
 				<Provider value={this.state}>
 					<div className='App'>
 						<Grommet theme={grommet}>
@@ -33,6 +36,7 @@ class App extends React.Component {
 						</Grommet>
 					</div>
 				</Provider>
+				</UserProvider>
 			</BrowserRouter>
 		)
 	}
