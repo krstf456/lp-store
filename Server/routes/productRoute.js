@@ -14,7 +14,7 @@ router.get('/products', getAllProducts, async (req, res) => {})
 router.put('/products/:id', isAdminTrue, updateProduct, async (req, res) => {})
 
 // Delete
-router.delete('/products/:id', deleteProduct, async (req, res) => {})
+router.delete('/products/:id', isAdminTrue, deleteProduct, async (req, res) => {})
 
 // Read genre
 router.get('/products/:genre', getGenre, async (req, res) => {})
