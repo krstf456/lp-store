@@ -10,22 +10,23 @@ export class Provider extends React.Component {
   constructor() {
     super();
     this.state = {
-      showModal: false,
+      //showModal: false,
       products: [],
       getAllProducts: this.getAllProducts,
       displayAllProducts: this.displayAllProducts,
+      toggleModal: this.toggleModal,
     };
   }
 
   //To open modal call this function on a button
-  toggleModal = () => {
+  /* toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
     });
-  };
+  }; */
 
   //Place modal-content in here
-  get modal() {
+ /*  get modal() {
     if (this.state.showModal) {
       return (
         <Modal>
@@ -36,7 +37,7 @@ export class Provider extends React.Component {
       );
     }
     return undefined;
-  }
+  } */
 
   getAllProducts = () => {
     axios.get("http://localhost:5000/products/products").then((response) => {
@@ -64,7 +65,7 @@ export class Provider extends React.Component {
     return (
       <Context.Provider value={this.state}>
         {this.props.children}
-        {this.modal}
+      {/*   {this.modal} */}
       </Context.Provider>
     );
   }
