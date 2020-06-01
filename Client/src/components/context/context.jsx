@@ -1,5 +1,4 @@
 import React from "react";
-import Modal from "../modal/modal";
 import axios from "axios";
 import { Box } from "grommet";
 import { Link } from "react-router-dom";
@@ -30,21 +29,21 @@ export class Provider extends React.Component {
 
 
   getAllRock = () => {
-    axios.get("http://localhost:5000/products/products/Rock").then((response) => {
+    axios.get("http://localhost:5000/products/Rock").then((response) => {
       console.log("response", response.data);
       this.setState({ rock: response.data });
     });
   };
 
   getAllSoul = () => {
-    axios.get("http://localhost:5000/products/products/Soul").then((response) => {
+    axios.get("http://localhost:5000/products/Soul").then((response) => {
       console.log("response", response.data);
       this.setState({ soul: response.data });
     });
   };
 
   getAllPop = () => {
-    axios.get("http://localhost:5000/products/products/Pop").then((response) => {
+    axios.get("http://localhost:5000/products/Pop").then((response) => {
       console.log("response", response.data);
       this.setState({ pop: response.data });
     });
