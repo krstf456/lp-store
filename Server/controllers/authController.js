@@ -14,7 +14,17 @@ function auth(req, res, next) {
         res.status(400).json({message : 'Invalid Token'})
     }
 }
+isAdminTrue = async (req, res, next) => {
+    
 
+    if(req.user.isAdmin === true) {
+        next()
+    } else {
+        res.status(401).send('You are not an admin')
+    }
+
+    
+}
 
 function generateAccessToken(user) {
     console.log('user:', user)
@@ -68,6 +78,7 @@ refreshTokens = refreshTokens.filter(token => t !== token )
 
 module.exports = {
     auth,
+    isAdminTrue,
     generateAccessToken,
     generateRefreshToken,
     refreshToken,
