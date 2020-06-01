@@ -9,7 +9,7 @@ class MainPage extends React.Component {
   componentDidMount = () => {
     this.context.getAllRock();
     this.context.getAllSoul();
-    
+    this.context.getAllPop();
   };
 
  
@@ -41,7 +41,18 @@ class MainPage extends React.Component {
               }}
             >
               {this.context.displayAllSoul()}
-            </Box> 
+            </Box>
+            <Box
+              justify="center"
+              align="center"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+              }}
+            >
+              {this.context.displayAllPop()}
+            </Box>  
           </Box>
         )}
       </ResponsiveContext.Consumer>
