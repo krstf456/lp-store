@@ -17,7 +17,7 @@ export class Provider extends React.Component {
   }
 
   getAllProducts = () => {
-    axios.get("http://localhost:5000/products/products").then((response) => {
+    axios.get("http://localhost:5000/products").then((response) => {
       this.setState({ products: response.data });
     });
   };

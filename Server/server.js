@@ -31,8 +31,8 @@ app.use('/tokenTest', tokenTestRoute)
 
 
 app.use(loginRouter)
-app.use('/orders', orderRouter)
-app.use('/products', productRouter)
+app.use(orderRouter)
+app.use(productRouter)
 app.use(userRouter)
 app.use('/token', authRouter)
 app.use('/uploads', uploadRouter)
