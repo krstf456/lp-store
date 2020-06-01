@@ -9,6 +9,7 @@ class MainPage extends React.Component {
   componentDidMount = () => {
     this.context.getAllRock();
     this.context.getAllSoul();
+    
   };
 
  
@@ -20,29 +21,27 @@ class MainPage extends React.Component {
           <Box>
             <h1>All records</h1>
             <Box
-            justify="center"
-            align="center"
+              justify="center"
+              align="center"
               style={{
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
               }}
             >
-              {this.context.displayRock()}
-
+              {this.context.displayAllRock()}
             </Box>
             <Box
-            justify="center"
-            align="center"
+              justify="center"
+              align="center"
               style={{
                 display: "flex",
                 flexDirection: "row",
                 flexWrap: "wrap",
               }}
             >
-              {this.context.displaySoul()}
-            </Box>
-            
+              {this.context.displayAllSoul()}
+            </Box> 
           </Box>
         )}
       </ResponsiveContext.Consumer>
