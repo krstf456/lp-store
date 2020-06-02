@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Box } from "grommet";
 import { Link } from "react-router-dom";
+import style from "./Context.css";
 
 const Context = React.createContext();
 
@@ -54,8 +55,8 @@ export class Provider extends React.Component {
 
     return this.state.rock.map((product, index) => (
       <Link to="/productpage/">
-        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-          <img src={product.image}/>
+        <Box key={index} className="boxStyle">
+          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
@@ -69,8 +70,8 @@ export class Provider extends React.Component {
 
     return this.state.soul.map((product, index) => (
       <Link to="/productpage/">
-        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-          <img src={product.image}/>
+        <Box key={index} className="boxStyle">
+          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
@@ -84,8 +85,8 @@ export class Provider extends React.Component {
 
     return this.state.pop.map((product, index) => (
       <Link to="/productpage/">
-        <Box key={index} height="20rem" width="20rem" margin="large" background="purple">
-          <img src={product.image}/>
+        <Box key={index} className="boxStyle" >
+          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
