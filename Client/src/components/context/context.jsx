@@ -3,6 +3,7 @@ import axios from "axios";
 import { Box } from "grommet";
 import { Link } from "react-router-dom";
 import style from "./Context.css";
+import AddtoCartButton from "../checkout/AddToCart";
 
 const Context = React.createContext();
 
@@ -60,6 +61,7 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
+          <AddtoCartButton/>
         </Box>
       </Link>
     ));
@@ -75,6 +77,7 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
+          <AddtoCartButton/>
         </Box>
       </Link>
     ));
@@ -90,6 +93,7 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
+          <AddtoCartButton/>
         </Box>
       </Link>
     ));

@@ -54,7 +54,8 @@ class MainPage extends React.Component {
               }}
             >
               {this.context.displayAllPop()}
-            </Box>  
+            </Box> 
+            
           </Box>
         )}
       </ResponsiveContext.Consumer>
