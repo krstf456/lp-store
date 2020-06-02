@@ -9,7 +9,7 @@ class ProductPage extends React.Component {
   static contextType = Context;
 
   state = {
-    products: {}
+    product: {}
   }
 
   componentDidMount = () => {
@@ -18,29 +18,27 @@ class ProductPage extends React.Component {
   
   getOneProduct = () => {
     axios.get(`http://localhost:5000/product/${this.props.match.params.id}`).then((response) => {
-      console.log("response", response.data)
-      this.setState({ products: response.data });
+      this.setState({ product: response.data });
     });
   };
 
   displayOneProduct = () => {
-    if (!this.state.products) return null;
+    if (!this.state.product) return null;
 
      return(
       <Box className="boxStyle">
-          <div style={{backgroundImage: `url(${this.state.products.image})`}} className="imgStyle"></div>
-          <h3>{this.state.products.album}</h3>
-          <h4>{this.state.products.artist}</h4>
-          <p>{this.state.products.price}</p>
-          <p>{this.state.products.genre}</p>
-          <p>{this.state.products.description}</p>
+          <div style={{backgroundImage: `url(${this.state.product.image})`}} className="imgStyle"></div>
+          <h3>{this.state.product.album}</h3>
+          <h4>{this.state.product.artist}</h4>
+          <p>{this.state.product.price}</p>
+          <p>{this.state.product.genre}</p>
+          <p>{this.state.product.description}</p>
         </Box>
      )
   }; 
 
 
     render() {
-      console.log(this.state.products)
       return (
         <ResponsiveContext.Consumer>
         {size => (
