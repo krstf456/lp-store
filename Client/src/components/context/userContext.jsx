@@ -12,7 +12,9 @@ export class UserProvider extends React.Component {
 		this.state = {
 			showModal: false,
 			test: 'TESTBAJS',
-			products: [],
+			loggedIn: false,
+			username: '',
+			id: '',
 			getAllProducts: this.getAllProducts,
 			displayAllProducts: this.displayAllProducts,
 		}
