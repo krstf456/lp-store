@@ -10,7 +10,7 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      //products: [],
       rock: [],
       soul: [],
       pop: [],
@@ -20,7 +20,6 @@ export class Provider extends React.Component {
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
-      getProduct: this.getProduct,
     };
   }
 
@@ -28,7 +27,6 @@ export class Provider extends React.Component {
     axios.get("http://localhost:5000/products").then((response) => {
       this.setState({ products: response.data });
     });
-    console.log("response", this.state.products)
   };
 
   getAllRock = () => {
@@ -49,7 +47,7 @@ export class Provider extends React.Component {
       this.setState({ pop: response.data });
     });
   };
-/* 
+  /* 
   displayAllProducts = () => {
     console.log("products", this.state.products)
     if (!this.state.products.length) return null;
@@ -77,23 +75,26 @@ export class Provider extends React.Component {
     ));
   }; */
 
-
   displayAllRock = () => {
     if (!this.state.rock.length) return null;
 
     return this.state.rock.map((product, index) => (
       <Box key={index} className="boxStyle">
-          <Link
-        to={{
-          pathname: "/productpage/" + product.genre
-        }}>
-          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
+        <Link
+          to={{
+            pathname: "/productpage/" + product._id,
+          }}
+        >
+          <div
+            style={{ backgroundImage: `url(${product.image})` }}
+            className="imgStyle"
+          ></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
           <p>{product.genre}</p>
-      </Link>
-        </Box>
+        </Link>
+      </Box>
     ));
   };
 
@@ -102,13 +103,20 @@ export class Provider extends React.Component {
 
     return this.state.soul.map((product, index) => (
       <Box key={index} className="boxStyle">
-        <Link to={`/productpage/${product._id}/`}>
-          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
+        <Link
+          to={{
+            pathname: "/productpage/" + product._id,
+          }}
+        >
+          <div
+            style={{ backgroundImage: `url(${product.image})` }}
+            className="imgStyle"
+          ></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-          </Link>
-          </Box>
+        </Link>
+      </Box>
     ));
   };
 
@@ -116,9 +124,16 @@ export class Provider extends React.Component {
     if (!this.state.pop.length) return null;
 
     return this.state.pop.map((product, index) => (
-      <Link to="/productpage/">
-        <Box key={index} className="boxStyle" >
-          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <Box key={index} className="boxStyle">
+          <div
+            style={{ backgroundImage: `url(${product.image})` }}
+            className="imgStyle"
+          ></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>

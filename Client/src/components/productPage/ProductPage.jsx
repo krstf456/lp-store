@@ -9,33 +9,34 @@ class ProductPage extends React.Component {
   static contextType = Context;
 
   state = {
-    products: []
+    products: {}
   }
 
   componentDidMount = () => {
-    this.getProduct()
+    this.getOneProduct()
   }
   
-  getProduct = () => {
-    axios.get(`http://localhost:5000/products/${this.props.match.params.id}`).then((response) => {
+  getOneProduct = () => {
+    axios.get(`http://localhost:5000/product/${this.props.match.params.id}`).then((response) => {
       console.log("response", response.data)
       this.setState({ products: response.data });
     });
   };
 
-  displayOne = () => {
+  displayOneProduct = () => {
     if (!this.state.products) return null;
 
-    return this.state.products.map((product, index) => (
-      <Box key={index} className="boxStyle">
-          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
-          <h3>{product.album}</h3>
-          <h4>{product.artist}</h4>
-          <p>{product.price}</p>
-          <p>{product.genre}</p>
+     return(
+      <Box className="boxStyle">
+          <div style={{backgroundImage: `url(${this.state.products.image})`}} className="imgStyle"></div>
+          <h3>{this.state.products.album}</h3>
+          <h4>{this.state.products.artist}</h4>
+          <p>{this.state.products.price}</p>
+          <p>{this.state.products.genre}</p>
+          <p>{this.state.products.description}</p>
         </Box>
-    ));
-  };
+     )
+  }; 
 
 
     render() {
@@ -45,7 +46,7 @@ class ProductPage extends React.Component {
         {size => (
           <Box>
               <h1>ProductInfo</h1>
-              {this.displayOne()}
+             {this.displayOneProduct()} 
           </Box>
         )}
         </ResponsiveContext.Consumer>
