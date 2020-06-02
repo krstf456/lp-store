@@ -14,7 +14,7 @@ getImage = async (req, res, next) => {
 };
 
 
-uploadImage = async (req, res) => {
+uploadImage = async (req, res, next) => {
   try{
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).json({status: 'No files were uploaded.'});

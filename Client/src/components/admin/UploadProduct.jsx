@@ -129,6 +129,7 @@ class UploadProduct extends React.Component {
             <FormField label="Price" >
               <TextInput name="price" 
                         value={this.state.price} 
+                        value={this.state.price} 
                         onChange={this.handleInput} 
                       />
             </FormField>
