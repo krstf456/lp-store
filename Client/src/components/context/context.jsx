@@ -7,8 +7,8 @@ import style from "./Context.css";
 const Context = React.createContext();
 
 export class Provider extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       products: [],
       rock: [],
@@ -20,6 +20,7 @@ export class Provider extends React.Component {
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
+      getProduct: this.getProduct,
     };
   }
 
@@ -32,7 +33,7 @@ export class Provider extends React.Component {
 
   getAllRock = () => {
     axios.get("http://localhost:5000/products/Rock").then((response) => {
-      console.log("response", response.data)
+      //console.log("response", response.data)
       this.setState({ rock: response.data });
     });
   };
@@ -48,16 +49,16 @@ export class Provider extends React.Component {
       this.setState({ pop: response.data });
     });
   };
-
+/* 
   displayAllProducts = () => {
-    console.log(this.state.products)
+    console.log("products", this.state.products)
     if (!this.state.products.length) return null;
-
+    
     return this.state.products.map((product, index) => (
       <Link
-        to={{
-          pathname: "/productpage/" + this.state.products._Id,
-        }}
+      to={{
+        pathname: "/productpage/" + this.props.product._id,
+      }}
       >
         <Box
           key={index}
@@ -65,32 +66,34 @@ export class Provider extends React.Component {
           width="20rem"
           margin="large"
           background="purple"
-        >
+          >
           <img src={product.image} />
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
+          <p>{product.stock_quantity}</p>
         </Box>
       </Link>
     ));
-  };
+  }; */
+
 
   displayAllRock = () => {
     if (!this.state.rock.length) return null;
 
     return this.state.rock.map((product, index) => (
+      <Box key={index} className="boxStyle">
           <Link
         to={{
-          pathname: "/productpage/" + this.state.rock._Id
-        }}
-      >
-        <Box key={index} className="boxStyle">
+          pathname: "/productpage/" + product.genre
+        }}>
           <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-        </Box>
+          <p>{product.genre}</p>
       </Link>
+        </Box>
     ));
   };
 
@@ -98,14 +101,14 @@ export class Provider extends React.Component {
     if (!this.state.soul.length) return null;
 
     return this.state.soul.map((product, index) => (
-      <Link to="/productpage/">
-        <Box key={index} className="boxStyle">
+      <Box key={index} className="boxStyle">
+        <Link to={`/productpage/${product._id}/`}>
           <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-        </Box>
-      </Link>
+          </Link>
+          </Box>
     ));
   };
 
