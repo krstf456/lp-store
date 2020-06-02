@@ -1,8 +1,11 @@
 import React from 'react'
-import Modal from '../modal/modal'
-import axios from 'axios'
-import { Box } from 'grommet'
-import { Link } from 'react-router-dom'
+
+
+import {
+	getFromStorage,
+	setInStorage,
+	removeFromStorage,
+} from '../../utils/storage'
 
 const UserContext = React.createContext()
 
@@ -10,72 +13,141 @@ export class UserProvider extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			showModal: false,
-			test: 'TESTBAJS',
-			loggedIn: false,
 			username: '',
+			email: '',
 			id: '',
+			isLoggedIn: false,
+			isAdmin: false,
+			isLoading: false,
+
+			onSignIn: this.onSignIn,
+			onSignOut: this.onSignOut,
 			getAllProducts: this.getAllProducts,
 			displayAllProducts: this.displayAllProducts,
+			setUsername: this.setUsername,
 		}
 	}
 
-	//To open modal call this function on a button
-	toggleModal = () => {
+
+
+	componentDidMount(){
+		const obj = getFromStorage('storage-object')
+		if (obj && obj.token) {
+			const { token } = obj
+			console.log(token)
+
+			fetch('http://localhost:5000/verify', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'auth-token': token,
+			},
+		
+		}).then((res) => res.json())
+				.then((json) => {
+					if (json) {
+
+					const {username, _id, isAdmin, email } = json
+
+						this.setState({
+							// token: token,
+							username: username,
+							id: _id,
+							isAdmin: isAdmin,
+							email: email,
+							isLoading: false,
+							isLoggedIn: true
+							
+						})
+						
+					} else {
+						this.setState({
+							isLoading: false,
+						})
+					}
+				})
+		} else {
+			this.setState({
+				isLoading: false,
+			})
+		}
+	}
+
+	
+
+	setUsername = (username) => {
 		this.setState({
-			showModal: !this.state.showModal,
+			username: username
 		})
 	}
 
-	//Place modal-content in here
-	get modal() {
-		if (this.state.showModal) {
-			return (
-				<Modal>
-					<div>
-						<h1>MODAL WITH PRODUCTINFO</h1>
-					</div>
-				</Modal>
-			)
-		}
-		return undefined
-	}
+	
+	onSignIn = (username, password) => {
+		// const { username, password } = this.state
 
-	getAllProducts = () => {
-		axios
-			.get('http://localhost:5000/products/products')
-			.then((response) => {
-				console.log('response', response.data)
-				this.setState({ products: response.data })
+		this.setState({
+			isLoading: true,
+		})
+
+		fetch('http://localhost:5000/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: username,
+				password: password,
+			}),
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				console.log(json)
+
+				if (json.token) {
+					setInStorage('storage-object', { token: json.token })
+
+					this.setState({
+						signInError: json.message,
+						isLoading: false,
+						isLoggedIn: true,
+						username: username,
+					})
+				} else {
+					alert(json.message)
+				}
 			})
+			.catch()
 	}
 
-	displayAllProducts = () => {
-		if (!this.state.products.length) return null
+	onSignOut = () => {
+		this.setState({
+			isLoading: true,
+		})
 
-		return this.state.products.map((product, index) => (
-			<Link to='/productpage/'>
-				<Box
-					key={index}
-					height='20rem'
-					width='20rem'
-					margin='large'
-					background='purple'
-				>
-					<img src={product.image} />
-					<h3>{product.album}</h3>
-					<h4>{product.artist}</h4>
-					<p>{product.price}</p>
-				</Box>
-			</Link>
-		))
+		const obj = getFromStorage('storage-object')
+		if (obj && obj.token) {
+			// const { token } = obj
+
+			removeFromStorage('storage-object', {
+				token: obj.token,
+			})
+			this.setState({
+				isLoading: false,
+				isLoggedIn: false,
+			})
+			
+		} else {
+			this.setState({
+				isLoading: false,
+			})
+		}
 	}
+
 
 	render() {
 		return (
 			<UserContext.Provider value={this.state}>
 				{this.props.children}
-				{this.modal}
 			</UserContext.Provider>
 		)
 	}
