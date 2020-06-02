@@ -1,0 +1,26 @@
+.boxStyle{
+    height:27rem; 
+    width:20rem; 
+    margin:4em; 
+    background:purple;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 1em;
+}
+
+.boxStyle h4, .boxStyle h3, .boxStyle p{
+    color: white;
+    text-decoration: none;
+    margin: 0.2em;
+}
+
+
+.imgStyle{
+    height:15rem;
+    width:15rem;
+    margin-top: 1em;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
