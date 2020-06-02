@@ -5,7 +5,7 @@ const { addProduct, getAllProducts, updateProduct, deleteProduct, getGenre } = r
 const { isAdminTrue } = require('../controllers/authController')
 
 // Create
-router.post('/products', isAdminTrue, addProduct, async (req, res,) => {})
+router.post('/products', /*isAdminTrue,*/ addProduct, async (req, res,) => {})
 
 // Read
 router.get('/products', getAllProducts, async (req, res) => {})
