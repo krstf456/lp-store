@@ -19,7 +19,13 @@ export class Provider extends React.Component {
       getAllPop: this.getAllPop,
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
-      displayAllPop: this.displayAllPop
+      displayAllPop: this.displayAllPop,
+      shoppingCart : [
+        {
+          artist: "Bob Dylan",
+          price: 199,
+        }
+      ]
     };
   }
 
@@ -98,6 +104,28 @@ export class Provider extends React.Component {
       </Link>
     ));
   };
+
+  addToCart = (productId, artist, price) => {
+    const inCart = this.state.shoppingCart.some(
+      (element) => element._id === productId)
+    
+    const newCart = Object.assign([], this.state.cart)
+
+    if(!inCart) {
+      let newCartItem = {
+        _id: productId,
+        artist: artist,
+        price: price,
+      }
+    newCart.push(newCartItem)
+    } else {
+      const findItem = newCart.find(
+        (element) => element._id === productId)
+    }
+    this.setState( { shoppingCart: newCart })
+    }
+
+
 
   render() {
     return (

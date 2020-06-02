@@ -7,6 +7,7 @@ export default class AddtoCartButton extends React.Component {
     render() {
         return (
             <Button
+            className='addToCart'
             margin={{'bottom': 'xsmall'}}
             hoverIndicator
             icon={<Cart />}
