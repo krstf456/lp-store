@@ -43,7 +43,7 @@ class UploadProduct extends React.Component {
             body: fd
         })
         .then((response) => {
-          console.log(response.uploadedImage)
+          console.log(response)
             if(response.message){
                 this.setState({
                     errorMessage: response.message,
