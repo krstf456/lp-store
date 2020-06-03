@@ -185,11 +185,14 @@ export class Provider extends React.Component {
  
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
-    this.setState({ product: response.data });
-    return response.data
+   /*  this.setState({ product: response.data }); */
+   const product = response.data
+   console.log(product)
+    return product
   };
 
-  displayOneProduct = () => {
+  displayOneProduct = (product) => {
+    console.log("display", product)
     if (!this.state.product) return null;
 
      return(

@@ -9,14 +9,33 @@ class ProductPage extends React.Component {
   static contextType = Context;
 
   state = {
-    product1: {},
+    product: {},
     shoppingCart: []
   }
 
   componentDidMount = async () => {
-    let product1 = await this.context.getOneProduct(this.props.match.params.id)
-    console.log(product1)
+    let product = await this.context.getOneProduct(this.props.match.params.id)
+    console.log(product)
+   /*  this.setState({ product: product }) */
+    return product
   }
+
+  displayOneProduct = (product) => {
+    console.log("display", product)
+    if (!this.state.product) return null;
+
+     return(
+      <Box className="boxStyle">
+          <div style={{backgroundImage: `url(${this.state.product.image})`}} className="imgStyle"></div>
+          <h3>{this.state.product.album}</h3>
+          <h4>{this.state.product.artist}</h4>
+          <p>{this.state.product.price}</p>
+          <p>{this.state.product.genre}</p>
+          <p>{this.state.product.description}</p>
+          <Button label="Add to cart" onClick={() => {this.context.addToCart()}}></Button>
+        </Box>
+     )
+  }; 
   
  /*  getOneProduct = () => {
     axios.get(`http://localhost:5000/product/${this.props.match.params.id}`).then((response) => {
@@ -57,7 +76,7 @@ class ProductPage extends React.Component {
         {size => (
           <Box>
               <h1>ProductInfo</h1>
-             {this.context.displayOneProduct()} 
+             {this.displayOneProduct()} 
           </Box>
         )}
         </ResponsiveContext.Consumer>
