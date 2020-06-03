@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ResponsiveContext } from "grommet";
+import { Box, ResponsiveContext, Button } from "grommet";
 import Context from "../context/context";
 import axios from "axios"
 
@@ -9,14 +9,16 @@ class ProductPage extends React.Component {
   static contextType = Context;
 
   state = {
-    product: {}
+    product1: {},
+    shoppingCart: []
   }
 
-  componentDidMount = () => {
-    this.getOneProduct()
+  componentDidMount = async () => {
+    let product1 = await this.context.getOneProduct(this.props.match.params.id)
+    console.log(product1)
   }
   
-  getOneProduct = () => {
+ /*  getOneProduct = () => {
     axios.get(`http://localhost:5000/product/${this.props.match.params.id}`).then((response) => {
       this.setState({ product: response.data });
     });
@@ -33,10 +35,21 @@ class ProductPage extends React.Component {
           <p>{this.state.product.price}</p>
           <p>{this.state.product.genre}</p>
           <p>{this.state.product.description}</p>
+          <Button label="Add to cart" onClick={() => {this.addToCart()}}></Button>
         </Box>
      )
-  }; 
+  };  */
 
+  /* addToCart = () => {
+    console.log(this.state.product._id)
+    this.state.shoppingCart.push(this.state.product)
+    alert("Item added to cart")
+    
+    console.log("shoppingcart", this.state.shoppingCart)
+    this.setState({ shoppingCart: this.state.shoppingCart})
+
+    }
+ */
 
     render() {
       return (
@@ -44,7 +57,7 @@ class ProductPage extends React.Component {
         {size => (
           <Box>
               <h1>ProductInfo</h1>
-             {this.displayOneProduct()} 
+             {this.context.displayOneProduct()} 
           </Box>
         )}
         </ResponsiveContext.Consumer>

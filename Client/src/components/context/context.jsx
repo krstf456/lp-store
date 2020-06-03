@@ -22,12 +22,9 @@ export class Provider extends React.Component {
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
       addToCart: this.addToCart,
-      shoppingCart : [
-         {
-          artist: "Bob Dylan",
-          price: 199,
-        } 
-      ]
+      shoppingCart : [],
+      getOneProduct: this.getOneProduct,
+      displayOneProduct: this.displayOneProduct,
     };
   }
 
@@ -55,33 +52,7 @@ export class Provider extends React.Component {
       this.setState({ pop: response.data });
     });
   };
-  /* 
-  displayAllProducts = () => {
-    console.log("products", this.state.products)
-    if (!this.state.products.length) return null;
-    
-    return this.state.products.map((product, index) => (
-      <Link
-      to={{
-        pathname: "/productpage/" + this.props.product._id,
-      }}
-      >
-        <Box
-          key={index}
-          height="20rem"
-          width="20rem"
-          margin="large"
-          background="purple"
-          >
-          <img src={product.image} />
-          <h3>{product.album}</h3>
-          <h4>{product.artist}</h4>
-          <p>{product.price}</p>
-          <p>{product.stock_quantity}</p>
-        </Box>
-      </Link>
-    ));
-  }; */
+  
 
   displayAllRock = () => {
     if (!this.state.rock.length) return null;
@@ -103,8 +74,8 @@ export class Provider extends React.Component {
         <p>{product.genre}</p>
       </Link>
       <Button
-          onClick={() => this.addToCart()}>ADDTOCART</Button>
-          <AddtoCartButton/>
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+          {/* <AddtoCartButton/> */}
       </Box>
     ));
   };
@@ -130,7 +101,7 @@ export class Provider extends React.Component {
       </Link>
       <Button
           onClick={() => this.addToCart()}>ADDTOCART</Button>
-          <AddtoCartButton/>
+          {/* <AddtoCartButton/> */}
       </Box>
     ));
   };
@@ -155,14 +126,41 @@ export class Provider extends React.Component {
       </Link>
           <Button
           onClick={() => this.addToCart()}>ADDTOCART</Button>
-          <AddtoCartButton/>
+          {/* <AddtoCartButton/> */}
         </Box>
     ));
   };
+ 
+  getOneProduct = async (id) => {
+    const response = await axios.get(`http://localhost:5000/product/${id}`)
+    this.setState({ product: response.data });
+    return response.data
+  };
 
-  addToCart = () => {
-    console.log("addtocart")
+  displayOneProduct = () => {
+    if (!this.state.product) return null;
+
+     return(
+      <Box className="boxStyle">
+          <div style={{backgroundImage: `url(${this.state.product.image})`}} className="imgStyle"></div>
+          <h3>{this.state.product.album}</h3>
+          <h4>{this.state.product.artist}</h4>
+          <p>{this.state.product.price}</p>
+          <p>{this.state.product.genre}</p>
+          <p>{this.state.product.description}</p>
+          <Button label="Add to cart" onClick={() => {this.addToCart()}}></Button>
+        </Box>
+     )
+  }; 
+
+  addToCart = (product) => {
+    this.state.shoppingCart.push(product)
     alert("Item added to cart")
+    console.log("shoppingcart", this.state.shoppingCart)
+    this.setState({ shoppingCart: this.state.shoppingCart})
+    localStorage.setItem("cart" , this.state.shoppingCart)
+
+   
   
     
       
