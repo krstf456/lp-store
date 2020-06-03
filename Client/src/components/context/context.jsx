@@ -164,9 +164,10 @@ export class Provider extends React.Component {
     console.log("addtocart")
     alert("Item added to cart")
   
+    
       
-  /*   const inCart = this.state.shoppingCart.some(
-      (element) => element._id === this.state.allProducts._id) */
+     /* const inCart = this.state.shoppingCart.some(
+      (element) => element._id === this.state.allProducts._id) 
     
     const newCart = Object.assign([], this.state.shoppingCart)
 
@@ -181,7 +182,7 @@ export class Provider extends React.Component {
       }
     newCart.push(newCartItem)
     } 
-    this.setState( { shoppingCart: newCart }) 
+    this.setState( { shoppingCart: newCart })  */
     }
 
 
