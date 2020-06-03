@@ -25,12 +25,21 @@ export class UserProvider extends React.Component {
 			getAllProducts: this.getAllProducts,
 			displayAllProducts: this.displayAllProducts,
 			setUsername: this.setUsername,
+			getUserData: this.getUserData,
+
+			
 		}
 	}
 
 
 
 	componentDidMount(){
+	this.getUserData()
+	}
+
+	
+	getUserData =() => {
+
 		const obj = getFromStorage('storage-object')
 		if (obj && obj.token) {
 			const { token } = obj
@@ -71,9 +80,8 @@ export class UserProvider extends React.Component {
 				isLoading: false,
 			})
 		}
-	}
 
-	
+	}
 
 	setUsername = (username) => {
 		this.setState({
@@ -106,12 +114,7 @@ export class UserProvider extends React.Component {
 				if (json.token) {
 					setInStorage('storage-object', { token: json.token })
 
-					this.setState({
-						signInError: json.message,
-						isLoading: false,
-						isLoggedIn: true,
-						username: username,
-					})
+					this.getUserData()
 				} else {
 					alert(json.message)
 				}
