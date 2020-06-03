@@ -23,10 +23,10 @@ export class Provider extends React.Component {
       displayAllPop: this.displayAllPop,
       addToCart: this.addToCart,
       shoppingCart : [
-        /* {
+         {
           artist: "Bob Dylan",
           price: 199,
-        } */
+        } 
       ]
     };
   }
@@ -102,6 +102,8 @@ export class Provider extends React.Component {
           <p>{product.price}</p>
         <p>{product.genre}</p>
       </Link>
+      <Button
+          onClick={() => this.addToCart()}>ADDTOCART</Button>
           <AddtoCartButton/>
       </Box>
     ));
@@ -126,6 +128,8 @@ export class Provider extends React.Component {
           <p>{product.price}</p>
           <p>{product.genre}</p>
       </Link>
+      <Button
+          onClick={() => this.addToCart()}>ADDTOCART</Button>
           <AddtoCartButton/>
       </Box>
     ));
@@ -135,12 +139,12 @@ export class Provider extends React.Component {
     if (!this.state.pop.length) return null;
 
     return this.state.pop.map((product, index) => (
+      <Box key={index} className="boxStyle">
       <Link
         to={{
           pathname: "/productpage/" + product._id,
         }}
       >
-        <Box key={index} className="boxStyle">
           <div
             style={{ backgroundImage: `url(${product.image})` }}
             className="imgStyle"
@@ -148,21 +152,27 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
+      </Link>
           <Button
-          onClick={() => this.addToCart}>ADDTOCART</Button>
+          onClick={() => this.addToCart()}>ADDTOCART</Button>
           <AddtoCartButton/>
         </Box>
-      </Link>
     ));
   };
 
   addToCart = () => {
     console.log("addtocart")
-     /* const inCart = this.state.shoppingCart.some(
-      (element) => element._id === this.state.allProducts._id)
+    alert("Item added to cart")
+  
+      
+  /*   const inCart = this.state.shoppingCart.some(
+      (element) => element._id === this.state.allProducts._id) */
     
     const newCart = Object.assign([], this.state.shoppingCart)
 
+    for (const item of newCart) {
+
+    }
     if(!inCart) {
       let newCartItem = {
         productId: this.state.allProducts._id,
@@ -170,11 +180,8 @@ export class Provider extends React.Component {
         price: this.state.allProducts.price,
       }
     newCart.push(newCartItem)
-    } else {
-      const findItem = newCart.find(
-        (element) => element._id === this.state.allProducts._id)
-    }
-    this.setState( { shoppingCart: newCart }) */
+    } 
+    this.setState( { shoppingCart: newCart }) 
     }
 
 

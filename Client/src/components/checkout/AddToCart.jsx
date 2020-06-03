@@ -7,6 +7,8 @@ import Context from "../context/context";
 export default class AddtoCartButton extends React.Component {
     static contextType = Context;
   
+
+
     render() {
         return (
             <Button
@@ -15,7 +17,7 @@ export default class AddtoCartButton extends React.Component {
             hoverIndicator
             icon={<Cart />}
             label={'Add To Cart'}
-            //onClick={() => this.context.addToCart()}
+            //onClick={}
         />
         )
     }
