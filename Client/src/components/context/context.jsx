@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Box } from "grommet";
+import { Box, Button } from "grommet";
 import { Link } from "react-router-dom";
 import style from "./Context.css";
+import AddtoCartButton from "../checkout/AddToCart";
 
 const Context = React.createContext();
 
@@ -10,7 +11,7 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //products: [],
+      allProducts: [],
       rock: [],
       soul: [],
       pop: [],
@@ -20,12 +21,19 @@ export class Provider extends React.Component {
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
+      addToCart: this.addToCart,
+      shoppingCart : [
+         {
+          artist: "Bob Dylan",
+          price: 199,
+        } 
+      ]
     };
   }
 
   getAllProducts = () => {
     axios.get("http://localhost:5000/products").then((response) => {
-      this.setState({ products: response.data });
+      this.setState({ allProducts: response.data });
     });
   };
 
@@ -92,8 +100,11 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-          <p>{product.genre}</p>
-        </Link>
+        <p>{product.genre}</p>
+      </Link>
+      <Button
+          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          <AddtoCartButton/>
       </Box>
     ));
   };
@@ -115,7 +126,11 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-        </Link>
+          <p>{product.genre}</p>
+      </Link>
+      <Button
+          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          <AddtoCartButton/>
       </Box>
     ));
   };
@@ -124,12 +139,12 @@ export class Provider extends React.Component {
     if (!this.state.pop.length) return null;
 
     return this.state.pop.map((product, index) => (
+      <Box key={index} className="boxStyle">
       <Link
         to={{
           pathname: "/productpage/" + product._id,
         }}
       >
-        <Box key={index} className="boxStyle">
           <div
             style={{ backgroundImage: `url(${product.image})` }}
             className="imgStyle"
@@ -137,10 +152,39 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-        </Box>
       </Link>
+          <Button
+          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          <AddtoCartButton/>
+        </Box>
     ));
   };
+
+  addToCart = () => {
+    console.log("addtocart")
+    alert("Item added to cart")
+  
+      
+  /*   const inCart = this.state.shoppingCart.some(
+      (element) => element._id === this.state.allProducts._id) */
+    
+    const newCart = Object.assign([], this.state.shoppingCart)
+
+    for (const item of newCart) {
+
+    }
+    if(!inCart) {
+      let newCartItem = {
+        productId: this.state.allProducts._id,
+        artist: this.state.allProducts.artist,
+        price: this.state.allProducts.price,
+      }
+    newCart.push(newCartItem)
+    } 
+    this.setState( { shoppingCart: newCart }) 
+    }
+
+
 
   render() {
     return (
