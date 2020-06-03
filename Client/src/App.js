@@ -24,7 +24,7 @@ class App extends React.Component {
                 component={Checkout}
               ></Route>
               <Route
-                path="/productpage/"
+                path="/productpage/:id"
                 component={ProductPage}
               ></Route>
                 <Route
