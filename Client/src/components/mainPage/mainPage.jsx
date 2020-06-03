@@ -1,6 +1,6 @@
 import React from "react";
 import Context from "../context/context";
-import { Box, ResponsiveContext } from "grommet";
+import { Box, ResponsiveContext, Menu } from "grommet";
 
 class MainPage extends React.Component {
   //This will enable the use of context-functions and states
@@ -19,6 +19,24 @@ class MainPage extends React.Component {
       <ResponsiveContext.Consumer>
         {(size) => (
           <Box>
+            <Box align="center" pad="xlarge">
+              <Menu
+                dropProps={{
+                  align: { top: "bottom", left: "left" },
+                  elevation: "xlarge"
+                }}
+                label="Genre"
+                items={[
+                  { label: "All Albums", onClick: () => {} },
+                  { label: "Rock", onClick: () => {} },
+                  { label: "Soul", onClick: () => {} },
+                  { label: "Pop", onClick: () => {} },
+                  { label: "Psycadelic", onClick: () => {} },
+                  { label: "Prog", onClick: () => {} },
+                  { label: "Other", onClick: () => {} },
+                ]}
+              />
+            </Box>
             <h1>Rock</h1>
             <Box
               justify="center"
