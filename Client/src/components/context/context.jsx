@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Box } from "grommet";
+import { Box, Button } from "grommet";
 import { Link } from "react-router-dom";
 import style from "./Context.css";
 import AddtoCartButton from "../checkout/AddToCart";
@@ -11,6 +11,7 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allProducts: [],
       rock: [],
       soul: [],
       pop: [],
@@ -20,18 +21,19 @@ export class Provider extends React.Component {
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
+      addToCart: this.addToCart,
       shoppingCart : [
-        {
+        /* {
           artist: "Bob Dylan",
           price: 199,
-        }
+        } */
       ]
     };
   }
 
   getAllProducts = () => {
     axios.get("http://localhost:5000/products").then((response) => {
-      this.setState({ products: response.data });
+      this.setState({ allProducts: response.data });
     });
   };
 
@@ -99,30 +101,33 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
+          <Button
+          onClick={() => this.addToCart}>ADDTOCART</Button>
           <AddtoCartButton/>
         </Box>
       </Link>
     ));
   };
 
-  addToCart = (productId, artist, price) => {
-    const inCart = this.state.shoppingCart.some(
-      (element) => element._id === productId)
+  addToCart = () => {
+    console.log("addtocart")
+     /* const inCart = this.state.shoppingCart.some(
+      (element) => element._id === this.state.allProducts._id)
     
     const newCart = Object.assign([], this.state.shoppingCart)
 
     if(!inCart) {
       let newCartItem = {
-        _id: productId,
-        artist: artist,
-        price: price,
+        productId: this.state.allProducts._id,
+        artist: this.state.allProducts.artist,
+        price: this.state.allProducts.price,
       }
     newCart.push(newCartItem)
     } else {
       const findItem = newCart.find(
-        (element) => element._id === productId)
+        (element) => element._id === this.state.allProducts._id)
     }
-    this.setState( { shoppingCart: newCart })
+    this.setState( { shoppingCart: newCart }) */
     }
 
 
