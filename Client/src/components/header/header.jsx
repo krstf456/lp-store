@@ -1,5 +1,6 @@
 import React from "react";
 import Context from "../context/context";
+import { Link } from "react-router-dom";
 import {
   Box,
   Header,
@@ -153,7 +154,9 @@ class Header1 extends React.Component {
               height="15rem"
             >
               <Box>
+                <Link to="/">
                 <h1>Love Peace & Records</h1>
+                </Link>
               </Box>
               <Box
                 direction="row"

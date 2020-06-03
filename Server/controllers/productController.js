@@ -70,11 +70,26 @@ getGenre = async (req, res, next) => {
   }
 };
 
+getOneProduct = async (req, res, next) => {
+  try {
+    //Find id and read
+    const oneProduct = await productModel.findById(req.params.id);
+    if (oneProduct.length == 0) {
+      res.status(404).json({message: "Product not found"})
+    } else {
+      res.status(200).send(oneProduct);
+    }
+  } catch (err) {
+    next(err)
+  }
+};
+
 
 module.exports = {
   addProduct,
   getAllProducts,
   updateProduct,
   deleteProduct,
-  getGenre
+  getGenre,
+  getOneProduct
 }
