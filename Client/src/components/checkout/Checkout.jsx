@@ -17,6 +17,7 @@ class Checkout extends React.Component {
           {(size) => (
             <Box pad='large' wrap={true} direction='row-responsive' justify='between'>
                 <h1>Checkout</h1>
+              
             </Box>
           )}
         </ResponsiveContext.Consumer>

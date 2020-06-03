@@ -8,8 +8,8 @@ import AddtoCartButton from "../checkout/AddToCart";
 const Context = React.createContext();
 
 export class Provider extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       rock: [],
       soul: [],
@@ -109,7 +109,7 @@ export class Provider extends React.Component {
     const inCart = this.state.shoppingCart.some(
       (element) => element._id === productId)
     
-    const newCart = Object.assign([], this.state.cart)
+    const newCart = Object.assign([], this.state.shoppingCart)
 
     if(!inCart) {
       let newCartItem = {
