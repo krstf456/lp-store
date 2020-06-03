@@ -11,7 +11,7 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allAlbums: [],
+      products: [],
       rock: [],
       soul: [],
       pop: [],
@@ -41,7 +41,7 @@ export class Provider extends React.Component {
 
   getAllAlbums = () => {
     axios.get("http://localhost:5000/products").then((response) => {
-      this.setState({ allProducts: response.data });
+      this.setState({ products: response.data });
     });
   };
 
