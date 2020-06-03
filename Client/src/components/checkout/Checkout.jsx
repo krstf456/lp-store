@@ -63,7 +63,7 @@ class Checkout extends React.Component {
                     <Paragraph size="large">
                     </Paragraph>
                     <Box animation='pulse'>
-                        <Link to='/Checkout' >
+                        <Link to='/payment' >
                             <Button
                                 size="small"
                                 primary
