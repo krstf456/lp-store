@@ -4,7 +4,7 @@ import { Grommet } from "grommet";
 import { grommet } from "grommet/themes";
 import MainPage from "./components/mainPage/mainPage";
 import Header from "../src/components/header/header";
-import Admin from "./components/admin/Admin";
+import Admin from "./components/admin/admin";
 import Checkout from "../src/components/checkout/Checkout";
 import ProductPage from "../src/components/productPage/ProductPage";
 import { Provider } from "./components/context/context";

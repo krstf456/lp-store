@@ -19,6 +19,7 @@ export class UserProvider extends React.Component {
 			isLoggedIn: false,
 			isAdmin: false,
 			isLoading: false,
+			token: '',
 
 			onSignIn: this.onSignIn,
 			onSignOut: this.onSignOut,
@@ -55,18 +56,16 @@ export class UserProvider extends React.Component {
 		}).then((res) => res.json())
 				.then((json) => {
 					if (json) {
-
 					const {username, _id, isAdmin, email } = json
 
 						this.setState({
-							// token: token,
 							username: username,
 							id: _id,
 							isAdmin: isAdmin,
 							email: email,
 							isLoading: false,
-							isLoggedIn: true
-							
+							isLoggedIn: true,
+							token: token,
 						})
 						
 					} else {
