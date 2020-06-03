@@ -24,17 +24,13 @@ const loginRouter = require('./routes/loginRoute')
 const orderRouter = require('./routes/orderRoute')
 const productRouter = require('./routes/productRoute')
 const userRouter = require('./routes/userRoute')
-const authRouter = require('./routes/authRoute')
-const tokenTestRoute = require('./routes/tokenTestRoute')
 const uploadRouter = require('./routes/uploadRoute')
-app.use('/tokenTest', tokenTestRoute)
 
 
 app.use(loginRouter)
 app.use(orderRouter)
 app.use(productRouter)
 app.use(userRouter)
-app.use('/token', authRouter)
 app.use(uploadRouter)
 
 
