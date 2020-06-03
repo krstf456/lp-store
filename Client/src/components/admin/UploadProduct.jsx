@@ -1,7 +1,7 @@
 import React from "react";
 import "./UploadProduct.css"
 import { Box, Button, Form, FormField, TextInput } from "grommet";
-
+import { Link } from "react-router-dom";
 
 class UploadProduct extends React.Component {
   constructor() {
@@ -138,6 +138,9 @@ class UploadProduct extends React.Component {
     render() {
       return (
         <Box className="uploadBox">
+          <Link to="/admin">
+            <h1>←</h1>
+          </Link>
           <Form>
             <FormField label="Album Cover">
               <input type="file" name="image" onChange={this.handleChange}/>
