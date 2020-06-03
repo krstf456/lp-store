@@ -9,7 +9,8 @@ loginUser = async (req, res, next) => {
         const user = await userModel.findOne({ username: req.body.username })
    
        if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
-           res.status(401).json({message : "Wrong username or password"})
+        console.log(req.body)  
+        res.status(401).json({message : "Wrong username or password"})
        
         } else {
             // JVT Session here
