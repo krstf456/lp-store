@@ -11,13 +11,21 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProducts: [],
+      allAlbums: [],
       rock: [],
       soul: [],
       pop: [],
+      psycadelic: [],
+      prog: [],
+      other: [],
+      getAllAlbums: this.getAllAlbums,
       getAllRock: this.getAllRock,
       getAllSoul: this.getAllSoul,
       getAllPop: this.getAllPop,
+      getAllPsycadelic: this.getAllPsycadelic,
+      getAllProg: this.getAllProg,
+      getAllOther: this.getAllOther,
+      displayAllAlbums: this.displayAllAlbums,
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
@@ -25,10 +33,13 @@ export class Provider extends React.Component {
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
       displayOneProduct: this.displayOneProduct,
+      displayAllPsycadelic: this.displayAllPsycadelic,
+      displayAllProg: this.displayAllProg,
+      displayAllOther: this.displayAllOther,
     };
   }
 
-  getAllProducts = () => {
+  getAllAlbums = () => {
     axios.get("http://localhost:5000/products").then((response) => {
       this.setState({ allProducts: response.data });
     });
@@ -52,7 +63,48 @@ export class Provider extends React.Component {
       this.setState({ pop: response.data });
     });
   };
-  
+
+  getAllPsycadelic = () => {
+    axios.get("http://localhost:5000/products/Pop").then((response) => {
+      this.setState({ psycadelic: response.data });
+    });
+  };
+
+  getAllProg = () => {
+    axios.get("http://localhost:5000/products/Pop").then((response) => {
+      this.setState({ prog: response.data });
+    });
+  };
+
+  getAllOther = () => {
+    axios.get("http://localhost:5000/products/Pop").then((response) => {
+      this.setState({ other: response.data });
+    });
+  };
+
+  displayAllAlbums = () => {
+    console.log("products", this.state.products)
+    if (!this.state.products.length) return null;
+    
+    return this.state.products.map((product, index) => (
+      <Box key={index} className="boxStyle">
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <div
+          style={{ backgroundImage: `url(${product.image})` }}
+          className="imgStyle"
+        ></div>
+        <h3>{product.album}</h3>
+        <h4>{product.artist}</h4>
+        <p>{product.price}</p>
+        <p>{product.genre}</p>
+      </Link>
+    </Box>
+    ));
+  };
 
   displayAllRock = () => {
     if (!this.state.rock.length) return null;
@@ -184,6 +236,72 @@ export class Provider extends React.Component {
     }
 
 
+
+  displayAllPsycadelic = () => {
+    if (!this.state.psycadelic.length) return null;
+
+    return this.state.psycadelic.map((product, index) => (
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <Box key={index} className="boxStyle">
+          <div
+            style={{ backgroundImage: `url(${product.image})` }}
+            className="imgStyle"
+          ></div>
+          <h3>{product.album}</h3>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+        </Box>
+      </Link>
+    ));
+  };
+
+  displayAllProg = () => {
+    if (!this.state.prog.length) return null;
+
+    return this.state.prog.map((product, index) => (
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <Box key={index} className="boxStyle">
+          <div
+            style={{ backgroundImage: `url(${product.image})` }}
+            className="imgStyle"
+          ></div>
+          <h3>{product.album}</h3>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+        </Box>
+      </Link>
+    ));
+  };
+
+  displayAllOther = () => {
+    if (!this.state.other.length) return null;
+
+    return this.state.other.map((product, index) => (
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <Box key={index} className="boxStyle">
+          <div
+            style={{ backgroundImage: `url(${product.image})` }}
+            className="imgStyle"
+          ></div>
+          <h3>{product.album}</h3>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+        </Box>
+      </Link>
+    ));
+  };
 
   render() {
     return (
