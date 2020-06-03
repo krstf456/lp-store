@@ -4,7 +4,12 @@ import { Grommet } from "grommet";
 import { grommet } from "grommet/themes";
 import MainPage from "./components/mainPage/mainPage";
 import Header from "../src/components/header/header";
-import Admin from "./components/admin/admin";
+import Admin from "./components/admin/Admin";
+import Orders from "./components/admin/Orders";
+import Products from "./components/admin/Products";
+import UploadProduct from "./components/admin/UploadProduct";
+import Users from "./components/admin/Users";
+
 import Checkout from "../src/components/checkout/Checkout";
 import ProductPage from "../src/components/productPage/ProductPage";
 import { Provider } from "./components/context/context";
@@ -32,8 +37,24 @@ class App extends React.Component {
                 path="/productpage/:id"
                 component={ProductPage}
               ></Route>
-                <Route
-                path="/admin"
+              <Route
+                path="/admin/orders"
+                component={Orders}
+              ></Route>
+              <Route
+                path="/admin/products"
+                component={Products}
+              ></Route>
+              <Route
+                path="/admin/uploadproduct"
+                component={UploadProduct}
+              ></Route>
+              <Route
+                path="/admin/users"
+                component={Users}
+              ></Route>
+              <Route
+                path="/admin/"
                 component={Admin}
               ></Route>
               <Route
