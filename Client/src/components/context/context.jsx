@@ -84,7 +84,7 @@ export class Provider extends React.Component {
     return this.state.products.map((product, index) => (
       <Link
       to={{
-        pathname: "/productpage/" + this.props.product._id,
+        pathname: "/productpage/" + product._id,
       }}
       >
         <Box
