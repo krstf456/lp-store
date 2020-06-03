@@ -7,14 +7,13 @@ class UploadProduct extends React.Component {
   constructor() {
     super()
       this.state = {
+          image: "",
           artist: "",
           album: "",
-          image: "",
           description: "",
           price: "",
           stock_quantity: "",
           genre: "",
-          hasError: false,
           errorMessage: ""
         }      
     }
@@ -25,19 +24,48 @@ class UploadProduct extends React.Component {
       }) 
     }
 
+    handleChange = (event) => {
+      this.setState({
+        image: event.target.files[0]
+      })
+    }
+
     submit = async() => {
       const isValidated = this.validateInput()
       if(isValidated){
+
+        const fd = new FormData();
+        fd.append('image', this.state.image);
+    
+        // `POST` image
+        fetch('http://localhost:5000/uploads', {
+            method: 'POST',
+            body: fd
+        })
+        .then((response) => {
+          console.log(response.uploadedImage)
+            if(response.message){
+                this.setState({
+                    errorMessage: response.message,
+                })
+            }
+            else{
+              this.setState({
+                image: ""
+              })
+            }
+        })
+
+        // `POST` album
         const data = {
             "artist": this.state.artist,
             "album": this.state.album,
             "description": this.state.description,
             "price": parseInt(this.state.price),
             "stock_quantity": parseInt(this.state.stock_quantity),
-            "image": this.state.image,
+            "image": "test",
             "genre": this.state.genre
           }
-          console.log(data)
            fetch(`http://localhost:5000/products`,{
             method: 'POST',
             headers: {
@@ -53,14 +81,12 @@ class UploadProduct extends React.Component {
             if(response.message){
                 this.setState({
                     errorMessage: response.message,
-                    hasError: true
                 })
             }
             else{
               this.setState({
                 errorMessage: "The album is uploaded",
-                hasError: false,
-                artist: "", album: "", image: "", description: "", price: "", stock_quantity: "", genre: ""
+                artist: "", album: "", description: "", price: "", stock_quantity: "", genre: ""
             })
             }
         })
@@ -71,6 +97,7 @@ class UploadProduct extends React.Component {
       let isCorrect = true
       const price = parseInt(this.state.price)
       const stock_quantity = parseInt(this.state.stock_quantity)
+      const image = this.state.image;
 
       if(this.state.artist === "" ||
         this.state.album === "" ||
@@ -83,7 +110,6 @@ class UploadProduct extends React.Component {
         isCorrect = false
         this.setState({
           errorMessage: "Some data is missing",
-          hasError: true
         })
       } else if(
         isNaN(price) ||
@@ -92,7 +118,18 @@ class UploadProduct extends React.Component {
         isCorrect = false
         this.setState({
           errorMessage: "Not a number",
-          hasError: true
+        })
+      } else if(image === ""){
+        this.setState({
+          errorMessage: 'Missing album cover'
+        })
+      } else if(!['image/jpeg', 'image/gif', 'image/png'].includes(image.type)) {
+        this.setState({
+          errorMessage: 'Only images are allowed.'
+        })
+      } else if(image.size > 2 * 1024 * 1024) { // check file size (< 2MB)
+        this.setState({
+          errorMessage: 'File must be less than 2MB.'
         })
       }
       return isCorrect
@@ -102,6 +139,9 @@ class UploadProduct extends React.Component {
       return (
         <Box className="uploadBox">
           <Form>
+            <FormField label="Album Cover">
+              <input type="file" name="image" onChange={this.handleChange}/>
+            </FormField>
             <FormField label="Artist">
               <TextInput name="artist" 
                         value={this.state.artist} 
@@ -114,12 +154,6 @@ class UploadProduct extends React.Component {
                         onChange={this.handleInput} 
                       />
             </FormField>
-            <FormField label="Image" >
-              <TextInput name="image" 
-                        value={this.state.image} 
-                        onChange={this.handleInput} 
-                      />
-            </FormField>
             <FormField label="Description" >
               <TextInput name="description" 
                         value={this.state.description} 
@@ -128,7 +162,6 @@ class UploadProduct extends React.Component {
             </FormField>
             <FormField label="Price" >
               <TextInput name="price" 
-                        value={this.state.price} 
                         value={this.state.price} 
                         onChange={this.handleInput} 
                       />

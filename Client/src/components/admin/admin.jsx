@@ -1,7 +1,6 @@
 import React from "react";
 import Context from "../context/context";
 import UploadProduct from "./UploadProduct";
-import UploadImage from "./UploadImage";
 import { Box, ResponsiveContext } from "grommet";
 
 
@@ -18,7 +17,6 @@ class Admin extends React.Component {
             <Box>
               <h1>Admin</h1>
               <UploadProduct/>
-              <UploadImage/>
             </Box>
           )}
         </ResponsiveContext.Consumer>
