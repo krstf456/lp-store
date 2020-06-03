@@ -82,25 +82,22 @@ export class Provider extends React.Component {
     if (!this.state.products.length) return null;
     
     return this.state.products.map((product, index) => (
+      <Box key={index} className="boxStyle">
       <Link
-      to={{
-        pathname: "/productpage/" + product._id,
-      }}
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
       >
-        <Box
-          key={index}
-          height="20rem"
-          width="20rem"
-          margin="large"
-          background="purple"
-          >
-          <img src={product.image} />
-          <h3>{product.album}</h3>
-          <h4>{product.artist}</h4>
-          <p>{product.price}</p>
-          <p>{product.stock_quantity}</p>
-        </Box>
+        <div
+          style={{ backgroundImage: `url(${product.image})` }}
+          className="imgStyle"
+        ></div>
+        <h3>{product.album}</h3>
+        <h4>{product.artist}</h4>
+        <p>{product.price}</p>
+        <p>{product.genre}</p>
       </Link>
+    </Box>
     ));
   };
 
