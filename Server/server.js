@@ -25,14 +25,14 @@ const orderRouter = require('./routes/orderRoute')
 const productRouter = require('./routes/productRoute')
 const userRouter = require('./routes/userRoute')
 const uploadRouter = require('./routes/uploadRoute')
-
+const shippingRouter = require('./routes/shippingRoute')
 
 app.use(loginRouter)
 app.use(orderRouter)
 app.use(productRouter)
 app.use(userRouter)
 app.use(uploadRouter)
-
+app.use(shippingRouter)
 
 //Error handlers
 app.use(Error404Handler)
