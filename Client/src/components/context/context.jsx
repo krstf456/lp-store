@@ -32,7 +32,7 @@ export class Provider extends React.Component {
       addToCart: this.addToCart,
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
-      displayOneProduct: this.displayOneProduct,
+      //displayOneProduct: this.displayOneProduct,
       displayAllPsycadelic: this.displayAllPsycadelic,
       displayAllProg: this.displayAllProg,
       displayAllOther: this.displayAllOther,
@@ -47,7 +47,6 @@ export class Provider extends React.Component {
 
   getAllRock = () => {
     axios.get("http://localhost:5000/products/Rock").then((response) => {
-      //console.log("response", response.data)
       this.setState({ rock: response.data });
     });
   };
@@ -83,7 +82,6 @@ export class Provider extends React.Component {
   };
 
   displayAllAlbums = () => {
-    console.log("products", this.state.products)
     if (!this.state.products.length) return null;
     
     return this.state.products.map((product, index) => (
@@ -102,6 +100,8 @@ export class Provider extends React.Component {
         <p>{product.price}</p>
         <p>{product.genre}</p>
       </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
     </Box>
     ));
   };
@@ -185,28 +185,11 @@ export class Provider extends React.Component {
  
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
-   /*  this.setState({ product: response.data }); */
    const product = response.data
    console.log(product)
     return product
   };
 
-  displayOneProduct = (product) => {
-    console.log("display", product)
-    if (!this.state.product) return null;
-
-     return(
-      <Box className="boxStyle">
-          <div style={{backgroundImage: `url(${this.state.product.image})`}} className="imgStyle"></div>
-          <h3>{this.state.product.album}</h3>
-          <h4>{this.state.product.artist}</h4>
-          <p>{this.state.product.price}</p>
-          <p>{this.state.product.genre}</p>
-          <p>{this.state.product.description}</p>
-          <Button label="Add to cart" onClick={() => {this.addToCart()}}></Button>
-        </Box>
-     )
-  }; 
 
   addToCart = (product) => {
     this.state.shoppingCart.push(product)
