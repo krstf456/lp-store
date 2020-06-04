@@ -6,11 +6,11 @@ getAllOrders = async (req, res, next) => {
     // Get all orders
     const order = await orderModel.find();
 
-    //if (req.user.isAdmin === true) {
+    if (req.user.isAdmin === true) {
       res.send(order);
-    //} else {
-      //res.json("You're not admin")
-    //}
+    } else {
+      res.json("You're not admin")
+    }
   } catch (err) {
     next(err)
   }

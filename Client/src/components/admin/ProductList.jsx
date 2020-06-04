@@ -1,5 +1,5 @@
 import React from "react";
-import {AccordionPanel, Box, Select } from "grommet";
+import {AccordionPanel, Box } from "grommet";
 import "./ProductList.css";
 
 
@@ -18,7 +18,6 @@ class ProductList extends React.Component {
 
   
     render() {
-      const options = ["Rock", "Prog", "Psycadelic", "Pop", "Soul", "Other"];
       return (
         <AccordionPanel label={"* " + this.props.productData.album}>
           <Box background="light-2" overflow="auto" style={{padding: "1em"}}>
