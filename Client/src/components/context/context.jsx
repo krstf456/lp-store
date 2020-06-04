@@ -152,7 +152,7 @@ export class Provider extends React.Component {
           <p>{product.genre}</p>
       </Link>
       <Button
-          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
           {/* <AddtoCartButton/> */}
       </Box>
     ));
@@ -177,7 +177,7 @@ export class Provider extends React.Component {
           <p>{product.price}</p>
       </Link>
           <Button
-          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
           {/* <AddtoCartButton/> */}
         </Box>
     ));
