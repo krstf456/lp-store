@@ -193,27 +193,28 @@ export class Provider extends React.Component {
 
   displayOneProduct = (product) => {
     console.log("display", product)
-    if (!this.state.product) return null;
+    if (!product) return null;
 
-     return(
+     return( 
       <Box className="boxStyle">
-          <div style={{backgroundImage: `url(${this.state.product.image})`}} className="imgStyle"></div>
-          <h3>{this.state.product.album}</h3>
-          <h4>{this.state.product.artist}</h4>
-          <p>{this.state.product.price}</p>
-          <p>{this.state.product.genre}</p>
-          <p>{this.state.product.description}</p>
+        
+          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
+          <h3>{product.album}</h3>
+          <h4>{product.artist}</h4>
+          <p>{product.price}</p>
+          <p>{product.genre}</p>
+          <p>{product.description}</p>
           <Button label="Add to cart" onClick={() => {this.addToCart()}}></Button>
         </Box>
      )
   }; 
 
-  addToCart = (product) => {
-    this.state.shoppingCart.push(product)
-    alert("Item added to cart")
-    console.log("shoppingcart", this.state.shoppingCart)
-    this.setState({ shoppingCart: this.state.shoppingCart})
-    localStorage.setItem("cart" , this.state.shoppingCart)
+  // addToCart = (product) => {
+  //   this.state.shoppingCart.push(product)
+  //   alert("Item added to cart")
+  //   console.log("shoppingcart", this.state.shoppingCart)
+  //   this.setState({ shoppingCart: this.state.shoppingCart})
+  //   localStorage.setItem("cart" , this.state.shoppingCart)
 
    
   
@@ -236,7 +237,7 @@ export class Provider extends React.Component {
     newCart.push(newCartItem)
     } 
     this.setState( { shoppingCart: newCart })  */
-    }
+    //}
 
 
 

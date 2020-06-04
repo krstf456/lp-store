@@ -7,10 +7,12 @@ import axios from "axios"
 class ProductPage extends React.Component {
   //This will enable the use of context-functions and states
   static contextType = Context;
-
-  state = {
-    product: {},
-    shoppingCart: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      product: [],
+      // shoppingCart: []
+    }
   }
 
   componentDidMount = async () => {
@@ -23,7 +25,7 @@ class ProductPage extends React.Component {
   displayOneProduct = (product) => {
     console.log("display", product)
     if (!this.state.product) return null;
-
+    
      return(
       <Box className="boxStyle">
           <div style={{backgroundImage: `url(${this.state.product.image})`}} className="imgStyle"></div>

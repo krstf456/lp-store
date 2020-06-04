@@ -7,12 +7,7 @@ export class ShoppingCartProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shoppingCart: [
-          {
-              artist: '',
-              price: '',
-          }
-      ],
+      shoppingCart: [],
       
       
     };
@@ -27,7 +22,7 @@ export class ShoppingCartProvider extends React.Component {
     this.setState({shoppingCart: []})
   } 
 
-  addToCart = (productId, artist, price) => {
+  addToCart = (productId) => {
       alert('added to cart')
     const inCart = this.state.shoppingCart.some(
       (element) => element._id === productId)
@@ -37,8 +32,8 @@ export class ShoppingCartProvider extends React.Component {
     if(!inCart) {
       let newCartItem = {
         _id: productId,
-        artist: artist,
-        price: price,
+        //artist: artist,
+        //price: price,
       }
     newCart.push(newCartItem)
     } 
