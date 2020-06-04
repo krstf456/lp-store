@@ -16,6 +16,7 @@ import { Provider } from "./components/context/context";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {UserProvider} from './components/context/userContext'
 import Dashboard from './components/dashboard/Dashboard'
+import {ShoppingCartProvider} from './components/context/shoppingCartContext'
 
 
 class App extends React.Component {
@@ -23,6 +24,8 @@ class App extends React.Component {
     return (
       <BrowserRouter>
       	<UserProvider value={this.state}>
+        <ShoppingCartProvider>
+
         <Provider value={this.state}>
           <div className="App">
             <Grommet theme={grommet}>
@@ -65,6 +68,8 @@ class App extends React.Component {
             </Grommet>
           </div>
         </Provider>
+        </ShoppingCartProvider>
+
         </UserProvider>
       </BrowserRouter>
     );

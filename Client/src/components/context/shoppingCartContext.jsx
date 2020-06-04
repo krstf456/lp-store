@@ -1,12 +1,18 @@
 import React, { useContext } from "react";
 
-export const ShoppingCartContext = React.createContext();
+const ShoppingCartContext = React.createContext()
 
-export default class ShoppingCartProvider extends React.Component {
+
+export class ShoppingCartProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shoppingCart: [],
+      shoppingCart: [
+          {
+              artist: '',
+              price: '',
+          }
+      ],
       
       
     };
@@ -22,7 +28,7 @@ export default class ShoppingCartProvider extends React.Component {
   } 
 
   addToCart = (productId, artist, price) => {
-      console.log('Added to cart')
+      alert('added to cart')
     const inCart = this.state.shoppingCart.some(
       (element) => element._id === productId)
     
@@ -54,7 +60,7 @@ export default class ShoppingCartProvider extends React.Component {
 
   render() {
     return (
-      <CartContext.Provider
+      <ShoppingCartContext.Provider
         value={{
           state: this.state,
           addToCart: this.addToCart,
@@ -63,8 +69,12 @@ export default class ShoppingCartProvider extends React.Component {
         }}
       >
         {this.props.children}
-      </CartContext.Provider>
+      </ShoppingCartContext.Provider>
     );
   }
 }
-export const CartConsumer = CartContext.Consumer;
+export default ShoppingCartContext
+export const Consumer = ShoppingCartContext.Consumer
+
+
+
