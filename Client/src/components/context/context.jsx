@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { Box } from "grommet";
+import { Box, Button } from "grommet";
 import { Link } from "react-router-dom";
 //import style from "./Context.css";
+//import AddtoCartButton from "../checkout/AddToCart";
 
 const Context = React.createContext();
 
@@ -10,7 +11,7 @@ export class Provider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allAlbums: [],
+      products: [],
       rock: [],
       soul: [],
       pop: [],
@@ -28,6 +29,10 @@ export class Provider extends React.Component {
       displayAllRock: this.displayAllRock,
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
+      addToCart: this.addToCart,
+      shoppingCart : [],
+      getOneProduct: this.getOneProduct,
+      //displayOneProduct: this.displayOneProduct,
       displayAllPsycadelic: this.displayAllPsycadelic,
       displayAllProg: this.displayAllProg,
       displayAllOther: this.displayAllOther,
@@ -42,7 +47,6 @@ export class Provider extends React.Component {
 
   getAllRock = () => {
     axios.get("http://localhost:5000/products/Rock").then((response) => {
-      //console.log("response", response.data)
       this.setState({ rock: response.data });
     });
   };
@@ -78,7 +82,6 @@ export class Provider extends React.Component {
   };
 
   displayAllAlbums = () => {
-    console.log("products", this.state.products)
     if (!this.state.products.length) return null;
     
     return this.state.products.map((product, index) => (
@@ -97,6 +100,8 @@ export class Provider extends React.Component {
         <p>{product.price}</p>
         <p>{product.genre}</p>
       </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
     </Box>
     ));
   };
@@ -118,8 +123,11 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-          <p>{product.genre}</p>
-        </Link>
+        <p>{product.genre}</p>
+      </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+          {/* <AddtoCartButton/> */}
       </Box>
     ));
   };
@@ -141,7 +149,11 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-        </Link>
+          <p>{product.genre}</p>
+      </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+          {/* <AddtoCartButton/> */}
       </Box>
     ));
   };
@@ -150,12 +162,12 @@ export class Provider extends React.Component {
     if (!this.state.pop.length) return null;
 
     return this.state.pop.map((product, index) => (
+      <Box key={index} className="boxStyle">
       <Link
         to={{
           pathname: "/productpage/" + product._id,
         }}
       >
-        <Box key={index} className="boxStyle">
           <div
             style={{ backgroundImage: `url(${product.image})` }}
             className="imgStyle"
@@ -163,10 +175,53 @@ export class Provider extends React.Component {
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
-        </Box>
       </Link>
+          <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+          {/* <AddtoCartButton/> */}
+        </Box>
     ));
   };
+ 
+  getOneProduct = async (id) => {
+    const response = await axios.get(`http://localhost:5000/product/${id}`)
+   const product = response.data
+   console.log(product)
+    return product
+  };
+
+
+  addToCart = (product) => {
+    this.state.shoppingCart.push(product)
+    alert("Item added to cart")
+    console.log("shoppingcart", this.state.shoppingCart)
+    this.setState({ shoppingCart: this.state.shoppingCart})
+    localStorage.setItem("cart" , this.state.shoppingCart)
+
+   
+  
+    
+      
+     /* const inCart = this.state.shoppingCart.some(
+      (element) => element._id === this.state.allProducts._id) 
+    
+    const newCart = Object.assign([], this.state.shoppingCart)
+
+    for (const item of newCart) {
+
+    }
+    if(!inCart) {
+      let newCartItem = {
+        productId: this.state.allProducts._id,
+        artist: this.state.allProducts.artist,
+        price: this.state.allProducts.price,
+      }
+    newCart.push(newCartItem)
+    } 
+    this.setState( { shoppingCart: newCart })  */
+    }
+
+
 
   displayAllPsycadelic = () => {
     if (!this.state.psycadelic.length) return null;

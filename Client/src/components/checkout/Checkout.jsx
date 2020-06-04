@@ -1,26 +1,55 @@
 import React from "react";
 import Context from "../context/context";
-import { Box, ResponsiveContext } from "grommet";
+import {
+  Box,
+  Button,
+  Main,
+  Heading,
+  Form,
+} from "grommet";
+import { } from "grommet-icons";
+import { Link } from "react-router-dom";
+import ShoppingCart from "./ShoppingCart";
+import Delivery from "./Delivery";
+import Shipping from "./Shipping";
+import Payment from "./payment/PaymentBox";
+import OrderPage from "./OrderPage";
 
 
 class Checkout extends React.Component {
-    //This will enable the use of context-functions and states
-    static contextType = Context;
-  
-  
-  
-    render() {
+  //This will enable the use of context-functions and states
+  static contextType = Context;
+
+  render() {
+    /*  if (this.state.orderHasBeenPlaced) {
       return (
-        <ResponsiveContext.Consumer>
-          {(size) => (
-            <Box>
-                <h1>Checkout</h1>
-            </Box>
-          )}
-        </ResponsiveContext.Consumer>
+        <Box align="center">
+          <OrderPage />
+        </Box>
       );
-    }
+    }  */
+    return (
+      <Main
+        direction="column"
+        align="center"
+        pad="small"
+        gap="small"
+        flex="grow"
+      >
+        <Box>
+          <Heading alignSelf="center" size="small">
+            CHECKOUT
+          </Heading>
+          <Form autoComplete="on" validate="submit" onSubmit={1}>
+            <ShoppingCart />
+            <Delivery />
+            <Shipping />
+            <Payment />
+          </Form>
+        </Box>
+      </Main>
+    );
   }
-  
-  export default Checkout;
-  
+}
+
+export default Checkout;
