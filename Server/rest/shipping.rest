@@ -1,1 +1,13 @@
 GET http://localhost:5000/shipping
+
+###
+
+POST http://localhost:5000/shipping
+Content-Type: application/json
+
+{   
+    "company": "PostNord",
+    "price": 29,
+    "shipping_time": 2,
+   
+}
