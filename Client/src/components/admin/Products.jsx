@@ -6,7 +6,6 @@ import ProductList from './ProductList';
 import { Link } from "react-router-dom";
 
 import UserContext from '../context/userContext'
-import {getFromStorage} from '../../utils/storage'
 
 class Products extends React.Component {
   static contextType = UserContext
