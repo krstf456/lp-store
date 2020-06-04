@@ -1,14 +1,23 @@
 import React from "react";
-import Context from "../context/context";
-import { Box, ResponsiveContext } from "grommet";
-import "./Products.css"
+import { Accordion, Box, ResponsiveContext } from "grommet";
+import axios from "axios";
+import "./Products.css";
+import ProductList from './ProductList';
 import { Link } from "react-router-dom";
 
 class Products extends React.Component {
-    //This will enable the use of context-functions and states
-    static contextType = Context;
+  constructor() {
+    super();
+    this.state = {
+      products: []
+    };
+  }
   
-  
+    componentDidMount = () => {
+      axios.get("http://localhost:5000/products").then((response) => {
+        this.setState({ products: response.data});
+      });
+    };
   
     render() {
       return (
@@ -23,6 +32,14 @@ class Products extends React.Component {
               <p>Edit category/genre of product VG</p>
               <p>Delete product VG </p>
               <p>Update stock_quantity of product G </p>
+              <Accordion>  
+              {this.state.products.map((product) =>
+                <ProductList 
+                    key={product._id} 
+                    productData={product}
+                />
+              )}
+              </Accordion>
             </Box>
           )}
         </ResponsiveContext.Consumer>

@@ -38,7 +38,7 @@ class UploadProduct extends React.Component {
         fd.append('image', this.state.image);
     
         // `POST` image
-        fetch('http://localhost:5000/uploads', {
+        fetch('http://localhost:5000/uploads/', {
             method: 'POST',
             body: fd
         })

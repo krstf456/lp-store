@@ -9,7 +9,7 @@ getAllOrders = async (req, res, next) => {
     if (req.user.isAdmin === true) {
       res.send(order);
     } else {
-      res.send("You're not admin")
+      res.json("You're not admin")
     }
   } catch (err) {
     next(err)
