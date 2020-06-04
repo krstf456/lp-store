@@ -10,7 +10,6 @@ class ProductPage extends React.Component {
 
   state = {
     product: {},
-    shoppingCart: []
   }
 
   componentDidMount = async () => {
