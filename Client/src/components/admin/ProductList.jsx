@@ -1,21 +1,51 @@
 import React from "react";
-import {AccordionPanel, Box } from "grommet";
+import {AccordionPanel, Box, Button, Form, FormField, TextInput } from "grommet";
 import "./ProductList.css";
 
+import UserContext from '../context/userContext'
+import {getFromStorage} from '../../utils/storage'
 
 class ProductList extends React.Component {
+  static contextType = UserContext
+
   constructor(props) {
     super(props);
     this.state = {
+      stock_quantity: this.props.productData.stock_quantity,
+      updated_stock_quantity: this.props.productData.stock_quantity
     };
   }
 
-  onChange = (event) => {
-    this.setState({
-      genre: event.target.value
-    }) 
+  handleChange = (event) => {
+    this.setState({ stock_quantity: event.target.value})
   }
 
+  handleClick = () => {
+      const obj = getFromStorage('storage-object')
+      if (obj && obj.token) {
+        const { token } = obj
+        console.log(obj)
+        console.log(token)
+        const stock_update = {
+          stock_quantity: this.state.stock_quantity
+        }
+        fetch(`http://localhost:5000/products/${this.props.productData._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': token,
+        },
+        body: JSON.stringify(stock_update)	
+        }).then((res) => res.json())
+          .catch(error => console.error('Error:', error))	
+          .then(
+            this.setState({
+              updated_stock_quantity: this.state.stock_quantity
+            })
+          )
+      }
+    }
+  
   
     render() {
       return (
@@ -34,16 +64,25 @@ class ProductList extends React.Component {
                 style={{ backgroundImage: `url(${this.props.productData.image})` }}
                 className="imgStyle"
               ></div>
-              <Box>
+              <Box style={{margin: "1em"}}>
                 {"#: " + this.props.productData._id }<br/>
                 {"Artist: " + this.props.productData.artist}<br/>
                 {"Album: " + this.props.productData.album}<br/>
-                {"Description: " + this.props.productData.description}
-              </Box>
-              <Box>
                 {"Price: " + this.props.productData.price + ":-"}<br/>
                 {"Genre: " + this.props.productData.genre}<br/>
-                {"Stock: " + this.props.productData.stock_quantity}
+                {"Stock: " + this.state.updated_stock_quantity}
+              </Box>
+              <Box style={{margin: "1em"}}>
+                  {"Description: " + this.props.productData.description}
+              </Box>
+              <Box style={{margin: "1em"}}>
+                <Form>
+                  <FormField label="Stock Quantity" name="stock_quantity">
+                    <TextInput value={this.state.stock_quantity} onChange={this.handleChange} type="number">
+                    </TextInput>
+                  </FormField>
+                  <Button label="Update" onClick={this.handleClick}/>
+                </Form>
               </Box>
             </Box>
           </Box>

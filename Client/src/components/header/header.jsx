@@ -205,7 +205,7 @@ class Header1 extends React.Component {
                 margin={{ left: "large" }}
               >
                 <Cart color="plain" size="medium" />
-                {size != "small" && (
+                {size !== "small" && (
                   <Link to="/checkout/">
                   <Button
                     primary

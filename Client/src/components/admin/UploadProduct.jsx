@@ -3,7 +3,13 @@ import "./UploadProduct.css"
 import { Box, Button, Form, FormField, TextInput } from "grommet";
 import { Link } from "react-router-dom";
 
+import UserContext from '../context/userContext'
+import {getFromStorage} from '../../utils/storage'
+
 class UploadProduct extends React.Component {
+
+  static contextType = UserContext
+
   constructor() {
     super()
       this.state = {
@@ -30,7 +36,11 @@ class UploadProduct extends React.Component {
       })
     }
 
+    
     submit = async() => {
+      const obj = getFromStorage('storage-object')
+      if (obj && obj.token) {
+        const { token } = obj
       const isValidated = this.validateInput()
       if(isValidated){
 
@@ -40,7 +50,8 @@ class UploadProduct extends React.Component {
         // `POST` image
         fetch('http://localhost:5000/uploads/', {
             method: 'POST',
-            body: fd
+            body: fd,
+            'auth-token': token
         })
         .then((response) => {
           console.log(response)
@@ -69,7 +80,8 @@ class UploadProduct extends React.Component {
            fetch(`http://localhost:5000/products`,{
             method: 'POST',
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type" : "application/json",
+                'auth-token': token
             },
             body: JSON.stringify(data)
         })
@@ -90,7 +102,7 @@ class UploadProduct extends React.Component {
             })
             }
         })
-      }
+      }}
     }
 
     validateInput = () => {
@@ -167,12 +179,14 @@ class UploadProduct extends React.Component {
               <TextInput name="price" 
                         value={this.state.price} 
                         onChange={this.handleInput} 
+                        type="number"
                       />
             </FormField>
             <FormField label="Stock Quantity" >
               <TextInput name="stock_quantity" 
                         value={this.state.stock_quantity} 
                         onChange={this.handleInput} 
+                        type="number"
                       />
             </FormField>
             <FormField label="Genre" >
