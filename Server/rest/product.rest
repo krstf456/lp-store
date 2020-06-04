@@ -17,17 +17,17 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:5000/products/5ecf4fecc7f90af1142c599f
+PUT http://localhost:5000/products/5ed4e11b1636914ecf4e68ec
 Content-Type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTVlZTE1OGMwMTciLCJ1c2VybmFtZSI6IlZpa3RvciIsImlzQWRtaW4iOnRydWUsImVtYWlsIjoidmljQHRlc3QuY29tIiwiaWF0IjoxNTkxMjY5NzM2LCJleHAiOjE1OTEzNTYxMzZ9.KVHZznKGm34v1h2hnZcYXTJ8nuKQgxGGyV0NOu2Qnas
 
 {
-    "artist": "Leif",
-    "album": "sds",
-    "description": "Mr. Tambourine",
+    "artist": "Sweetwaters",
+    "album": "Sweetwaters",
+    "description": "Woooow",
     "price": 279,
     "stock_quantity": 4,
-    "image": "www",
-    "genre": "Blues"
+    "genre": "Rock"
 }
 
 ###
