@@ -44,20 +44,13 @@ export class ShoppingCartProvider extends React.Component {
   //   this.setState( { shoppingCart: cloneCart })
   //   }
 
-    totalQuantity = () => {
-      let total = 0;
-      let quantityOfItem = 0;
-      let carts = this.state.shoppingCart;
+    // // itemQuantity = () => {
+      
+    // //   let itemQuantity = 0
+    // //   let itemInCart = this.state.
+      
   
-      for (const cart of carts) {
-        quantityOfItem = 0;
-        for (const item of cart.items) {
-          quantityOfItem += item.quantity;
-        }
-        total += cart.price * quantityOfItem;
-      }
-      return total;
-    };
+    // // };
     
 
  

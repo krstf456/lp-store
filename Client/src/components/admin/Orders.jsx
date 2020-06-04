@@ -1,16 +1,68 @@
 import React from "react";
-import Context from "../context/context";
-import { Box, ResponsiveContext } from "grommet";
+import axios from "axios";
+import { Box, ResponsiveContext, Accordion } from "grommet";
 import "./Orders.css"
 import { Link } from "react-router-dom";
+import OrderList from "./OrderList"
+
+import UserContext from '../context/userContext'
+
+import {getFromStorage} from '../../utils/storage'
 
 class Orders extends React.Component {
-    //This will enable the use of context-functions and states
-    static contextType = Context;
+  static contextType = UserContext
+
+  constructor() {
+    super();
+    this.state = {
+      orders: []
+    };
+  }
   
+    componentDidMount = () => {
+      // axios.get("http://localhost:5000/orders").then((response) => {
+      //   this.setState({ orders: response.data});
+      // });
+
+      const obj = getFromStorage('storage-object')
+      if (obj && obj.token) {
+         const { token } = obj
+
+      fetch('http://localhost:5000/orders', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': token,
+      },
+      }).then((res) => res.json())
+         .then((response) => {
+
+          console.log(response)
+            if (response) {
+
+                  this.setState({
+                     orders: response,
+                  })
+                  console.log('token',token)
+                  console.log(response)
+        
+            } else {
+      
+          }
+        })
+      }
+    }
+
+    
   
-  
+
+
+
+
+
+
     render() {
+      console.log(this.state.orders)
       return (
         <ResponsiveContext.Consumer>
           {(size) => (
@@ -22,6 +74,14 @@ class Orders extends React.Component {
               <p>Uppgifter</p>
               <p>See Order History G</p>
               <p>Mark as shipped VG </p>
+              <Accordion>  
+              {this.state.orders.map((order) =>
+                <OrderList 
+                    key={order._id} 
+                    orderData={order}
+                />
+              )}
+              </Accordion>
             </Box>
           )}
         </ResponsiveContext.Consumer>

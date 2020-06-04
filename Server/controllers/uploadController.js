@@ -1,4 +1,3 @@
-//const  uuid = require('uuid') uninstall
 const uploadModel =  require("../models/Upload.model");
 
 

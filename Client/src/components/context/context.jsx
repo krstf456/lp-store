@@ -32,7 +32,7 @@ export class Provider extends React.Component {
       addToCart: this.addToCart,
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
-      displayOneProduct: this.displayOneProduct,
+      //displayOneProduct: this.displayOneProduct,
       displayAllPsycadelic: this.displayAllPsycadelic,
       displayAllProg: this.displayAllProg,
       displayAllOther: this.displayAllOther,
@@ -47,7 +47,6 @@ export class Provider extends React.Component {
 
   getAllRock = () => {
     axios.get("http://localhost:5000/products/Rock").then((response) => {
-      //console.log("response", response.data)
       this.setState({ rock: response.data });
     });
   };
@@ -83,7 +82,6 @@ export class Provider extends React.Component {
   };
 
   displayAllAlbums = () => {
-    console.log("products", this.state.products)
     if (!this.state.products.length) return null;
     
     return this.state.products.map((product, index) => (
@@ -102,6 +100,8 @@ export class Provider extends React.Component {
         <p>{product.price}</p>
         <p>{product.genre}</p>
       </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
     </Box>
     ));
   };
@@ -152,7 +152,7 @@ export class Provider extends React.Component {
           <p>{product.genre}</p>
       </Link>
       <Button
-          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
           {/* <AddtoCartButton/> */}
       </Box>
     ));
@@ -177,7 +177,7 @@ export class Provider extends React.Component {
           <p>{product.price}</p>
       </Link>
           <Button
-          onClick={() => this.addToCart()}>ADDTOCART</Button>
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
           {/* <AddtoCartButton/> */}
         </Box>
     ));
@@ -185,58 +185,42 @@ export class Provider extends React.Component {
  
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
-   /*  this.setState({ product: response.data }); */
    const product = response.data
    console.log(product)
     return product
   };
 
-  displayOneProduct = (product) => {
-    console.log("display", product)
-    if (!product) return null;
-
-     return( 
-      <Box className="boxStyle">
-        
-          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
-          <h3>{product.album}</h3>
-          <h4>{product.artist}</h4>
-          <p>{product.price}</p>
-          <p>{product.genre}</p>
-          <p>{product.description}</p>
-          <Button label="Add to cart" onClick={() => {this.addToCart()}}></Button>
-        </Box>
-     )
-  }; 
 
   addToCart = (product) => {
-    
-    const alreadyInCart = this.state.shoppingCart.some((element) => element._id === product)
+    const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
-    if(!alreadyInCart) {
+    console.log(alreadyInCart)
+    if(alreadyInCart) {
       
+      console.log('test')
+      const existingItem = cloneShoppingCart.find((element) => element.product._id === product._id)
+      existingItem.quantity = existingItem.quantity + 1
+
+      
+    } else {
+      const itemInCart = {product: product, quantity: 1}
+
+      cloneShoppingCart.push(itemInCart)
     }
-    this.state.shoppingCart.push(product)
+    
     alert("Item added to cart")
-    console.log("shoppingcart", this.state.shoppingCart)
-    this.setState({ shoppingCart: this.state.shoppingCart})
+    console.log("shoppingcart", cloneShoppingCart)
+    
+    this.setState({ shoppingCart: cloneShoppingCart})
     localStorage.setItem("cart" , this.state.shoppingCart)
     
  }
 
- totalQuantity = () => {
-  let total = 0;
-  let quantityOfItem = 0;
-  let carts = this.state.shoppingCart;
+ itemQuantity = () => {
+  let itemQuantity = 0
+  let itemInCart = this.state.shoppingCart
 
-  for (const cart of carts) {
-    quantityOfItem = 0;
-    for (const item of cart.items) {
-      quantityOfItem += item.quantity;
-    }
-    total += cart.price * quantityOfItem;
-  }
-  return total;
+
 };
 
 
