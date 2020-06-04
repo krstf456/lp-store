@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
 				<h6>mail: {this.context.email}</h6>
 				<h6>isAdmin: {String(this.context.isAdmin)}</h6>
 				<h6>id: {this.context.id}</h6>
-
+				<h6>token: {this.context.token}</h6>
 				
 
 
