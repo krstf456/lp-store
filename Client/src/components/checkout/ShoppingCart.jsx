@@ -17,7 +17,6 @@ export default class ShoppingCart extends React.Component {
 
   render() {
     localStorage.getItem("cart", this.context.shoppingCart);
-    console.log("render", this.context.shoppingCart);
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
@@ -48,15 +47,20 @@ export default class ShoppingCart extends React.Component {
                 </TableHeader>
                 <TableBody>
                   {this.context.shoppingCart.map((product, index) => {
+                    if (!this.context.shoppingCart) return null;
                     return (
                       <TableRow key={index}>
                         <TableCell scope="row">
-                          <img style={{height: "3rem", width: "3rem"}}
-                          src={product.image} />
+                          <img
+                            style={{ height: "3rem", width: "3rem" }}
+                            src={product.image}
+                          />
                         </TableCell>
-                    <TableCell size="small">{product.album}</TableCell>
+                        <TableCell size="small">{product.album}</TableCell>
                         <TableCell>Quantity</TableCell>
-                        <TableCell>{product.price} {/* * quantity */} SEK</TableCell>
+                        <TableCell>
+                          {product.price} {/* * quantity */} SEK
+                        </TableCell>
                         <TableCell>
                           <FormAdd></FormAdd>
                           <FormSubtract></FormSubtract>
@@ -65,12 +69,12 @@ export default class ShoppingCart extends React.Component {
                       </TableRow>
                     );
                   })}
-                 {/*  <TableRow>
+                  <TableRow>
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
-                  </TableRow> */}
+                  </TableRow>
                   <TableRow>
                     <TableCell scope="row">
                       <strong>Total</strong>
