@@ -167,10 +167,11 @@ export class Provider extends React.Component {
         price: price,
       }
     newCart.push(newCartItem)
-    } else {
-      const findItem = newCart.find(
-        (element) => element._id === productId)
-    }
+    } 
+    // else {
+    //   const findItem = newCart.find(
+    //     (element) => element._id === productId)
+    // }
     this.setState( { shoppingCart: newCart })
     }
 
