@@ -209,35 +209,36 @@ export class Provider extends React.Component {
      )
   }; 
 
-  // addToCart = (product) => {
-  //   this.state.shoppingCart.push(product)
-  //   alert("Item added to cart")
-  //   console.log("shoppingcart", this.state.shoppingCart)
-  //   this.setState({ shoppingCart: this.state.shoppingCart})
-  //   localStorage.setItem("cart" , this.state.shoppingCart)
-
-   
-  
+  addToCart = (product) => {
     
+    const alreadyInCart = this.state.shoppingCart.some((element) => element._id === product)
+    const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+    if(!alreadyInCart) {
       
-     /* const inCart = this.state.shoppingCart.some(
-      (element) => element._id === this.state.allProducts._id) 
-    
-    const newCart = Object.assign([], this.state.shoppingCart)
-
-    for (const item of newCart) {
-
     }
-    if(!inCart) {
-      let newCartItem = {
-        productId: this.state.allProducts._id,
-        artist: this.state.allProducts.artist,
-        price: this.state.allProducts.price,
-      }
-    newCart.push(newCartItem)
-    } 
-    this.setState( { shoppingCart: newCart })  */
-    //}
+    this.state.shoppingCart.push(product)
+    alert("Item added to cart")
+    console.log("shoppingcart", this.state.shoppingCart)
+    this.setState({ shoppingCart: this.state.shoppingCart})
+    localStorage.setItem("cart" , this.state.shoppingCart)
+    
+ }
+
+ totalQuantity = () => {
+  let total = 0;
+  let quantityOfItem = 0;
+  let carts = this.state.shoppingCart;
+
+  for (const cart of carts) {
+    quantityOfItem = 0;
+    for (const item of cart.items) {
+      quantityOfItem += item.quantity;
+    }
+    total += cart.price * quantityOfItem;
+  }
+  return total;
+};
+
 
 
 

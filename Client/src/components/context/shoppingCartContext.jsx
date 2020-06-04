@@ -7,43 +7,57 @@ export class ShoppingCartProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shoppingCart: [],
+      shoppingCart: [
+       
+      ],
       
+
+      addToCart: this.addToCart,
+      totalQuantity: this.totalQuantity,
       
     };
 
     
-    this.clearShoppingCart = this.clearShoppingCart.bind(this);
   }
 
- 
 
-  clearShoppingCart = () => {
-    this.setState({shoppingCart: []})
-  } 
 
-  addToCart = (productId) => {
-      alert('added to cart')
-    const inCart = this.state.shoppingCart.some(
-      (element) => element._id === productId)
+  // addToCart = (productId) => {
+  //     alert('added to cart')
+  //     console.log(this.state.shoppingCart)
+  //   const inCart = this.state.shoppingCart.some(
+  //     (element) => element._id === productId)
     
-    const newCart = Object.assign([], this.state.shoppingCart)
+  //   const cloneCart = Object.assign([], this.state.shoppingCart)
 
-    if(!inCart) {
-      let newCartItem = {
-        _id: productId,
-        //artist: artist,
-        //price: price,
+  //   if(!inCart) {
+  //     let newCartItem = {
+  //       _id: productId,
+        
+  //     }
+  //   cloneCart.push(newCartItem)
+  //   } 
+  //   // else {
+  //   //   const findItem = newCart.find(
+  //   //     (element) => element._id === productId)
+  //   // }
+  //   this.setState( { shoppingCart: cloneCart })
+  //   }
+
+    totalQuantity = () => {
+      let total = 0;
+      let quantityOfItem = 0;
+      let carts = this.state.shoppingCart;
+  
+      for (const cart of carts) {
+        quantityOfItem = 0;
+        for (const item of cart.items) {
+          quantityOfItem += item.quantity;
+        }
+        total += cart.price * quantityOfItem;
       }
-    newCart.push(newCartItem)
-    } 
-    // else {
-    //   const findItem = newCart.find(
-    //     (element) => element._id === productId)
-    // }
-    this.setState( { shoppingCart: newCart })
-    }
-
+      return total;
+    };
     
 
  
@@ -60,7 +74,7 @@ export class ShoppingCartProvider extends React.Component {
           state: this.state,
           addToCart: this.addToCart,
           
-          clearCart: this.clearCart
+          
         }}
       >
         {this.props.children}
