@@ -1,16 +1,27 @@
 import React from "react";
-import Context from "../context/context";
-import { Box, ResponsiveContext } from "grommet";
+import axios from "axios";
+import { Box, ResponsiveContext, Accordion } from "grommet";
 import "./Orders.css"
 import { Link } from "react-router-dom";
+import OrderList from "./OrderList"
 
 class Orders extends React.Component {
-    //This will enable the use of context-functions and states
-    static contextType = Context;
+  constructor() {
+    super();
+    this.state = {
+      orders: []
+    };
+  }
   
-  
+    componentDidMount = () => {
+      axios.get("http://localhost:5000/orders").then((response) => {
+        this.setState({ orders: response.data});
+      });
+    };
+    
   
     render() {
+      console.log(this.state.orders)
       return (
         <ResponsiveContext.Consumer>
           {(size) => (
@@ -22,6 +33,14 @@ class Orders extends React.Component {
               <p>Uppgifter</p>
               <p>See Order History G</p>
               <p>Mark as shipped VG </p>
+              <Accordion>  
+              {this.state.orders.map((order) =>
+                <OrderList 
+                    key={order._id} 
+                    orderData={order}
+                />
+              )}
+              </Accordion>
             </Box>
           )}
         </ResponsiveContext.Consumer>
