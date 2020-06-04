@@ -206,12 +206,14 @@ class Header1 extends React.Component {
               >
                 <Cart color="plain" size="medium" />
                 {size != "small" && (
+                  <Link to="/checkout/">
                   <Button
                     primary
                     margin="small"
                     color="dark-1"
                     label="Checkout"
                   ></Button>
+                  </Link>
                 )}
                 <Button
                   onClick={() => {
