@@ -83,7 +83,6 @@ class MainPage extends React.Component {
                 ]}
               />
             </Box>
-            
             <Box
               justify="center"
               align="center"
@@ -93,28 +92,7 @@ class MainPage extends React.Component {
                 flexWrap: "wrap",
               }}
             > 
-              {this.context.products.map(product => {
-                return (
-                <Box key={product._id} className="boxStyle">
-                <Link
-                  to={{
-                    pathname: "/productpage/" + product._id,
-                  }}
-                >
-                  <div
-                    style={{ backgroundImage: `url(${product.image})` }}
-                    className="imgStyle"
-                  ></div>
-                  <h3>{product.album}</h3>
-                  <h4>{product.artist}</h4>
-                  <p>{product.price}</p>
-                  <p>{product.genre}</p>
-                </Link>
-                <Button
-                    onClick={() => this.context.addToCart(product)}>ADDTOCART</Button>
-              </Box>
-                )
-              })}
+              {this.context.displayAllAlbums()}
             </Box>
           </Box>
         )}

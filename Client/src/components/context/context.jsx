@@ -21,6 +21,7 @@ export class Provider extends React.Component {
       //displayOneProduct: this.displayOneProduct,
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
+      displayAllAlbums: this.displayAllAlbums
     };
   }
 
@@ -29,6 +30,32 @@ export class Provider extends React.Component {
     axios.get("http://localhost:5000/products/" + genre).then((response) => {
       this.setState({ products: response.data });
     });
+  };
+
+
+  displayAllAlbums = () => {
+    if (!this.state.products.length) return null;
+    
+    return this.state.products.map((product, index) => (
+      <Box key={index} className="boxStyle">
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <div
+          style={{ backgroundImage: `url(${product.image})` }}
+          className="imgStyle"
+        ></div>
+        <h3>{product.album}</h3>
+        <h4>{product.artist}</h4>
+        <p>{product.price}</p>
+        <p>{product.genre}</p>
+      </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+    </Box>
+    ));
   };
 
 
@@ -42,8 +69,6 @@ export class Provider extends React.Component {
   }
 
 
-
-
   componentDidMount = () => {
     this.setState({
       shoppingCart: JSON.parse(localStorage.getItem("cart"))
@@ -51,13 +76,11 @@ export class Provider extends React.Component {
   }
 
 
-
- 
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
-   const product = response.data
-   console.log(product)
-    return product
+    const product = response.data
+    console.log(product)
+      return product
   };
 
 
@@ -85,6 +108,7 @@ export class Provider extends React.Component {
     localStorage.setItem("cart" , JSON.stringify(this.state.shoppingCart))
     
  }
+
 
  itemQuantity = () => {
   let itemQuantity = 0
