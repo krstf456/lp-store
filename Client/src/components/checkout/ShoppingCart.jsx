@@ -63,6 +63,8 @@ export default class ShoppingCart extends React.Component {
                       <strong>Qty</strong>
                     </TableCell>
                     <TableCell scope="col">
+                    </TableCell>
+                    <TableCell scope="col">
                       <strong>Price</strong>
                     </TableCell>
                   </TableRow>
@@ -80,8 +82,9 @@ export default class ShoppingCart extends React.Component {
                         </TableCell>
                         <TableCell size="small">{product.product.album}</TableCell>
                         <TableCell>{product.quantity}</TableCell>
+                        <TableCell style={{fontSize:"0.7em"}}>{product.product.price}:- /pp</TableCell>
                         <TableCell>
-                          {product.product.price} {/* * quantity */} SEK
+                          {product.product.price * product.quantity} :-
                         </TableCell>
                         <TableCell>
                           <FormAdd></FormAdd>
@@ -96,6 +99,7 @@ export default class ShoppingCart extends React.Component {
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
+                    <TableCell border="bottom"></TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell scope="row">
@@ -103,6 +107,8 @@ export default class ShoppingCart extends React.Component {
                     </TableCell>
                     <TableCell scope="row">
                       <strong></strong>
+                    </TableCell>
+                    <TableCell>
                     </TableCell>
                     <TableCell>
                       <strong>total</strong>
