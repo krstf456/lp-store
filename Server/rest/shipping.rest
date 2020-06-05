@@ -6,10 +6,9 @@ POST http://localhost:5000/shipping
 Content-Type: application/json
 
 {   
-    "company": "PostNord",
+    "company": "Instabox",
     "price": 29,
     "shipping_time": 2
-   
 }
 
 ###

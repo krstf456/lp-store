@@ -15,6 +15,6 @@ const ShippingSchema = new Schema({
         type: Number,
         required: false
     }
-})
+},{ versionKey: false }) 
 
 module.exports = Shipping = mongoose.model('shipping', ShippingSchema)
