@@ -201,6 +201,9 @@ export class Provider extends React.Component {
 
 
   addToCart = (product) => {
+ 
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    console.log(cart)
     const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
     console.log(alreadyInCart)
@@ -221,7 +224,7 @@ export class Provider extends React.Component {
     console.log("shoppingcart", cloneShoppingCart)
     
     this.setState({ shoppingCart: cloneShoppingCart})
-    localStorage.setItem("cart" , JSON.stringify(this.state.shoppingCart))
+    localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
     
  }
 
