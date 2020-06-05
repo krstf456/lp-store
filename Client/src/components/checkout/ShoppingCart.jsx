@@ -38,7 +38,7 @@ export default class ShoppingCart extends React.Component {
   }
 
   render() {
-    localStorage.getItem("cart", this.context.shoppingCart);
+    this.context.shoppingCart = JSON.parse(localStorage.getItem("cart", this.context.shoppingCart));
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
