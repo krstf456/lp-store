@@ -112,7 +112,7 @@ class MainPage extends React.Component {
                   <p>{product.genre}</p>
                 </Link>
                 <Button
-                    onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+                    onClick={() => this.context.addToCart(product)}>ADDTOCART</Button>
               </Box>
                 )
               })}
