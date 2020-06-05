@@ -16,7 +16,14 @@ class MainPage extends React.Component {
 
   componentDidMount = () => {
     this.context.updateProducts(this.state.activeCategory)
-  }
+
+      if(localStorage.getItem('cart') === null){
+      localStorage.setItem('cart', JSON.stringify([]))
+      }
+      this.setState({
+      shoppingCart: JSON.parse(localStorage.getItem("cart"))
+      })
+    }
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.activeCategory !== this.state.activeCategory) {
@@ -122,6 +129,7 @@ class MainPage extends React.Component {
     );
   }
 }
+
 
 export default MainPage;
 
