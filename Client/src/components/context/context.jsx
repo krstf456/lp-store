@@ -21,6 +21,7 @@ export class Provider extends React.Component {
       //displayOneProduct: this.displayOneProduct,
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
+      displayAllAlbums: this.displayAllAlbums
     };
   }
 
@@ -29,6 +30,32 @@ export class Provider extends React.Component {
     axios.get("http://localhost:5000/products/" + genre).then((response) => {
       this.setState({ products: response.data });
     });
+  };
+
+
+  displayAllAlbums = () => {
+    if (!this.state.products.length) return null;
+    
+    return this.state.products.map((product, index) => (
+      <Box key={index} className="boxStyle">
+      <Link
+        to={{
+          pathname: "/productpage/" + product._id,
+        }}
+      >
+        <div
+          style={{ backgroundImage: `url(${product.image})` }}
+          className="imgStyle"
+        ></div>
+        <h3>{product.album}</h3>
+        <h4>{product.artist}</h4>
+        <p>{product.price}</p>
+        <p>{product.genre}</p>
+      </Link>
+      <Button
+          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
+    </Box>
+    ));
   };
 
 
@@ -42,8 +69,6 @@ export class Provider extends React.Component {
   }
 
 
-
-
   componentDidMount = () => {
     this.setState({
       shoppingCart: JSON.parse(localStorage.getItem("cart"))
@@ -51,29 +76,27 @@ export class Provider extends React.Component {
   }
 
 
-
- 
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
-   const product = response.data
-   console.log(product)
-    return product
+    const product = response.data
+    console.log(product)
+      return product
   };
 
 
-  addToCart = (product) => {
-    const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
+  addToCart = (_id) => {
+    const alreadyInCart = this.state.shoppingCart.some((element) => element._id === _id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
     console.log(alreadyInCart)
     if(alreadyInCart) {
       
       console.log('test')
-      const existingItem = cloneShoppingCart.find((element) => element.product._id === product._id)
+      const existingItem = cloneShoppingCart.find((element) => element._id === _id)
       existingItem.quantity = existingItem.quantity + 1
 
       
     } else {
-      const itemInCart = {product: product, quantity: 1}
+      const itemInCart = {product: _id, quantity: 1}
 
       cloneShoppingCart.push(itemInCart)
     }
