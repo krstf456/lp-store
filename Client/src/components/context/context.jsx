@@ -18,6 +18,7 @@ export class Provider extends React.Component {
       psycadelic: [],
       prog: [],
       other: [],
+      shippingAlternatives: [],
       getAllAlbums: this.getAllAlbums,
       getAllRock: this.getAllRock,
       getAllSoul: this.getAllSoul,
@@ -36,6 +37,7 @@ export class Provider extends React.Component {
       displayAllPsycadelic: this.displayAllPsycadelic,
       displayAllProg: this.displayAllProg,
       displayAllOther: this.displayAllOther,
+      getAllShipping: this.getAllShipping,
     };
   }
 
@@ -290,6 +292,16 @@ export class Provider extends React.Component {
         </Box>
       </Link>
     ));
+  };
+
+
+  getAllShipping = () => {
+    axios.get("http://localhost:5000/shipping").then((response) => {
+      this.setState({ shippingAlternatives: response.data });
+      this.state.shippingAlternatives.map(shipping => {
+        return shipping.shipping_time
+      })
+    });
   };
 
   render() {
