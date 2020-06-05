@@ -26,6 +26,15 @@ export class Provider extends React.Component {
     });
   };
 
+
+  componentDidMount = () => {
+    this.setState({
+      shoppingCart: JSON.parse(localStorage.getItem("cart"))
+    })
+  }
+
+
+
  
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
@@ -56,7 +65,7 @@ export class Provider extends React.Component {
     console.log("shoppingcart", cloneShoppingCart)
     
     this.setState({ shoppingCart: cloneShoppingCart})
-    localStorage.setItem("cart" , this.state.shoppingCart)
+    localStorage.setItem("cart" , JSON.stringify(this.state.shoppingCart))
     
  }
 
