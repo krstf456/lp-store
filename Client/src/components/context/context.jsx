@@ -24,11 +24,24 @@ export class Provider extends React.Component {
     };
   }
 
+
   updateProducts = (genre) => {
     axios.get("http://localhost:5000/products/" + genre).then((response) => {
       this.setState({ products: response.data });
     });
   };
+
+
+  componentDidMount = () => {
+    if(localStorage.getItem('cart') === null){
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
+    this.setState({
+      shoppingCart: JSON.parse(localStorage.getItem("cart"))
+    })
+  }
+
+
 
 
   componentDidMount = () => {
