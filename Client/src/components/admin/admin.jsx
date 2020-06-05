@@ -11,7 +11,7 @@ class Admin extends React.Component {
   
   
     render() {
-      return (
+      return ( 
         <ResponsiveContext.Consumer>
           {(size) => (
             <Box>

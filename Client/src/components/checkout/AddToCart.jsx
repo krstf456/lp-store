@@ -1,11 +1,14 @@
 import React from 'react'
 import { Cart } from 'grommet-icons'
 import { Button } from "grommet";
-import Context from "../context/context";
+import ShoppingCartContext from '../context/shoppingCartContext'
+
+
+
 
 
 export default class AddtoCartButton extends React.Component {
-    static contextType = Context;
+    static contextType = ShoppingCartContext;
   
 
 
@@ -17,7 +20,7 @@ export default class AddtoCartButton extends React.Component {
             hoverIndicator
             icon={<Cart />}
             label={'Add To Cart'}
-            //onClick={}
+            onClick={this.context.addToCart}
         />
         )
     }
