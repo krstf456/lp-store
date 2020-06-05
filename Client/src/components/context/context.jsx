@@ -84,19 +84,19 @@ export class Provider extends React.Component {
   };
 
 
-  addToCart = (_id) => {
-    const alreadyInCart = this.state.shoppingCart.some((element) => element._id === _id)
+  addToCart = (product) => {
+    const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
     console.log(alreadyInCart)
     if(alreadyInCart) {
       
       console.log('test')
-      const existingItem = cloneShoppingCart.find((element) => element._id === _id)
+      const existingItem = cloneShoppingCart.find((element) => element.product._id === product._id)
       existingItem.quantity = existingItem.quantity + 1
 
       
     } else {
-      const itemInCart = {product: _id, quantity: 1}
+      const itemInCart = {product: product, quantity: 1}
 
       cloneShoppingCart.push(itemInCart)
     }
@@ -108,6 +108,7 @@ export class Provider extends React.Component {
     localStorage.setItem("cart" , JSON.stringify(this.state.shoppingCart))
     
  }
+
 
  itemQuantity = () => {
   let itemQuantity = 0
