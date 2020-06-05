@@ -43,6 +43,15 @@ export class Provider extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    if(localStorage.getItem('cart') === null){
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
+    this.setState({
+      shoppingCart: JSON.parse(localStorage.getItem("cart"))
+    })
+  }
+
   getAllAlbums = () => {
     axios.get("http://localhost:5000/products").then((response) => {
       this.setState({ products: response.data });
@@ -216,15 +225,14 @@ export class Provider extends React.Component {
     console.log("shoppingcart", cloneShoppingCart)
     
     this.setState({ shoppingCart: cloneShoppingCart})
-    localStorage.setItem("cart" , this.state.shoppingCart)
+    localStorage.setItem("cart" , JSON.stringify(this.state.shoppingCart))
     
  }
 
- itemQuantity = () => {
-  let itemQuantity = 0
-  let itemInCart = this.state.shoppingCart
-};
-
+  itemQuantity = () => {
+    let itemQuantity = 0
+    let itemInCart = this.state.shoppingCart
+  };
 
 
 
