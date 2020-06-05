@@ -20,8 +20,7 @@ export default class Delivery extends React.Component {
           type="text"
           required
           validate={{ message: "only letters" }}
-          onChange={1
-          }
+          onChange={1}
         />
         <FormField
           name="family-name"
@@ -30,8 +29,7 @@ export default class Delivery extends React.Component {
           type="text"
           required
           validate={{ message: "only letters" }}
-          onChange={1
-          }
+          onChange={1}
         />
         <FormField
           name="email"
@@ -40,8 +38,7 @@ export default class Delivery extends React.Component {
           type="email"
           required
           validate={{ message: "@" }}
-          onChange={1
-          }
+          onChange={1}
         />
         <FormField
           name="tel"
@@ -59,8 +56,7 @@ export default class Delivery extends React.Component {
           type="text"
           validate={{ message: "Ex: Storgatan 1" }}
           required
-          onChange={1
-          }
+          onChange={1}
         />
         <FormField
           name="postal-code"
@@ -69,8 +65,7 @@ export default class Delivery extends React.Component {
           type=""
           required
           validate={{ regexp: /^[0-9]{5}$/, message: "5 digits" }}
-          onChange={1
-          }
+          onChange={1}
         />
         <FormField
           name="address-level2"
@@ -79,8 +74,7 @@ export default class Delivery extends React.Component {
           type="text"
           required
           validate={{ message: "only letters" }}
-          onChange={1
-          }
+          onChange={1}
         />
       </Box>
     );

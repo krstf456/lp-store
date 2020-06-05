@@ -13,10 +13,14 @@ export class Provider extends React.Component {
     this.state = {
       products: [],
       updateProducts: this.updateProducts,
+      shippingAlternatives: [],
+      selectedShipping: [],
       addToCart: this.addToCart,
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
       //displayOneProduct: this.displayOneProduct,
+      getAllShipping: this.getAllShipping,
+      setSelectedShipping: this.setSelectedShipping,
     };
   }
 
@@ -75,6 +79,20 @@ export class Provider extends React.Component {
 
 
 };
+
+
+  getAllShipping = () => {
+    axios.get("http://localhost:5000/shipping").then((response) => {
+      this.setState({ shippingAlternatives: response.data });
+      this.state.shippingAlternatives.map(shipping => {
+        return shipping.shipping_time
+      })
+    });
+  };
+
+  setSelectedShipping = (shipping) => {
+    this.setState({ selectedShipping: shipping})
+  }
 
   render() {
     return (
