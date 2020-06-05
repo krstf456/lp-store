@@ -53,13 +53,13 @@ export default class ShoppingCart extends React.Component {
                         <TableCell scope="row">
                           <img
                             style={{ height: "3rem", width: "3rem" }}
-                            src={product.image}
+                            src={product.product.image}
                           />
                         </TableCell>
-                        <TableCell size="small">{product.album}</TableCell>
-                        <TableCell>Quantity</TableCell>
+                        <TableCell size="small">{product.product.album}</TableCell>
+                        <TableCell>{product.quantity}</TableCell>
                         <TableCell>
-                          {product.price} {/* * quantity */} SEK
+                          {product.product.price} {/* * quantity */} SEK
                         </TableCell>
                         <TableCell>
                           <FormAdd></FormAdd>

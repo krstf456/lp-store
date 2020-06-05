@@ -192,34 +192,37 @@ export class Provider extends React.Component {
 
 
   addToCart = (product) => {
-    this.state.shoppingCart.push(product)
-    alert("Item added to cart")
-    console.log("shoppingcart", this.state.shoppingCart)
-    this.setState({ shoppingCart: this.state.shoppingCart})
-    localStorage.setItem("cart" , this.state.shoppingCart)
-
-   
-  
-    
+    const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
+    const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+    console.log(alreadyInCart)
+    if(alreadyInCart) {
       
-     /* const inCart = this.state.shoppingCart.some(
-      (element) => element._id === this.state.allProducts._id) 
+      console.log('test')
+      const existingItem = cloneShoppingCart.find((element) => element.product._id === product._id)
+      existingItem.quantity = existingItem.quantity + 1
+
+      
+    } else {
+      const itemInCart = {product: product, quantity: 1}
+
+      cloneShoppingCart.push(itemInCart)
+    }
     
-    const newCart = Object.assign([], this.state.shoppingCart)
+    alert("Item added to cart")
+    console.log("shoppingcart", cloneShoppingCart)
+    
+    this.setState({ shoppingCart: cloneShoppingCart})
+    localStorage.setItem("cart" , this.state.shoppingCart)
+    
+ }
 
-    for (const item of newCart) {
+ itemQuantity = () => {
+  let itemQuantity = 0
+  let itemInCart = this.state.shoppingCart
 
-    }
-    if(!inCart) {
-      let newCartItem = {
-        productId: this.state.allProducts._id,
-        artist: this.state.allProducts.artist,
-        price: this.state.allProducts.price,
-      }
-    newCart.push(newCartItem)
-    } 
-    this.setState( { shoppingCart: newCart })  */
-    }
+
+};
+
 
 
 
