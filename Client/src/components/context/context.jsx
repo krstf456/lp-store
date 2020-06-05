@@ -32,6 +32,8 @@ export class Provider extends React.Component {
       displayAllSoul: this.displayAllSoul,
       displayAllPop: this.displayAllPop,
       addToCart: this.addToCart,
+      increaseQuantity: this.increaseQuantity,
+      decreaseQuantity: this.decreaseQuantity,
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
       //displayOneProduct: this.displayOneProduct,
@@ -229,10 +231,50 @@ export class Provider extends React.Component {
     
  }
 
-  itemQuantity = () => {
-    let itemQuantity = 0
-    let itemInCart = this.state.shoppingCart
-  };
+ increaseQuantity = (product) => {
+  const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+  const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
+  productInCart.quantity = productInCart.quantity + 1;
+
+
+  // if (productInCart.length === 0) {
+  //   const removeItemIndex = cloneShoppingCart.findIndex(
+  //     (element) => element.product_id === product._id
+  //   );
+  //   cloneShoppingCart.splice(removeItemIndex, 1);
+  // }
+  this.setState({ shoppingCart: cloneShoppingCart });
+  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
+
+ }
+
+ decreaseQuantity = (product) => {
+  const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+  console.log(product, cloneShoppingCart)
+  const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
+  
+  productInCart.quantity = productInCart.quantity - 1;
+
+
+  if (productInCart.length === 0) {
+    const removeItemIndex = cloneShoppingCart.findIndex(
+      (element) => element.product_id === product._id
+    );
+    cloneShoppingCart.splice(removeItemIndex, 1);
+  }
+  this.setState({ shoppingCart: cloneShoppingCart });
+  
+ localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
+};
+
+
+
+
+ 
+ 
+
+
+
 
 
 
