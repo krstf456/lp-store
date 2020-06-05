@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Box, Button } from "grommet";
 import { Link } from "react-router-dom";
-//import style from "./Context.css";
+import style from "./Context.css";
 //import AddtoCartButton from "../checkout/AddToCart";
 
 const Context = React.createContext();
@@ -18,6 +18,8 @@ export class Provider extends React.Component {
       psycadelic: [],
       prog: [],
       other: [],
+      shippingAlternatives: [],
+      selectedShipping: [],
       getAllAlbums: this.getAllAlbums,
       getAllRock: this.getAllRock,
       getAllSoul: this.getAllSoul,
@@ -38,7 +40,18 @@ export class Provider extends React.Component {
       displayAllPsycadelic: this.displayAllPsycadelic,
       displayAllProg: this.displayAllProg,
       displayAllOther: this.displayAllOther,
+      getAllShipping: this.getAllShipping,
+      setSelectedShipping: this.setSelectedShipping,
     };
+  }
+
+  componentDidMount = () => {
+    if(localStorage.getItem('cart') === null){
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
+    this.setState({
+      shoppingCart: JSON.parse(localStorage.getItem("cart"))
+    })
   }
 
   getAllAlbums = () => {
@@ -214,6 +227,7 @@ export class Provider extends React.Component {
     console.log("shoppingcart", cloneShoppingCart)
     
     this.setState({ shoppingCart: cloneShoppingCart})
+
     localStorage.setItem("cart", JSON.stringify(this.state.shoppingCart))
     
  }
@@ -253,6 +267,7 @@ export class Provider extends React.Component {
   
  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 };
+
 
 
 
@@ -329,6 +344,20 @@ export class Provider extends React.Component {
       </Link>
     ));
   };
+
+
+  getAllShipping = () => {
+    axios.get("http://localhost:5000/shipping").then((response) => {
+      this.setState({ shippingAlternatives: response.data });
+      this.state.shippingAlternatives.map(shipping => {
+        return shipping.shipping_time
+      })
+    });
+  };
+
+  setSelectedShipping = (shipping) => {
+    this.setState({ selectedShipping: shipping})
+  }
 
   render() {
     return (

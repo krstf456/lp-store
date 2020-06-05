@@ -38,7 +38,10 @@ export default class ShoppingCart extends React.Component {
   }
 
   render() {
-    localStorage.getItem("cart", this.context.shoppingCart);
+    if(localStorage.getItem('cart') === null){
+      localStorage.setItem('cart', JSON.stringify([]))
+    }
+    this.context.shoppingCart = JSON.parse(localStorage.getItem("cart", this.context.shoppingCart));
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
@@ -63,6 +66,8 @@ export default class ShoppingCart extends React.Component {
                       <strong>Qty</strong>
                     </TableCell>
                     <TableCell scope="col">
+                    </TableCell>
+                    <TableCell scope="col">
                       <strong>Price</strong>
                     </TableCell>
                   </TableRow>
@@ -78,10 +83,13 @@ export default class ShoppingCart extends React.Component {
                             src={product.image}
                           />
                         </TableCell>
+
                         <TableCell size="small">{product.album}</TableCell>
                         <TableCell>{quantity}</TableCell>
+                        <TableCell style={{fontSize:"0.7em"}}>{product.price}:- /pp</TableCell>
                         <TableCell>
-                          {product.price} {/* * quantity */} SEK
+                        {product.price * quantity} :-
+
                         </TableCell>
                         <TableCell>
                           <FormAdd onClick={() => this.context.increaseQuantity(product)}></FormAdd>
@@ -96,6 +104,7 @@ export default class ShoppingCart extends React.Component {
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
                     <TableCell border="bottom"></TableCell>
+                    <TableCell border="bottom"></TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell scope="row">
@@ -103,6 +112,8 @@ export default class ShoppingCart extends React.Component {
                     </TableCell>
                     <TableCell scope="row">
                       <strong></strong>
+                    </TableCell>
+                    <TableCell>
                     </TableCell>
                     <TableCell>
                       <strong>total</strong>

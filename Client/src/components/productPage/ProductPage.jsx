@@ -8,20 +8,19 @@ class ProductPage extends React.Component {
   //This will enable the use of context-functions and states
   static contextType = Context;
 
- /*   state = {
+    state = {
     product: {},
-  }   */
+  }   
 
   componentDidMount = async () => {
     let product = await this.context.getOneProduct(this.props.match.params.id)
     console.log(product)
-    console.log(product.album)
-  /*  this.setState({ product: product })   */
+   this.setState({ product: product })  
   return product
   }
 
-  displayOneProduct = (product) => {
-
+  displayOneProduct = () => {
+const {product} = this.state
      if (!product) return null; 
  
      return(
