@@ -27,7 +27,6 @@ class MainPage extends React.Component {
   handleOnClickAll = () => {
     this.setState({ activeCategory: '' })
     console.log(this.state.activeCategory)
-    console.log(this.state.products)
   }
 
   handleOnClickRock = () => {
