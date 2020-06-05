@@ -23,12 +23,12 @@ getShippingAlternatives = async (req, res, next) => {
           await shipping.save();
           res.send(shipping);
         } else {
-          res.status(404).json({message : "Method already exists"})
-        }
+          res.status(404).json({message : "Already exists"})
+        } 
       } catch (err) {
         next(err)
       }
-  }
+  };
 
 
   module.exports = { getShippingAlternatives, createShippingMethod };

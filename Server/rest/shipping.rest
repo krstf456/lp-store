@@ -8,6 +8,8 @@ Content-Type: application/json
 {   
     "company": "PostNord",
     "price": 29,
-    "shipping_time": 2,
+    "shipping_time": 2
    
 }
+
+###

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Box, Button } from "grommet";
 import { Link } from "react-router-dom";
-//import style from "./Context.css";
+import style from "./Context.css";
 //import AddtoCartButton from "../checkout/AddToCart";
 
 const Context = React.createContext();
