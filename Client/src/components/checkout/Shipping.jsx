@@ -13,9 +13,8 @@ export default class ShippingBox extends React.Component {
 
   getDeliveryDate = () => {
     const date = new Date();
-
     const delivery = new Date(date);
-    delivery.setDate(delivery.getDate());
+    delivery.setDate(delivery.getDate() + this.context.selectedShipping.shipping_time);
     return delivery.toDateString();
   };
 
@@ -33,16 +32,16 @@ export default class ShippingBox extends React.Component {
             <>
               <RadioButton
                 key={shipping._id}
-                label={shipping.company}
+                label={shipping.company + " " + "(" + shipping.shipping_time + " " + "days" + ")"}
                 name={shipping.company}
-                checked={shipping._id}
+                checked={shipping == this.context.selectedShipping}
+                onChange={() => this.context.setSelectedShipping(shipping)}
               ></RadioButton>
-              <Text style={{ fontSize: "11pt" }}>
-                Delivery on{" "}
-                <strong>
-                  {this.getDeliveryDate()}
-                </strong>
-              </Text>
+              {shipping == this.context.selectedShipping && (
+                <Text style={{ fontSize: "11pt", marginLeft: "2.35rem" }}>
+                  Delivery on <strong>{this.getDeliveryDate()}</strong>
+                </Text>
+              )}
             </>
           ))}
         </Box>

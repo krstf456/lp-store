@@ -19,6 +19,7 @@ export class Provider extends React.Component {
       prog: [],
       other: [],
       shippingAlternatives: [],
+      selectedShipping: [],
       getAllAlbums: this.getAllAlbums,
       getAllRock: this.getAllRock,
       getAllSoul: this.getAllSoul,
@@ -38,6 +39,7 @@ export class Provider extends React.Component {
       displayAllProg: this.displayAllProg,
       displayAllOther: this.displayAllOther,
       getAllShipping: this.getAllShipping,
+      setSelectedShipping: this.setSelectedShipping,
     };
   }
 
@@ -303,6 +305,10 @@ export class Provider extends React.Component {
       })
     });
   };
+
+  setSelectedShipping = (shipping) => {
+    this.setState({ selectedShipping: shipping})
+  }
 
   render() {
     return (
