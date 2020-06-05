@@ -15,7 +15,7 @@ function auth(req, res, next) {
 }
 
 isAdminTrue = async (req, res, next) => {
-	console.log("USERN" + req)
+	// console.log("USERN" + req)
 	if (req.user.isAdmin === true) {
 		next()
 	} else {
@@ -24,7 +24,7 @@ isAdminTrue = async (req, res, next) => {
 }
 
 function generateAccessToken(user) {
-	console.log('user:', user)
+	// console.log('user:', user)
 	return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
 }
 
