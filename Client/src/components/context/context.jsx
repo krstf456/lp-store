@@ -231,6 +231,8 @@ export class Provider extends React.Component {
   //   cloneShoppingCart.splice(removeItemIndex, 1);
   // }
   this.setState({ shoppingCart: cloneShoppingCart });
+  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
+
  }
 
  decreaseQuantity = (product) => {
@@ -248,6 +250,8 @@ export class Provider extends React.Component {
     cloneShoppingCart.splice(removeItemIndex, 1);
   }
   this.setState({ shoppingCart: cloneShoppingCart });
+  
+ localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 };
 
 
