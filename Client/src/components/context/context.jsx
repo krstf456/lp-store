@@ -225,7 +225,7 @@ export class Provider extends React.Component {
     console.log("shoppingcart", cloneShoppingCart)
     
     this.setState({ shoppingCart: cloneShoppingCart})
-    localStorage.setItem("cart" , JSON.stringify(this.state.shoppingCart))
+    localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
     
  }
 
