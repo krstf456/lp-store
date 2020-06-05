@@ -18,7 +18,7 @@ class PaymentBox extends React.Component {
         </Box>
         <RadioButtonGroup
           name="paymentOptions"
-          value={1}
+          value=""
           onChange={1}
           options={[
             {
