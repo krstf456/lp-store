@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import OrderList from "./OrderList"
 
 import UserContext from '../context/userContext'
-
 import {getFromStorage} from '../../utils/storage'
 
 class Orders extends React.Component {
@@ -19,9 +18,6 @@ class Orders extends React.Component {
   }
   
     componentDidMount = () => {
-      // axios.get("http://localhost:5000/orders").then((response) => {
-      //   this.setState({ orders: response.data});
-      // });
 
       const obj = getFromStorage('storage-object')
       if (obj && obj.token) {
@@ -35,33 +31,16 @@ class Orders extends React.Component {
       },
       }).then((res) => res.json())
          .then((response) => {
-
-          console.log(response)
             if (response) {
-
-                  this.setState({
-                     orders: response,
-                  })
-                  console.log('token',token)
-                  console.log(response)
-        
-            } else {
-      
-          }
+              this.setState({
+                  orders: response,
+              })       
+            }
         })
       }
     }
 
-    
-  
-
-
-
-
-
-
     render() {
-      console.log(this.state.orders)
       return (
         <ResponsiveContext.Consumer>
           {(size) => (

@@ -4,7 +4,7 @@ import { Money } from "grommet-icons";
 import Swish from "./Swish";
 import CreditCard from "./CreditCard";
 import Invoice from "./Invoice";
-import ClipLoader from "react-spinners/ClipLoader";
+//import ClipLoader from "react-spinners/ClipLoader";
 
 class PaymentBox extends React.Component {
   render() {
