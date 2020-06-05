@@ -219,8 +219,6 @@ export class Provider extends React.Component {
  itemQuantity = () => {
   let itemQuantity = 0
   let itemInCart = this.state.shoppingCart
-
-
 };
 
 
