@@ -20,6 +20,21 @@ class Checkout extends React.Component {
   //This will enable the use of context-functions and states
   static contextType = Context;
 
+  constructor() {
+    super();
+    this.state = {
+      delivery: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        streetAddress: "",
+        postalCode: "",
+        city: ""
+      }
+    }
+  }
+
   render() {
     /*  if (this.state.orderHasBeenPlaced) {
       return (
@@ -28,6 +43,7 @@ class Checkout extends React.Component {
         </Box>
       );
     }  */
+    console.log(this.state.delivery)
     return (
       <Main
         direction="column"
@@ -40,9 +56,9 @@ class Checkout extends React.Component {
           <Heading alignSelf="center" size="small">
             CHECKOUT
           </Heading>
-          <Form autoComplete="on" validate="submit" onSubmit={1}>
+          <Form autoComplete="on" validate="submit" onSubmit={this.handleSubmit}>
             <ShoppingCart />
-            <Delivery />
+            <Delivery deliveryData={this.state.delivery}/>
             <Shipping />
             <Payment />
           </Form>

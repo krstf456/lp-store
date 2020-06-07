@@ -4,7 +4,13 @@ import { Home } from "grommet-icons";
 
 
 export default class Delivery extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
   render() {
+    console.log(this.props.deliveryData)
     return (
       <Box pad="large" gap="large" width="large" background="light-1">
         <Box direction="row" width="large" justify="between">
