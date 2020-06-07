@@ -237,12 +237,7 @@ export class Provider extends React.Component {
   productInCart.quantity = productInCart.quantity + 1;
 
 
-  // if (productInCart.length === 0) {
-  //   const removeItemIndex = cloneShoppingCart.findIndex(
-  //     (element) => element.product_id === product._id
-  //   );
-  //   cloneShoppingCart.splice(removeItemIndex, 1);
-  // }
+  
   this.setState({ shoppingCart: cloneShoppingCart });
   localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 
@@ -253,15 +248,18 @@ export class Provider extends React.Component {
   console.log(product, cloneShoppingCart)
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
   
-  productInCart.quantity = productInCart.quantity - 1;
+  
 
 
-  if (productInCart.length === 0) {
-    const removeItemIndex = cloneShoppingCart.findIndex(
-      (element) => element.product_id === product._id
-    );
-    cloneShoppingCart.splice(removeItemIndex, 1);
-  }
+  if (productInCart.quantity <= 1) {
+    
+     const removeProduct = cloneShoppingCart.findIndex(
+       (element) => element.product._id === product._id
+       );
+       
+       cloneShoppingCart.splice(removeProduct, 1);
+    }
+    productInCart.quantity = productInCart.quantity - 1;
   this.setState({ shoppingCart: cloneShoppingCart });
   
  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
