@@ -73,25 +73,27 @@ export default class ShoppingCart extends React.Component {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {this.context.shoppingCart.map((product, index) => {
+                  {this.context.shoppingCart.map(({product, quantity}, index) => {
                     if (!this.context.shoppingCart) return null;
                     return (
                       <TableRow key={index}>
                         <TableCell scope="row">
                           <img
                             style={{ height: "3rem", width: "3rem" }}
-                            src={product.product.image}
+                            src={product.image}
                           />
                         </TableCell>
-                        <TableCell size="small">{product.product.album}</TableCell>
-                        <TableCell>{product.quantity}</TableCell>
-                        <TableCell style={{fontSize:"0.7em"}}>{product.product.price}:- /pp</TableCell>
+
+                        <TableCell size="small">{product.album}</TableCell>
+                        <TableCell>{quantity}</TableCell>
+                        <TableCell style={{fontSize:"0.7em"}}>{product.price}:- /pp</TableCell>
                         <TableCell>
-                          {product.product.price * product.quantity} :-
+                        {product.price * quantity} :-
+
                         </TableCell>
                         <TableCell>
-                          <FormAdd></FormAdd>
-                          <FormSubtract></FormSubtract>
+                          <FormAdd onClick={() => this.context.increaseQuantity(product)}></FormAdd>
+                          <FormSubtract onClick={() => this.context.decreaseQuantity(product)}></FormSubtract>
                           <FormTrash></FormTrash>
                         </TableCell>
                       </TableRow>

@@ -1,118 +1,73 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import Context from "../context/context";
-import { Box, ResponsiveContext, Menu } from "grommet";
+import { Box, ResponsiveContext, Menu, Button } from "grommet";
 
 class MainPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      showAllAlbums: false,
-      showAllRock: false,
-      showAllSoul: false,
-      showAllPop: false,
-      showAllPsycadelic: false,
-      showAllProg: false,
-      showAllOther: false
+      categories: ['', 'Rock', 'Soul', 'Pop', 'Psycadelic', 'Prog', 'Other'],
+      activeCategory: ''
     }
   }
   //This will enable the use of context-functions and states
   static contextType = Context;
 
   componentDidMount = () => {
-    this.context.getAllAlbums();
-    this.context.getAllRock();
-    this.context.getAllSoul();
-    this.context.getAllPop();
-    //this.context.getAllPsycadelic();
-    //this.context.getAllProg();
-    //this.context.getAllOther();
-  };
+    this.context.updateProducts(this.state.activeCategory)
+
+      if(localStorage.getItem('cart') === null){
+      localStorage.setItem('cart', JSON.stringify([]))
+      }
+      this.setState({
+      shoppingCart: JSON.parse(localStorage.getItem("cart"))
+      })
+    }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.activeCategory !== this.state.activeCategory) {
+      this.context.updateProducts(this.state.activeCategory)
+    }
+  }
 
   handleOnClickAll = () => {
-    this.setState({
-                  showAllAlbums: this.context.displayAllAlbums(),
-                  showAllRock: false,
-                  showAllSoul: false,
-                  showAllPop: false,
-                  showAllPsycadelic: false,
-                  showAllProg: false,
-                  showAllOther: false 
-                  })
+    this.setState({ activeCategory: '' })
+    console.log(this.state.activeCategory)
   }
 
   handleOnClickRock = () => {
-    this.setState({
-                  showAllRock: this.context.displayAllRock(),
-                  showAllAlbums: false,
-                  showAllSoul: false,
-                  showAllPop: false,
-                  showAllPsycadelic: false,
-                  showAllProg: false,
-                  showAllOther: false 
-                  })
+    this.setState({ activeCategory: 'Rock' })
+    console.log(this.state.activeCategory)
   }
 
   handleOnClickSoul = () => {
-    this.setState({
-                  showAllSoul: this.context.displayAllSoul(),
-                  showAllRock: false,
-                  showAllAlbums: false,
-                  showAllPop: false,
-                  showAllPsycadelic: false,
-                  showAllProg: false,
-                  showAllOther: false 
-                  })
+    this.setState({ activeCategory: 'Soul' })
+    console.log(this.state.activeCategory)
   }
 
   handleOnClickPop = () => {
-    this.setState({
-                  showAllPop: this.context.displayAllPop(),
-                  showAllRock: false,
-                  showAllSoul: false,
-                  showAllAlbums: false,
-                  showAllPsycadelic: false,
-                  showAllProg: false,
-                  showAllOther: false 
-                  })
+    this.setState({ activeCategory: 'Pop' })
+    console.log(this.state.activeCategory)
   }
 
   handleOnClickPsycadelic = () => {
-    this.setState({
-                  showAllPsycadelic: this.context.displayAllPsycadelic(),
-                  showAllRock: false,
-                  showAllSoul: false,
-                  showAllAlbums: false,
-                  showAllProg: false,
-                  showAllOther: false,
-                  showAllPop: false, 
-                  })
+    this.setState({ activeCategory: 'Psycadelic' })
+    console.log(this.state.activeCategory)
   }
 
   handleOnClickProg = () => {
-    this.setState({
-                  showAllProg: this.context.displayAllPop(),
-                  showAllRock: false,
-                  showAllSoul: false,
-                  showAllAlbums: false,
-                  showAllPop: false, 
-                  showAllPsycadelic: false,
-                  showAllOther: false 
-                  })
+    this.setState({  activeCategory: 'Prog'})
+    console.log(this.state.activeCategory)
   }
 
   handleOnClickOther = () => {
-    this.setState({
-                  showAllOther: this.context.displayAllPop(),
-                  showAllRock: false,
-                  showAllSoul: false,
-                  showAllAlbums: false,
-                  showAllPsycadelic: false,
-                  showAllProg: false, 
-                  showAllPop: false,
-                  })
+    this.setState({ activeCategory: 'Other' })
+    console.log(this.state.activeCategory)
   }
 
   render() {
+    
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
@@ -144,75 +99,30 @@ class MainPage extends React.Component {
                 flexDirection: "row",
                 flexWrap: "wrap",
               }}
-            >
-              {this.state.showAllAlbums}
+            > 
+              {this.context.products.map(product => {
+                return (
+                <Box key={product._id} className="boxStyle">
+                <Link
+                  to={{
+                    pathname: "/productpage/" + product._id,
+                  }}
+                >
+                  <div
+                    style={{ backgroundImage: `url(${product.image})` }}
+                    className="imgStyle"
+                  ></div>
+                  <h3>{product.album}</h3>
+                  <h4>{product.artist}</h4>
+                  <p>{product.price}</p>
+                  <p>{product.genre}</p>
+                </Link>
+                <Button
+                    onClick={() => this.context.addToCart(product)}>ADDTOCART</Button>
+              </Box>
+                )
+              })}
             </Box>
-            <Box
-              justify="center"
-              align="center"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
-              {this.state.showAllRock}
-            </Box>
-            <Box
-              justify="center"
-              align="center"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
-              {this.state.showAllSoul}
-            </Box>
-            <Box
-              justify="center"
-              align="center"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
-              {this.state.showAllPop}
-            </Box>
-            <Box
-              justify="center"
-              align="center"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
-              {this.state.showAllPsycadelic}
-            </Box> 
-            <Box
-              justify="center"
-              align="center"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
-              {this.state.showAllProg}
-            </Box>   
-            <Box
-              justify="center"
-              align="center"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-            >
-              {this.state.showAllOther}
-            </Box>    
           </Box>
         )}
       </ResponsiveContext.Consumer>
@@ -220,4 +130,6 @@ class MainPage extends React.Component {
   }
 }
 
+
 export default MainPage;
+
