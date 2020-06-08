@@ -12,7 +12,7 @@ import {
   FormField,
   TextInput,
 } from "grommet";
-import { Cart, Menu } from "grommet-icons";
+import { User, Shop } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
@@ -169,21 +169,14 @@ class Header1 extends React.Component {
                 align="center"
                 justify="center"
                 margin={{ left: "large" }}
-              >
-                  <p style={{ color: "white" }}>
-                    {this.context.getTotalQuantity()}
-                  </p>
-                <Cart color="plain" size="medium" />
-                {size !== "small" && (
-                  <Link to="/checkout/">
-                    <Button
-                      primary
-                      margin="small"
-                      color="dark-1"
-                      label="Checkout"
-                    ></Button>
-                  </Link>
-                )}
+              >  
+                <User color="plain" size="medium" />
+                <p style={{ color: "white" }}>
+                  {this.context.getTotalQuantity()}
+                </p>
+                <Link to="/checkout/">
+                  <Shop color="plain" size="medium" />
+                </Link>         
                 <Button
                   onClick={() => {
                     this.toggleModal();
