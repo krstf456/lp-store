@@ -21,6 +21,7 @@ export class UserProvider extends React.Component {
 			isAdmin: false,
 			isLoading: false,
 			token: '',
+			redirect: false,
 
 			onSignIn: this.onSignIn,
 			onSignOut: this.onSignOut,
@@ -29,6 +30,7 @@ export class UserProvider extends React.Component {
 			setUsername: this.setUsername,
 			getUserData: this.getUserData,
 			renderRedirect: this.renderRedirect,
+			setRedirect: this.setRedirect,
 
 			
 		}
@@ -40,7 +42,8 @@ export class UserProvider extends React.Component {
 	this.getUserData()
 	}
 
-	
+
+
 	getUserData =() => {
 
 		const obj = getFromStorage('storage-object')
@@ -139,6 +142,7 @@ export class UserProvider extends React.Component {
 				isLoading: false,
 				isLoggedIn: false,
 			})
+			this.setRedirect()
 			
 		} else {
 			this.setState({
@@ -147,9 +151,14 @@ export class UserProvider extends React.Component {
 		}
 	}
 
+	setRedirect = () => {
+		this.setState({
+		  redirect: true
+		})
+	  }
 
 	renderRedirect = () => {
-		if (!this.state.isAdmin) {
+		if (this.state.redirect || !this.state.isAdmin) {
 			return <Redirect to='/' />
 		} 
 	  }
