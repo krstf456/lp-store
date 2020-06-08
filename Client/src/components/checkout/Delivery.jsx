@@ -4,24 +4,11 @@ import { Home } from "grommet-icons";
 
 
 export default class Delivery extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      streetAddress: "",
-      postalCode: "",
-      addressLevel2: ""
-    }
-  }
 
-  handleInput = (event) => {
-    const {name, value} = event.target
-    this.setState({
-        [name]: value
-    }) 
+    }
   }
 
   render() {
@@ -39,9 +26,9 @@ export default class Delivery extends React.Component {
           label="First Name"
           type="text"
           required
-          value={this.state.firstName}
+          value={this.props.firstName}
           validate={{ message: "only letters" }}
-          onChange={this.handleInput}
+          onChange={this.props.handleInput}
         />
         <FormField
           name="lastName"
@@ -49,9 +36,9 @@ export default class Delivery extends React.Component {
           label="Last Name"
           type="text"
           required
-          value={this.state.lastName}
+          value={this.props.lastName}
           validate={{ message: "only letters" }}
-          onChange={this.handleInput}
+          onChange={this.props.handleInput}
         />
         <FormField
           name="email"
@@ -59,9 +46,9 @@ export default class Delivery extends React.Component {
           label="Email"
           type="email"
           required
-          value={this.state.email}
+          value={this.props.email}
           validate={{ message: "@" }}
-          onChange={this.handleInput}
+          onChange={this.props.handleInput}
         />
         <FormField
           name="phone"
@@ -69,9 +56,9 @@ export default class Delivery extends React.Component {
           label="Phone Number"
           type="tel"
           required
-          value={this.state.phone}
+          value={this.props.phone}
           validate={{ regexp: /^[0-9]{10}$/, message: "10 digits" }}
-          onChange={this.handleInput}
+          onChange={this.props.handleInput}
         />
         <FormField
           name="streetAddress"
@@ -80,8 +67,8 @@ export default class Delivery extends React.Component {
           type="text"
           validate={{ message: "Ex: Storgatan 1" }}
           required
-          value={this.state.streetAddress}
-          onChange={this.handleInput}
+          value={this.props.streetAddress}
+          onChange={this.props.handleInput}
         />
         <FormField
           name="postalCode"
@@ -89,9 +76,9 @@ export default class Delivery extends React.Component {
           label="Postal Code"
           type=""
           required
-          value={this.state.postalCode}
+          value={this.props.postalCode}
           validate={{ regexp: /^[0-9]{5}$/, message: "5 digits" }}
-          onChange={this.handleInput}
+          onChange={this.props.handleInput}
         />
         <FormField
           name="city"
@@ -99,9 +86,9 @@ export default class Delivery extends React.Component {
           label="City"
           type="text"
           required
-          value={this.state.city}
+          value={this.props.city}
           validate={{ message: "only letters" }}
-          onChange={this.handleInput}
+          onChange={this.props.handleInput}
         />
       </Box>
     );
