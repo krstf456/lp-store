@@ -56,7 +56,7 @@ class PaymentBox extends React.Component {
           Total{" "}
           <strong>
             {this.context.calculateSum() + this.context.selectedShipping.price}{" "}
-            SEK
+            :-
           </strong>{" "}
           VAT & shipping included
         </Text>
