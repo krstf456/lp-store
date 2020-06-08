@@ -1,7 +1,22 @@
 .modal {
-display: flex;
-z-index: 1;
-position: "absolute";
-top: "25%";
-left: "25%";
+    display: flex;
+    z-index: 1;
+    position: "absolute";
+    top: "25%";
+    left: "25%";
+}
+
+.shoppingCount {
+    color: "white";
+    font-size: "0.8rem";
+}
+
+.shoppingCountContainer {
+    height: "1.4rem";
+    width: "1.4rem";
+    background-color: "#3D138D";
+    border-radius: "2rem";
+    display: "flex";
+    align-items: "center";
+    justify-content: "center";
 }
