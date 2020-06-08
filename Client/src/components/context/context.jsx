@@ -18,6 +18,7 @@ export class Provider extends React.Component {
       addToCart: this.addToCart,
       increaseQuantity: this.increaseQuantity,
       decreaseQuantity: this.decreaseQuantity,
+      deleteProduct: this.deleteProduct,
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
       //displayOneProduct: this.displayOneProduct,
@@ -145,22 +146,29 @@ export class Provider extends React.Component {
  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 };
 
+deleteProduct = (product) => {
+  console.log('deletePr')
+  const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+  
+  const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
+  
+  
 
 
+  if (productInCart) {
+    
+     const removeProduct = cloneShoppingCart.findIndex(
+       (element) => element.product._id === product._id
+       );
+       
+       cloneShoppingCart.splice(removeProduct, 1);
+    }
+    productInCart.quantity = productInCart.quantity - 1;
+  this.setState({ shoppingCart: cloneShoppingCart });
+  
+ localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
+}
 
- 
- 
-
-
-
-
-
- itemQuantity = () => {
-  let itemQuantity = 0
-  let itemInCart = this.state.shoppingCart
-
-
-};
 
 
   getAllShipping = () => {
