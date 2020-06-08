@@ -171,21 +171,6 @@ deleteProduct = (product) => {
 
 
 
- 
- 
-
-
-
-
-
- itemQuantity = () => {
-  let itemQuantity = 0
-  let itemInCart = this.state.shoppingCart
-
-
-};
-
-
   getAllShipping = () => {
     axios.get("http://localhost:5000/shipping").then((response) => {
       this.setState({ shippingAlternatives: response.data });
