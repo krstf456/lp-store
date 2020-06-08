@@ -90,7 +90,13 @@ export class Provider extends React.Component {
   addToCart = (product) => {
     const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+    const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
+
     console.log(alreadyInCart)
+    if(productInCart.quantity >= product.stock_quantity){
+      alert('This article is out of stock.')
+      return
+      }
     if(alreadyInCart) {
       
       console.log('test')
@@ -104,6 +110,7 @@ export class Provider extends React.Component {
       cloneShoppingCart.push(itemInCart)
     }
     
+    
     alert("Item added to cart")
     console.log("shoppingcart", cloneShoppingCart)
     
@@ -112,12 +119,15 @@ export class Provider extends React.Component {
     
  }
 
- increaseQuantity = (product) => {
+ increaseQuantity = async (product) => {
   const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
   productInCart.quantity = productInCart.quantity + 1;
 
-
+  if(productInCart.quantity >= product.stock_quantity){
+    alert('This article is out of stock.')
+    return
+    }
   
   this.setState({ shoppingCart: cloneShoppingCart });
   localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
