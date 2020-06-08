@@ -42,6 +42,8 @@ class Orders extends React.Component {
 
     render() {
       return (
+        <>
+        {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
             <Box>
@@ -63,6 +65,7 @@ class Orders extends React.Component {
             </Box>
           )}
         </ResponsiveContext.Consumer>
+        </>
       );
     }
   }

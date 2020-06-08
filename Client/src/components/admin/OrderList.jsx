@@ -1,7 +1,10 @@
 import React from "react";
 import {AccordionPanel, Box } from "grommet";
+import userContext from '../context/userContext'
 
 class OrderList extends React.Component {
+  static contextType = userContext
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +18,8 @@ class OrderList extends React.Component {
         sent = ": ✓"
       }
       return (
+        <>
+                {this.context.renderRedirect()}
         <AccordionPanel label={"Ordernr: #" + this.props.orderData._id + " " + sent}>
           <Box background="light-2" overflow="auto" style={{padding: "1em"}}>
           <Box
@@ -35,6 +40,7 @@ class OrderList extends React.Component {
             </Box>
           </Box>
         </AccordionPanel>
+        </>
       );
     }
   }

@@ -23,7 +23,7 @@ export class Provider extends React.Component {
       //displayOneProduct: this.displayOneProduct,
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
-      displayAllAlbums: this.displayAllAlbums
+      displayAllAlbums: this.displayAllAlbums,
     };
   }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Redirect } from "react-router-dom";
 
 
 import {
@@ -27,6 +28,7 @@ export class UserProvider extends React.Component {
 			displayAllProducts: this.displayAllProducts,
 			setUsername: this.setUsername,
 			getUserData: this.getUserData,
+			renderRedirect: this.renderRedirect,
 
 			
 		}
@@ -145,6 +147,12 @@ export class UserProvider extends React.Component {
 		}
 	}
 
+
+	renderRedirect = () => {
+		if (!this.state.isAdmin) {
+			return <Redirect to='/' />
+		} 
+	  }
 
 	render() {
 		return (
