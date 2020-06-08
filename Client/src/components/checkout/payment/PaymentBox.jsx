@@ -19,7 +19,6 @@ class PaymentBox extends React.Component {
         <RadioButtonGroup
           name="paymentOptions"
           value=""
-          onChange={1}
           options={[
             {
               disabled: false,

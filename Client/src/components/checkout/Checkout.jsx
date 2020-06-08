@@ -24,15 +24,12 @@ class Checkout extends React.Component {
     super();
     this.state = {
       delivery: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        streetAddress: "",
-        postalCode: "",
-        city: ""
       }
     }
+  }
+
+  handleSubmit = () => {
+    console.log("hej")
   }
 
   render() {
@@ -58,7 +55,7 @@ class Checkout extends React.Component {
           </Heading>
           <Form autoComplete="on" validate="submit" onSubmit={this.handleSubmit}>
             <ShoppingCart />
-            <Delivery deliveryData={this.state.delivery}/>
+            <Delivery/>
             <Shipping />
             <Payment />
           </Form>
