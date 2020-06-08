@@ -10,6 +10,10 @@ import Context from "../context/context";
 class PaymentBox extends React.Component {
   static contextType = Context;
 
+  state = {
+    paymentSelection: "swish",
+  };
+
   render() {
     console.log(this.context.selectedShipping);
     return (
@@ -22,8 +26,12 @@ class PaymentBox extends React.Component {
         </Box>
         <RadioButtonGroup
           name="paymentOptions"
-          value=""
-          onChange={1}
+          value={this.state.paymentSelection}
+          onChange={(event) =>
+            this.setState({
+              paymentSelection: event.target.value,
+            })
+          }
           options={[
             {
               disabled: false,
@@ -46,11 +54,13 @@ class PaymentBox extends React.Component {
           ]}
         />
 
-        <Swish />
-
-        <Invoice />
-
-        <CreditCard />
+        {this.state.paymentSelection === "swish" ? (
+          <Swish />
+        ) : this.state.paymentSelection === "invoice" ? (
+          <Invoice />
+        ) : (
+          <CreditCard />
+        )}
         <Box />
         <Text alignSelf="center" textAlign="center" size="large">
           Total{" "}
