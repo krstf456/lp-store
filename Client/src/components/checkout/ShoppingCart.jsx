@@ -103,7 +103,7 @@ export default class ShoppingCart extends React.Component {
                       <strong>total</strong>
                     </TableCell>
                     <TableCell>
-                <strong>{this.context.calculateSum()}</strong>
+                <strong>{this.context.calculateSum() + " " + ":-"}</strong>
                 </TableCell>
                   </TableRow>
                 </TableBody>
