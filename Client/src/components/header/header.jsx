@@ -204,6 +204,9 @@ class Header1 extends React.Component {
                 justify="center"
                 margin={{ left: "large" }}
               >
+                 <div className="shoppingCountContainer">
+                      <p className="shoppingCount">{this.context.getTotalQuantity()}</p>
+                    </div>
                 <Cart color="plain" size="medium" />
                 {size !== "small" && (
                   <Link to="/checkout/">

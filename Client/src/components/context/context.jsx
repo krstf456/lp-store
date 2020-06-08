@@ -25,7 +25,8 @@ export class Provider extends React.Component {
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
       displayAllAlbums: this.displayAllAlbums,
-      calculateSum: this.calculateSum
+      calculateSum: this.calculateSum,
+      getTotalQuantity: this.getTotalQuantity
     };
   }
 
@@ -169,6 +170,14 @@ deleteProduct = (product) => {
  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 }
 
+
+getTotalQuantity = () => {
+  let totalQuantity = 0;
+  for (const product of this.state.shoppingCart) {
+    totalQuantity += product.quantity;
+  }
+  return totalQuantity;
+};
 
 calculateSum = () => {
   let sum = 0
