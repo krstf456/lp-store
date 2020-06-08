@@ -71,6 +71,7 @@ export class UserProvider extends React.Component {
 							isLoading: false,
 							isLoggedIn: true,
 							token: token,
+							redirect: false,
 						})
 						
 					} else {
@@ -143,6 +144,8 @@ export class UserProvider extends React.Component {
 				isLoggedIn: false,
 			})
 			this.setRedirect()
+			console.log(this.state.redirect)
+
 			
 		} else {
 			this.setState({
