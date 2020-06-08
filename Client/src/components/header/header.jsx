@@ -148,42 +148,6 @@ class Header1 extends React.Component {
   }
 
   render() {
-    const renderItems = () => (
-      <Box>
-        <Text>
-          <Link to="/">
-            <Button>Home</Button>
-          </Link>
-        </Text>
-        <Text>
-          <Link to="/">
-            <Button>Login</Button>
-          </Link>
-        </Text>
-        <Text>
-          <Link to="/">
-            <Button>Logout</Button>
-          </Link>
-        </Text>
-      </Box>
-    );
-
-    const MenuItem = () => (
-      <Box height="36px" width="12px" align="center">
-        <Menu color="white" />
-      </Box>
-    );
-
-    const HamburgerButton = () => (
-      <DropButton
-        alignSelf="center"
-        margin={{ vertical: "small" }}
-        dropContent={renderItems()}
-        dropProps={{ align: { top: "bottom" } }}
-      >
-        <MenuItem />
-      </DropButton>
-    );
 
     return (
       <>
@@ -195,12 +159,6 @@ class Header1 extends React.Component {
               pad="small"
               height="15rem"
             >
-              <Box fill>
-                <Box fill="vertical" width="xxsmall">
-                  <HamburgerButton />
-                  <Box flex />
-                </Box>
-              </Box>
               <Box>
                 <Link to="/">
                   <h1>Love Peace & Records</h1>
