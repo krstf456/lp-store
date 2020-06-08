@@ -20,7 +20,7 @@ import {getFromStorage} from '../../utils/storage'
 
 class Checkout extends React.Component {
   //This will enable the use of context-functions and states
-  static contextType = Context;
+	static contextType = UserContext
 
   constructor() {
     super();
@@ -28,7 +28,6 @@ class Checkout extends React.Component {
       errorMessage: "",
       firstName: "",
       lastName: "",
-      email: "",
       phone: "",
       streetAddress: "",
       postalCode: "",
@@ -43,13 +42,20 @@ class Checkout extends React.Component {
 
       // `POST` album
       const data = {
-          "products": ["5ecce53d823972c10044b197", "5ecd0528bbbbe912a584a6cc"],
-          "email": "lis@test.com",
-          "adress": [],
-          "phone": this.state.phone,
-          "sent": false,
-          "payment_method": "swish",
-          "total_price": 123
+        user_Id: this.context.id,
+        products: ['5eccdced52ae746468b66868','5ecce53d823972c10044b197'],
+        email: this.context.email,
+        adress:  [{
+          first_name: this.state.firstName,
+          last_name: this.state.lastName,
+          street_address: this.state.streetAddress,
+          postcode: this.state.postalCode,
+          city: this.state.city
+          }]
+        ,
+        phone: this.state.phone,
+        payment_method: "swish",
+        total_price: 1234
         }
          fetch(`http://localhost:5000/orders`,{
           method: 'POST',
@@ -71,10 +77,9 @@ class Checkout extends React.Component {
           }
           else{
             this.setState({
-              errorMessage: "Your records is on their way. Dude.",
+              errorMessage: `Your records is on their way. Dude. \n Love and the invoice is sent to ${this.context.email}`,
               firstName: "",
               lastName: "",
-              email: "",
               phone: "",
               streetAddress: "",
               postalCode: "",
@@ -118,7 +123,7 @@ class Checkout extends React.Component {
           </Heading>
           <Form autoComplete="on" validate="submit" onSubmit={this.handleSubmit}>
             <ShoppingCart />
-            <Delivery delivery={this.state.delivery}
+            <Delivery 
               handleInput={this.handleInput}
               firstName={this.state.firstName}
               lastName={this.state.lastName}

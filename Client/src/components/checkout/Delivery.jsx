@@ -41,16 +41,6 @@ export default class Delivery extends React.Component {
           onChange={this.props.handleInput}
         />
         <FormField
-          name="email"
-          autoComplete="email"
-          label="Email"
-          type="email"
-          required
-          value={this.props.email}
-          validate={{ message: "@" }}
-          onChange={this.props.handleInput}
-        />
-        <FormField
           name="phone"
           autoComplete="tel"
           label="Phone Number"

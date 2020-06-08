@@ -6,19 +6,14 @@ getAllOrders = async (req, res, next) => {
   try {
     // Get all orders
     const order = await orderModel.find();
+    res.send(order);
 
-    if (req.user.isAdmin === true) {
-      res.send(order);
-    } else {
-      res.json("You're not admin")
-    }
   } catch (err) {
     next(err)
   }
 };
 
 createOrder = async (req, res, next) => {
-  // TODO: add user to order
   try {
     const id = req.params.id
     const orderData = new orderModel(req.body);

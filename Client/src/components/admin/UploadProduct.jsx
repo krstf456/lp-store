@@ -41,8 +41,10 @@ class UploadProduct extends React.Component {
       const obj = getFromStorage('storage-object')
       if (obj && obj.token) {
         const { token } = obj
-      const isValidated = this.validateInput()
-      if(isValidated){
+        console.log(obj)
+        console.log(token)
+        const isValidated = this.validateInput()
+        if(isValidated){
 
         const fd = new FormData();
         fd.append('image', this.state.image);

@@ -24,8 +24,6 @@ class ProductList extends React.Component {
       const obj = getFromStorage('storage-object')
       if (obj && obj.token) {
         const { token } = obj
-        console.log(obj)
-        console.log(token)
         const stock_update = {
           stock_quantity: this.state.stock_quantity
         }

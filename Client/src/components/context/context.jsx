@@ -115,7 +115,9 @@ export class Provider extends React.Component {
   const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
   productInCart.quantity = productInCart.quantity + 1;
-
+  if(productInCart.quantity  >= product.stock_quantity){
+    console.log("mjau")
+  }
 
   // if (productInCart.length === 0) {
   //   const removeItemIndex = cloneShoppingCart.findIndex(
@@ -130,7 +132,7 @@ export class Provider extends React.Component {
 
  decreaseQuantity = (product) => {
   const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
-  console.log(product, cloneShoppingCart)
+  //console.log(product, cloneShoppingCart)
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
   
   productInCart.quantity = productInCart.quantity - 1;

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const AdressSchema = require('./Adress.model')
 const Schema = mongoose.Schema
 
 
@@ -16,9 +15,6 @@ const UserSchema = new Schema({
         type: String,
         required: false
     },
-    adress: 
-        [AdressSchema]
-    ,
     isAdmin: {
         type: Boolean,
         required: false,
