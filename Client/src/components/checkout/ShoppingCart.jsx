@@ -15,18 +15,24 @@ import Context from "../context/context";
 export default class ShoppingCart extends React.Component {
   static contextType = Context;
 
-  constructor() {
+/*  constructor() {
     super();
     this.state = {
       totalSum: 0
     }
-  }
-
-  componentDidMount(){
-    this.calculateSum()
-  }
-
-  calculateSum(){
+  }  */
+ 
+ componentDidMount = () => {
+   this.context.calculateSum()
+  }   
+/* 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.totalSum !== this.context.totalSum) {
+      this.context.calculateSum(this.state.totalSum)
+    }
+  } */
+ 
+  /* calculateSum(){
     for (let i = 0; i < this.context.shoppingCart.length ; i++){
       let sum = this.context.shoppingCart[i].product.price * this.context.shoppingCart[i].quantity
       this.setState(prevState => {
@@ -35,7 +41,7 @@ export default class ShoppingCart extends React.Component {
         }
      })
     }
-  }
+  } */
 
   render() {
     if(localStorage.getItem('cart') === null){
@@ -119,7 +125,7 @@ export default class ShoppingCart extends React.Component {
                       <strong>total</strong>
                     </TableCell>
                     <TableCell>
-                      <strong>{this.state.totalSum + ":-"}</strong>
+                      <strong>{this.context.totalSum + ":-"}</strong>
                     </TableCell>
                   </TableRow>
                 </TableBody>
