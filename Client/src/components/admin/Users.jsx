@@ -1,17 +1,19 @@
 import React from "react";
-import Context from "../context/context";
+import userContext from "../context/userContext";
 import "./Users.css"
 import { Box, ResponsiveContext } from "grommet";
 import { Link } from "react-router-dom";
 
 class Users extends React.Component {
     //This will enable the use of context-functions and states
-    static contextType = Context;
+    static contextType = userContext;
   
   
   
     render() {
       return (
+        <>
+        {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
             <Box>
@@ -26,6 +28,7 @@ class Users extends React.Component {
             </Box>
           )}
         </ResponsiveContext.Consumer>
+        </>
       );
     }
   }

@@ -24,7 +24,8 @@ export class Provider extends React.Component {
       //displayOneProduct: this.displayOneProduct,
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
-      displayAllAlbums: this.displayAllAlbums
+      displayAllAlbums: this.displayAllAlbums,
+      calculateSum: this.calculateSum
     };
   }
 
@@ -77,7 +78,6 @@ export class Provider extends React.Component {
       shoppingCart: JSON.parse(localStorage.getItem("cart"))
     })
   }
-
 
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
@@ -179,6 +179,14 @@ deleteProduct = (product) => {
  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 }
 
+
+calculateSum = () => {
+  let sum = 0
+  for (let i = 0; i < this.state.shoppingCart.length ; i++){
+     sum = this.state.shoppingCart[i].product.price * this.state.shoppingCart[i].quantity + sum
+  }
+  return sum
+}
 
 
   getAllShipping = () => {

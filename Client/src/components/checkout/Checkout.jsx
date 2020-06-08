@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart";
 import Delivery from "./Delivery";
 import Shipping from "./Shipping";
-import Payment from "./payment/PaymentBox";
+import Payment from "../payment/PaymentBox";
 import OrderPage from "./OrderPage";
 
 

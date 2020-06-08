@@ -49,6 +49,8 @@ class ProductList extends React.Component {
   
     render() {
       return (
+        <>
+        {this.context.renderRedirect()}
         <AccordionPanel label={"* " + this.props.productData.album}>
           <Box background="light-2" overflow="auto" style={{padding: "1em"}}>
           <Box
@@ -87,6 +89,7 @@ class ProductList extends React.Component {
             </Box>
           </Box>
         </AccordionPanel>
+        </>
       );
     }
   }

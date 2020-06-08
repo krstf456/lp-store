@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Redirect } from "react-router-dom";
 
 
 import {
@@ -20,6 +21,7 @@ export class UserProvider extends React.Component {
 			isAdmin: false,
 			isLoading: false,
 			token: '',
+			redirect: false,
 
 			onSignIn: this.onSignIn,
 			onSignOut: this.onSignOut,
@@ -27,6 +29,8 @@ export class UserProvider extends React.Component {
 			displayAllProducts: this.displayAllProducts,
 			setUsername: this.setUsername,
 			getUserData: this.getUserData,
+			renderRedirect: this.renderRedirect,
+			setRedirect: this.setRedirect,
 
 			
 		}
@@ -38,7 +42,8 @@ export class UserProvider extends React.Component {
 	this.getUserData()
 	}
 
-	
+
+
 	getUserData =() => {
 
 		const obj = getFromStorage('storage-object')
@@ -66,6 +71,7 @@ export class UserProvider extends React.Component {
 							isLoading: false,
 							isLoggedIn: true,
 							token: token,
+							redirect: false,
 						})
 						
 					} else {
@@ -137,6 +143,9 @@ export class UserProvider extends React.Component {
 				isLoading: false,
 				isLoggedIn: false,
 			})
+			this.setRedirect()
+			console.log(this.state.redirect)
+
 			
 		} else {
 			this.setState({
@@ -145,6 +154,17 @@ export class UserProvider extends React.Component {
 		}
 	}
 
+	setRedirect = () => {
+		this.setState({
+		  redirect: true
+		})
+	  }
+
+	renderRedirect = () => {
+		if (this.state.redirect || !this.state.isAdmin) {
+			return <Redirect to='/' />
+		} 
+	  }
 
 	render() {
 		return (

@@ -1,20 +1,25 @@
 import React from "react";
 import Context from "../context/context";
+import userContext from '../context/userContext'
 import { Box, Button, ResponsiveContext } from "grommet";
 import "./Admin.css"
 import { Link } from "react-router-dom";
 
 class Admin extends React.Component {
     //This will enable the use of context-functions and states
-    static contextType = Context;
-  
-  
+    // static contextType = Context
+    static contextType = userContext
+
+   
   
     render() {
       return ( 
+        <>
+        {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
             <Box>
+            
               <h1>Admin</h1>
               <Link to="/admin/orders">
                 <Button label="Orders"/>
@@ -31,6 +36,7 @@ class Admin extends React.Component {
             </Box>
           )}
         </ResponsiveContext.Consumer>
+        </>
       );
     }
   }
