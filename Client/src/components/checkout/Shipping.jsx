@@ -28,7 +28,7 @@ export default class ShippingBox extends React.Component {
           <Deliver color="orange"></Deliver>
         </Box>
         <Box gap="small" direction="column">
-          {this.context.shippingAlternatives.map((shipping) => (
+          {this.context.shippingAlternatives.map(shipping => (
             <>
               <RadioButton
                 key={shipping._id}
