@@ -15,22 +15,22 @@ import Context from "../context/context";
 export default class ShoppingCart extends React.Component {
   static contextType = Context;
 
-/*  constructor() {
+ /*  constructor() {
     super();
     this.state = {
       totalSum: 0
     }
-  }  */
+  }   */
  
  componentDidMount = () => {
    this.context.calculateSum()
   }   
-/* 
-  componentDidUpdate = (prevProps, prevState) => {
+
+ /*  componentDidUpdate = (prevProps, prevState) => {
     if (prevState.totalSum !== this.context.totalSum) {
-      this.context.calculateSum(this.state.totalSum)
+      this.context.calculateSum(this.context.totalSum)
     }
-  } */
+  }  */
  
   /* calculateSum(){
     for (let i = 0; i < this.context.shoppingCart.length ; i++){
