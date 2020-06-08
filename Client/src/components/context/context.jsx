@@ -24,7 +24,6 @@ export class Provider extends React.Component {
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
       displayAllAlbums: this.displayAllAlbums,
-      totalSum: 0,
       calculateSum: this.calculateSum
     };
   }
@@ -155,15 +154,12 @@ export class Provider extends React.Component {
 
 };
 
-calculateSum = (prevProps, prevState) => {
+calculateSum = () => {
+  let sum = 0
   for (let i = 0; i < this.state.shoppingCart.length ; i++){
-    let sum = this.state.shoppingCart[i].product.price * this.state.shoppingCart[i].quantity
-    this.setState(prevState => {
-      return {
-        totalSum: prevState.totalSum + sum
-      }
-   })
+     sum = this.state.shoppingCart[i].product.price * this.state.shoppingCart[i].quantity + sum
   }
+  return sum
 }
 
 
