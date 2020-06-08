@@ -78,7 +78,7 @@ export default class ShoppingCart extends React.Component {
                         <TableCell>
                           <FormAdd onClick={() => this.context.increaseQuantity(product)}></FormAdd>
                           <FormSubtract onClick={() => this.context.decreaseQuantity(product)}></FormSubtract>
-                          <FormTrash></FormTrash>
+                          <FormTrash onClick={() => this.context.deleteProduct(product)}>></FormTrash>
                         </TableCell>
                       </TableRow>
                     );
