@@ -17,6 +17,7 @@ import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
 import style from "./Header.css";
+import flower from "./flower06.png"
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -146,11 +147,12 @@ class Header1 extends React.Component {
     }
     return undefined;
   }
-
+  
   render() {
 
     return (
       <>
+      
         <ResponsiveContext.Consumer>
           {(size) => (
             <Header
@@ -170,25 +172,36 @@ class Header1 extends React.Component {
                 justify="center"
                 margin={{ left: "large" }}
               >  
-                <User color="plain" size="medium" />
-                <p style={{ color: "white" }}>
-                  {this.context.getTotalQuantity()}
-                </p>
-                <Link to="/checkout/">
-                  <Shop color="plain" size="medium" />
-                </Link>         
+              <img src={flower} alt="flower" />
                 <Button
+                  style={{ color: "white", border: "none" }}
                   onClick={() => {
                     this.toggleModal();
                   }}
-                  primary
-                  label="Register"
+                  
+                  label="Register"  
+                  default
                 ></Button>
+                <Button
+                  margin={{ right: "medium" }}
+                >
+                <User color="white" size="medium" />
+                </Button>
+                <p style={{ color: "white" }}>
+                  {this.context.getTotalQuantity()}
+                </p>
+                <Button
+                >
+                <Link to="/checkout/">
+                  <Shop color="white" size="medium" />
+                </Link>   
+                </Button>      
               </Box>
             </Header>
           )}
         </ResponsiveContext.Consumer>
         {this.modal}
+        
       </>
     );
   }
