@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const AdressSchema = require('./Adress.model')
+const {ProductSchema} = require("../models/Product.model");
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
@@ -8,11 +9,9 @@ const OrderSchema = new Schema({
         ref: "users",
         required: false
     },
-    products: {
-        type: [mongoose.Types.ObjectId],
-        ref: "products",
-        required: false
-    },
+    products: 
+        [ProductSchema]
+    ,
     email: {
         type: String,
         required: false

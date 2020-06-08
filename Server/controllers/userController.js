@@ -28,7 +28,7 @@ createNewUser = async (req, res, next) => {
                             })
                 })
             } else {
-                res.status(401).json({message : "User is already registered!"})
+                res.status(401).json({message : "You're already regg..., regits... a user, man!"})
             } 
         } catch (err){
             next(err)

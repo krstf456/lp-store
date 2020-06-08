@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
 
 const ProductSchema = new Schema({
@@ -38,4 +37,5 @@ ProductSchema.virtual("imageUrl").get(() => {
     return '/uploads' + this.image.toString()
 })*/
 
-module.exports = Product = mongoose.model('products', ProductSchema)
+productModel = mongoose.model('products', ProductSchema)
+module.exports = {productModel, ProductSchema}

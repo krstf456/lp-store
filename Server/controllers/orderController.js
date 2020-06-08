@@ -1,5 +1,5 @@
 const orderModel = require("../models/Order.model");
-const productModel =  require("../models/Product.model");
+const {ProductModel} =  require("../models/Product.model");
 
 
 getAllOrders = async (req, res, next) => {
@@ -15,14 +15,15 @@ getAllOrders = async (req, res, next) => {
 
 createOrder = async (req, res, next) => {
   try {
-    const id = req.params.id
+    const products = req.params.products
+    console.log(products)
     const orderData = new orderModel(req.body);
-    const products = await productModel.find(id);
+    //const products = await productModel.find(id);
 
-    products.forEach(async item => {
+    /*products.forEach(async item => {
       item.stock_quantity -= 1
       await item.save();
-    })
+    })*/
 
     await orderData.save();
     res.send(orderData);
