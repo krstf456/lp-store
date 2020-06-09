@@ -10,7 +10,7 @@ import ShoppingCart from "./ShoppingCart";
 import Delivery from "./Delivery";
 import Shipping from "./Shipping";
 import Payment from "../payment/PaymentBox";
-
+import OrderPage from "./OrderPage"
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'
 
@@ -27,7 +27,9 @@ class Checkout extends React.Component {
       phone: "",
       streetAddress: "",
       postalCode: "",
-      city: ""
+      city: "",
+      orderIsSent: false,
+      checkoutData: []
     }
   }
 
@@ -35,14 +37,18 @@ class Checkout extends React.Component {
     const obj = getFromStorage('storage-object')
     if (obj && obj.token) {
       const { token } = obj
-
-      if(localStorage.getItem('cart') === null){
+      let items = JSON.parse(localStorage.getItem('cart'))
+      console.log(items)
+      this.setState({
+        checkoutData: items
+      })
+      if(!Array.isArray(items) || !items.length){
         this.setState({
           errorMessage: `Dude, you need to, like, buy something, or stuff.`,
         })
       } else {
-        // `POST` order
 
+        // `POST` order
         let productList = []
         let totalSum = 0
         const products = JSON.parse(localStorage.getItem('cart'))
@@ -92,22 +98,17 @@ class Checkout extends React.Component {
             }
             else{
               this.setState({
-                errorMessage: `Your records is on their way. Dude. \n Love and a confirmation is sent to ${this.context.email}.`,
-                firstName: "",
-                lastName: "",
-                phone: "",
-                streetAddress: "",
-                postalCode: "",
-                city: ""
+                orderIsSent: true
               })
               localStorage.removeItem('cart')
             }
         })
       }
-    }    
-    this.setState({
-      errorMessage: "It would be goovy if you logged in.",
-    })
+    } else {
+      this.setState({
+        errorMessage: "It would be goovy if you logged in.",
+      })
+    }
     
   }
 
@@ -128,6 +129,7 @@ class Checkout extends React.Component {
         gap="small"
         flex="grow"
       >
+        {!this.state.orderIsSent?
         <Box>
           <Heading alignSelf="center" size="small">
             CHECKOUT
@@ -139,16 +141,26 @@ class Checkout extends React.Component {
               firstName={this.state.firstName}
               lastName={this.state.lastName}
               phone={this.state.phone}
-              email={this.state.email}
               streetAddress={this.state.streetAddress}
               postalCode={this.state.postalCode}
               city={this.state.city}
             />
             <Shipping />
-            <Payment />
-            <h5>{this.state.errorMessage}</h5>
+            <Payment errorMessage={this.state.errorMessage}/>
           </Form>
         </Box>
+        :
+        <OrderPage
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
+          phone={this.state.phone}
+          email={this.context.email}
+          user={this.context.username}
+          streetAddress={this.state.streetAddress}
+          postalCode={this.state.postalCode}
+          city={this.state.city}
+          checkoutData={this.state.checkoutData}
+        />}
       </Main>
     );
   }
