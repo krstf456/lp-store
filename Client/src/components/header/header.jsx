@@ -218,9 +218,11 @@ class Header1 extends React.Component {
                 <Button margin={{ right: "medium" }}>
                   <User color="white" size="medium" />
                 </Button>
-                <p style={{ color: "white" }}>
+                <div>
+                <p style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
                   {this.context.getTotalQuantity()}
                 </p>
+                </div>
                 <Button>
                   <Link to="/checkout/">
                     <Shop color="white" size="medium" />
