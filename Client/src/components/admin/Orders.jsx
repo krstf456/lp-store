@@ -62,7 +62,7 @@ class Orders extends React.Component {
           </Box>
             <Box>
             <table>
-              <tr style={{ background: "#orange"}}>
+              <tr style={{ background: "orange"}}>
                 <th>Order Id</th>
                 <th>Order Sent</th>
                 <th>Payment Method</th>
@@ -83,7 +83,7 @@ class Orders extends React.Component {
                 <th>Price</th>
               </tr>
               {this.state.orders.map((order, index) =>(
-              <tr key={index} style={{ background: "purple", color: "white" }}>
+              <tr key={index} style={{ background: "#008080", color: "white" }}>
                 <td>{order._id}</td>
                 <td>{order.sent}</td>
                 <td>{order.payment_method}</td>
