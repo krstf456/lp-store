@@ -233,6 +233,12 @@ class Header1 extends React.Component {
                   label="Sign in"
                   onClick={() => this.toggleLoginModal()}
                 ></Button>
+                 <Link to="/admin">
+                <Button
+                  style={{ color: "white", border: "black" }}
+                  label="Admin"
+                ></Button>
+                </Link>
               </Box>
             </Header>
           )}
