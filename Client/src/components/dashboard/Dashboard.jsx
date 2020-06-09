@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
 					placeholder='password'
 					onChange={this.onChangePasswordInput}
 				/>
-				<Button primary label='Login' onClick={() => this.context.onSignIn(username, password)} />
+				<Button primary label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
 			</div>
 		)
 	}
@@ -105,7 +105,7 @@ class Dashboard extends React.Component {
 					</Box>
 					<Button
 					primary
-					label='Logout'
+					label='Sign out'
 					onClick={() => this.context.onSignOut()}
 				/>
 					{/* <Box>
