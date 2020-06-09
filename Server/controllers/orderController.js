@@ -1,28 +1,24 @@
 const orderModel = require("../models/Order.model");
-const productModel =  require("../models/Product.model");
+const {ProductModel} =  require("../models/Product.model");
 
 
 getAllOrders = async (req, res, next) => {
   try {
     // Get all orders
     const order = await orderModel.find();
+    res.send(order);
 
-    if (req.user.isAdmin === true) {
-      res.send(order);
-    } else {
-      res.json("You're not admin")
-    }
   } catch (err) {
     next(err)
   }
 };
 
 createOrder = async (req, res, next) => {
-  // TODO: add user to order
   try {
-    const id = req.params.id
+
     const orderData = new orderModel(req.body);
-    const products = await productModel.find(id);
+    const album = req.params.album
+    const products = await productModel.find(album);
 
     products.forEach(async item => {
       item.stock_quantity -= 1

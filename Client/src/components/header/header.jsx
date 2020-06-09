@@ -12,10 +12,13 @@ import {
   FormField,
   TextInput,
 } from "grommet";
-import { Cart, Menu } from "grommet-icons";
+import { User, Shop } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
+import style from "./Header.css";
+import flower from "./flower06.png";
+import Dashboard from "../dashboard/Dashboard";
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -23,16 +26,22 @@ class Header1 extends React.Component {
 
   state = {
     showModal: false,
+    showLoginModal: false,
     username: "",
     email: "",
     password: "",
-
   };
 
   //To open modal call this function on a button
   toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
+    });
+  };
+
+  toggleLoginModal = () => {
+    this.setState({
+      showLoginModal: !this.state.showLoginModal,
     });
   };
 
@@ -100,43 +109,74 @@ class Header1 extends React.Component {
             height="30rem"
             align="center"
           >
-            <Button onClick={() => {this.toggleModal()}}>Close</Button>
+            <Button
+              onClick={() => {
+                this.toggleModal();
+              }}
+            >
+              Close
+            </Button>
             <h1>Register</h1>
             <Form onSubmit={this.submitRegister}>
               <FormField label="Username">
-                <TextInput 
-                placeholder="type a username"
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handelInputChange}
-                required />
-              </FormField>
-              <FormField label="E-mail">
-                <TextInput 
-                placeholder="type your email"
-                type="text"
-                name="email"
-                value={this.state.email}
-                onChange={this.handelInputChange}
-                required
-                 />
-              </FormField>
-              <FormField label="Password">
-                <TextInput 
-                placeholder="type a password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handelInputChange}
-                required 
+                <TextInput
+                  placeholder="type a username"
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handelInputChange}
+                  required
                 />
               </FormField>
-              <Button
-                label="Register"
-                type="submit"
-              ></Button>
+              <FormField label="E-mail">
+                <TextInput
+                  placeholder="type your email"
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handelInputChange}
+                  required
+                />
+              </FormField>
+              <FormField label="Password">
+                <TextInput
+                  placeholder="type a password"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handelInputChange}
+                  required
+                />
+              </FormField>
+              <Button label="Register" type="submit"></Button>
             </Form>
+          </Box>
+        </Modal>
+      );
+    } else if (this.state.showLoginModal) {
+      return (
+        <Modal>
+          <Box
+            style={{
+              display: "flex",
+              position: "absolute",
+              left: "33vw",
+              top: "25%",
+            }}
+            background="dark-1"
+            width="30rem"
+            height="30rem"
+            align="center"
+          >
+            <Button
+              onClick={() => {
+                this.toggleLoginModal();
+              }}
+            >
+              Close
+            </Button>
+            <h1>Sign in</h1>
+            <Dashboard />
           </Box>
         </Modal>
       );
@@ -145,38 +185,6 @@ class Header1 extends React.Component {
   }
 
   render() {
-
-    const renderItems = () => (
-      <Box>
-        <Text>
-          <Link to="/"><Button>Home</Button></Link>
-        </Text>
-        <Text>
-          <Link to="/"><Button>Login</Button></Link>
-        </Text> 
-        <Text>
-          <Link to="/"><Button>Logout</Button></Link>
-        </Text>
-      </Box>
-    )
-
-    const MenuItem = () => (
-      <Box height="36px" width="12px" align="center">
-        <Menu color="white"/>
-      </Box>
-    )
-
-    const HamburgerButton = () => (
-      <DropButton
-        alignSelf="center"
-        margin={{ vertical: "small" }}
-        dropContent={renderItems()}
-        dropProps={{ align: { top: "bottom" } }}
-      >
-        <MenuItem />
-      </DropButton>
-    )
-
     return (
       <>
         <ResponsiveContext.Consumer>
@@ -187,15 +195,9 @@ class Header1 extends React.Component {
               pad="small"
               height="15rem"
             >
-              <Box fill>
-                <Box fill="vertical" width="xxsmall">
-                  <HamburgerButton />
-                  <Box flex />
-              </Box>
-              </Box>
               <Box>
                 <Link to="/">
-                <h1>Love Peace & Records</h1>
+                  <h1>Love Peace & Records</h1>
                 </Link>
               </Box>
               <Box
@@ -204,23 +206,30 @@ class Header1 extends React.Component {
                 justify="center"
                 margin={{ left: "large" }}
               >
-                <Cart color="plain" size="medium" />
-                {size !== "small" && (
-                  <Link to="/checkout/">
-                  <Button
-                    primary
-                    margin="small"
-                    color="dark-1"
-                    label="Checkout"
-                  ></Button>
-                  </Link>
-                )}
+                <img src={flower} alt="flower" />
                 <Button
+                  style={{ color: "white", border: "none" }}
                   onClick={() => {
                     this.toggleModal();
                   }}
-                  primary
                   label="Register"
+                  default
+                ></Button>
+                <Button margin={{ right: "medium" }}>
+                  <User color="white" size="medium" />
+                </Button>
+                <p style={{ color: "white" }}>
+                  {this.context.getTotalQuantity()}
+                </p>
+                <Button>
+                  <Link to="/checkout/">
+                    <Shop color="white" size="medium" />
+                  </Link>
+                </Button>
+                <Button
+                  style={{ color: "white", border: "black" }}
+                  label="Sign in"
+                  onClick={() => this.toggleLoginModal()}
                 ></Button>
               </Box>
             </Header>

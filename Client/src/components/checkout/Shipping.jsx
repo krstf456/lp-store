@@ -29,20 +29,19 @@ export default class ShippingBox extends React.Component {
         </Box>
         <Box gap="small" direction="column">
           {this.context.shippingAlternatives.map(shipping => (
-            <>
+            <div key={shipping._id}>
               <RadioButton
-                key={shipping._id}
                 label={shipping.company + " " + "(" + shipping.shipping_time + " " + "days" + ")"}
                 name={shipping.company}
-                checked={shipping == this.context.selectedShipping}
+                checked={shipping === this.context.selectedShipping}
                 onChange={() => this.context.setSelectedShipping(shipping)}
               ></RadioButton>
-              {shipping == this.context.selectedShipping && (
+              {shipping === this.context.selectedShipping && (
                 <Text style={{ fontSize: "11pt", marginLeft: "2.35rem" }}>
                   Delivery on <strong>{this.getDeliveryDate()}</strong>
                 </Text>
               )}
-            </>
+            </div>
           ))}
         </Box>
       </Box>

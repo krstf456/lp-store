@@ -7,7 +7,6 @@ export default class SwishBox extends React.Component {
       <TextInput
         required
         placeholder="Swish number"
-        value={1}
       />
     );
   }
