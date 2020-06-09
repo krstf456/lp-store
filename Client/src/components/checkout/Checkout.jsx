@@ -92,7 +92,7 @@ class Checkout extends React.Component {
             }
             else{
               this.setState({
-                errorMessage: `Your records is on their way. Dude. \n Love and the invoice is sent to ${this.context.email}.`,
+                errorMessage: `Your records is on their way. Dude. \n Love and a confirmation is sent to ${this.context.email}.`,
                 firstName: "",
                 lastName: "",
                 phone: "",

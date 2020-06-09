@@ -95,12 +95,12 @@ class Dashboard extends React.Component {
 					<>
 					<Box>
 					{this.context.isLoggedIn
-					 ? <h1>Welcome {this.state.username}</h1>
+					 ? <h1>Welcome {this.state.username}!</h1>
 					: this.loginForm()}
 					</Box>
 					<Box>
 					{this.context.isLoggedIn && this.context.isAdmin 
-						? <h1>You have admin rights</h1>
+						? <h1>You have admin rights.</h1>
 						: null}
 					</Box>
 					<Button
