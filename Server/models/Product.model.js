@@ -23,7 +23,6 @@ const ProductSchema = new Schema({
         required: true
     },
     image: {
-        //type: mongoose.Types.ObjectId,
         type: String,
         required: true
     },
@@ -34,7 +33,7 @@ const ProductSchema = new Schema({
 },{ versionKey: false }) 
 /*
 ProductSchema.virtual("imageUrl").get(() => {
-    return '/uploads' + this.image.toString()
+    return "http://localhost:5000/uploads/" + this.image
 })*/
 
 productModel = mongoose.model('products', ProductSchema)

@@ -48,62 +48,60 @@ class UploadProduct extends React.Component {
 
         const fd = new FormData();
         fd.append('image', this.state.image);
-    
-        // `POST` image
-        fetch('http://localhost:5000/uploads/', {
-            method: 'POST',
-            body: fd,
-            'auth-token': token
-        })
-        .then((response) => {
-          console.log(response)
-            if(response.message){
-                this.setState({
-                    errorMessage: response.message,
-                })
-            }
-            else{
-              this.setState({
-                image: ""
-              })
-            }
-        })
+        
+        try {
 
-        // `POST` album
-        const data = {
-            "artist": this.state.artist,
-            "album": this.state.album,
-            "description": this.state.description,
-            "price": parseInt(this.state.price),
-            "stock_quantity": parseInt(this.state.stock_quantity),
-            "image": "test",
-            "genre": this.state.genre
-          }
-           fetch(`http://localhost:5000/products`,{
-            method: 'POST',
-            headers: {
-                "Content-Type" : "application/json",
-                'auth-token': token
-            },
-            body: JSON.stringify(data)
-        })
-        .then((response) => response.json())
-        .catch((err) => {
-                console.log(err)
-        })
-        .then((response) => {
-            if(response.message){
-                this.setState({
-                    errorMessage: response.message,
-                })
-            }
-            else{
+          // `POST` image
+          let response = await fetch('http://localhost:5000/uploads/', {
+              method: 'POST',
+              body: fd,
+              'auth-token': token
+          })
+          console.log(response)
+          const imageDocument = await response.json()
+          console.log(imageDocument._id)
+          
+          if(response.message){
               this.setState({
+                  errorMessage: response.message,
+              })
+              return
+          }
+
+          // `POST` album
+          const product = {
+              "artist": this.state.artist,
+              "album": this.state.album,
+              "description": this.state.description,
+              "price": parseInt(this.state.price),
+              "stock_quantity": parseInt(this.state.stock_quantity),
+              "image": `http://localhost:5000/uploads/${imageDocument._id}` ,
+              "genre": this.state.genre
+            }
+          response = await fetch(`http://localhost:5000/products`,{
+              method: 'POST',
+              headers: {
+                  "Content-Type" : "application/json",
+                  'auth-token': token
+              },
+              body: JSON.stringify(product)
+          })
+        
+          
+          if(response.message) {
+              this.setState({
+                  errorMessage: response.message,
+              })
+          }
+          else {
+            this.setState({
                 errorMessage: "The album is uploaded",
                 artist: "", album: "", description: "", price: "", stock_quantity: "", genre: ""
             })
-            }
-        })
+          }
+        } catch(error) {
+          console.error(error)
+        }
       }}
     }
 

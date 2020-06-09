@@ -16,7 +16,7 @@ const AdressSchema = new Schema({
     },
     street: {
         type: String,
-        required: true
+        required: false
     },
     street_address: {
         type: String,
