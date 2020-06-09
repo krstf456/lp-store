@@ -5,15 +5,15 @@ const Schema = mongoose.Schema
 const ShippingSchema = new Schema({
     company: {
         type: String,
-        required: false
+        required: true
     },
     price: {
         type: Number,
-        required: false
+        required: true
     },
     shipping_time: {
         type: Number,
-        required: false
+        required: true
     }
 },{ versionKey: false }) 
 
