@@ -35,10 +35,6 @@ class Dashboard extends React.Component {
 		})
 	}
 
-
-
-
-
 	loginForm = () => {
 
 		const {username, password} = this.state
@@ -59,7 +55,7 @@ class Dashboard extends React.Component {
 		)
 	}
 
-	dashboard = () => {
+	/* dashboard = () => {
 		return (
 			<div>
 				<h4>user: {this.context.username}</h4>
@@ -79,9 +75,9 @@ class Dashboard extends React.Component {
 				/>
 			</div>
 		)
-	}
+	} */
 
-	dashboardUser = () => {
+	/* dashboardUser = () => {
 		return(
 			<h2>USER</h2>
 		)
@@ -91,24 +87,38 @@ class Dashboard extends React.Component {
 		return(
 			<h2>ADMIN</h2>
 		)
-	}
+	} */
 	render() {
 		return (
 			<ResponsiveContext.Consumer>
 				{(size) => (
 					<>
 					<Box>
-						{/* <Form>{this.loginForm()}</Form> */}
+					{this.context.isLoggedIn
+					 ? <h1>Welcome {this.state.username}!</h1>
+					: this.loginForm()}
+					</Box>
+					<Box>
+					{this.context.isLoggedIn && this.context.isAdmin 
+						? <h1>You have admin rights.</h1>
+						: null}
+					</Box>
+					<Button
+					primary
+					label='Logout'
+					onClick={() => this.context.onSignOut()}
+				/>
+					{/* <Box>
+						 <Form>{this.loginForm()}</Form> 
 						{this.context.isLoggedIn
 							? this.dashboard()
 							: this.loginForm()}
-							
 					</Box>
 					 <Box>
 						{this.context.isLoggedIn && this.context.isAdmin 
-						? <Admin />
+						? <h1>You have admin rights</h1>
 						: null}
-					</Box> 
+					</Box>  */}
 					</> 
 				)}
 			</ResponsiveContext.Consumer>
@@ -117,3 +127,6 @@ class Dashboard extends React.Component {
 }
 
 export default Dashboard
+
+
+
