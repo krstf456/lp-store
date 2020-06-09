@@ -21,11 +21,12 @@ export default class Delivery extends React.Component {
           </Text>
           <Home color="brand"></Home>
         </Box>
+        {this.context.isLoggedIn &&
         <Box>
           Hey {this.context.username}! You're email is{" "}
           <strong>{this.context.email}.</strong> We will send your order
           confirmation to that one.{" "}
-        </Box>
+        </Box>}
         <FormField
           name="firstName"
           autoComplete="given-name"
