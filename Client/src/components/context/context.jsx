@@ -139,7 +139,7 @@ export class Provider extends React.Component {
     return
   }
    
- 
+  productInCart.quantity += 1
   
   this.setState({ shoppingCart: cloneShoppingCart });
   localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
