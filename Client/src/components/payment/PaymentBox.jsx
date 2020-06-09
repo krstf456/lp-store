@@ -71,6 +71,11 @@ class PaymentBox extends React.Component {
           </strong>{" "}
           VAT & shipping included
         </Text>
+        <Text alignSelf="center" textAlign="center" size="large" style={{color: "red"}}>
+          <strong>
+            {this.props.errorMessage}
+          </strong>
+        </Text>
         <Box alignSelf="center" align="center">
           {1 && (
             <Button
