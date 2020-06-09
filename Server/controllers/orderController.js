@@ -15,15 +15,15 @@ getAllOrders = async (req, res, next) => {
 
 createOrder = async (req, res, next) => {
   try {
-    const products = req.params.products
-    console.log(products)
-    const orderData = new orderModel(req.body);
-    //const products = await productModel.find(id);
 
-    /*products.forEach(async item => {
+    const orderData = new orderModel(req.body);
+    const album = req.params.album
+    const products = await productModel.find(album);
+
+    products.forEach(async item => {
       item.stock_quantity -= 1
       await item.save();
-    })*/
+    })
 
     await orderData.save();
     res.send(orderData);

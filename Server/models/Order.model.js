@@ -25,7 +25,8 @@ const OrderSchema = new Schema({
     },
     sent: {
         type: Boolean,
-        required: false
+        default: false,
+        required: false,
     },
     payment_method: {
         type: String,
