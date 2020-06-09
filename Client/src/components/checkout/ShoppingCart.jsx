@@ -15,27 +15,11 @@ import Context from "../context/context";
 export default class ShoppingCart extends React.Component {
   static contextType = Context;
 
-  constructor() {
-    super();
-    this.state = {
-      totalSum: 0
-    }
-  }
+ 
+ componentDidMount = () => {
+   this.context.calculateSum()
+  }   
 
-  componentDidMount(){
-    this.calculateSum()
-  }
-
-  calculateSum(){
-    for (let i = 0; i < this.context.shoppingCart.length ; i++){
-      let sum = this.context.shoppingCart[i].product.price * this.context.shoppingCart[i].quantity
-      this.setState(prevState => {
-        return {
-          totalSum: prevState.totalSum + sum
-        }
-     })
-    }
-  }
 
   render() {
     if(localStorage.getItem('cart') === null){
@@ -94,7 +78,7 @@ export default class ShoppingCart extends React.Component {
                         <TableCell>
                           <FormAdd onClick={() => this.context.increaseQuantity(product)}></FormAdd>
                           <FormSubtract onClick={() => this.context.decreaseQuantity(product)}></FormSubtract>
-                          <FormTrash></FormTrash>
+                          <FormTrash onClick={() => this.context.deleteProduct(product)}>></FormTrash>
                         </TableCell>
                       </TableRow>
                     );
@@ -119,8 +103,8 @@ export default class ShoppingCart extends React.Component {
                       <strong>total</strong>
                     </TableCell>
                     <TableCell>
-                      <strong>{this.state.totalSum + ":-"}</strong>
-                    </TableCell>
+                <strong>{this.context.calculateSum() + " " + ":-"}</strong>
+                </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

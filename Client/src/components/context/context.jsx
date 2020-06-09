@@ -18,12 +18,15 @@ export class Provider extends React.Component {
       addToCart: this.addToCart,
       increaseQuantity: this.increaseQuantity,
       decreaseQuantity: this.decreaseQuantity,
+      deleteProduct: this.deleteProduct,
       shoppingCart : [],
       getOneProduct: this.getOneProduct,
       //displayOneProduct: this.displayOneProduct,
       getAllShipping: this.getAllShipping,
       setSelectedShipping: this.setSelectedShipping,
-      displayAllAlbums: this.displayAllAlbums
+      displayAllAlbums: this.displayAllAlbums,
+      calculateSum: this.calculateSum,
+      getTotalQuantity: this.getTotalQuantity
     };
   }
 
@@ -77,7 +80,6 @@ export class Provider extends React.Component {
     })
   }
 
-
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
     const product = response.data
@@ -119,12 +121,7 @@ export class Provider extends React.Component {
     console.log("mjau")
   }
 
-  // if (productInCart.length === 0) {
-  //   const removeItemIndex = cloneShoppingCart.findIndex(
-  //     (element) => element.product_id === product._id
-  //   );
-  //   cloneShoppingCart.splice(removeItemIndex, 1);
-  // }
+  
   this.setState({ shoppingCart: cloneShoppingCart });
   localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 
@@ -135,36 +132,62 @@ export class Provider extends React.Component {
   //console.log(product, cloneShoppingCart)
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
   
-  productInCart.quantity = productInCart.quantity - 1;
+  
 
 
-  if (productInCart.length === 0) {
-    const removeItemIndex = cloneShoppingCart.findIndex(
-      (element) => element.product_id === product._id
-    );
-    cloneShoppingCart.splice(removeItemIndex, 1);
-  }
+  if (productInCart.quantity <= 1) {
+    
+     const removeProduct = cloneShoppingCart.findIndex(
+       (element) => element.product._id === product._id
+       );
+       
+       cloneShoppingCart.splice(removeProduct, 1);
+    }
+    productInCart.quantity = productInCart.quantity - 1;
   this.setState({ shoppingCart: cloneShoppingCart });
   
  localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
 };
 
+deleteProduct = (product) => {
+  console.log('deletePr')
+  const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+  
+  const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
+  
+  
 
 
+  if (productInCart) {
+    
+     const removeProduct = cloneShoppingCart.findIndex(
+       (element) => element.product._id === product._id
+       );
+       
+       cloneShoppingCart.splice(removeProduct, 1);
+    }
+    productInCart.quantity = productInCart.quantity - 1;
+  this.setState({ shoppingCart: cloneShoppingCart });
+  
+ localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
+}
 
- 
- 
 
-
-
-
-
- itemQuantity = () => {
-  let itemQuantity = 0
-  let itemInCart = this.state.shoppingCart
-
-
+getTotalQuantity = () => {
+  let totalQuantity = 0;
+  for (const product of this.state.shoppingCart) {
+    totalQuantity += product.quantity;
+  }
+  return totalQuantity;
 };
+
+calculateSum = () => {
+  let sum = 0
+  for (let i = 0; i < this.state.shoppingCart.length ; i++){
+     sum = this.state.shoppingCart[i].product.price * this.state.shoppingCart[i].quantity + sum
+  }
+  return sum
+}
 
 
   getAllShipping = () => {

@@ -16,6 +16,7 @@ import { Cart, Menu } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
+import style from "./Header.css";
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -26,7 +27,6 @@ class Header1 extends React.Component {
     username: "",
     email: "",
     password: "",
-
   };
 
   //To open modal call this function on a button
@@ -82,7 +82,6 @@ class Header1 extends React.Component {
       });
   };
 
-
   //Place modal-content in here
   get modal() {
     if (this.state.showModal) {
@@ -100,42 +99,46 @@ class Header1 extends React.Component {
             height="30rem"
             align="center"
           >
-            <Button onClick={() => {this.toggleModal()}}>Close</Button>
+            <Button
+              onClick={() => {
+                this.toggleModal();
+              }}
+            >
+              Close
+            </Button>
             <h1>Register</h1>
             <Form onSubmit={this.submitRegister}>
               <FormField label="Username">
-                <TextInput 
-                placeholder="type a username"
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handelInputChange}
-                required />
-              </FormField>
-              <FormField label="E-mail">
-                <TextInput 
-                placeholder="type your email"
-                type="text"
-                name="email"
-                value={this.state.email}
-                onChange={this.handelInputChange}
-                required
-                 />
-              </FormField>
-              <FormField label="Password">
-                <TextInput 
-                placeholder="type a password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handelInputChange}
-                required 
+                <TextInput
+                  placeholder="type a username"
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handelInputChange}
+                  required
                 />
               </FormField>
-              <Button
-                label="Register"
-                type="submit"
-              ></Button>
+              <FormField label="E-mail">
+                <TextInput
+                  placeholder="type your email"
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handelInputChange}
+                  required
+                />
+              </FormField>
+              <FormField label="Password">
+                <TextInput
+                  placeholder="type a password"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handelInputChange}
+                  required
+                />
+              </FormField>
+              <Button label="Register" type="submit"></Button>
             </Form>
           </Box>
         </Modal>
@@ -145,26 +148,31 @@ class Header1 extends React.Component {
   }
 
   render() {
-
     const renderItems = () => (
       <Box>
         <Text>
-          <Link to="/"><Button>Home</Button></Link>
+          <Link to="/">
+            <Button>Home</Button>
+          </Link>
         </Text>
         <Text>
-          <Link to="/"><Button>Login</Button></Link>
-        </Text> 
+          <Link to="/">
+            <Button>Login</Button>
+          </Link>
+        </Text>
         <Text>
-          <Link to="/"><Button>Logout</Button></Link>
+          <Link to="/">
+            <Button>Logout</Button>
+          </Link>
         </Text>
       </Box>
-    )
+    );
 
     const MenuItem = () => (
       <Box height="36px" width="12px" align="center">
-        <Menu color="white"/>
+        <Menu color="white" />
       </Box>
-    )
+    );
 
     const HamburgerButton = () => (
       <DropButton
@@ -175,7 +183,7 @@ class Header1 extends React.Component {
       >
         <MenuItem />
       </DropButton>
-    )
+    );
 
     return (
       <>
@@ -191,11 +199,11 @@ class Header1 extends React.Component {
                 <Box fill="vertical" width="xxsmall">
                   <HamburgerButton />
                   <Box flex />
-              </Box>
+                </Box>
               </Box>
               <Box>
                 <Link to="/">
-                <h1>Love Peace & Records</h1>
+                  <h1>Love Peace & Records</h1>
                 </Link>
               </Box>
               <Box
@@ -204,15 +212,18 @@ class Header1 extends React.Component {
                 justify="center"
                 margin={{ left: "large" }}
               >
+                  <p style={{ color: "white" }}>
+                    {this.context.getTotalQuantity()}
+                  </p>
                 <Cart color="plain" size="medium" />
                 {size !== "small" && (
                   <Link to="/checkout/">
-                  <Button
-                    primary
-                    margin="small"
-                    color="dark-1"
-                    label="Checkout"
-                  ></Button>
+                    <Button
+                      primary
+                      margin="small"
+                      color="dark-1"
+                      label="Checkout"
+                    ></Button>
                   </Link>
                 )}
                 <Button

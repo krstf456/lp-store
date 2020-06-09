@@ -151,6 +151,8 @@ class UploadProduct extends React.Component {
   
     render() {
       return (
+        <>
+        {this.context.renderRedirect()}
         <Box className="uploadBox">
           <Link to="/admin">
             <h1>←</h1>
@@ -201,6 +203,7 @@ class UploadProduct extends React.Component {
             <Button type="submit" label="Submit" onClick={this.submit}/>
           </Form>
         </Box>
+        </>
       );
     }
   }

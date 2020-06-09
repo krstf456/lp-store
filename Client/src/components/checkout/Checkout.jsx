@@ -9,7 +9,8 @@ import { } from "grommet-icons";
 import ShoppingCart from "./ShoppingCart";
 import Delivery from "./Delivery";
 import Shipping from "./Shipping";
-import Payment from "./payment/PaymentBox";
+import Payment from "../payment/PaymentBox";
+import OrderPage from "./OrderPage";
 
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'

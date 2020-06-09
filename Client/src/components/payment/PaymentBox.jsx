@@ -4,10 +4,18 @@ import { Money } from "grommet-icons";
 import Swish from "./Swish";
 import CreditCard from "./CreditCard";
 import Invoice from "./Invoice";
+import Context from "../context/context";
 //import ClipLoader from "react-spinners/ClipLoader";
 
 class PaymentBox extends React.Component {
+  static contextType = Context;
+
+  state = {
+    paymentSelection: "swish",
+  };
+
   render() {
+    console.log(this.context.selectedShipping);
     return (
       <Box pad="large" gap="large" width="large" background="light-1">
         <Box direction="row" justify="between" width="large">
@@ -18,7 +26,13 @@ class PaymentBox extends React.Component {
         </Box>
         <RadioButtonGroup
           name="paymentOptions"
-          value=""
+
+          value={this.state.paymentSelection}
+          onChange={(event) =>
+            this.setState({
+              paymentSelection: event.target.value,
+            })
+          }
           options={[
             {
               disabled: false,
@@ -41,15 +55,21 @@ class PaymentBox extends React.Component {
           ]}
         />
 
-        <Swish />
-
-        <Invoice />
-
-        <CreditCard />
+        {this.state.paymentSelection === "swish" ? (
+          <Swish />
+        ) : this.state.paymentSelection === "invoice" ? (
+          <Invoice />
+        ) : (
+          <CreditCard />
+        )}
         <Box />
-
         <Text alignSelf="center" textAlign="center" size="large">
-          Total <strong>total price SEK</strong> VAT & shipping included
+          Total{" "}
+          <strong>
+            {this.context.calculateSum() + this.context.selectedShipping.price}{" "}
+            :-
+          </strong>{" "}
+          VAT & shipping included
         </Text>
         <Box alignSelf="center" align="center">
           {1 && (

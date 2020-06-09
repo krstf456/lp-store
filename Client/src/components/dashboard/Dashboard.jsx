@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, ResponsiveContext, Button } from 'grommet'
+import Admin from '../admin/admin'
 import UserContext from '../context/userContext'
 
 
@@ -12,6 +13,7 @@ class Dashboard extends React.Component {
 			isLoading: true,
 			username: '',
 			password: '',
+
 		}
 
 		this.onChangeUsernameInput = this.onChangeUsernameInput.bind(this)
@@ -78,16 +80,36 @@ class Dashboard extends React.Component {
 			</div>
 		)
 	}
+
+	dashboardUser = () => {
+		return(
+			<h2>USER</h2>
+		)
+	}
+
+	dashboardAdmin = () => {
+		return(
+			<h2>ADMIN</h2>
+		)
+	}
 	render() {
 		return (
 			<ResponsiveContext.Consumer>
 				{(size) => (
+					<>
 					<Box>
 						{/* <Form>{this.loginForm()}</Form> */}
 						{this.context.isLoggedIn
 							? this.dashboard()
 							: this.loginForm()}
+							
 					</Box>
+					 <Box>
+						{this.context.isLoggedIn && this.context.isAdmin 
+						? <Admin />
+						: null}
+					</Box> 
+					</> 
 				)}
 			</ResponsiveContext.Consumer>
 		)
