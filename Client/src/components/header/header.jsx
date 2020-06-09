@@ -17,7 +17,8 @@ import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
 import style from "./Header.css";
-import flower from "./flower06.png"
+import flower from "./flower06.png";
+import Dashboard from "../dashboard/Dashboard";
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -25,6 +26,7 @@ class Header1 extends React.Component {
 
   state = {
     showModal: false,
+    showLoginModal: false,
     username: "",
     email: "",
     password: "",
@@ -34,6 +36,12 @@ class Header1 extends React.Component {
   toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
+    });
+  };
+
+  toggleLoginModal = () => {
+    this.setState({
+      showLoginModal: !this.state.showLoginModal,
     });
   };
 
@@ -82,6 +90,7 @@ class Header1 extends React.Component {
         alert("Username already taken, choose another one.");
       });
   };
+
 
   //Place modal-content in here
   get modal() {
@@ -144,15 +153,40 @@ class Header1 extends React.Component {
           </Box>
         </Modal>
       );
+    } else if (this.state.showLoginModal) {
+      return (
+        <Modal>
+          <Box
+            style={{
+              display: "flex",
+              position: "absolute",
+              left: "33vw",
+              top: "25%",
+            }}
+            background="dark-1"
+            width="30rem"
+            height="30rem"
+            align="center"
+          >
+            <Button
+              onClick={() => {
+                this.toggleLoginModal();
+              }}
+            >
+              Close
+            </Button>
+            <h1>Sign in</h1>
+            <Dashboard />
+          </Box>
+        </Modal>
+      );
     }
     return undefined;
   }
-  
-  render() {
 
+  render() {
     return (
       <>
-      
         <ResponsiveContext.Consumer>
           {(size) => (
             <Header
@@ -171,37 +205,37 @@ class Header1 extends React.Component {
                 align="center"
                 justify="center"
                 margin={{ left: "large" }}
-              >  
-              <img src={flower} alt="flower" />
+              >
+                <img src={flower} alt="flower" />
                 <Button
                   style={{ color: "white", border: "none" }}
                   onClick={() => {
                     this.toggleModal();
                   }}
-                  
-                  label="Register"  
+                  label="Register"
                   default
                 ></Button>
-                <Button
-                  margin={{ right: "medium" }}
-                >
-                <User color="white" size="medium" />
+                <Button margin={{ right: "medium" }}>
+                  <User color="white" size="medium" />
                 </Button>
                 <p style={{ color: "white" }}>
                   {this.context.getTotalQuantity()}
                 </p>
+                <Button>
+                  <Link to="/checkout/">
+                    <Shop color="white" size="medium" />
+                  </Link>
+                </Button>
                 <Button
-                >
-                <Link to="/checkout/">
-                  <Shop color="white" size="medium" />
-                </Link>   
-                </Button>      
+                  style={{ color: "white", border: "black" }}
+                  label="Sign in"
+                  onClick={() => this.toggleLoginModal()}
+                ></Button>
               </Box>
             </Header>
           )}
         </ResponsiveContext.Consumer>
         {this.modal}
-        
       </>
     );
   }
