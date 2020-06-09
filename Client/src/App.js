@@ -29,7 +29,6 @@ class App extends React.Component {
         <Provider value={this.state}>
           <div className="App">
             <Grommet theme={grommet}>
-              <Dashboard/>
               <Header />
               <Switch>
               <Route
