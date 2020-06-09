@@ -26,6 +26,7 @@ class PaymentBox extends React.Component {
         </Box>
         <RadioButtonGroup
           name="paymentOptions"
+
           value={this.state.paymentSelection}
           onChange={(event) =>
             this.setState({

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const AdressSchema = require('./Adress.model')
+const {ProductSchema} = require("../models/Product.model");
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
@@ -8,14 +9,11 @@ const OrderSchema = new Schema({
         ref: "users",
         required: false
     },
-    products: {
-        type: [mongoose.Types.ObjectId],
-        ref: "products",
-        required: false
-    },
+    products: 
+        [ProductSchema]
+    ,
     email: {
-        type: mongoose.Types.ObjectId,
-        ref: "users",
+        type: String,
         required: false
     },
     adress:  
@@ -27,7 +25,8 @@ const OrderSchema = new Schema({
     },
     sent: {
         type: Boolean,
-        required: false
+        default: false,
+        required: false,
     },
     payment_method: {
         type: String,

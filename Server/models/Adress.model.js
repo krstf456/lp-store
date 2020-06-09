@@ -18,8 +18,8 @@ const AdressSchema = new Schema({
         type: String,
         required: false
     },
-    street_number: {
-        type: Number,
+    street_address: {
+        type: String,
         required: false
     },
     postcode: {
