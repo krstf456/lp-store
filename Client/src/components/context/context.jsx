@@ -91,36 +91,55 @@ export class Provider extends React.Component {
   addToCart = (product) => {
     const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
+    const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
+
     console.log(alreadyInCart)
+    
+    if (!this.checkStockAvailability(productInCart, product)) {
+      return
+    }
+
     if(alreadyInCart) {
       
       console.log('test')
       const existingItem = cloneShoppingCart.find((element) => element.product._id === product._id)
-      existingItem.quantity = existingItem.quantity + 1
+      existingItem.quantity += 1
 
       
-    } else {
+    }
+    else {
       const itemInCart = {product: product, quantity: 1}
 
       cloneShoppingCart.push(itemInCart)
     }
     
-    alert("Item added to cart")
+    
+    
     console.log("shoppingcart", cloneShoppingCart)
     
     this.setState({ shoppingCart: cloneShoppingCart})
     localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
-    
+    alert("Item added to cart")
+ }
+
+ checkStockAvailability(productInCart, product) {
+  const quantity = productInCart ? productInCart.quantity : 0
+  if (quantity + 1 > product.stock_quantity) {
+    alert('This article is out of stock.')
+    return false
+  }
+  return true
  }
 
  increaseQuantity = (product) => {
   const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
-  productInCart.quantity = productInCart.quantity + 1;
-  if(productInCart.quantity  >= product.stock_quantity){
-    console.log("mjau")
-  }
 
+  if (!this.checkStockAvailability(productInCart, product)) {
+    return
+  }
+   
+ 
   
   this.setState({ shoppingCart: cloneShoppingCart });
   localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
