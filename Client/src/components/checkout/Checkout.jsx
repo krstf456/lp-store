@@ -10,7 +10,6 @@ import ShoppingCart from "./ShoppingCart";
 import Delivery from "./Delivery";
 import Shipping from "./Shipping";
 import Payment from "../payment/PaymentBox";
-import OrderPage from "./OrderPage";
 
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'
@@ -45,6 +44,7 @@ class Checkout extends React.Component {
         // `POST` order
 
         let productList = []
+        let totalSum = 0
         const products = JSON.parse(localStorage.getItem('cart'))
         for (let i = 0 ; i < products.length ; i++){
           for (let j = 0 ; j < products[i].quantity ; j++){
@@ -52,6 +52,7 @@ class Checkout extends React.Component {
           }
           delete products[i].quantity
           delete products[i].product._id
+          totalSum = totalSum + products[i].product.price
         }
         const data = {
           user_Id: this.context.id,
@@ -67,7 +68,7 @@ class Checkout extends React.Component {
           ,
           phone: this.state.phone,
           payment_method: "swish",
-          total_price: 1234
+          total_price: totalSum
           }
            fetch(`http://localhost:5000/orders`,{
             method: 'POST',
@@ -79,7 +80,9 @@ class Checkout extends React.Component {
         })
         .then((response) => response.json())
         .catch((err) => {
-                console.log(err)
+          this.setState({
+            errorMessage: err
+          })
         })
         .then((response) => {
             if(response.message){
@@ -126,7 +129,7 @@ class Checkout extends React.Component {
         flex="grow"
       >
         <Box>
-          <Heading alignSelf="center" size="small" onClick={this.test}>
+          <Heading alignSelf="center" size="small">
             CHECKOUT
           </Heading>
           <Form autoComplete="on" validate="submit" onSubmit={this.handleSubmit}>
