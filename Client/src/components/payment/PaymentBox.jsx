@@ -15,7 +15,6 @@ class PaymentBox extends React.Component {
   };
 
   render() {
-    console.log(this.context.selectedShipping);
     return (
       <Box pad="large" gap="large" width="large" background="light-1">
         <Box direction="row" justify="between" width="large">

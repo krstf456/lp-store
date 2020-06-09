@@ -1,9 +1,13 @@
 import React from "react";
 import { Box, Text, FormField } from "grommet";
 import { Home } from "grommet-icons";
+import UserContext from '../context/userContext'
 
 
 export default class Delivery extends React.Component {
+  //This will enable the use of context-functions and states
+	static contextType = UserContext
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +24,7 @@ export default class Delivery extends React.Component {
           </Text>
           <Home color="brand"></Home>
         </Box>
+        <Box>Hey {this.context.username}! You're email is <strong>{this.context.email}.</strong> We will send your order confirmation to that one. </Box>
         <FormField
           name="firstName"
           autoComplete="given-name"
