@@ -7,34 +7,34 @@ const OrderSchema = new Schema({
     user_Id: {
         type: mongoose.Types.ObjectId,
         ref: "users",
-        required: false
+        required: true
     },
     products: 
         [ProductSchema]
     ,
     email: {
         type: String,
-        required: false
+        required: true
     },
     adress:  
         [AdressSchema]
     ,
     phone: {
         type: Number,
-        required: false
+        required: true
     },
     sent: {
         type: Boolean,
         default: false,
-        required: false,
+        required: true,
     },
     payment_method: {
         type: String,
-        required: false
+        required: true
     },
     total_price: {
         type: Number,
-        required: false
+        required: true
     }
 })
 
