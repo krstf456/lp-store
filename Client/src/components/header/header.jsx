@@ -12,11 +12,12 @@ import {
   FormField,
   TextInput,
 } from "grommet";
-import { Cart, Menu } from "grommet-icons";
+import { User, Shop } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
 import style from "./Header.css";
+import flower from "./flower06.png"
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -146,47 +147,12 @@ class Header1 extends React.Component {
     }
     return undefined;
   }
-
+  
   render() {
-    const renderItems = () => (
-      <Box>
-        <Text>
-          <Link to="/">
-            <Button>Home</Button>
-          </Link>
-        </Text>
-        <Text>
-          <Link to="/">
-            <Button>Login</Button>
-          </Link>
-        </Text>
-        <Text>
-          <Link to="/">
-            <Button>Logout</Button>
-          </Link>
-        </Text>
-      </Box>
-    );
-
-    const MenuItem = () => (
-      <Box height="36px" width="12px" align="center">
-        <Menu color="white" />
-      </Box>
-    );
-
-    const HamburgerButton = () => (
-      <DropButton
-        alignSelf="center"
-        margin={{ vertical: "small" }}
-        dropContent={renderItems()}
-        dropProps={{ align: { top: "bottom" } }}
-      >
-        <MenuItem />
-      </DropButton>
-    );
 
     return (
       <>
+      
         <ResponsiveContext.Consumer>
           {(size) => (
             <Header
@@ -195,12 +161,6 @@ class Header1 extends React.Component {
               pad="small"
               height="15rem"
             >
-              <Box fill>
-                <Box fill="vertical" width="xxsmall">
-                  <HamburgerButton />
-                  <Box flex />
-                </Box>
-              </Box>
               <Box>
                 <Link to="/">
                   <h1>Love Peace & Records</h1>
@@ -211,33 +171,37 @@ class Header1 extends React.Component {
                 align="center"
                 justify="center"
                 margin={{ left: "large" }}
-              >
-                  <p style={{ color: "white" }}>
-                    {this.context.getTotalQuantity()}
-                  </p>
-                <Cart color="plain" size="medium" />
-                {size !== "small" && (
-                  <Link to="/checkout/">
-                    <Button
-                      primary
-                      margin="small"
-                      color="dark-1"
-                      label="Checkout"
-                    ></Button>
-                  </Link>
-                )}
+              >  
+              <img src={flower} alt="flower" />
                 <Button
+                  style={{ color: "white", border: "none" }}
                   onClick={() => {
                     this.toggleModal();
                   }}
-                  primary
-                  label="Register"
+                  
+                  label="Register"  
+                  default
                 ></Button>
+                <Button
+                  margin={{ right: "medium" }}
+                >
+                <User color="white" size="medium" />
+                </Button>
+                <p style={{ color: "white" }}>
+                  {this.context.getTotalQuantity()}
+                </p>
+                <Button
+                >
+                <Link to="/checkout/">
+                  <Shop color="white" size="medium" />
+                </Link>   
+                </Button>      
               </Box>
             </Header>
           )}
         </ResponsiveContext.Consumer>
         {this.modal}
+        
       </>
     );
   }
