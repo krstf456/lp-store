@@ -8,4 +8,18 @@
     width: 30rem;
     height: 30rem;
     align-items: center;
+    padding: 2rem;
 }  
+
+.login {
+   margin-top: 1rem;
+
+}
+
+.loginTextInput {
+    margin: 1rem;
+}
+
+.buttonBox {
+    margin: 1rem;
+}

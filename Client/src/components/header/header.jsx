@@ -147,16 +147,7 @@ class Header1 extends React.Component {
       return (
         <Modal>
           <Box
-            style={{
-              display: "flex",
-              position: "absolute",
-              left: "33vw",
-              top: "25%",
-            }}
-            background="dark-1"
-            width="30rem"
-            height="30rem"
-            align="center"
+            className="modal"
           >
             <Button
               onClick={() => {

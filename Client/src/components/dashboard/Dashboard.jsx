@@ -1,7 +1,8 @@
 import React from 'react'
-import { Box, ResponsiveContext, Button } from 'grommet'
+import { Box, ResponsiveContext, Button, TextInput } from 'grommet'
 import Admin from '../admin/admin'
 import UserContext from '../context/userContext'
+import "../header/Header.css"
 
 
 class Dashboard extends React.Component {
@@ -39,19 +40,25 @@ class Dashboard extends React.Component {
 
 		const {username, password} = this.state
 		return (
-			<div>
-				<input
+			<Box className="login">
+				<Box className="loginTextInput">
+				<TextInput
 					type='text'
 					placeholder='username'
 					onChange={this.onChangeUsernameInput}
 				/>
-				<input
+				</Box>
+				<Box className="loginTextInput">
+				<TextInput
 					type='password'
 					placeholder='password'
 					onChange={this.onChangePasswordInput}
 				/>
-				<Button primary label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
-			</div>
+				</Box>
+				<Box className="buttonBox">
+				<Button label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
+				</Box>
+			</Box>
 		)
 	}
 
