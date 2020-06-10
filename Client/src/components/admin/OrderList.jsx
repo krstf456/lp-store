@@ -34,7 +34,8 @@ class OrderList extends React.Component {
               <Box  style={{
                 display: "flex",
                 flexDirection: "column",
-                textAlign: "left"
+                textAlign: "left",
+                margin: "0 2rem"
               }}>
                 <h3>User Info</h3>
                 <p>{this.props.orderData.adress[0].first_name}</p>
@@ -48,7 +49,8 @@ class OrderList extends React.Component {
               <Box  style={{
                 display: "flex",
                 flexDirection: "column",
-                textAlign: "left"
+                textAlign: "left",
+                margin: "0 2rem"
               }}>
                 <h3>Order Info</h3>
                 <p>{this.props.orderData.sent}</p>
@@ -59,9 +61,15 @@ class OrderList extends React.Component {
               <Box  style={{
                 display: "flex",
                 flexDirection: "column",
-                textAlign: "left"
+                textAlign: "left",
+                margin: "0 2rem"
               }}>
                 <h3>Products</h3>
+                {<div
+                      style={{ backgroundImage: `url(${this.props.orderData.products[0].image})` }}
+                      className="img"
+                    >
+                    </div>}
                 <p>{this.props.orderData.products[0]._id}</p>
                 <p>{this.props.orderData.products[0].artist}</p>
                 <p>{this.props.orderData.products[0].album}</p>
