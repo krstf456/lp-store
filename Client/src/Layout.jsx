@@ -32,7 +32,7 @@ class Layout extends React.Component {
                 component={ProductPage}
           ></Route>
           <Route path="/admin/orders">
-            <Orders/>
+            <Orders shippingAlternatives={this.context.shippingAlternatives}/>
           </Route>
           <Route path="/admin/products">
             <Products/>

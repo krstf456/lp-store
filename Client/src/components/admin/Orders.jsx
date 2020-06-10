@@ -10,8 +10,8 @@ import {getFromStorage} from '../../utils/storage'
 class Orders extends React.Component {
   static contextType = UserContext
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       orders: []
     };
@@ -41,6 +41,7 @@ class Orders extends React.Component {
     }
 
     render() {
+      console.log(this.props.shippingAlternatives)
       return (
         <>
         {this.context.renderRedirect()}
