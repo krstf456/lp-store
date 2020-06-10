@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Context from "../context/context";
 import { Box, ResponsiveContext, Menu, Button } from "grommet";
 import "./MainPage.css"
+import flower from "./flower11.png";
 
 class MainPage extends React.Component {
   constructor() {
@@ -75,11 +76,16 @@ class MainPage extends React.Component {
           <Box>
             <Box align="center" pad="xlarge">
               <Menu
+                className="dropDown"
                 dropProps={{
                   align: { top: "bottom", left: "left" },
                   elevation: "xlarge"
                 }}
                 label="Genre"
+                style={{
+                  fontFamily: 'Spicy Rice',
+                  color: "wheat"
+                }}
                 items={[
                   { label: "All Albums", onClick: () => {this.handleOnClickAll()} },
                   { label: "Rock", onClick: () => {this.handleOnClickRock()} },
@@ -91,7 +97,6 @@ class MainPage extends React.Component {
                 ]}
               />
             </Box>
-            
             <Box
               justify="center"
               align="center"
@@ -104,23 +109,52 @@ class MainPage extends React.Component {
               {this.context.products.map(product => {
                 return (
                 <Box key={product._id} className="boxStyle">
-                <Link
+                <Link style={{ textDecoration: 'none'}}
                   to={{
                     pathname: "/productpage/" + product._id,
                   }}
                 >
                   <div
-                    style={{ backgroundImage: `url(${product.image})` }}
+                    style={{ backgroundImage: `url(${product.image})`, height: "18rem",
+                    width: "18rem"}}
                     className="imgStyle"
-                  ></div>
-                  <h3>{product.album}</h3>
-                  <h4>{product.artist}</h4>
-                  <p>{product.price}</p>
-                  <p>{product.genre}</p>
+                  ></div> 
+                  <Box 
+                    style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between"
+                  }}>
+                    <Box style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      
+                    }}>
+                      <Box 
+                        className="albumText"
+                      >
+                        <p>{product.artist}</p>
+                      </Box>
+                      <Box>
+                        <h5>{product.album}</h5>
+                      </Box>
+                    </Box>
+                    <Box  
+                      style={{
+                      display: "flex",
+                      flexDirection: "row"
+                      }}
+                    >
+                      <img className="flower" src={flower} alt="flower" />
+                      <h5>{product.price} :-</h5>
+                  </Box>
+                </Box>
                 </Link>
                 <Button
-                    onClick={() => this.context.addToCart(product)}>ADDTOCART</Button>
-              </Box>
+                   onClick={() => this.context.addToCart(product)}>
+                     <h3>ADD TO CART</h3>
+                </Button>
+                </Box>
                 )
               })}
             </Box>
@@ -133,4 +167,3 @@ class MainPage extends React.Component {
 
 
 export default MainPage;
-
