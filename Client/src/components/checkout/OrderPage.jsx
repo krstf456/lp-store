@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export default class OrderPage extends React.Component {
   render() {
-    console.log(this.props.checkoutData)
     return (
       <Box
         align="center"

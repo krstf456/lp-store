@@ -16,7 +16,7 @@ import {getFromStorage} from '../../utils/storage'
 
 class Checkout extends React.Component {
   //This will enable the use of context-functions and states
-	static contextType = UserContext
+  static contextType = UserContext;
 
   constructor() {
     super();
@@ -29,16 +29,23 @@ class Checkout extends React.Component {
       postalCode: "",
       city: "",
       orderIsSent: false,
-      checkoutData: []
+      checkoutData: [],
+      paymentSelection: "swish"
     }
   }
+
+  handlePayment = (event) => {
+    this.setState({
+      paymentSelection: event.target.value,
+    })
+  }
+          
 
   handleSubmit  = async() => {
     const obj = getFromStorage('storage-object')
     if (obj && obj.token) {
       const { token } = obj
       let items = JSON.parse(localStorage.getItem('cart'))
-      console.log(items)
       this.setState({
         checkoutData: items
       })
@@ -73,8 +80,8 @@ class Checkout extends React.Component {
             }]
           ,
           phone: this.state.phone,
-          payment_method: "swish",
-          total_price: totalSum
+          payment_method: this.state.paymentSelection,
+          total_price: totalSum + this.context.selectedShipping.price
           }
            fetch(`http://localhost:5000/orders`,{
             method: 'POST',
@@ -120,7 +127,7 @@ class Checkout extends React.Component {
   }
 
   render() {
-
+    console.log(this.context.email)
     return (
       <Main
         direction="column"
@@ -146,7 +153,11 @@ class Checkout extends React.Component {
               city={this.state.city}
             />
             <Shipping />
-            <Payment errorMessage={this.state.errorMessage}/>
+            <Payment 
+              errorMessage={this.state.errorMessage}
+              handlePayment={this.handlePayment}
+              paymentSelection={this.state.paymentSelection}
+            />
           </Form>
         </Box>
         :
