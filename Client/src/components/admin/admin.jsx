@@ -19,7 +19,7 @@ class Admin extends React.Component {
             <Box className="adminContainer">
               <h1>Admin</h1>
               <Link to="/admin/orders">
-                <Button label="Orders" />
+                <Box>Orders</Box>
               </Link>
               <Link to="/admin/products">
                 <Button label="Products" />

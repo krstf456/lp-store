@@ -18,6 +18,7 @@ class Layout extends React.Component {
   render() {
     return (
       <>
+      <div className="App">
         <Header />
         <Box className="backgroundWrapper">
         <Switch>
@@ -45,6 +46,7 @@ class Layout extends React.Component {
           </Route>
         </Switch>
         </Box>
+        </div>
       </>
     );
   }
