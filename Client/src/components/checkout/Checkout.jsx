@@ -13,6 +13,7 @@ import Payment from "../payment/PaymentBox";
 import OrderPage from "./OrderPage"
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'
+import "./Checkout.css";
 
 class Checkout extends React.Component {
   //This will enable the use of context-functions and states
@@ -122,7 +123,7 @@ class Checkout extends React.Component {
   render() {
 
     return (
-      <Main
+      <Main className="mainBackgroundCheckout"
         direction="column"
         align="center"
         pad="small"

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import Context from "../context/context";
 import { Box, ResponsiveContext, Menu, Button } from "grommet";
+import "./MainPage.css"
 
 class MainPage extends React.Component {
   constructor() {
@@ -71,7 +72,7 @@ class MainPage extends React.Component {
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
-          <Box>
+          <Box className="mainBackground">
             <Box align="center" pad="xlarge">
               <Menu
                 dropProps={{
