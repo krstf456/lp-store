@@ -211,7 +211,7 @@ calculateSum = () => {
 
   getAllShipping = () => {
     axios.get("http://localhost:5000/shipping").then((response) => {
-      this.setState({ shippingAlternatives: response.data });
+      this.setState({ shippingAlternatives: response.data, selectedShipping: response.data[0] });
       this.state.shippingAlternatives.map(shipping => {
         return shipping.shipping_time
       })
