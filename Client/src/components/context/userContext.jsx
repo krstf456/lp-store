@@ -49,7 +49,6 @@ export class UserProvider extends React.Component {
 		const obj = getFromStorage('storage-object')
 		if (obj && obj.token) {
 			const { token } = obj
-			console.log(token)
 
 			fetch('http://localhost:5000/verify', {
 			method: 'GET',
@@ -114,7 +113,6 @@ export class UserProvider extends React.Component {
 		})
 			.then((res) => res.json())
 			.then((json) => {
-				console.log(json)
 
 				if (json.token) {
 					setInStorage('storage-object', { token: json.token })
@@ -144,7 +142,6 @@ export class UserProvider extends React.Component {
 				isLoggedIn: false,
 			})
 			this.setRedirect()
-			console.log(this.state.redirect)
 
 			
 		} else {
