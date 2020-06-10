@@ -1,7 +1,6 @@
 import React from "react";
 import userContext from "../context/userContext";
 import { Box, Button, ResponsiveContext } from "grommet";
-import "./Admin.css";
 import { Link } from "react-router-dom";
 import "./Admin.css";
 
@@ -16,17 +15,25 @@ class Admin extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box className="adminContainer">
+            <Box className="adminContainer" align="center">
               <h1>Admin</h1>
-              <Link to="/admin/orders">
-                <Box>Orders</Box>
-              </Link>
-              <Link to="/admin/products">
-                <Button label="Products" />
-              </Link>
-              <Link to="/admin/uploadproduct">
-                <Button label="Add Product" />
-              </Link>
+              <Box direction="row" gap="large">
+                <Box className="linkBox">
+                  <Link to="/admin/orders">
+                    <h1>Orders</h1>
+                  </Link>
+                </Box>
+                <Box className="linkBox">
+                  <Link to="/admin/products">
+                    <h1>All Products</h1>
+                  </Link>
+                </Box>
+                <Box className="linkBox">
+                  <Link to="/admin/uploadproduct">
+                    <h1>Upload Product</h1>
+                  </Link>
+                </Box>
+              </Box>
             </Box>
           )}
         </ResponsiveContext.Consumer>

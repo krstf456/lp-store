@@ -1,3 +1,14 @@
 .adminContainer {
     height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.linkBox {
+    background-color: orange;
+    height: 10rem;
+    width: 10rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5%;
 }
