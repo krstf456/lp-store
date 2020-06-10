@@ -20,8 +20,8 @@ class Layout extends React.Component {
   render() {
     return (
       <>
-        <Header />
         <Box className="backgroundWrapper">
+        <Header />
         <Switch>
           <Route path="/checkout/">
             <Checkout selectedShipping={this.context.selectedShipping}/>
