@@ -1,5 +1,5 @@
 import React from "react";
-import {AccordionPanel, Box } from "grommet";
+import {AccordionPanel, Box, Text } from "grommet";
 import userContext from '../context/userContext'
 
 class OrderList extends React.Component {
@@ -8,6 +8,7 @@ class OrderList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      
     };
   }
 
@@ -17,6 +18,7 @@ class OrderList extends React.Component {
       if(this.props.orderData.sent){
         sent = ": ✓"
       }
+      const products = this.props.orderData.products
       return (
         <>
                 {this.context.renderRedirect()}
@@ -28,14 +30,68 @@ class OrderList extends React.Component {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                flexWrap: "wrap",
+                flexWrap: "wrap"
               }}
             >
-              <Box>
-                adress
+              <Box  style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+                margin: "0 2rem"
+              }}>
+                <h3>User Info</h3>
+                <p>{this.props.orderData.adress[0].first_name}</p>
+                <p>{this.props.orderData.adress[0].last_name}</p>
+                <p>{this.props.orderData.adress[0].street_address}</p>
+                <p>{this.props.orderData.adress[0].postcode}</p>
+                <p>{this.props.orderData.adress[0].city}</p>
+                <p>{this.props.orderData.adress[0]._id}</p>
+                
               </Box>
+              <Box  style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left",
+                margin: "0 2rem"
+              }}>
+                <h3>Order Info</h3>
+                <p>{this.props.orderData.sent}</p>
+                <p>{this.props.orderData.payment_method}</p>
+                <p>{this.props.orderData.total_price}</p>
+                
+              </Box >
               <Box>
-                Order List
+              <table>
+                <thead>
+                  <tr>
+                    <th>Album</th>
+                    <th>Artist</th>
+                    <th>qty</th>
+                    <th>Price</th>
+                    <th>Sum</th>
+                  </tr>
+                </thead>
+                {products.map((product) =>
+                  <tbody>
+                    <tr key={product._id}>
+                      <td>{product.album}</td>
+                      <td>{product.artist}</td>
+                      <td>{1}</td>
+                      <td>{product.price} :-</td>
+                      <td>{product.price * 1} :-</td>
+                    </tr>
+                  </tbody>
+                )}
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>0000 :-</th>
+                </tr>
+              </tfoot>
+              </table>
               </Box>
             </Box>
           </Box>
@@ -47,3 +103,23 @@ class OrderList extends React.Component {
   
   export default OrderList;
   
+  {/* {this.state.orders.map((order) => order.products.map((product) =>
+   <Box  style={{
+     display: "flex",
+     flexDirection: "column",
+     textAlign: "left",
+     margin: "0 2rem"
+   }}>
+     <h3>Products</h3>
+     {<div
+       style={{ backgroundImage: `url(${this.props.orderData.products.image})` }}
+       className="img"
+     >
+     </div>}
+     <p>{console.log(products)}</p>
+     <p>{this.props.orderData.products.artist}</p>
+     <p>{this.props.orderData.products.album}</p>
+     <p>{this.props.orderData.products._id}</p>
+     <p>{this.props.orderData.products.price}</p>
+   </Box>
+     ))}*/}
