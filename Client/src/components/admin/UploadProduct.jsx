@@ -41,8 +41,6 @@ class UploadProduct extends React.Component {
       const obj = getFromStorage('storage-object')
       if (obj && obj.token) {
         const { token } = obj
-        console.log(obj)
-        console.log(token)
         const isValidated = this.validateInput()
         if(isValidated){
 
@@ -57,9 +55,7 @@ class UploadProduct extends React.Component {
               body: fd,
               'auth-token': token
           })
-          console.log(response)
           const imageDocument = await response.json()
-          console.log(imageDocument._id)
           
           if(response.message){
               this.setState({
