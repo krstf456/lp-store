@@ -83,7 +83,7 @@ class OrderList extends React.Component {
                   <th></th>
                   <th></th>
                   <th>{this.props.orderData.sent}</th>
-                  <th><p>{this.props.orderData.total_price}</p></th>
+                  <th>{this.props.orderData.total_price} :-</th>
                 </tr>
               </tfoot>
               </table>
