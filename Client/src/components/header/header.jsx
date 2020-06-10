@@ -14,7 +14,9 @@ import {
   Menu,
   TextInput,
 } from "grommet";
+
 import { User, Shop, Close } from "grommet-icons";
+
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
