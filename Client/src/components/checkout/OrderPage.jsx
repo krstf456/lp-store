@@ -1,8 +1,10 @@
 import React from "react";
 import { Box, Text, Button } from "grommet";
 import { Link } from "react-router-dom";
+import Context from "../context/context";
 
 export default class OrderPage extends React.Component {
+  static contextType = Context;
   render() {
     return (
       <Box
@@ -76,7 +78,7 @@ export default class OrderPage extends React.Component {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>0000 :-</td>
+                    <td>{this.context.calculateSum() + this.context.selectedShipping.price} :-</td>
                   </tr>
                 </tfoot>
               </table>
