@@ -5,4 +5,6 @@
 
 .backgroundWrapper {
   background-image: url("sunburst-01.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
