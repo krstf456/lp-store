@@ -8,6 +8,7 @@ class OrderList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      
     };
   }
 
@@ -58,6 +59,7 @@ class OrderList extends React.Component {
                 <p>{this.props.orderData.total_price}</p>
                 
               </Box>
+             {/* {this.state.orders.map((order) => order.products.map((product) =>
               <Box  style={{
                 display: "flex",
                 flexDirection: "column",
@@ -66,16 +68,17 @@ class OrderList extends React.Component {
               }}>
                 <h3>Products</h3>
                 {<div
-                      style={{ backgroundImage: `url(${this.props.orderData.products[0].image})` }}
-                      className="img"
-                    >
-                    </div>}
-                <p>{this.props.orderData.products[0]._id}</p>
-                <p>{this.props.orderData.products[0].artist}</p>
-                <p>{this.props.orderData.products[0].album}</p>
-                <p>{this.props.orderData.products[0]._id}</p>
-                <p>{this.props.orderData.products[0].price}</p>
+                  style={{ backgroundImage: `url(${this.props.orderData.products.image})` }}
+                  className="img"
+                >
+                </div>}
+                <p>{console.log(products)}</p>
+                <p>{this.props.orderData.products.artist}</p>
+                <p>{this.props.orderData.products.album}</p>
+                <p>{this.props.orderData.products._id}</p>
+                <p>{this.props.orderData.products.price}</p>
               </Box>
+                ))}*/}
             </Box>
           </Box>
         </AccordionPanel>
