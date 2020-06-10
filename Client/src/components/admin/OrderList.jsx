@@ -50,7 +50,7 @@ class OrderList extends React.Component {
       }
       return (
         <>
-                {this.context.renderRedirect()}
+        {this.context.renderRedirect()}
         <AccordionPanel label={"Ordernr: #" + this.props.orderData._id + " " + sent}>
           <Box background="#4AAEAE" overflow="auto" style={{padding: "1em"}}>
           <Box
@@ -58,7 +58,8 @@ class OrderList extends React.Component {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                flexWrap: "wrap"
+                flexWrap: "wrap",
+                justifyContent: "space-around"
               }}
             >
               <Box  style={{
@@ -74,8 +75,13 @@ class OrderList extends React.Component {
                 <p><strong>Address: </strong>{this.props.orderData.adress[0].postcode}</p>
                 <p><strong>City: </strong>{this.props.orderData.adress[0].city}</p>
                 <p><strong>User Id: </strong>{this.props.orderData.adress[0]._id}</p>
-                <p><strong>Payment Method: </strong>{this.props.orderData.payment_method}</p>
                 
+              </Box>
+              <Box>
+              <h3>Shipping & Payment</h3>
+                <p><strong>Shipping Method: </strong>{this.props.orderData.shipping[0].company}</p>
+                <p><strong>Shipping Price: </strong>{this.props.orderData.shipping[0].price}</p>
+                <p><strong>Payment Method: </strong>{this.props.orderData.payment_method}</p>
               </Box>
               <Box>
               <h3>Product Info</h3>
@@ -106,8 +112,8 @@ class OrderList extends React.Component {
                   <th></th>
                   <th></th>
                   <th></th>
-                  <th></th>
-                  <th>{this.state.totalSum} :-</th>
+                  <th>+ Shipping</th>
+                  <th>{this.state.totalSum + this.props.orderData.shipping[0].price} :-</th>
                 </tr>
               </tfoot>
               </table>

@@ -19,7 +19,10 @@ class Orders extends React.Component {
   }
   
     componentDidMount = () => {
+      this.getOrders()
+    }
 
+    getOrders = () => {
       const obj = getFromStorage('storage-object')
       if (obj && obj.token) {
          const { token } = obj
