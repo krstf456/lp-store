@@ -13,6 +13,7 @@ import {
 	FormField,
 	TextInput,
 } from 'grommet'
+import LoadingAnimation from './LoadingAnimation'
 
 class LoginPrompt extends React.Component {
 	//This will enable the use of context-functions and states
@@ -40,6 +41,9 @@ class LoginPrompt extends React.Component {
 		if (this.state.showModal) {
 			return (
 				// <Modal>
+				<>
+				<LoadingAnimation />
+
 					<Box
 						id='loginPrompt'
 						style={{
@@ -65,10 +69,10 @@ class LoginPrompt extends React.Component {
 						</Button>
 						<h2 style={{ zIndex: '2' }}>Hey Dude!</h2>
 
-						<img
+						{/* <img
 							style={promptStyle}
 							src='https://ih0.redbubble.net/image.675056609.9466/flat,1000x1000,075,f.jpg'
-						></img>
+						></img> */}
 						<h2
 							style={{
 								zIndex: '2',
@@ -79,15 +83,22 @@ class LoginPrompt extends React.Component {
 						>
 							You need to be logged in to place an order!
 						</h2>
+						<div id="bm"></div>
 					</Box>
+					</>
 			//	</Modal>
+		
 			)
 		}
 		return undefined
 	}
 
 	render() {
-		return <>{this.modal}</>
+		return <>
+		{this.modal}
+		
+
+		</>
 	}
 }
 
