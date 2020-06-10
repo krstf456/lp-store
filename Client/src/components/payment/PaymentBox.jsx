@@ -15,7 +15,6 @@ class PaymentBox extends React.Component {
 	buttonLoggedIn = () => {
 		return (
 			<Box alignSelf='center' align='center'>
-				{1 && (
 					<Button
 						type='submit'
 						alignSelf='center'
@@ -23,13 +22,6 @@ class PaymentBox extends React.Component {
 						primary
 						label='COMPLETE PURCHASE'
 					/>
-				)}
-				{/* {1 && (
-    <>
-      <p>Please wait, your order is being placed..</p>
-      <ClipLoader size={15} color={"#123abc"} loading={1} />
-    </>
-  )} */}
 			</Box>
 		)
 	}
@@ -39,7 +31,6 @@ class PaymentBox extends React.Component {
 			<>
 				<h6>You need to be logged in to place an order</h6>
 				<Box alignSelf='center' align='center'>
-					{1 && (
 						<Button
 							type='submit'
 							alignSelf='center'
@@ -49,13 +40,6 @@ class PaymentBox extends React.Component {
 							label='COMPLETE PURCHASE'
 							onClick={this.buttonClicked}
 						/>
-					)}
-					{/* {1 && (
-    <>
-      <p>Please wait, your order is being placed..</p>
-      <ClipLoader size={15} color={"#123abc"} loading={1} />
-    </>
-  )} */}
 				</Box>
 			</>
 		)
@@ -68,7 +52,7 @@ class PaymentBox extends React.Component {
 						pad='large'
 						gap='large'
 						width='large'
-						background='light-1'
+						className="background"
 					>
 						<Box direction='row' justify='between' width='large'>
 							<Text size='large' alignSelf='start' weight='bold'>
