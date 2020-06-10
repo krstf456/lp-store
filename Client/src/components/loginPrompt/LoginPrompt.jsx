@@ -39,7 +39,7 @@ class LoginPrompt extends React.Component {
 	get modal() {
 		if (this.state.showModal) {
 			return (
-				<Modal>
+				// <Modal>
 					<Box
 						id='loginPrompt'
 						style={{
@@ -47,6 +47,8 @@ class LoginPrompt extends React.Component {
 							position: 'absolute',
 							left: '33vw',
 							top: '25%',
+							position: 'sticky',
+							height: '0rem'
 						}}
 						background='dark-1'
 						width='30rem'
@@ -78,7 +80,7 @@ class LoginPrompt extends React.Component {
 							You need to be logged in to place an order!
 						</h2>
 					</Box>
-				</Modal>
+			//	</Modal>
 			)
 		}
 		return undefined
