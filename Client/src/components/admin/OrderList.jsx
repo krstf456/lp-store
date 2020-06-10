@@ -18,6 +18,7 @@ class OrderList extends React.Component {
       if(this.props.orderData.sent){
         sent = ": ✓"
       }
+      const products = this.props.orderData.products
       return (
         <>
                 {this.context.renderRedirect()}
@@ -58,27 +59,40 @@ class OrderList extends React.Component {
                 <p>{this.props.orderData.payment_method}</p>
                 <p>{this.props.orderData.total_price}</p>
                 
+              </Box >
+              <Box>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Album</th>
+                    <th>Artist</th>
+                    <th>qty</th>
+                    <th>Price</th>
+                    <th>Sum</th>
+                  </tr>
+                </thead>
+                {products.map((product) =>
+                  <tbody>
+                    <tr key={product._id}>
+                      <td>{product.album}</td>
+                      <td>{product.artist}</td>
+                      <td>{1}</td>
+                      <td>{product.price} :-</td>
+                      <td>{product.price * 1} :-</td>
+                    </tr>
+                  </tbody>
+                )}
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>0000 :-</th>
+                </tr>
+              </tfoot>
+              </table>
               </Box>
-             {/* {this.state.orders.map((order) => order.products.map((product) =>
-              <Box  style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "left",
-                margin: "0 2rem"
-              }}>
-                <h3>Products</h3>
-                {<div
-                  style={{ backgroundImage: `url(${this.props.orderData.products.image})` }}
-                  className="img"
-                >
-                </div>}
-                <p>{console.log(products)}</p>
-                <p>{this.props.orderData.products.artist}</p>
-                <p>{this.props.orderData.products.album}</p>
-                <p>{this.props.orderData.products._id}</p>
-                <p>{this.props.orderData.products.price}</p>
-              </Box>
-                ))}*/}
             </Box>
           </Box>
         </AccordionPanel>
@@ -89,3 +103,23 @@ class OrderList extends React.Component {
   
   export default OrderList;
   
+  {/* {this.state.orders.map((order) => order.products.map((product) =>
+   <Box  style={{
+     display: "flex",
+     flexDirection: "column",
+     textAlign: "left",
+     margin: "0 2rem"
+   }}>
+     <h3>Products</h3>
+     {<div
+       style={{ backgroundImage: `url(${this.props.orderData.products.image})` }}
+       className="img"
+     >
+     </div>}
+     <p>{console.log(products)}</p>
+     <p>{this.props.orderData.products.artist}</p>
+     <p>{this.props.orderData.products.album}</p>
+     <p>{this.props.orderData.products._id}</p>
+     <p>{this.props.orderData.products.price}</p>
+   </Box>
+     ))}*/}
