@@ -9,17 +9,18 @@ import { } from "grommet-icons";
 import ShoppingCart from "./ShoppingCart";
 import Delivery from "./Delivery";
 import Shipping from "./Shipping";
+import userContext from '../context/userContext'
 import Payment from "../payment/PaymentBox";
 import OrderPage from "./OrderPage"
-import UserContext from '../context/userContext'
+import Context from "../context/context";
 import {getFromStorage} from '../../utils/storage'
 
 class Checkout extends React.Component {
   //This will enable the use of context-functions and states
-  static contextType = UserContext;
+  static contextType = userContext
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       errorMessage: "",
       firstName: "",
@@ -81,7 +82,7 @@ class Checkout extends React.Component {
           ,
           phone: this.state.phone,
           payment_method: this.state.paymentSelection,
-          total_price: totalSum + this.context.selectedShipping.price
+          total_price: totalSum + this.props.selectedShipping.price
           }
            fetch(`http://localhost:5000/orders`,{
             method: 'POST',
@@ -127,7 +128,6 @@ class Checkout extends React.Component {
   }
 
   render() {
-    console.log(this.context.email)
     return (
       <Main
         direction="column"

@@ -50,29 +50,35 @@ export default class OrderPage extends React.Component {
           </Box>
             <Box>
             <table>
-              <tr>
-                <th>Album</th>
-                <th>Artist</th>
-                <th>qty</th>
-                <th>Price</th>
-                <th>Sum</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Album</th>
+                  <th>Artist</th>
+                  <th>qty</th>
+                  <th>Price</th>
+                  <th>Sum</th>
+                </tr>
+              </thead>
                 {this.props.checkoutData.map((item) =>
-                  <tr key={item.product._id}>
-                    <td>{item.product.album}</td>
-                    <td>{item.product.artist}</td>
-                    <td>{item.quantity}</td>
-                    <td>{item.product.price} :-</td>
-                    <td>{item.product.price * item.quantity} :-</td>
-                  </tr>
+                  <tbody key={item.product._id}>
+                    <tr>
+                      <td>{item.product.album}</td>
+                      <td>{item.product.artist}</td>
+                      <td>{item.quantity}</td>
+                      <td>{item.product.price} :-</td>
+                      <td>{item.product.price * item.quantity} :-</td>
+                    </tr>
+                  </tbody>
                 )}
-                              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>0000 :-</th>
-              </tr>
+                <tfoot>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>0000 :-</td>
+                  </tr>
+                </tfoot>
               </table>
             </Box>
         <strong>Forgot something?</strong>

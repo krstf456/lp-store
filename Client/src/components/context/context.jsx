@@ -83,7 +83,6 @@ export class Provider extends React.Component {
   getOneProduct = async (id) => {
     const response = await axios.get(`http://localhost:5000/product/${id}`)
     const product = response.data
-    console.log(product)
       return product
   };
 
@@ -92,8 +91,6 @@ export class Provider extends React.Component {
     const alreadyInCart = this.state.shoppingCart.some((element) => element.product._id === product._id)
     const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
     const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
-
-    console.log(alreadyInCart)
     
     if (!this.checkStockAvailability(productInCart, product)) {
       return
@@ -101,7 +98,6 @@ export class Provider extends React.Component {
 
     if(alreadyInCart) {
       
-      console.log('test')
       const existingItem = cloneShoppingCart.find((element) => element.product._id === product._id)
       existingItem.quantity += 1
 
@@ -112,11 +108,7 @@ export class Provider extends React.Component {
 
       cloneShoppingCart.push(itemInCart)
     }
-    
-    
-    
-    console.log("shoppingcart", cloneShoppingCart)
-    
+        
     this.setState({ shoppingCart: cloneShoppingCart})
     localStorage.setItem("cart" , JSON.stringify(cloneShoppingCart))
     alert("Item added to cart")
@@ -169,7 +161,6 @@ export class Provider extends React.Component {
 };
 
 deleteProduct = (product) => {
-  console.log('deletePr')
   const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
   
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
