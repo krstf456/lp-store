@@ -72,7 +72,7 @@ class MainPage extends React.Component {
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
-          <Box className="mainBackground">
+          <Box>
             <Box align="center" pad="xlarge">
               <Menu
                 dropProps={{

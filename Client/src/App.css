@@ -2,3 +2,7 @@
   text-align: center;
   font-family: 'Spicy Rice', cursive;
 }
+
+.backgroundWrapper {
+  background-image: url("sunburst-01.png");
+}

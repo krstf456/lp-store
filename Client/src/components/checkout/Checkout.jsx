@@ -130,7 +130,7 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <Main className="mainBackgroundCheckout"
+      <Main
         direction="column"
         align="center"
         pad="small"
