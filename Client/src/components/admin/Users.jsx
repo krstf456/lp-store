@@ -3,6 +3,7 @@ import userContext from "../context/userContext";
 import "./Users.css"
 import { Box, ResponsiveContext } from "grommet";
 import { Link } from "react-router-dom";
+import "./Admin.css";
 
 class Users extends React.Component {
     //This will enable the use of context-functions and states
@@ -16,7 +17,7 @@ class Users extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box>
+            <Box className="adminContainer">
               <Link to="/admin">
                 <h1>←</h1>
               </Link>

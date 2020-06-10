@@ -1,6 +1,6 @@
 import React from "react";
 import {AccordionPanel, Box, Text } from "grommet";
-import userContext from '../context/userContext'
+import userContext from '../context/userContext';
 
 class OrderList extends React.Component {
   static contextType = userContext
