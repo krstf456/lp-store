@@ -18,8 +18,15 @@
 
 .loginTextInput {
     margin: 1rem;
+    background-color: white;
 }
 
 .buttonBox {
     margin: 1rem;
+}
+
+.modalCloseButton {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
 }

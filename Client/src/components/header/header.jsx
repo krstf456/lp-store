@@ -12,7 +12,7 @@ import {
   FormField,
   TextInput,
 } from "grommet";
-import { User, Shop } from "grommet-icons";
+import { User, Shop, Close } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
@@ -99,13 +99,15 @@ class Header1 extends React.Component {
           <Box
           className="modal"
           >
+            <Box className="modalCloseButton">
             <Button
               onClick={() => {
                 this.toggleModal();
               }}
             >
-              Close
+            <Close  color="purple" />
             </Button>
+            </Box>
             <h1>Register</h1>
             <Form onSubmit={this.submitRegister}>
               <FormField label="Username">
@@ -138,7 +140,9 @@ class Header1 extends React.Component {
                   required
                 />
               </FormField>
+              <Box style={{alignSelf: "center"}}>
               <Button label="Register" type="submit"></Button>
+              </Box>
             </Form>
           </Box>
         </Modal>
@@ -149,13 +153,15 @@ class Header1 extends React.Component {
           <Box
             className="modal"
           >
+            <Box className="modalCloseButton">
             <Button
               onClick={() => {
                 this.toggleLoginModal();
               }}
             >
-              Close
+              <Close  color="purple" />
             </Button>
+            </Box>
             <h1>Sign in</h1>
             <Dashboard />
           </Box>

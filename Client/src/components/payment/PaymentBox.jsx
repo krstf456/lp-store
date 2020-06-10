@@ -5,6 +5,7 @@ import Swish from "./Swish";
 import CreditCard from "./CreditCard";
 import Invoice from "./Invoice";
 import Context from "../context/context";
+import "../checkout/Checkout.css"
 //import ClipLoader from "react-spinners/ClipLoader";
 
 class PaymentBox extends React.Component {
@@ -13,7 +14,7 @@ class PaymentBox extends React.Component {
 
   render() {
     return (
-      <Box pad="large" gap="large" width="large" background="light-1">
+      <Box pad="large" gap="large" width="large" className="background">
         <Box direction="row" justify="between" width="large">
           <Text size="large" alignSelf="start" weight="bold">
             Payment

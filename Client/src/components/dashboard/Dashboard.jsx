@@ -50,6 +50,7 @@ class Dashboard extends React.Component {
 				</Box>
 				<Box className="loginTextInput">
 				<TextInput
+					border="none"
 					type='password'
 					placeholder='password'
 					onChange={this.onChangePasswordInput}
