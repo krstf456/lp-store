@@ -6,6 +6,7 @@
 
 .backgroundWrapper {
   background-image: url("sunburst-01.png");
+
 }
 
 .grainyWrapper {
@@ -18,6 +19,6 @@
   width: 100vw;
   background-size: 100% 100%;
   background-repeat: repeat;
-  opacity: 10%;
+  opacity: 7%;
   pointer-events:none;  
 }
