@@ -51,9 +51,7 @@ class Orders extends React.Component {
                 <h1>←</h1>
               </Link>
               <h1>Orders</h1>
-              <p>Uppgifter</p>
-              <p>See Order History G</p>
-              <p>Mark as shipped VG </p>
+             
               <Accordion>  
               {this.state.orders.map((order) =>
                 <OrderList 
@@ -71,4 +69,3 @@ class Orders extends React.Component {
   }
   
   export default Orders;
-  

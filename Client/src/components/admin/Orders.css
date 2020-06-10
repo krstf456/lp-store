@@ -1,0 +1,10 @@
+.img{
+    height: 3rem;
+    width: 3rem;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+table {
+    font-size: 0.8rem;
+}
