@@ -252,10 +252,15 @@ class Header1 extends React.Component {
                 </DropButton>
                 
               </Box>
-              <Image src={flower} alt="flower" />
+              <Link to="/">
+                  
+                <Image src={flower} alt="flower" />
+              </Link>
               <Box direction="row"
               >
-              <Shop color="white" size="medium" />
+              <Link to="/checkout/">
+                    <Shop color="white" size="medium" />
+              </Link>
               <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
                   {this.context.getTotalQuantity()}
                   
@@ -266,10 +271,10 @@ class Header1 extends React.Component {
             ) : (
               <Header
               justify="between"
-              background="purple"
+              background="#d9ac8d"
               pad="small"
               height="15rem">
-                {/* <Box display="block"
+                 <Box display="block"
               direction="row"
               alignContent="start"
               >
@@ -285,12 +290,23 @@ class Header1 extends React.Component {
                 </DropButton>
                 
               </Box>
-                <Box>
+              <Box>
                 <Link to="/">
                   <h1>Love Peace & Records</h1>
                 </Link>
-              </Box> */}
-              <Box
+              </Box> 
+              <Box direction="row">
+
+              <Link to="/checkout/">
+                    <Shop color="white" size="medium" />
+              </Link>
+              
+                <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
+                  {this.context.getTotalQuantity()}
+                </Text>
+              </Box>
+                
+              {/* <Box
                 direction="row"
                 align="center"
                 justify="center"
@@ -336,7 +352,7 @@ class Header1 extends React.Component {
                   label="Admin"
                 ></Button>
                 </Link>
-              </Box>
+              </Box> */}
               </Header>
             )}
             
