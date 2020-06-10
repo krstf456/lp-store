@@ -17,7 +17,11 @@ class Admin extends React.Component {
           {(size) => (
             <Box className="adminContainer" align="center">
               <h1>Admin</h1>
-              <Box direction="row" gap="large">
+              <Box direction="row" gap="large" align="center" style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+            }}>
                 <Box className="linkBox">
                   <Link to="/admin/orders">
                     <h1>Orders</h1>
