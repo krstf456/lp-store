@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const AdressSchema = require('./Adress.model')
 const {ProductSchema} = require("../models/Product.model");
+const {ShippingSchema} = require("../models/Shipping.model");
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
@@ -35,7 +36,10 @@ const OrderSchema = new Schema({
     total_price: {
         type: Number,
         required: true
-    }
+    },
+    shipping: 
+        [ShippingSchema]
+    
 })
 
 module.exports = Order = mongoose.model('orders', OrderSchema)

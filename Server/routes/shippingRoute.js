@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const shippingModel = require('../models/Shipping.model')
+const {shippingModel} = require('../models/Shipping.model')
 const { getShippingAlternatives, createShippingMethod } = require('../controllers/shippingController')
 
 

@@ -43,6 +43,7 @@ class OrderList extends React.Component {
 
   
     render() {
+      console.log(this.props.orderData.shipping[0])
       let sent = ""
       if(this.props.orderData.sent){
         sent = ": ✓"

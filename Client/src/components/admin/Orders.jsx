@@ -42,7 +42,6 @@ class Orders extends React.Component {
     }
 
     render() {
-      console.log(this.props.shippingAlternatives)
       return (
         <>
         {this.context.renderRedirect()}

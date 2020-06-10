@@ -109,7 +109,6 @@ class Header1 extends React.Component {
     background="#7D4487"
     width="xsmall"
     align="center"
-    border="2px"
     >
       <Text
       style={{ cursor: 'pointer'}}
