@@ -8,9 +8,38 @@ class OrderList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      products: [],
+      totalSum: 0
     };
   }
+
+  componentDidMount = () => {
+    this.sumUp()
+  }
+
+  sumUp = () => {
+    let products = this.props.orderData.products
+    let newProducts = []
+    let sum = 0
+    for (let i = 0; i < products.length; i++){
+      products[i].quantity = 1
+      sum = products[i].price + sum
+    }
+    for (let i = 0; i < products.length; i++){
+      const notInCart = newProducts.some((item) => item.album === products[i].album)
+      if(!notInCart){
+        newProducts.push(products[i])
+      } else {
+        const existingItem = newProducts.find((item) => item.album === products[i].album)
+        existingItem.quantity += 1
+      }
+    }
+    this.setState({
+      products: newProducts,
+      totalSum: sum
+    })
+  }
+
 
   
     render() {
@@ -18,7 +47,6 @@ class OrderList extends React.Component {
       if(this.props.orderData.sent){
         sent = ": ✓"
       }
-      const products = this.props.orderData.products
       return (
         <>
                 {this.context.renderRedirect()}
@@ -71,14 +99,14 @@ class OrderList extends React.Component {
                     <th>Sum</th>
                   </tr>
                 </thead>
-                {products.map((product) =>
-                  <tbody>
-                    <tr key={product._id}>
+                {this.state.products.map((product) =>
+                  <tbody key={product._id}>
+                    <tr >
                       <td>{product.album}</td>
                       <td>{product.artist}</td>
-                      <td>{1}</td>
+                      <td>{product.quantity}</td>
                       <td>{product.price} :-</td>
-                      <td>{product.price * 1} :-</td>
+                      <td>{product.price * product.quantity} :-</td>
                     </tr>
                   </tbody>
                 )}
@@ -88,7 +116,7 @@ class OrderList extends React.Component {
                   <th></th>
                   <th></th>
                   <th></th>
-                  <th>0000 :-</th>
+                  <th>{this.state.totalSum} :-</th>
                 </tr>
               </tfoot>
               </table>
@@ -102,24 +130,3 @@ class OrderList extends React.Component {
   }
   
   export default OrderList;
-  
-  {/* {this.state.orders.map((order) => order.products.map((product) =>
-   <Box  style={{
-     display: "flex",
-     flexDirection: "column",
-     textAlign: "left",
-     margin: "0 2rem"
-   }}>
-     <h3>Products</h3>
-     {<div
-       style={{ backgroundImage: `url(${this.props.orderData.products.image})` }}
-       className="img"
-     >
-     </div>}
-     <p>{console.log(products)}</p>
-     <p>{this.props.orderData.products.artist}</p>
-     <p>{this.props.orderData.products.album}</p>
-     <p>{this.props.orderData.products._id}</p>
-     <p>{this.props.orderData.products.price}</p>
-   </Box>
-     ))}*/}
