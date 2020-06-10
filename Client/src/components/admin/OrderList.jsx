@@ -23,7 +23,7 @@ class OrderList extends React.Component {
         <>
                 {this.context.renderRedirect()}
         <AccordionPanel label={"Ordernr: #" + this.props.orderData._id + " " + sent}>
-          <Box background="light-2" overflow="auto" style={{padding: "1em"}}>
+          <Box background="#008080" overflow="auto" style={{padding: "1em"}}>
           <Box
               alignContent="start"
               style={{
