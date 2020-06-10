@@ -51,10 +51,9 @@ class OrderList extends React.Component {
         <>
                 {this.context.renderRedirect()}
         <AccordionPanel label={"Ordernr: #" + this.props.orderData._id + " " + sent}>
-          <Box background="light-2" overflow="auto" style={{padding: "1em"}}>
+          <Box background="#008080" overflow="auto" style={{padding: "1em"}}>
           <Box
-              justify="center"
-              align="center"
+              alignContent="start"
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -65,33 +64,24 @@ class OrderList extends React.Component {
                 display: "flex",
                 flexDirection: "column",
                 textAlign: "left",
-                margin: "0 2rem"
+                margin: "0 8rem"
               }}>
                 <h3>User Info</h3>
-                <p>{this.props.orderData.adress[0].first_name}</p>
-                <p>{this.props.orderData.adress[0].last_name}</p>
-                <p>{this.props.orderData.adress[0].street_address}</p>
-                <p>{this.props.orderData.adress[0].postcode}</p>
-                <p>{this.props.orderData.adress[0].city}</p>
-                <p>{this.props.orderData.adress[0]._id}</p>
+                <p><strong>First Name: </strong>{this.props.orderData.adress[0].first_name}</p>
+                <p><strong>Last Name: </strong>{this.props.orderData.adress[0].last_name}</p>
+                <p><strong>Postcode: </strong>{this.props.orderData.adress[0].street_address}</p>
+                <p><strong>Address: </strong>{this.props.orderData.adress[0].postcode}</p>
+                <p><strong>City: </strong>{this.props.orderData.adress[0].city}</p>
+                <p><strong>User Id: </strong>{this.props.orderData.adress[0]._id}</p>
+                <p><strong>Payment Method: </strong>{this.props.orderData.payment_method}</p>
                 
               </Box>
-              <Box  style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "left",
-                margin: "0 2rem"
-              }}>
-                <h3>Order Info</h3>
-                <p>{this.props.orderData.sent}</p>
-                <p>{this.props.orderData.payment_method}</p>
-                <p>{this.props.orderData.total_price}</p>
-                
-              </Box >
               <Box>
+              <h3>Product Info</h3>
               <table>
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Album</th>
                     <th>Artist</th>
                     <th>qty</th>
@@ -102,6 +92,7 @@ class OrderList extends React.Component {
                 {this.state.products.map((product) =>
                   <tbody key={product._id}>
                     <tr >
+
                       <td>{product.album}</td>
                       <td>{product.artist}</td>
                       <td>{product.quantity}</td>

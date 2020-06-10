@@ -11,6 +11,7 @@ import {
 } from "grommet";
 import { Cart, FormAdd, FormSubtract, FormTrash } from "grommet-icons";
 import Context from "../context/context";
+import "./Checkout.css";
 
 export default class ShoppingCart extends React.Component {
   static contextType = Context;
@@ -29,7 +30,7 @@ export default class ShoppingCart extends React.Component {
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
-          <Box pad="large" gap="large" width="large" background="light-1">
+          <Box pad="large" gap="large" width="large" className="background">
             <Box direction="row" width="large" justify="between">
               <Text size="large" weight="bold">
                 Cart

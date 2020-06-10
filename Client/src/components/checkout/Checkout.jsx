@@ -5,10 +5,11 @@ import ShoppingCart from './ShoppingCart'
 import Delivery from './Delivery'
 import Shipping from './Shipping'
 import userContext from '../context/userContext'
-import Payment from '../payment/PaymentBox'
-import OrderPage from './OrderPage'
-import Context from '../context/context'
-import { getFromStorage } from '../../utils/storage'
+import Payment from "../payment/PaymentBox";
+import OrderPage from "./OrderPage"
+import Context from "../context/context";
+import {getFromStorage} from '../../utils/storage'
+import "./Checkout.css";
 import LoginPrompt from '../loginPrompt/LoginPrompt'
 
 class Checkout extends React.Component {

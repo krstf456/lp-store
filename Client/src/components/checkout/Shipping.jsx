@@ -3,6 +3,7 @@ import { Box, Text, RadioButton } from "grommet";
 import { Deliver } from "grommet-icons";
 import axios from "axios";
 import Context from "../context/context";
+import "./Checkout.css"
 
 export default class ShippingBox extends React.Component {
   static contextType = Context;
@@ -20,7 +21,7 @@ export default class ShippingBox extends React.Component {
 
   render() {
     return (
-      <Box pad="large" gap="large" width="large" background="light-1">
+      <Box pad="large" gap="large" width="large" className="background">
         <Box width="large" direction="row" justify="between">
           <Text size="large" alignSelf="start" weight="bold">
             Shipping
