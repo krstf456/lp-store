@@ -6,7 +6,6 @@ import "./Admin.css";
 
 class Admin extends React.Component {
   //This will enable the use of context-functions and states
-  // static contextType = Context
   static contextType = userContext;
 
   render() {

@@ -1,5 +1,5 @@
 import React from "react";
-import {AccordionPanel, Box, Text } from "grommet";
+import {AccordionPanel, Box } from "grommet";
 import userContext from '../context/userContext';
 
 class OrderList extends React.Component {
