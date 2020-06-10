@@ -12,11 +12,10 @@ import {
   FormField,
   TextInput,
 } from "grommet";
-import { User, Shop } from "grommet-icons";
+import { User, Shop, Close } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
-import style from "./Header.css";
 import flower from "./flower06.png";
 import Dashboard from "../dashboard/Dashboard";
 
@@ -98,24 +97,17 @@ class Header1 extends React.Component {
       return (
         <Modal>
           <Box
-            style={{
-              display: "flex",
-              position: "absolute",
-              left: "33vw",
-              top: "25%",
-            }}
-            background="dark-1"
-            width="30rem"
-            height="30rem"
-            align="center"
+          className="modal"
           >
+            <Box className="modalCloseButton">
             <Button
               onClick={() => {
                 this.toggleModal();
               }}
             >
-              Close
+            <Close  color="purple" />
             </Button>
+            </Box>
             <h1>Register</h1>
             <Form onSubmit={this.submitRegister}>
               <FormField label="Username">
@@ -148,7 +140,9 @@ class Header1 extends React.Component {
                   required
                 />
               </FormField>
+              <Box style={{alignSelf: "center"}}>
               <Button label="Register" type="submit"></Button>
+              </Box>
             </Form>
           </Box>
         </Modal>
@@ -157,24 +151,17 @@ class Header1 extends React.Component {
       return (
         <Modal>
           <Box
-            style={{
-              display: "flex",
-              position: "absolute",
-              left: "33vw",
-              top: "25%",
-            }}
-            background="dark-1"
-            width="30rem"
-            height="30rem"
-            align="center"
+            className="modal"
           >
+            <Box className="modalCloseButton">
             <Button
               onClick={() => {
                 this.toggleLoginModal();
               }}
             >
-              Close
+              <Close  color="purple" />
             </Button>
+            </Box>
             <h1>Sign in</h1>
             <Dashboard />
           </Box>
