@@ -8,17 +8,24 @@ import {
   ResponsiveContext,
   Form,
   DropButton,
+  Image,
   Text,
   FormField,
+  Menu,
   TextInput,
 } from "grommet";
-import { User, Shop } from "grommet-icons";
+import { User, Shop, Gremlin } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
 import style from "./Header.css";
 import flower from "./flower06.png";
+
+import burger from "./burger3.png";
+
 import Dashboard from "../dashboard/Dashboard";
+import { Consumer as UserConsumer } from '../context/userContext'
+
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -38,6 +45,8 @@ class Header1 extends React.Component {
       showModal: !this.state.showModal,
     });
   };
+
+  
 
   toggleLoginModal = () => {
     this.setState({
@@ -91,6 +100,48 @@ class Header1 extends React.Component {
       });
   };
 
+   renderMenuItems = () => (
+    <UserConsumer>
+				{(userState) => (
+    <Box 
+    background="cyan"
+    width="xsmall"
+    align="center"
+    border="2px"
+    >
+      <Text
+      style={{ cursor: 'pointer'}}
+      onClick={() => this.toggleLoginModal()}
+      
+      >Login</Text>
+      <Text
+      onClick={() => userState.onSignOut()}
+      >Logout</Text>
+      <Text
+        style={{ cursor: 'pointer'}}
+        onClick={() => this.toggleModal()}
+        label="Register"
+      >Register</Text>
+      <Link to="/admin"
+      style={{textDecoration: "none", color: "red"}}>
+      <Text
+      
+        style={{ color: "white", border: "black" }}
+        label="Admin"
+      
+      
+      
+      >Admin</Text>
+      </Link>
+    </Box>
+    )}
+    </UserConsumer>
+  );
+
+   
+  
+    
+  
 
   //Place modal-content in here
   get modal() {
@@ -187,19 +238,71 @@ class Header1 extends React.Component {
   render() {
     return (
       <>
+      
         <ResponsiveContext.Consumer>
-          {(size) => (
+        {responsive =>
+            responsive === "small" ? (
             <Header
+            background="purple"
+            pad="xlarge"
+            style={{borderRadius: "0 0 60% 60% / 0 0 15% 15%"}}
+            
+
+            >
+              <Box display="block"
+              direction="row"
+              alignContent="start"
+              >
+                <DropButton
+                  alignSelf="center"
+                  margin={{ vertical: "small" }}
+                  dropContent={this.renderMenuItems()}
+                  dropProps={{ align: { top: "bottom" } }}
+                  
+                >
+                <Image src={burger} alt="peace burger"  width="45px" height="45px"/>
+
+                </DropButton>
+                
+              </Box>
+              <Image src={flower} alt="flower" />
+              <Box direction="row"
+              >
+              <Shop color="white" size="medium" />
+              <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
+                  {this.context.getTotalQuantity()}
+                  
+                </Text>
+              </Box>
+              
+            </Header>
+            ) : (
+              <Header
               justify="between"
               background="purple"
               pad="small"
-              height="15rem"
-            >
-              <Box>
+              height="15rem">
+                {/* <Box display="block"
+              direction="row"
+              alignContent="start"
+              >
+                <DropButton
+                  alignSelf="center"
+                  margin={{ vertical: "small" }}
+                  dropContent={this.renderMenuItems()}
+                  dropProps={{ align: { top: "bottom" } }}
+                  
+                >
+                <Image src={burger} alt="peace burger"  width="45px" height="45px"/>
+
+                </DropButton>
+                
+              </Box>
+                <Box>
                 <Link to="/">
                   <h1>Love Peace & Records</h1>
                 </Link>
-              </Box>
+              </Box> */}
               <Box
                 direction="row"
                 align="center"
@@ -207,6 +310,13 @@ class Header1 extends React.Component {
                 margin={{ left: "large" }}
               >
                 <img src={flower} alt="flower" />
+                <Box>
+                <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.9rem", borderRadius: "50%"}}>
+                  {this.context.getTotalQuantity()}
+                </Text>
+                </Box>
+
+                
                 <Button
                   style={{ color: "white", border: "none" }}
                   onClick={() => {
@@ -240,10 +350,13 @@ class Header1 extends React.Component {
                 ></Button>
                 </Link>
               </Box>
-            </Header>
-          )}
+              </Header>
+            )}
+            
         </ResponsiveContext.Consumer>
-        {this.modal}
+        
+        
+      {this.modal} 
       </>
     );
   }
