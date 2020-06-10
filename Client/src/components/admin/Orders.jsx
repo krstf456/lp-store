@@ -6,6 +6,7 @@ import OrderList from "./OrderList"
 
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'
+import "./Admin.css";
 
 class Orders extends React.Component {
   static contextType = UserContext
@@ -47,7 +48,7 @@ class Orders extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box>
+            <Box className="adminContainer">
               <Link to="/admin">
                 <h1>←</h1>
               </Link>
