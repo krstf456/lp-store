@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import Context from "../context/context";
 import { Box, ResponsiveContext, Menu, Button } from "grommet";
+import "./MainPage.css"
 
 class MainPage extends React.Component {
   constructor() {

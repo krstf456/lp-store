@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Text, FormField } from "grommet";
 import { Home } from "grommet-icons";
 import UserContext from "../context/userContext";
+import "./Checkout.css"
 
 export default class Delivery extends React.Component {
   //This will enable the use of context-functions and states
@@ -14,7 +15,7 @@ export default class Delivery extends React.Component {
 
   render() {
     return (
-      <Box pad="large" gap="large" width="large" background="light-1">
+      <Box pad="large" gap="large" width="large" className="background">
         <Box direction="row" width="large" justify="between">
           <Text size="large" weight="bold">
             Delivery

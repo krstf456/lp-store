@@ -12,6 +12,8 @@ import Checkout from "./components/checkout/Checkout";
 import ProductPage from "./components/productPage/ProductPage";
 import { Switch, Route } from "react-router-dom";
 import Context from "./components/context/context";
+import { Box } from "grommet";
+import "./App.css";
 
 class Layout extends React.Component {
   static contextType = Context;
@@ -19,13 +21,15 @@ class Layout extends React.Component {
     return (
       <>
         <Header />
+        <Box className="backgroundWrapper">
         <Switch>
           <Route path="/checkout/">
             <Checkout selectedShipping={this.context.selectedShipping}/>
           </Route>
-          <Route path="/productpage/:id">
-            <ProductPage/>
-          </Route>
+          <Route
+                path="/productpage/:id"
+                component={ProductPage}
+          ></Route>
           <Route path="/admin/orders">
             <Orders/>
           </Route>
@@ -45,6 +49,7 @@ class Layout extends React.Component {
             <MainPage/>
           </Route>
         </Switch>
+        </Box>
       </>
     );
   }
