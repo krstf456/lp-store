@@ -19,6 +19,7 @@ class Layout extends React.Component {
     return (
       <>
       <div className="App">
+        <div className="grainyWrapper"></div>
         <Header />
         <Box className="backgroundWrapper">
         <Switch>
