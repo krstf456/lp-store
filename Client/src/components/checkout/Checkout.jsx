@@ -9,18 +9,19 @@ import { } from "grommet-icons";
 import ShoppingCart from "./ShoppingCart";
 import Delivery from "./Delivery";
 import Shipping from "./Shipping";
+import userContext from '../context/userContext'
 import Payment from "../payment/PaymentBox";
 import OrderPage from "./OrderPage"
-import UserContext from '../context/userContext'
+import Context from "../context/context";
 import {getFromStorage} from '../../utils/storage'
 import "./Checkout.css";
 
 class Checkout extends React.Component {
   //This will enable the use of context-functions and states
-	static contextType = UserContext
+  static contextType = userContext
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       errorMessage: "",
       firstName: "",
@@ -30,16 +31,23 @@ class Checkout extends React.Component {
       postalCode: "",
       city: "",
       orderIsSent: false,
-      checkoutData: []
+      checkoutData: [],
+      paymentSelection: "swish"
     }
   }
+
+  handlePayment = (event) => {
+    this.setState({
+      paymentSelection: event.target.value,
+    })
+  }
+          
 
   handleSubmit  = async() => {
     const obj = getFromStorage('storage-object')
     if (obj && obj.token) {
       const { token } = obj
       let items = JSON.parse(localStorage.getItem('cart'))
-      console.log(items)
       this.setState({
         checkoutData: items
       })
@@ -74,8 +82,8 @@ class Checkout extends React.Component {
             }]
           ,
           phone: this.state.phone,
-          payment_method: "swish",
-          total_price: totalSum
+          payment_method: this.state.paymentSelection,
+          total_price: totalSum + this.props.selectedShipping.price
           }
            fetch(`http://localhost:5000/orders`,{
             method: 'POST',
@@ -121,7 +129,6 @@ class Checkout extends React.Component {
   }
 
   render() {
-
     return (
       <Main className="mainBackgroundCheckout"
         direction="column"
@@ -147,7 +154,11 @@ class Checkout extends React.Component {
               city={this.state.city}
             />
             <Shipping />
-            <Payment errorMessage={this.state.errorMessage}/>
+            <Payment 
+              errorMessage={this.state.errorMessage}
+              handlePayment={this.handlePayment}
+              paymentSelection={this.state.paymentSelection}
+            />
           </Form>
         </Box>
         :
