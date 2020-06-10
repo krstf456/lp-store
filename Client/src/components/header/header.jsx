@@ -19,6 +19,7 @@ import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
 import flower from "./flower06.png";
+import logo from "./logo.png";
 
 import burger from "./burger3.png";
 
@@ -103,7 +104,7 @@ class Header1 extends React.Component {
     <UserConsumer>
 				{(userState) => (
     <Box 
-    background="cyan"
+    background="#7D4487"
     width="xsmall"
     align="center"
     border="2px"
@@ -229,12 +230,14 @@ class Header1 extends React.Component {
         <ResponsiveContext.Consumer>
         {responsive =>
             responsive === "small" ? (
+            
+
             <Header
             background="purple"
             pad="xlarge"
             style={{borderRadius: "0 0 60% 60% / 0 0 15% 15%"}}
             
-
+            
             >
               <Box display="block"
               direction="row"
@@ -246,7 +249,7 @@ class Header1 extends React.Component {
                   dropContent={this.renderMenuItems()}
                   dropProps={{ align: { top: "bottom" } }}
                   
-                >
+                  >
                 <Image src={burger} alt="peace burger"  width="45px" height="45px"/>
 
                 </DropButton>
@@ -254,12 +257,13 @@ class Header1 extends React.Component {
               </Box>
               <Link to="/">
                   
-                <Image src={flower} alt="flower" />
+              <Image src={logo} alt="love peace and records" />
               </Link>
               <Box direction="row"
               >
               <Link to="/checkout/">
                     <Shop color="white" size="medium" />
+              
               </Link>
               <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
                   {this.context.getTotalQuantity()}
@@ -271,12 +275,13 @@ class Header1 extends React.Component {
             ) : (
               <Header
               justify="between"
-              background="#d9ac8d"
+              background="#EAB691"
               pad="small"
               height="15rem">
                  <Box display="block"
               direction="row"
               alignContent="start"
+              style={{padding: "44px"}}
               >
                 <DropButton
                   alignSelf="center"
@@ -292,7 +297,8 @@ class Header1 extends React.Component {
               </Box>
               <Box>
                 <Link to="/">
-                  <h1>Love Peace & Records</h1>
+                <Image src={logo} alt="love peace and records" />
+
                 </Link>
               </Box> 
               <Box direction="row">
