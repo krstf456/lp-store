@@ -51,7 +51,7 @@ class OrderList extends React.Component {
         <>
                 {this.context.renderRedirect()}
         <AccordionPanel label={"Ordernr: #" + this.props.orderData._id + " " + sent}>
-          <Box background="#008080" overflow="auto" style={{padding: "1em"}}>
+          <Box background="#4AAEAE" overflow="auto" style={{padding: "1em"}}>
           <Box
               alignContent="start"
               style={{
@@ -81,7 +81,6 @@ class OrderList extends React.Component {
               <table>
                 <thead>
                   <tr>
-                    <th></th>
                     <th>Album</th>
                     <th>Artist</th>
                     <th>qty</th>
