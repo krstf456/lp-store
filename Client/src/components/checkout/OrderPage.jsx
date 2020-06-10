@@ -28,7 +28,7 @@ export default class OrderPage extends React.Component {
               align="center"
               style={{
                 display: "flex",
-                flexDirection: "row",
+                flexDirection: "column",
                 flexWrap: "wrap",
               }}
             > 

@@ -1,5 +1,5 @@
 import React from "react";
-import {AccordionPanel, Box } from "grommet";
+import {AccordionPanel, Box, Text } from "grommet";
 import userContext from '../context/userContext'
 
 class OrderList extends React.Component {
@@ -28,14 +28,45 @@ class OrderList extends React.Component {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                flexWrap: "wrap",
+                flexWrap: "wrap"
               }}
             >
-              <Box>
-                adress
+              <Box  style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left"
+              }}>
+                <h3>User Info</h3>
+                <p>{this.props.orderData.adress[0].first_name}</p>
+                <p>{this.props.orderData.adress[0].last_name}</p>
+                <p>{this.props.orderData.adress[0].street_address}</p>
+                <p>{this.props.orderData.adress[0].postcode}</p>
+                <p>{this.props.orderData.adress[0].city}</p>
+                <p>{this.props.orderData.adress[0]._id}</p>
+                
               </Box>
-              <Box>
-                Order List
+              <Box  style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left"
+              }}>
+                <h3>Order Info</h3>
+                <p>{this.props.orderData.sent}</p>
+                <p>{this.props.orderData.payment_method}</p>
+                <p>{this.props.orderData.total_price}</p>
+                
+              </Box>
+              <Box  style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "left"
+              }}>
+                <h3>Products</h3>
+                <p>{this.props.orderData.products[0]._id}</p>
+                <p>{this.props.orderData.products[0].artist}</p>
+                <p>{this.props.orderData.products[0].album}</p>
+                <p>{this.props.orderData.products[0]._id}</p>
+                <p>{this.props.orderData.products[0].price}</p>
               </Box>
             </Box>
           </Box>
