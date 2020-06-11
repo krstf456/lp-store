@@ -11,15 +11,19 @@
     padding-left: 1rem;
 }
 
+.addToCartButton {
+    margin-top: 1.5rem;
+}
 .productImg {
  height: 20rem;
  width: 20rem;
  background-size: cover;
  background-repeat: no-repeat;
+ margin-bottom: 1rem;
 }
+
 .productContainer {
     display: flex;
     align-items: center;
-    height: 80vh;
    /*  background-color: rgba(253, 226, 137, 0.637); */
 }
