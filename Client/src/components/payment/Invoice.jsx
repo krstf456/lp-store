@@ -1,5 +1,5 @@
 import React from "react";
-import { FormField, Box } from "grommet";
+import { Box } from "grommet";
 import UserContext from "../context/userContext";
 
 
@@ -11,7 +11,7 @@ export default class Invoice extends React.Component {
     return ( 
       <>
       {this.context.isLoggedIn &&
-      <Box style={{border: "1px solid black", textAlign: "left", paddingBottom: "1rem", paddingLeft: "1rem"}}>
+      <Box style={{border: "1px solid black", textAlign: "left", padding: "1rem"}}>
       <h4>The invoice will be sent to your registered email:</h4>
       <p>{this.context.email}</p>
       </Box>
