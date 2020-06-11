@@ -41,6 +41,7 @@ class Dashboard extends React.Component {
 		const {username, password} = this.state
 		return (
 			<Box className="login">
+				<h1>Sign in</h1>
 				<Box className="loginTextInput">
 				<TextInput
 					type='text'
@@ -101,38 +102,35 @@ class Dashboard extends React.Component {
 			<ResponsiveContext.Consumer>
 				{(size) => (
 					<>
-					<Box>
-					{this.context.isLoggedIn
-					 ? <h1>Welcome {this.state.username}!</h1>
-					: this.loginForm()}
+					<Box pad="medium">
+						<Box>
+							{this.context.isLoggedIn
+								? <h1>Hey {this.state.username} <br/> you're signed in dude.</h1>
+								: this.loginForm()}
+						</Box>
+						<Box>
+							{this.context.isLoggedIn && this.context.isAdmin 
+								? <h1>... and yeah, you have admin rights.</h1>
+								: null}
+						</Box>
 					</Box>
-					<Box>
-					{this.context.isLoggedIn && this.context.isAdmin 
-						? <h1>You have admin rights.</h1>
-						: null}
-					</Box>
-					<Button
-					primary
-					label='Sign out'
-					onClick={() => this.context.onSignOut()}
-				/>
-					{/* <Box>
-						 <Form>{this.loginForm()}</Form> 
-						{this.context.isLoggedIn
-							? this.dashboard()
-							: this.loginForm()}
-					</Box>
-					 <Box>
-						{this.context.isLoggedIn && this.context.isAdmin 
-						? <h1>You have admin rights</h1>
-						: null}
-					</Box>  */}
 					</> 
 				)}
 			</ResponsiveContext.Consumer>
 		)
 	}
 }
+{/* <Box>
+	 <Form>{this.loginForm()}</Form> 
+	{this.context.isLoggedIn
+		? this.dashboard()
+		: this.loginForm()}
+</Box>
+ <Box>
+	{this.context.isLoggedIn && this.context.isAdmin 
+	? <h1>You have admin rights</h1>
+	: null}
+</Box>  */}
 
 export default Dashboard
 

@@ -219,7 +219,6 @@ class Header1 extends React.Component {
               <Close  color="#EAB691" />
             </Button>
             </Box>
-            <h1>Sign in</h1>
             <Dashboard />
           </Box>
         </Modal>

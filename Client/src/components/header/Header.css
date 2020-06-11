@@ -9,10 +9,12 @@
     height: 30rem;
     align-items: center;
     padding: 2rem;
+    text-align: center;
 }  
 
 .login {
    margin-top: 1rem;
+   align-items: center;
 
 }
 
