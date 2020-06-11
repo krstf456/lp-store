@@ -110,22 +110,26 @@ class Header1 extends React.Component {
     width="xsmall"
     align="center"
     >
-      <Text
+      <Text className="dropdown"
       style={{ cursor: 'pointer'}}
       onClick={() => this.toggleLoginModal()}
       
       >Login</Text>
-      <Text
+      <Text className="dropdown"
       onClick={() => userState.onSignOut()}
+      style={{ cursor: 'pointer'}}
+
       >Logout</Text>
-      <Text
+      <Text className="dropdown"
         style={{ cursor: 'pointer'}}
         onClick={() => this.toggleModal()}
         label="Register"
       >Register</Text>
       <Link to="/admin"
-      style={{textDecoration: "none", color: "red"}}>
-      <Text
+      className="link"
+      color="red"
+      style={{textDecoration: "none"}}>
+      <Text className="dropdown"
       
         style={{ color: "white", border: "black" }}
         label="Admin"
@@ -234,9 +238,10 @@ class Header1 extends React.Component {
             
 
             <Header
-            background="purple"
+            background="#EAB691"
             pad="xlarge"
-            style={{borderRadius: "0 0 60% 60% / 0 0 15% 15%"}}
+
+            style={{borderRadius: "0 0 60% 60% / 0 0 30% 30%", padding: "35px"}}
             
             
             >
@@ -251,14 +256,14 @@ class Header1 extends React.Component {
                   dropProps={{ align: { top: "bottom" } }}
                   
                   >
-                <Image src={burger} alt="peace burger"  width="45px" height="45px"/>
+                <Image src={burger} alt="peace burger"  width="35px" height="35px"/>
 
                 </DropButton>
                 
               </Box>
               <Link to="/">
                   
-              <Image src={logo} alt="love peace and records" />
+              <Image src={logo} alt="love peace and records" width="130px"/>
               </Link>
               <Box direction="row"
               >
@@ -266,7 +271,7 @@ class Header1 extends React.Component {
                     <Shop color="white" size="medium" />
               
               </Link>
-              <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
+              <Text style={{ color: "#7D4487", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
                   {this.context.getTotalQuantity()}
                   
                 </Text>
@@ -278,11 +283,14 @@ class Header1 extends React.Component {
               justify="between"
               background="#EAB691"
               pad="small"
-              height="15rem">
+              height="15rem"
+              style={{borderRadius: "0 0 60% 60% / 0 0 30% 30%"}}
+              >
                  <Box display="block"
               direction="row"
               alignContent="start"
-              style={{padding: "44px"}}
+              style={{padding: "44px"}
+            }
               >
                 <DropButton
                   alignSelf="center"
@@ -313,53 +321,7 @@ class Header1 extends React.Component {
                 </Text>
               </Box>
                 
-              {/* <Box
-                direction="row"
-                align="center"
-                justify="center"
-                margin={{ left: "large" }}
-              >
-                <img src={flower} alt="flower" />
-                <Box>
-                <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.9rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                </Text>
-                </Box>
-
-                
-                <Button
-                  style={{ color: "white", border: "none" }}
-                  onClick={() => {
-                    this.toggleModal();
-                  }}
-                  label="Register"
-                  default
-                ></Button>
-                <Button margin={{ right: "medium" }}>
-                  <User color="white" size="medium" />
-                </Button>
-                <div>
-                <p style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                </p>
-                </div>
-                <Button>
-                  <Link to="/checkout/">
-                    <Shop color="white" size="medium" />
-                  </Link>
-                </Button>
-                <Button
-                  style={{ color: "white", border: "black" }}
-                  label="Sign in"
-                  onClick={() => this.toggleLoginModal()}
-                ></Button>
-                 <Link to="/admin">
-                <Button
-                  style={{ color: "white", border: "black" }}
-                  label="Admin"
-                ></Button>
-                </Link>
-              </Box> */}
+              
               </Header>
             )}
             
