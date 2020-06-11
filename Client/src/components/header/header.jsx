@@ -149,48 +149,54 @@ class Header1 extends React.Component {
       return (
         <Modal>
           <Box className="modal">
-            <Box className="modalCloseButton">
-              <Button
-                onClick={() => {
-                  this.toggleModal();
-                }}
-              >
-                <Close color="#EAB691" />
-              </Button>
-            </Box>
-            <h1>Register</h1>
-            <Form onSubmit={this.submitRegister}>
-              <FormField label="Username">
-                <TextInput
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handelInputChange}
-                  required
-                />
-              </FormField>
-              <FormField label="E-mail">
-                <TextInput
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handelInputChange}
-                  required
-                />
-              </FormField>
-              <FormField label="Password">
-                <TextInput
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handelInputChange}
-                  required
-                />
-              </FormField>
-              <Box style={{ alignSelf: "center" }}>
-                <Button color="#4AAEAE" label="Register" type="submit"></Button>
+            <Box className="modalContainer">
+              <Box>
+                <Button
+                  onClick={() => {
+                    this.toggleModal();
+                  }}
+                >
+                  <Close color="#EAB691" />
+                </Button>
               </Box>
-            </Form>
+              <h1>Register</h1>
+              <Form onSubmit={this.submitRegister}>
+                <FormField label="Username">
+                  <TextInput
+                    type="text"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.handelInputChange}
+                    required
+                  />
+                </FormField>
+                <FormField label="E-mail">
+                  <TextInput
+                    type="text"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handelInputChange}
+                    required
+                  />
+                </FormField>
+                <FormField label="Password">
+                  <TextInput
+                    type="password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.handelInputChange}
+                    required
+                  />
+                </FormField>
+                <Box style={{ alignSelf: "center" }}>
+                  <Button
+                    color="#4AAEAE"
+                    label="Register"
+                    type="submit"
+                  ></Button>
+                </Box>
+              </Form>
+            </Box>
           </Box>
         </Modal>
       );
@@ -198,16 +204,18 @@ class Header1 extends React.Component {
       return (
         <Modal>
           <Box className="modal">
-            <Box className="modalCloseButton">
-              <Button
-                onClick={() => {
-                  this.toggleLoginModal();
-                }}
-              >
-                <Close color="#EAB691" />
-              </Button>
+            <Box className="modalContainer">
+              <Box>
+                <Button
+                  onClick={() => {
+                    this.toggleLoginModal();
+                  }}
+                >
+                  <Close color="#EAB691" />
+                </Button>
+              </Box>
+              <Dashboard />
             </Box>
-            <Dashboard />
           </Box>
         </Modal>
       );
