@@ -1,7 +1,7 @@
 // UncontrolledLottie.jsx
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import animationData from './loading2.json'
+import animationData from './vwCircle.json'
 
 class LoadingAnimation extends Component {
 	render() {
