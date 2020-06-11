@@ -213,11 +213,10 @@ class MainPage extends React.Component {
                     pathname: "/productpage/" + product._id,
                   }}
                 >
-                  <div
-                    style={{ backgroundImage: `url(${product.image})`, height: "18rem",
-                    width: "18rem"}}
-                    className="imgStyle"
-                  ></div> 
+                  <img
+                    style={{ backgroundImage: `url(${product.image})` }}
+                    className="imgProduct"
+                  />
                   <Box 
                     style={{
                     display: "flex",
