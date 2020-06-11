@@ -92,7 +92,7 @@ class UploadProduct extends React.Component {
           }
           else {
             this.setState({
-                errorMessage: "The album is uploaded",
+                errorMessage: "Wow dude. The album is uploaded",
                 artist: "", album: "", description: "", price: "", stock_quantity: "", genre: ""
             })
           }
@@ -118,7 +118,7 @@ class UploadProduct extends React.Component {
       ){
         isCorrect = false
         this.setState({
-          errorMessage: "Some data is missing",
+          errorMessage: "Some data is, like missing or stuff.",
         })
       } else if(
         isNaN(price) ||
@@ -126,19 +126,19 @@ class UploadProduct extends React.Component {
       ){
         isCorrect = false
         this.setState({
-          errorMessage: "Not a number",
+          errorMessage: "Dude. That's not a number. Try something. Like 4...",
         })
       } else if(image === ""){
         this.setState({
-          errorMessage: 'Missing album cover'
+          errorMessage: 'Man. A album cover would be nice. '
         })
       } else if(!['image/jpeg', 'image/gif', 'image/png'].includes(image.type)) {
         this.setState({
-          errorMessage: 'Only images are allowed.'
+          errorMessage: "Dude. That's not a picture. Not cool."
         })
       } else if(image.size > 2 * 1024 * 1024) { // check file size (< 2MB)
         this.setState({
-          errorMessage: 'File must be less than 2MB.'
+          errorMessage: 'It would be groovy i the file was smaller than 2MB.'
         })
       }
       return isCorrect

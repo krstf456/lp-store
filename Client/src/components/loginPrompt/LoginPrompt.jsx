@@ -22,7 +22,7 @@ class LoginPrompt extends React.Component {
 	}
 
 	successfullyCreatedUser = () => {
-		alert('You were successfully registered!')
+		alert('Wow, man. You one of us now!')
 	}
 
 	//Place modal-content in here
@@ -65,7 +65,7 @@ class LoginPrompt extends React.Component {
 								position: 'relative',
 							}}
 						>
-							You need to be logged in to place an order!
+							Dude. You need to be logged in to place an order!
 						</h2>
 						<div id='bm'></div>
 					</Box>
