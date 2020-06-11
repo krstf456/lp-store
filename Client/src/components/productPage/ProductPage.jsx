@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, ResponsiveContext, Button } from "grommet";
 import Context from "../context/context";
+import "./ProductPage.css"
 
 
 
@@ -24,8 +25,8 @@ const {product} = this.state
      if (!product) return null; 
  
      return(
-      <Box className="boxStyle">
-          <div style={{backgroundImage: `url(${product.image})`}} className="imgStyle"></div>
+      <Box className="productBox">
+          <img style={{backgroundImage: `url(${product.image})`}} className="productImg"></img>
           <h3>{product.album}</h3>
           <h4>{product.artist}</h4>
           <p>{product.price}</p>
@@ -41,7 +42,7 @@ const {product} = this.state
       return (
         <ResponsiveContext.Consumer>
         {size => (
-          <Box>
+          <Box className="productContainer">
               <h1>ProductInfo</h1>
            {this.displayOneProduct()} 
           </Box>
