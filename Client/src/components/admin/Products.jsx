@@ -29,7 +29,7 @@ class Products extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box>
+            <Box className="heightContainer">
               <Link to="/admin">
                 <h1>←</h1>
               </Link>

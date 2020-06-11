@@ -1,17 +1,25 @@
 .productBox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 80vh;
+    text-align: left;
+}
+
+.productBox h2, h3, h4, h5 {
+    margin: 0.2rem;
+}
+
+
+.textBox {
+    padding-left: 1rem;
 }
 
 .productImg {
  height: 20rem;
  width: 20rem;
- background-repeat: no-repeat;
  background-size: cover;
+ background-repeat: no-repeat;
 }
 .productContainer {
     display: flex;
     align-items: center;
+    height: 80vh;
+   /*  background-color: rgba(253, 226, 137, 0.637); */
 }
