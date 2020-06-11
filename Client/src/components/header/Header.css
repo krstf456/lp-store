@@ -1,16 +1,22 @@
   .modal {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}  
+
+.modalContainer {
     background-color: #7D4487;
     color: #EAB691;
     border-radius: 5%;
-    position: absolute;
-    top: 25%;
-    left: 33%;
     width: 30rem;
     height: 30rem;
     align-items: center;
     padding: 2rem;
     text-align: center;
-}  
+}
 
 .login {
    margin-top: 1rem;
@@ -31,13 +37,6 @@
 
 .buttonBox {
     margin: 1rem;
-}
-
-
-.modalCloseButton {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
 }
 
 .dropdown {
