@@ -2,12 +2,14 @@
   text-align: center;
   font-family: 'Spicy Rice', cursive;
   z-index: -1;
+  height: 100vh;
 }
 
 .backgroundWrapper {
   background-image: url("sunburst-01.png");
   background-repeat: no-repeat;
   background-size: cover;
+  min-height: 100vh;
 }
 
 .grainyWrapper {
@@ -20,6 +22,6 @@
   width: 100vw;
   background-size: 100% 100%;
   background-repeat: repeat;
-  opacity: 7%;
+  opacity: 12%;
   pointer-events:none;  
 }

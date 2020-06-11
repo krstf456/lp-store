@@ -7,6 +7,7 @@ import { Provider } from "./components/context/context";
 import { BrowserRouter} from "react-router-dom";
 import {UserProvider} from './components/context/userContext'
 import {ShoppingCartProvider} from './components/context/shoppingCartContext'
+import "./App.css";
 
 class App extends React.Component {
   render() {
