@@ -9,7 +9,7 @@ class MainPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      categories: ['', 'Rock', 'Soul', 'Pop', 'Psycadelic', 'Prog', 'Other'],
+      categories: ['', 'Rock', 'Soul', 'Pop', 'Psychedelic', 'Prog', 'Other'],
       activeCategory: ''
     }
   }
@@ -53,8 +53,8 @@ class MainPage extends React.Component {
     console.log(this.state.activeCategory)
   }
 
-  handleOnClickPsycadelic = () => {
-    this.setState({ activeCategory: 'Psycadelic' })
+  handleOnClickPsychedelic = () => {
+    this.setState({ activeCategory: 'Psychedelic' })
     console.log(this.state.activeCategory)
   }
 
@@ -91,7 +91,7 @@ class MainPage extends React.Component {
                   { label: "Rock", onClick: () => {this.handleOnClickRock()} },
                   { label: "Soul", onClick: () => {this.handleOnClickSoul()} },
                   { label: "Pop", onClick: () => {this.handleOnClickPop()} },
-                  { label: "Psycadelic", onClick: () => {this.handleOnClickPsycadelic()} },
+                  { label: "Psychedelic", onClick: () => {this.handleOnClickPsychedelic()} },
                   { label: "Prog", onClick: () => {this.handleOnClickProg()} },
                   { label: "Other", onClick: () => {this.handleOnClickOther()} },
                 ]}
