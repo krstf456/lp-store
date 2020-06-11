@@ -30,3 +30,12 @@
     right: 1.5rem;
     top: 1.5rem;
 }
+
+.dropdown {
+    
+    opacity: 0.8;
+    transition: 0.3s;
+}
+.dropdown:hover {
+    opacity: 1;
+}

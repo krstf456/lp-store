@@ -1,4 +1,4 @@
-const shippingModel =  require("../models/Shipping.model");
+const {shippingModel} =  require("../models/Shipping.model");
 
 
 getShippingAlternatives = async (req, res, next) => {
