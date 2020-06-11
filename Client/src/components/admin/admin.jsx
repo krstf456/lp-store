@@ -14,7 +14,7 @@ class Admin extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box align="center">
+            <Box align="center" >
               <h1>Admin</h1>
               <Box className="container" gap="small">
                 <Box className="linkBox">
