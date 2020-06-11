@@ -159,7 +159,7 @@ class Header1 extends React.Component {
                 this.toggleModal();
               }}
             >
-            <Close  color="purple" />
+            <Close  color="#EAB691" />
             </Button>
             </Box>
             <h1>Register</h1>
@@ -213,7 +213,7 @@ class Header1 extends React.Component {
                 this.toggleLoginModal();
               }}
             >
-              <Close  color="purple" />
+              <Close  color="#EAB691" />
             </Button>
             </Box>
             <h1>Sign in</h1>
