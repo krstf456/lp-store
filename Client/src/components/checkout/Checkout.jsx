@@ -7,13 +7,11 @@ import Shipping from './Shipping'
 import userContext from '../context/userContext'
 import Payment from "../payment/PaymentBox";
 import OrderPage from "./OrderPage"
-import Context from "../context/context";
 import {getFromStorage} from '../../utils/storage'
 import "./Checkout.css";
 import LoginPrompt from '../loginPrompt/LoginPrompt'
 
 class Checkout extends React.Component {
-	//This will enable the use of context-functions and states
 	static contextType = userContext
 
 	constructor(props) {
@@ -79,6 +77,11 @@ class Checkout extends React.Component {
 					phone: this.state.phone,
 					payment_method: this.state.paymentSelection,
 					total_price: totalSum + this.props.selectedShipping.price,
+					shipping: [{
+						company: this.props.selectedShipping.company,
+						price: this.props.selectedShipping.price,
+						shipping_time: this.props.selectedShipping.shipping_time
+					}]
 				}
 				fetch(`http://localhost:5000/orders`, {
 					method: 'POST',

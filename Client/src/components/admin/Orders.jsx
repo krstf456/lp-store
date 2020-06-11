@@ -11,15 +11,18 @@ import "./Admin.css";
 class Orders extends React.Component {
   static contextType = UserContext
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       orders: []
     };
   }
   
     componentDidMount = () => {
+      this.getOrders()
+    }
 
+    getOrders = () => {
       const obj = getFromStorage('storage-object')
       if (obj && obj.token) {
          const { token } = obj
