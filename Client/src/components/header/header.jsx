@@ -114,12 +114,12 @@ class Header1 extends React.Component {
       style={{ cursor: 'pointer'}}
       onClick={() => this.toggleLoginModal()}
       
-      >Login</Text>
+      >Sign in</Text>
       <Text className="dropdown"
       onClick={() => userState.onSignOut()}
       style={{ cursor: 'pointer'}}
 
-      >Logout</Text>
+      >Sign out</Text>
       <Text className="dropdown"
         style={{ cursor: 'pointer'}}
         onClick={() => this.toggleModal()}
