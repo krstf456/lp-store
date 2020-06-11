@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
 				/>
 				</Box>
 				<Box className="buttonBox">
-				<Button label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
+				<Button color="#4AAEAE" label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
 				</Box>
 			</Box>
 		)
