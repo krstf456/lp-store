@@ -50,7 +50,7 @@ class Orders extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box className="heightContainer">
+            <Box style={{minHeight: "85vh"}} className="heightContainer">
               <Link to="/admin">
                 <h1>←</h1>
               </Link>
