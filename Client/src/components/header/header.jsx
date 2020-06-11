@@ -273,7 +273,7 @@ class Header1 extends React.Component {
                     <Shop color="white" size="medium" />
               
               </Link>
-              <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
+              <Text style={{ color: "#7D4487", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
                   {this.context.getTotalQuantity()}
                   
                 </Text>
