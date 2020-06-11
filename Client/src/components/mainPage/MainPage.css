@@ -17,7 +17,7 @@
     height: 27px;
     position: relative;
     bottom: -27px;
-    padding: 0 3px;
+    padding: 0 16px 0 3px;
     border: 1px solid #7D4487;
     
     justify-self: center;

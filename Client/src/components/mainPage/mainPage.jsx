@@ -151,6 +151,7 @@ class MainPage extends React.Component {
         {(size) => (
           <Box>
             <Box align="center" pad="xlarge" 
+            
             >
 
               <DropButton
