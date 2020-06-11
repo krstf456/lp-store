@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import Context from "../context/context";
-import { Box, ResponsiveContext, Menu, Button } from "grommet";
+import { Box, ResponsiveContext, Menu, DropButton, Text, Button, Image} from "grommet";
+import { Disc } from "grommet-icons"
 import "./MainPage.css"
 import flower from "./flower11.png";
+import lp from "./lp1.png";
+
+
 
 class MainPage extends React.Component {
   constructor() {
@@ -68,14 +72,102 @@ class MainPage extends React.Component {
     console.log(this.state.activeCategory)
   }
 
+  renderMenuItems = () => (
+    
+      
+        <Box background="#7D4487" width="small" align="center" >
+          <Text
+            className="dropdownText"
+            onClick= { () => this.handleOnClickAll()}
+            style={{ cursor: "pointer" }}
+
+          >
+            All Albums
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickRock()}
+            style={{ cursor: "pointer" }}
+
+          >
+            Rock
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickSoul()}
+            style={{ cursor: "pointer" }}
+
+          >
+            Soul
+          </Text>
+          
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickPop()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Pop
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickPsychedelic()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Psychedelic
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickProg()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Prog
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickOther()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Other
+          </Text>
+          
+        </Box>
+     
+  );
+
   render() {
     
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
           <Box>
-            <Box align="center" pad="xlarge">
-              <Menu
+            <Box align="center" pad="xlarge" 
+            >
+
+              <Box direction="row" className="textBox"><Text className="text">C</Text><Text className="text2">h</Text><Text className="text">o</Text><Text className="text2">o</Text><Text className="text">s</Text><Text className="text3">e</Text><Text className="text">C</Text><Text className="text2">a</Text><Text className="text">t</Text><Text className="text2">e</Text><Text className="text">g</Text><Text className="text2">o</Text><Text className="text">r</Text><Text className="text2">y</Text></Box>
+              <DropButton
+                    alignSelf="center"
+                    margin={{ vertical: "small" }}
+                    dropContent={this.renderMenuItems()}
+                    dropProps={{ align: { top: "bottom" } }}
+                  >
+                    <Image
+                      src={lp}
+                      alt="peace burger"
+                      width="80px"
+                      height="80px"
+                    />
+                  </DropButton>
+              {/* <Menu
                 className="dropDown"
                 dropProps={{
                   align: { top: "bottom", left: "left" },
@@ -85,7 +177,9 @@ class MainPage extends React.Component {
                 style={{
                   fontFamily: 'Spicy Rice',
                   color: "wheat"
+                  
                 }}
+                icon={<Disc/>}
                 items={[
                   { label: "All Albums", onClick: () => {this.handleOnClickAll()} },
                   { label: "Rock", onClick: () => {this.handleOnClickRock()} },
@@ -95,7 +189,7 @@ class MainPage extends React.Component {
                   { label: "Prog", onClick: () => {this.handleOnClickProg()} },
                   { label: "Other", onClick: () => {this.handleOnClickOther()} },
                 ]}
-              />
+              /> */}
             </Box>
             <Box
               justify="center"
