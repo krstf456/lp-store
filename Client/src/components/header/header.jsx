@@ -148,8 +148,7 @@ class Header1 extends React.Component {
       <></>
       }
       <br/>
-<<<<<<< HEAD
-=======
+
       <br/>
       <br/>
       <Image
@@ -187,7 +186,7 @@ class Header1 extends React.Component {
         alt="a flower"
         className="burgerFlower7"
       />
->>>>>>> Flower Header
+
     </Box>
     )}
     </UserConsumer>
