@@ -1,12 +1,11 @@
-.adminContainer {
-    height: 100vh;
-}
+
 
 .container {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    height: 80vh;
 }
 
 .linkBox {
@@ -20,4 +19,5 @@
 
 .linkBox h1 {
     color: #EAB691;
+    text-decoration: none;
 }
