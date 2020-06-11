@@ -100,46 +100,49 @@ class Header1 extends React.Component {
 
   renderMenuItems = () => (
     <UserConsumer>
-      {(userState) => (
-        <Box background="#7D4487" width="xsmall" align="center">
-          <Text
-            className="dropdown"
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleLoginModal()}
-          >
-            Sign in
-          </Text>
-          <Text
-            className="dropdown"
-            onClick={() => userState.onSignOut()}
-            style={{ cursor: "pointer" }}
-          >
-            Sign out
-          </Text>
-          <Text
-            className="dropdown"
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleModal()}
-            label="Register"
-          >
-            Register
-          </Text>
-          <Link
-            to="/admin"
-            className="link"
-            color="red"
-            style={{ textDecoration: "none" }}
-          >
-            <Text
-              className="dropdown"
-              style={{ color: "white", border: "black" }}
-              label="Admin"
-            >
-              Admin
-            </Text>
-          </Link>
-        </Box>
-      )}
+				{(userState) => (
+    <Box 
+    background="#7D4487"
+    width="xsmall"
+    align="center"
+    >
+      {
+        !userState.isLoggedIn?
+        <Text className="dropdown"
+        style={{ cursor: 'pointer'}}
+        onClick={() => this.toggleLoginModal()}
+        
+        >Login</Text>:
+      <Text className="dropdown"
+      onClick={() => userState.onSignOut()}
+      style={{ cursor: 'pointer'}}
+      >Logout
+      </Text>
+      }{
+
+        !userState.isLoggedIn?
+        <Text className="dropdown"
+          style={{ cursor: 'pointer'}}
+          onClick={() => this.toggleModal()}
+          label="Register"
+        >Register</Text>:
+        <></>
+      }{
+        userState.isAdmin?
+        <Link to="/admin"
+        className="link"
+        color="red"
+        style={{textDecoration: "none"}}>
+        <Text className="dropdown"
+      
+        style={{ color: "white", border: "black" }}
+        label="Admin"
+      >Admin</Text>
+      </Link>:
+      <></>
+      }
+    </Box>
+    )}
     </UserConsumer>
   );
 
@@ -216,6 +219,7 @@ class Header1 extends React.Component {
   }
 
   render() {
+
     return (
       <>
         <ResponsiveContext.Consumer>
