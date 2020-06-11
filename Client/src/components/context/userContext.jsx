@@ -140,6 +140,7 @@ export class UserProvider extends React.Component {
 			this.setState({
 				isLoading: false,
 				isLoggedIn: false,
+				isAdmin: false,
 			})
 			this.setRedirect()
 
