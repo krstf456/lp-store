@@ -109,8 +109,6 @@ class Header1 extends React.Component {
     background="#7D4487"
     width="xsmall"
     align="center"
-    border="2px"
-    color="#4AAEAE"
     >
       <Text className="dropdown"
       style={{ cursor: 'pointer'}}
@@ -323,53 +321,7 @@ class Header1 extends React.Component {
                 </Text>
               </Box>
                 
-              {/* <Box
-                direction="row"
-                align="center"
-                justify="center"
-                margin={{ left: "large" }}
-              >
-                <img src={flower} alt="flower" />
-                <Box>
-                <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.9rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                </Text>
-                </Box>
-
-                
-                <Button
-                  style={{ color: "white", border: "none" }}
-                  onClick={() => {
-                    this.toggleModal();
-                  }}
-                  label="Register"
-                  default
-                ></Button>
-                <Button margin={{ right: "medium" }}>
-                  <User color="white" size="medium" />
-                </Button>
-                <div>
-                <p style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                </p>
-                </div>
-                <Button>
-                  <Link to="/checkout/">
-                    <Shop color="white" size="medium" />
-                  </Link>
-                </Button>
-                <Button
-                  style={{ color: "white", border: "black" }}
-                  label="Sign in"
-                  onClick={() => this.toggleLoginModal()}
-                ></Button>
-                 <Link to="/admin">
-                <Button
-                  style={{ color: "white", border: "black" }}
-                  label="Admin"
-                ></Button>
-                </Link>
-              </Box> */}
+              
               </Header>
             )}
             
