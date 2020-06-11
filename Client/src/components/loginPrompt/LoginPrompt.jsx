@@ -2,18 +2,9 @@ import React from 'react'
 import UserContext from '../context/userContext'
 import './LoginPrompt.css'
 import Modal from '../modal/modal'
-import {
-	Box,
-	Header,
-	Button,
-	ResponsiveContext,
-	Form,
-	DropButton,
-	Text,
-	FormField,
-	TextInput,
-} from 'grommet'
+import { Box, Button } from 'grommet'
 import LoadingAnimation from './LoadingAnimation'
+import ErrorAnimation from './ErrorAnimation'
 
 class LoginPrompt extends React.Component {
 	//This will enable the use of context-functions and states
@@ -46,7 +37,7 @@ class LoginPrompt extends React.Component {
 							display: 'flex',
 							position: 'absolute',
 							left: '33vw',
-							top: '25%',
+							top: '10%',
 							position: 'sticky',
 							height: '0rem',
 						}}
@@ -66,6 +57,7 @@ class LoginPrompt extends React.Component {
 						<h2 style={{ zIndex: '2' }}>Hey Dude!</h2>
 
 						<LoadingAnimation />
+						<ErrorAnimation />
 
 						<h2
 							style={{
