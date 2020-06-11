@@ -3,8 +3,8 @@ import UserContext from '../context/userContext'
 import './LoginPrompt.css'
 import Modal from '../modal/modal'
 import { Box, Button } from 'grommet'
-import LoadingAnimation from './LoadingAnimation'
-import ErrorAnimation from './ErrorAnimation'
+import LoadingAnimation from '../animations/LoadingAnimation'
+import ErrorAnimation from '../animations/ErrorAnimation'
 
 class LoginPrompt extends React.Component {
 	//This will enable the use of context-functions and states
