@@ -1,0 +1,485 @@
+.flowers{
+  z-index: 1;
+}
+
+.flower42{
+  position: absolute;
+  height: 1.5em;
+  top: 6em;
+  right: 8em;
+}
+
+.flower16{
+    position: absolute;
+    height: 1.5em;
+    top: 2em;
+    left: 9.7em;
+}
+
+.flower37{
+  position: absolute;
+  height: 1.5em;
+  top: 2em;
+  right: 9.7em;
+}
+
+.flower2{
+  position: absolute;
+  height: 2em;
+  top: 2em;
+  left: 17em;
+}
+
+.flower23{
+  position: absolute;
+  height: 2em;
+  top: 2em;
+  right: 17em;
+}
+
+.flower3{
+  position: absolute;
+  height: 2em;
+  top: 7em;
+  left: 12.0em;
+}
+
+.flower24{
+  position: absolute;
+  height: 2em;
+  top: 7em;
+  right: 12.0em;
+}
+
+.flower4{
+  position: absolute;
+  height: 1.5em;
+  top: 2em;
+  left: 12.7em;
+}
+
+.flower25{
+  position: absolute;
+  height: 1.5em;
+  top: 2em;
+  right: 12.7em;
+}
+
+.flower14{
+  position: absolute;
+  height: 2em;
+  top: 5em;
+  left: 15.0em;
+}
+
+.flower35{
+  position: absolute;
+  height: 2em;
+  top: 5em;
+  right: 15.0em;
+}
+
+.flower7{
+  position: absolute;
+  height: 3em;
+  top: 8em;
+  left: 15.7em;
+}
+
+.flower28{
+  position: absolute;
+  height: 3em;
+  top: 8em;
+  right: 15.7em;
+}
+
+.flower8{
+  position: absolute;
+  height: 2em;
+  top: 5em;
+  left: 18.7em;
+}
+
+.flower29{
+  position: absolute;
+  height: 2em;
+  top: 5em;
+  right: 18.7em;
+}
+
+.flower9{
+  position: absolute;
+  height: 1.3em;
+  top: 2em;
+  left: 20.7em;
+}
+
+.flower30{
+  position: absolute;
+  height: 1.3em;
+  top: 2em;
+  right: 20.7em;
+}
+
+.flower10{
+  position: absolute;
+  height: 2em;
+  top: 4em;
+  left: 22.7em;
+}
+
+.flower11{
+  position: absolute;
+  height: 1.5em;
+  top: 2em;
+  left: 25.7em;
+}
+
+.flower32{
+  position: absolute;
+  height: 1.5em;
+  top: 2em;
+  right: 25.7em;
+}
+
+.flower12{
+  position: absolute;
+  height: 2em;
+  top: 8em;
+  left: 22.7em;
+}
+
+.flower33{
+  position: absolute;
+  height: 2em;
+  top: 8em;
+  right: 22.7em;
+}
+
+.flower18{
+  position: absolute;
+  height: 1.5em;
+  top: 7em;
+  left: 25.7em;
+}
+
+.flower39{
+  position: absolute;
+  height: 1.5em;
+  top: 7em;
+  right: 25.7em;
+}
+
+.flower13{
+  position: absolute;
+  height: 4em;
+  top: 3em;
+  left: 27.7em;
+}
+
+.flower34{
+  position: absolute;
+  height: 4em;
+  top: 3em;
+  right: 27.7em;
+}
+
+.flower15{
+  position: absolute;
+  height: 2em;
+  top: 9em;
+  left: 27.7em;
+}
+
+.flower36{
+  position: absolute;
+  height: 2em;
+  top: 9em;
+  right: 27.7em;
+}
+
+.flower1{
+  position: absolute;
+  height: 2em;
+  top: 7.5em;
+  left: 31.7em;
+}
+
+.flower22{
+  position: absolute;
+  height: 2em;
+  top: 7.5em;
+  right: 31.7em;
+}
+
+.flower6{
+  position: absolute;
+  height: 1.3em;
+  top: 1.6em;
+  left: 32em;
+}
+
+.flower27{
+  position: absolute;
+  height: 1.3em;
+  top: 1.6em;
+  right: 32em;
+}
+
+.flower5{
+  position: absolute;
+  height: 1.5em;
+  top: 9em;
+  left: 34.7em;
+}
+
+.flower17{
+  position: absolute;
+  height: 3em;
+  top: 9em;
+  left: 38.7em;
+}
+
+.flower38{
+  position: absolute;
+  height: 3em;
+  top: 9em;
+  left: 38.7em;
+}
+
+.flower19{
+  position: absolute;
+  height: 2.5em;
+  top: 5em;
+  left: 34.7em;
+}
+
+.flower20{
+  position: absolute;
+  height: 2em;
+  top: 2em;
+  left: 36.7em;
+}
+
+.flower31{
+  position: absolute;
+  height: 2em;
+  top: 2em;
+  right: 36.7em;
+}
+
+.flower21{
+  position: absolute;
+  height: 1.5em;
+  top: 6em;
+  left: 38em;
+}
+
+@media screen and (max-width: 53em) {
+  
+  .flower42{
+    display: none;
+  }
+  
+  .flower16{
+    display: none;
+  }
+  
+  .flower37{
+   display: none;
+  }
+  
+  .flower2{
+    display: none;
+  }
+  .flower3{
+    display: none;
+  }
+
+  .flower24{
+    display: none;
+  }
+  .flower4{
+    display: none;
+  }
+  .flower14{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 56em) {
+
+  .flower7{
+    display: none;
+  }
+  
+  
+}
+
+@media screen and (max-width: 59em) {
+  .flower9{
+    display: none;
+  }
+  
+  .flower35{
+    display: none;
+  }
+
+  
+  
+}
+
+@media screen and (max-width: 65em) {
+  .flower28{
+    display: none;
+  }
+  
+  .flower8{
+    display: none;
+  }
+
+  .flower25{
+    display: none;
+  }
+  
+  
+}
+
+@media screen and (max-width: 68em) {
+  .flower29{
+    display: none;
+  }  
+  
+  
+}
+
+@media screen and (max-width: 71em) {
+  .flower13{
+    display: none;
+  }
+  
+}
+
+@media screen and (max-width: 74em) {
+
+  .flower30{
+    display: none;
+  }
+  .flower23{
+    display: none;
+  }
+  .flower10{
+    display: none;
+  }
+  .flower11{
+    display: none;
+  }
+  
+  
+}
+
+@media screen and (max-width: 77em) {
+
+  .flower12{
+    display: none;
+  }
+  
+  
+}
+
+@media screen and (max-width: 80em) {
+  .flower33{
+    display: none;
+  }
+  .flower15{
+    display: none;
+  }
+  
+}
+
+@media screen and (max-width: 83em) {
+  .flower32{
+    display: none;
+  }
+  .flower39{
+    display: none;
+  }
+  .flower1{
+    display: none;
+  }
+  .flower18{
+    display: none;
+  }
+  
+  
+}
+
+
+@media screen and (max-width: 83em) {
+  .flower13{
+    display: none;
+  }
+  
+  .flower6{
+    display: none;
+  }
+  
+  
+}
+
+@media screen and (max-width: 87em) {
+  .flower13{
+    display: none;
+  }
+  .flower36{
+    display: none;
+  }
+
+  
+}
+
+@media screen and (max-width: 90em) {
+  .flower5{
+    display: none;
+    
+  }
+  
+}
+
+
+@media screen and (max-width: 96em) {
+  .flower19{
+    display: none;
+  }
+  .flower34{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 99em) {
+  .flower22{
+    display: none;
+  }
+  .flower27{
+    display: none;
+  }
+  .flower17{
+    display: none;
+  }
+  .flower38{
+    display: none;
+  }
+  .flower20{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 102em) {
+  .flower21{
+    display: none;
+   }
+}
+

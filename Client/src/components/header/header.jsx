@@ -19,10 +19,16 @@ import { Shop, Close } from "grommet-icons";
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
-import flower from "./flower06.png";
-import logo from "./logo.png";
+import flower2 from "../../images/flower02.png";
+import flower5 from "../../images/flower06.png";
+import flower6 from "../../images/flower06.png";
+import flower8 from "../../images/flower08.png";
+import flower14 from "../../images/flower14.png";
+import flower16 from "../../images/flower16.png";
 
-import burger from "./burger3.png";
+import logo from "../../images/logo.png";
+
+import burger from "../../images/burger3.png";
 
 import Dashboard from "../dashboard/Dashboard";
 import { Consumer as UserConsumer } from "../context/userContext";
@@ -100,46 +106,87 @@ class Header1 extends React.Component {
 
   renderMenuItems = () => (
     <UserConsumer>
-      {(userState) => (
-        <Box background="#7D4487" width="xsmall" align="center">
-          <Text
-            className="dropdown"
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleLoginModal()}
-          >
-            Sign in
-          </Text>
-          <Text
-            className="dropdown"
-            onClick={() => userState.onSignOut()}
-            style={{ cursor: "pointer" }}
-          >
-            Sign out
-          </Text>
-          <Text
-            className="dropdown"
-            style={{ cursor: "pointer" }}
-            onClick={() => this.toggleModal()}
-            label="Register"
-          >
-            Register
-          </Text>
-          <Link
-            to="/admin"
-            className="link"
-            color="red"
-            style={{ textDecoration: "none" }}
-          >
-            <Text
-              className="dropdown"
-              style={{ color: "white", border: "black" }}
-              label="Admin"
-            >
-              Admin
-            </Text>
-          </Link>
-        </Box>
-      )}
+				{(userState) => (
+    <Box 
+    background="#7D4487"
+    width="small"
+    align="center"
+    >
+      {
+        !userState.isLoggedIn?
+        <Text className="dropdown"
+        style={{ cursor: 'pointer'}}
+        onClick={() => this.toggleLoginModal()}
+        
+        >Sign In</Text>:
+      <Text className="dropdown"
+      onClick={() => userState.onSignOut()}
+      style={{ cursor: 'pointer'}}
+      >Sign Out
+      </Text>
+      }{
+
+        !userState.isLoggedIn?
+        <Text className="dropdown"
+          style={{ cursor: 'pointer'}}
+          onClick={() => this.toggleModal()}
+          label="Register"
+        >Register</Text>:
+        <></>
+      }{
+        userState.isAdmin?
+        <Link to="/admin"
+        className="link"
+        color="red"
+        style={{textDecoration: "none"}}>
+        <Text className="dropdown"
+      
+        style={{ color: "white", border: "black" }}
+        label="Admin"
+      >Admin</Text>
+      </Link>:
+      <></>
+      }
+      <br/>
+      <br/>
+      <br/>
+      <Image
+        src={flower6}
+        alt="a flower"
+        className="burgerFlower1"
+      />
+      <Image
+        src={flower8}
+        alt="a flower"
+        className="burgerFlower2"
+      />
+      <Image
+        src={flower5}
+        alt="a flower"
+        className="burgerFlower3"
+      />
+      <Image
+        src={flower2}
+        alt="a flower"
+        className="burgerFlower4"
+      />
+      <Image
+        src={flower14}
+        alt="a flower"
+        className="burgerFlower5"
+      />
+      <Image
+        src={flower16}
+        alt="a flower"
+        className="burgerFlower6"
+      />
+      <Image
+        src={flower16}
+        alt="a flower"
+        className="burgerFlower7"
+      />
+    </Box>
+    )}
     </UserConsumer>
   );
 
@@ -224,6 +271,7 @@ class Header1 extends React.Component {
   }
 
   render() {
+
     return (
       <>
         <ResponsiveContext.Consumer>
