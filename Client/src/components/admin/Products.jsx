@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Products.css";
 import ProductList from './ProductList';
 import { Link } from "react-router-dom";
-
 import UserContext from '../context/userContext';
 import "./Admin.css";
 
@@ -30,7 +29,7 @@ class Products extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box className="adminContainer">
+            <Box>
               <Link to="/admin">
                 <h1>←</h1>
               </Link>

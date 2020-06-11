@@ -1,5 +1,6 @@
-
-
+.heightContainer {
+    height: 80vh;
+}
 .container {
     display: flex;
     flex-direction: row;
