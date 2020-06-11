@@ -20,11 +20,3 @@ export default class Invoice extends React.Component {
     );
   }
 }
-{/* <FormField
-  value={this.context.email}
-  name="email"
-  label="Email"
-  type="text"
-  required
-  autoComplete="email"
-/> */}
