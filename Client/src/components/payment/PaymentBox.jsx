@@ -35,7 +35,7 @@ class PaymentBox extends React.Component {
 							type='submit'
 							alignSelf='center'
 							color='dark-1'
-							disabled='true'
+							disabled={true}
 							primary
 							label='COMPLETE PURCHASE'
 							onClick={this.buttonClicked}

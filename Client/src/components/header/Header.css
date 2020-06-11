@@ -1,16 +1,22 @@
   .modal {
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}  
+
+.modalContainer {
     background-color: #7D4487;
     color: #EAB691;
     border-radius: 5%;
-    position: absolute;
-    top: 25%;
-    left: 33%;
     width: 30rem;
     height: 30rem;
     align-items: center;
     padding: 2rem;
     text-align: center;
-}  
+}
 
 .login {
    margin-top: 1rem;
@@ -33,18 +39,60 @@
     margin: 1rem;
 }
 
-
-.modalCloseButton {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
-}
-
 .dropdown {
-    
+    font-family: 'Spicy Rice', cursive;
     opacity: 0.8;
     transition: 0.3s;
+    margin: 0.5em;
 }
 .dropdown:hover {
     opacity: 1;
+}
+
+.burgerFlower1{
+    position: absolute;
+    height: 2em;
+    bottom: 0.5em;
+}
+
+.burgerFlower2{
+    position: absolute;
+    height: 2em;
+    bottom: 1em;
+    right: 1em;
+}
+ 
+.burgerFlower3{
+    position: absolute;
+    height: 1.5em;
+    bottom: 1em;
+    left: 1em;
+}
+
+.burgerFlower4{
+    position: absolute;
+    height: 2em;
+    bottom: 1em;
+    left: 2.5em;
+}
+
+.burgerFlower5{
+    position: absolute;
+    height: 0.9em;
+    bottom: 0.5em;
+    right: 2.9em;
+}
+
+.burgerFlower6{
+    position: absolute;
+    height: 0.9em;
+    bottom: 1.5em;
+    right: 3.3em;
+}
+
+.burgerFlower7{
+    position: absolute;
+    height: 0.9em;
+    bottom: 0.4em;
+    left: 2.3em;
 }

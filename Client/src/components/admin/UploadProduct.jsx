@@ -148,7 +148,7 @@ class UploadProduct extends React.Component {
       return (
         <>
         {this.context.renderRedirect()}
-        <Box className="uploadBox">
+        <Box style={{minHeight: "85vh"}} className="uploadBox">
           <Link to="/admin">
             <h1>←</h1>
           </Link>
