@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import MainPage from "./components/mainPage/mainPage";
 import Header from "./components/header/header";
+import Flowers from "./components/header/Flowers"
 import Admin from "./components/admin/admin";
 import Orders from "./components/admin/Orders";
 import Products from "./components/admin/Products";
@@ -21,6 +22,7 @@ class Layout extends React.Component {
       <div className="App">
         <div className="grainyWrapper"></div>
         <Box className="backgroundWrapper">
+        <Flowers/>
         <Header />
         
         <Switch>
