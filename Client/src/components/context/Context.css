@@ -10,7 +10,7 @@
 }
 
 .boxStyle:nth-child(even){
-    height:28rem; 
+    height:29rem; 
     width:22rem; 
     margin:1.5rem; 
     background:#4AAEAE;
@@ -24,6 +24,40 @@
     margin: 1rem 0;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.boxStyle:nth-child(odd) .albumText{
+    color: #4AAEAE;
+    font-family: 'Spicy Rice';
+}
+.boxStyle:nth-child(odd){
+    height:28rem; 
+    width:22rem; 
+    margin:1.5rem; 
+    background:#7D4487;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+}
+
+.boxStyle:nth-child(even){
+    height:28rem; 
+    width:22rem; 
+    margin:1.5rem; 
+    background:#4AAEAE;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+}
+
+.imgProduct {
+    margin: 1rem 0;
+    height: 18rem;
+    width: 18rem;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .boxStyle:nth-child(odd) .albumText{
@@ -56,4 +90,11 @@ h3 {
 
 .boxStyle h3{
     color: wheat;
+}
+
+@media only screen and (max-width: 374px) {
+    .imgProduct {
+        height: 15rem;
+        width: 15rem;
+    }
 }
