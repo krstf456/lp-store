@@ -30,8 +30,6 @@ class LoginPrompt extends React.Component {
 		})
 	}
 
-	h
-
 	successfullyCreatedUser = () => {
 		alert('You were successfully registered!')
 	}
@@ -42,8 +40,6 @@ class LoginPrompt extends React.Component {
 			return (
 				// <Modal>
 				<>
-				<LoadingAnimation />
-
 					<Box
 						id='loginPrompt'
 						style={{
@@ -52,7 +48,7 @@ class LoginPrompt extends React.Component {
 							left: '33vw',
 							top: '25%',
 							position: 'sticky',
-							height: '0rem'
+							height: '0rem',
 						}}
 						background='dark-1'
 						width='30rem'
@@ -69,36 +65,27 @@ class LoginPrompt extends React.Component {
 						</Button>
 						<h2 style={{ zIndex: '2' }}>Hey Dude!</h2>
 
-						{/* <img
-							style={promptStyle}
-							src='https://ih0.redbubble.net/image.675056609.9466/flat,1000x1000,075,f.jpg'
-						></img> */}
+						<LoadingAnimation />
+
 						<h2
 							style={{
 								zIndex: '2',
 								position: 'relative',
-								top: '20rem',
-								color: 'red',
 							}}
 						>
 							You need to be logged in to place an order!
 						</h2>
-						<div id="bm"></div>
+						<div id='bm'></div>
 					</Box>
-					</>
-			//	</Modal>
-		
+				</>
+				//	</Modal>
 			)
 		}
 		return undefined
 	}
 
 	render() {
-		return <>
-		{this.modal}
-		
-
-		</>
+		return <>{this.modal}</>
 	}
 }
 
