@@ -3,7 +3,7 @@ import UserContext from '../context/userContext'
 import './LoginPrompt.css'
 import Modal from '../modal/modal'
 import { Box, Button } from 'grommet'
-import LoadingAnimation from '../animations/LoadingAnimation'
+// import LoadingAnimation from '../animations/LoadingAnimation'
 import ErrorAnimation from '../animations/ErrorAnimation'
 
 class LoginPrompt extends React.Component {
@@ -54,16 +54,13 @@ class LoginPrompt extends React.Component {
 						>
 							Close
 						</Button>
-						<h2 style={{ zIndex: '2' }}>Hey Dude!</h2>
+						<h2 style={bigTextStyle}>Hey Dude!</h2>
 
-						<LoadingAnimation />
+						{/* <LoadingAnimation /> */}
 						<ErrorAnimation />
 
 						<h2
-							style={{
-								zIndex: '2',
-								position: 'relative',
-							}}
+							style={smallTextStyle}
 						>
 							You need to be logged in to place an order!
 						</h2>
@@ -85,6 +82,17 @@ var promptStyle = {
 	width: '100%',
 	position: 'absolute',
 	zIndex: '1',
+}
+
+var bigTextStyle = {
+	 zIndex: '2',
+	 color: 'black',
+}
+
+var smallTextStyle = {
+	zIndex: '2',
+	position: 'relative',
+	color:'black'
 }
 
 export default LoginPrompt
