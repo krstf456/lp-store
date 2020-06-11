@@ -1,7 +1,8 @@
-import React from 'react'
-import { Box, ResponsiveContext, Button, TextInput } from 'grommet'
-import UserContext from '../context/userContext'
-import "../header/Header.css"
+import React from 'react';
+import { Box, ResponsiveContext, Button, TextInput } from 'grommet';
+import UserContext from '../context/userContext';
+import "../header/Header.css";
+import flower from "./flower06.png";
 
 
 class Dashboard extends React.Component {
@@ -70,9 +71,9 @@ class Dashboard extends React.Component {
 				{(size) => (
 					<>
 					<Box pad="medium">
-						<Box>
+						<Box align="center">
 							{this.context.isLoggedIn
-								? <h1>Hey {this.state.username} <br/> you're signed in dude.</h1>
+								? <><h1>Hey {this.state.username} <br/> you're signed in dude.</h1><img className="loginFlower" src={flower}/></>
 								: this.loginForm()}
 						</Box>
 						<Box>

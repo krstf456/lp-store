@@ -11,11 +11,10 @@ import {
   Image,
   Text,
   FormField,
-  Menu,
   TextInput,
 } from "grommet";
 
-import { User, Shop, Close } from "grommet-icons";
+import { Shop, Close } from "grommet-icons";
 
 import Modal from "../modal/modal";
 import "./Header.css";
