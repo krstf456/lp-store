@@ -148,7 +148,7 @@ class UploadProduct extends React.Component {
       return (
         <>
         {this.context.renderRedirect()}
-        <Box className="uploadBox" className="adminContainer">
+        <Box className="uploadBox">
           <Link to="/admin">
             <h1>←</h1>
           </Link>

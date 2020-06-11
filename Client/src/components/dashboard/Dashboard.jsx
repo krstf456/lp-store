@@ -1,8 +1,8 @@
-import React from 'react'
-import { Box, ResponsiveContext, Button, TextInput } from 'grommet'
-import Admin from '../admin/admin'
-import UserContext from '../context/userContext'
-import "../header/Header.css"
+import React from 'react';
+import { Box, ResponsiveContext, Button, TextInput } from 'grommet';
+import UserContext from '../context/userContext';
+import "../header/Header.css";
+import flower from "./flower06.png";
 
 
 class Dashboard extends React.Component {
@@ -41,6 +41,7 @@ class Dashboard extends React.Component {
 		const {username, password} = this.state
 		return (
 			<Box className="login">
+				<h1>Sign in</h1>
 				<Box className="loginTextInput">
 				<TextInput
 					type='text'
@@ -57,76 +58,30 @@ class Dashboard extends React.Component {
 				/>
 				</Box>
 				<Box className="buttonBox">
-				<Button label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
+				<Button color="#4AAEAE" label='Sign in' onClick={() => this.context.onSignIn(username, password)} />
 				</Box>
 			</Box>
 		)
 	}
 
-	/* dashboard = () => {
-		return (
-			<div>
-				<h4>user: {this.context.username}</h4>
-				<h6>mail: {this.context.email}</h6>
-				<h6>isAdmin: {String(this.context.isAdmin)}</h6>
-				<h6>id: {this.context.id}</h6>
-				<h6>token: {this.context.token}</h6>
-				
 
-
-
-				<Button primary label="My Orders"/>
-				<Button
-					primary
-					label='Logout'
-					onClick={() => this.context.onSignOut()}
-				/>
-			</div>
-		)
-	} */
-
-	/* dashboardUser = () => {
-		return(
-			<h2>USER</h2>
-		)
-	}
-
-	dashboardAdmin = () => {
-		return(
-			<h2>ADMIN</h2>
-		)
-	} */
 	render() {
 		return (
 			<ResponsiveContext.Consumer>
 				{(size) => (
 					<>
-					<Box>
-					{this.context.isLoggedIn
-					 ? <h1>Welcome {this.state.username}!</h1>
-					: this.loginForm()}
+					<Box pad="medium">
+						<Box align="center">
+							{this.context.isLoggedIn
+								? <><h1>Hey {this.state.username} <br/> you're signed in dude.</h1><img className="loginFlower" src={flower}/></>
+								: this.loginForm()}
+						</Box>
+						<Box>
+							{this.context.isLoggedIn && this.context.isAdmin 
+								? <h1>... and yeah, you have admin rights.</h1>
+								: null}
+						</Box>
 					</Box>
-					<Box>
-					{this.context.isLoggedIn && this.context.isAdmin 
-						? <h1>You have admin rights.</h1>
-						: null}
-					</Box>
-					<Button
-					primary
-					label='Sign out'
-					onClick={() => this.context.onSignOut()}
-				/>
-					{/* <Box>
-						 <Form>{this.loginForm()}</Form> 
-						{this.context.isLoggedIn
-							? this.dashboard()
-							: this.loginForm()}
-					</Box>
-					 <Box>
-						{this.context.isLoggedIn && this.context.isAdmin 
-						? <h1>You have admin rights</h1>
-						: null}
-					</Box>  */}
 					</> 
 				)}
 			</ResponsiveContext.Consumer>

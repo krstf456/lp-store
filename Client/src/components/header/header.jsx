@@ -11,11 +11,10 @@ import {
   Image,
   Text,
   FormField,
-  Menu,
   TextInput,
 } from "grommet";
 
-import { User, Shop, Close } from "grommet-icons";
+import { Shop, Close } from "grommet-icons";
 
 import Modal from "../modal/modal";
 import "./Header.css";
@@ -26,8 +25,7 @@ import logo from "./logo.png";
 import burger from "./burger3.png";
 
 import Dashboard from "../dashboard/Dashboard";
-import { Consumer as UserConsumer } from '../context/userContext'
-
+import { Consumer as UserConsumer } from "../context/userContext";
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -47,8 +45,6 @@ class Header1 extends React.Component {
       showModal: !this.state.showModal,
     });
   };
-
-  
 
   toggleLoginModal = () => {
     this.setState({
@@ -102,7 +98,7 @@ class Header1 extends React.Component {
       });
   };
 
-   renderMenuItems = () => (
+  renderMenuItems = () => (
     <UserConsumer>
 				{(userState) => (
     <Box 
@@ -146,38 +142,32 @@ class Header1 extends React.Component {
       <></>
       }
       <br/>
+      <br/>
+      <br/>
     </Box>
     )}
     </UserConsumer>
   );
-
-   
-  
-    
-  
 
   //Place modal-content in here
   get modal() {
     if (this.state.showModal) {
       return (
         <Modal>
-          <Box
-          className="modal"
-          >
+          <Box className="modal">
             <Box className="modalCloseButton">
-            <Button
-              onClick={() => {
-                this.toggleModal();
-              }}
-            >
-            <Close  color="purple" />
-            </Button>
+              <Button
+                onClick={() => {
+                  this.toggleModal();
+                }}
+              >
+                <Close color="#EAB691" />
+              </Button>
             </Box>
             <h1>Register</h1>
             <Form onSubmit={this.submitRegister}>
               <FormField label="Username">
                 <TextInput
-                  placeholder="type a username"
                   type="text"
                   name="username"
                   value={this.state.username}
@@ -187,7 +177,6 @@ class Header1 extends React.Component {
               </FormField>
               <FormField label="E-mail">
                 <TextInput
-                  placeholder="type your email"
                   type="text"
                   name="email"
                   value={this.state.email}
@@ -197,7 +186,6 @@ class Header1 extends React.Component {
               </FormField>
               <FormField label="Password">
                 <TextInput
-                  placeholder="type a password"
                   type="password"
                   name="password"
                   value={this.state.password}
@@ -205,8 +193,8 @@ class Header1 extends React.Component {
                   required
                 />
               </FormField>
-              <Box style={{alignSelf: "center"}}>
-              <Button label="Register" type="submit"></Button>
+              <Box style={{ alignSelf: "center" }}>
+                <Button color="#4AAEAE" label="Register" type="submit"></Button>
               </Box>
             </Form>
           </Box>
@@ -215,19 +203,16 @@ class Header1 extends React.Component {
     } else if (this.state.showLoginModal) {
       return (
         <Modal>
-          <Box
-            className="modal"
-          >
+          <Box className="modal">
             <Box className="modalCloseButton">
-            <Button
-              onClick={() => {
-                this.toggleLoginModal();
-              }}
-            >
-              <Close  color="purple" />
-            </Button>
+              <Button
+                onClick={() => {
+                  this.toggleLoginModal();
+                }}
+              >
+                <Close color="#EAB691" />
+              </Button>
             </Box>
-            <h1>Sign in</h1>
             <Dashboard />
           </Box>
         </Modal>
@@ -240,104 +225,112 @@ class Header1 extends React.Component {
 
     return (
       <>
-      
         <ResponsiveContext.Consumer>
-        {responsive =>
+          {(responsive) =>
             responsive === "small" ? (
-            
-
-            <Header
-            background="#EAB691"
-            pad="xlarge"
-
-            style={{borderRadius: "0 0 60% 60% / 0 0 30% 30%", padding: "35px"}}
-            
-            
-            >
-              <Box display="block"
-              direction="row"
-              alignContent="start"
+              <Header
+                background="#EAB691"
+                pad="xlarge"
+                style={{
+                  borderRadius: "0 0 60% 60% / 0 0 30% 30%",
+                  padding: "35px",
+                }}
               >
-                <DropButton
-                  alignSelf="center"
-                  margin={{ vertical: "small" }}
-                  dropContent={this.renderMenuItems()}
-                  dropProps={{ align: { top: "bottom" } }}
-                  
+                <Box display="block" direction="row" alignContent="start">
+                  <DropButton
+                    alignSelf="center"
+                    margin={{ vertical: "small" }}
+                    dropContent={this.renderMenuItems()}
+                    dropProps={{ align: { top: "bottom" } }}
                   >
-                <Image src={burger} alt="peace burger"  width="35px" height="35px"/>
-
-                </DropButton>
-                
-              </Box>
-              <Link to="/">
-                  
-              <Image src={logo} alt="love peace and records" width="130px"/>
-              </Link>
-              <Box direction="row"
-              >
-              <Link to="/checkout/">
+                    <Image
+                      src={burger}
+                      alt="peace burger"
+                      width="35px"
+                      height="35px"
+                    />
+                  </DropButton>
+                </Box>
+                <Link to="/">
+                  <Image
+                    src={logo}
+                    alt="love peace and records"
+                    width="130px"
+                  />
+                </Link>
+                <Box direction="row">
+                  <Link to="/checkout/">
                     <Shop color="white" size="medium" />
-              
-              </Link>
-              <Text style={{ color: "#7D4487", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                  
-                </Text>
-              </Box>
-              
-            </Header>
+                  </Link>
+                  <Text
+                    style={{
+                      color: "#7D4487",
+                      background: "orange",
+                      width: "1.5rem",
+                      height: "1.5rem",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    {this.context.getTotalQuantity()}
+                  </Text>
+                </Box>
+              </Header>
             ) : (
               <Header
-              justify="between"
-              background="#EAB691"
-              pad="small"
-              height="15rem"
-              style={{borderRadius: "0 0 60% 60% / 0 0 30% 30%"}}
+                justify="between"
+                background="#EAB691"
+                pad="small"
+                height="15rem"
+                style={{ borderRadius: "0 0 60% 60% / 0 0 30% 30%" }}
               >
-                 <Box display="block"
-              direction="row"
-              alignContent="start"
-              style={{padding: "44px"}
-            }
-              >
-                <DropButton
-                  alignSelf="center"
-                  margin={{ vertical: "small" }}
-                  dropContent={this.renderMenuItems()}
-                  dropProps={{ align: { top: "bottom" } }}
-                  
+                <Box
+                  display="block"
+                  direction="row"
+                  alignContent="start"
+                  style={{ padding: "44px" }}
                 >
-                <Image src={burger} alt="peace burger"  width="45px" height="45px"/>
-
-                </DropButton>
-                
-              </Box>
-              <Box>
-                <Link to="/">
-                <Image src={logo} alt="love peace and records" />
-
-                </Link>
-              </Box> 
-              <Box direction="row">
-
-              <Link to="/checkout/">
+                  <DropButton
+                    alignSelf="center"
+                    margin={{ vertical: "small" }}
+                    dropContent={this.renderMenuItems()}
+                    dropProps={{ align: { top: "bottom" } }}
+                  >
+                    <Image
+                      src={burger}
+                      alt="peace burger"
+                      width="45px"
+                      height="45px"
+                    />
+                  </DropButton>
+                </Box>
+                <Box>
+                  <Link to="/">
+                    <Image src={logo} alt="love peace and records" />
+                  </Link>
+                </Box>
+                <Box direction="row">
+                  <Link to="/checkout/">
                     <Shop color="white" size="medium" />
-              </Link>
-              
-                <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                </Text>
-              </Box>
-                
-              
+                  </Link>
+
+                  <Text
+                    style={{
+                      color: "purple",
+                      background: "orange",
+                      width: "1.5rem",
+                      height: "1.5rem",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    {this.context.getTotalQuantity()}
+                  </Text>
+                </Box>
               </Header>
-            )}
-            
+            )
+          }
         </ResponsiveContext.Consumer>
-        
-        
-      {this.modal} 
+
+        {this.modal}
       </>
     );
   }
