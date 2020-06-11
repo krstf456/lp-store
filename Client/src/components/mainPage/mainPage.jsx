@@ -75,7 +75,7 @@ class MainPage extends React.Component {
   renderMenuItems = () => (
     
       
-        <Box background="#7D4487" width="small" align="center" >
+        <Box background="#7D4487" width="102%" align="center" >
           <Text
             className="dropdownText"
             onClick= { () => this.handleOnClickAll()}
@@ -153,19 +153,23 @@ class MainPage extends React.Component {
             <Box align="center" pad="xlarge" 
             >
 
-              <Box direction="row" className="textBox"><Text className="text">C</Text><Text className="text2">h</Text><Text className="text">o</Text><Text className="text2">o</Text><Text className="text">s</Text><Text className="text3">e</Text><Text className="text">C</Text><Text className="text2">a</Text><Text className="text">t</Text><Text className="text2">e</Text><Text className="text">g</Text><Text className="text2">o</Text><Text className="text">r</Text><Text className="text2">y</Text></Box>
               <DropButton
                     alignSelf="center"
                     margin={{ vertical: "small" }}
                     dropContent={this.renderMenuItems()}
                     dropProps={{ align: { top: "bottom" } }}
+                    
                   >
+                    <Box direction="row">
+
+                    <Box direction="row" className="textBox"><Text className="text">C</Text><Text className="text2">h</Text><Text className="text">o</Text><Text className="text2">o</Text><Text className="text">s</Text><Text className="text3">e</Text><Text className="text">C</Text><Text className="text2">a</Text><Text className="text">t</Text><Text className="text2">e</Text><Text className="text">g</Text><Text className="text2">o</Text><Text className="text">r</Text><Text className="text2">y</Text></Box>
                     <Image
                       src={lp}
                       alt="peace burger"
                       width="80px"
                       height="80px"
-                    />
+                      />
+                      </Box>
                   </DropButton>
               {/* <Menu
                 className="dropDown"

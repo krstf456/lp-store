@@ -12,13 +12,20 @@
 }
 .textBox {
     font-size: 35px;
-    background-color: #EAB691;
-    border-radius: 20px;
-    padding:  5px;
+    background-color: #EAB691; 
+    border-radius: 10px; 
+    height: 27px;
+    position: relative;
+    bottom: -27px;
+    padding: 0 3px;
     border: 1px solid #7D4487;
+    
+    justify-self: center;
 }
 .text {
     color: #7D4487;
+    
+    
     
     
     
@@ -26,6 +33,7 @@
 .text2 {
     color: #4AAEAE;
     
+
     
     
 }
@@ -33,6 +41,7 @@
 .text3 {
     color: #4AAEAE;
     letter-spacing: 5px;
+    
 
     
 }
