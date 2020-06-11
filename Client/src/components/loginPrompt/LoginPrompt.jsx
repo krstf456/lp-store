@@ -35,9 +35,10 @@ class LoginPrompt extends React.Component {
 						id='loginPrompt'
 						style={{
 							display: 'flex',
-							position: 'absolute',
-							left: '33vw',
-							top: '10%',
+							alignSelf: 'center',
+							// left: '33vw',
+							// top: '10%',
+
 							position: 'sticky',
 							height: '0rem',
 						}}
@@ -46,25 +47,24 @@ class LoginPrompt extends React.Component {
 						height='30rem'
 						align='center'
 					>
-						<Button
-							style={{ zIndex: '2' }}
-							onClick={() => {
-								this.toggleModal()
-							}}
-						>
-							Close
-						</Button>
-						<h2 style={bigTextStyle}>Hey Dude!</h2>
+						<div style={innerStyle}>
+							<Button
+								style={{ zIndex: '2' }}
+								onClick={() => {
+									this.toggleModal()
+								}}
+							>
+								Close
+							</Button>
+							<h2 style={bigTextStyle}>Hey Dude!</h2>
 
-						{/* <LoadingAnimation /> */}
-						<ErrorAnimation />
+							{/* <LoadingAnimation /> */}
+							<ErrorAnimation />
 
-						<h2
-							style={smallTextStyle}
-						>
-							You need to be logged in to place an order!
-						</h2>
-						<div id='bm'></div>
+							<h2 style={smallTextStyle}>
+								You need to be logged in to place an order!
+							</h2>
+						</div>
 					</Box>
 				</>
 				//	</Modal>
@@ -84,15 +84,21 @@ var promptStyle = {
 	zIndex: '1',
 }
 
+var innerStyle = {
+	background: 'rgba(255,255,255,0.4)',
+	borderRadius: '100%',
+}
+
 var bigTextStyle = {
-	 zIndex: '2',
-	 color: 'black',
+	zIndex: '2',
+	color: 'black',
+	fontSize: '3rem',
 }
 
 var smallTextStyle = {
 	zIndex: '2',
 	position: 'relative',
-	color:'black'
+	color: 'black',
 }
 
 export default LoginPrompt
