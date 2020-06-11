@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, ResponsiveContext, Button, TextInput } from 'grommet'
-import Admin from '../admin/admin'
 import UserContext from '../context/userContext'
 import "../header/Header.css"
 
@@ -64,39 +63,7 @@ class Dashboard extends React.Component {
 		)
 	}
 
-	/* dashboard = () => {
-		return (
-			<div>
-				<h4>user: {this.context.username}</h4>
-				<h6>mail: {this.context.email}</h6>
-				<h6>isAdmin: {String(this.context.isAdmin)}</h6>
-				<h6>id: {this.context.id}</h6>
-				<h6>token: {this.context.token}</h6>
-				
 
-
-
-				<Button primary label="My Orders"/>
-				<Button
-					primary
-					label='Logout'
-					onClick={() => this.context.onSignOut()}
-				/>
-			</div>
-		)
-	} */
-
-	/* dashboardUser = () => {
-		return(
-			<h2>USER</h2>
-		)
-	}
-
-	dashboardAdmin = () => {
-		return(
-			<h2>ADMIN</h2>
-		)
-	} */
 	render() {
 		return (
 			<ResponsiveContext.Consumer>
@@ -120,17 +87,6 @@ class Dashboard extends React.Component {
 		)
 	}
 }
-{/* <Box>
-	 <Form>{this.loginForm()}</Form> 
-	{this.context.isLoggedIn
-		? this.dashboard()
-		: this.loginForm()}
-</Box>
- <Box>
-	{this.context.isLoggedIn && this.context.isAdmin 
-	? <h1>You have admin rights</h1>
-	: null}
-</Box>  */}
 
 export default Dashboard
 
