@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'
+import "./Admin.css";
 
 class UploadProduct extends React.Component {
 
@@ -147,7 +148,7 @@ class UploadProduct extends React.Component {
       return (
         <>
         {this.context.renderRedirect()}
-        <Box className="uploadBox">
+        <Box className="uploadBox" className="adminContainer">
           <Link to="/admin">
             <h1>←</h1>
           </Link>

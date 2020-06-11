@@ -8,16 +8,26 @@ import {
   ResponsiveContext,
   Form,
   DropButton,
+  Image,
   Text,
   FormField,
+  Menu,
   TextInput,
 } from "grommet";
+
 import { User, Shop, Close } from "grommet-icons";
+
 import Modal from "../modal/modal";
 import "./Header.css";
 import axios from "axios";
 import flower from "./flower06.png";
+import logo from "./logo.png";
+
+import burger from "./burger3.png";
+
 import Dashboard from "../dashboard/Dashboard";
+import { Consumer as UserConsumer } from '../context/userContext'
+
 
 class Header1 extends React.Component {
   //This will enable the use of context-functions and states
@@ -37,6 +47,8 @@ class Header1 extends React.Component {
       showModal: !this.state.showModal,
     });
   };
+
+  
 
   toggleLoginModal = () => {
     this.setState({
@@ -90,6 +102,51 @@ class Header1 extends React.Component {
       });
   };
 
+   renderMenuItems = () => (
+    <UserConsumer>
+				{(userState) => (
+    <Box 
+    background="#7D4487"
+    width="xsmall"
+    align="center"
+    >
+      <Text className="dropdown"
+      style={{ cursor: 'pointer'}}
+      onClick={() => this.toggleLoginModal()}
+      
+      >Login</Text>
+      <Text className="dropdown"
+      onClick={() => userState.onSignOut()}
+      style={{ cursor: 'pointer'}}
+
+      >Logout</Text>
+      <Text className="dropdown"
+        style={{ cursor: 'pointer'}}
+        onClick={() => this.toggleModal()}
+        label="Register"
+      >Register</Text>
+      <Link to="/admin"
+      className="link"
+      color="red"
+      style={{textDecoration: "none"}}>
+      <Text className="dropdown"
+      
+        style={{ color: "white", border: "black" }}
+        label="Admin"
+      
+      
+      
+      >Admin</Text>
+      </Link>
+    </Box>
+    )}
+    </UserConsumer>
+  );
+
+   
+  
+    
+  
 
   //Place modal-content in here
   get modal() {
@@ -174,63 +231,104 @@ class Header1 extends React.Component {
   render() {
     return (
       <>
+      
         <ResponsiveContext.Consumer>
-          {(size) => (
+        {responsive =>
+            responsive === "small" ? (
+            
+
             <Header
+            background="#EAB691"
+            pad="xlarge"
+
+            style={{borderRadius: "0 0 60% 60% / 0 0 30% 30%", padding: "35px"}}
+            
+            
+            >
+              <Box display="block"
+              direction="row"
+              alignContent="start"
+              >
+                <DropButton
+                  alignSelf="center"
+                  margin={{ vertical: "small" }}
+                  dropContent={this.renderMenuItems()}
+                  dropProps={{ align: { top: "bottom" } }}
+                  
+                  >
+                <Image src={burger} alt="peace burger"  width="35px" height="35px"/>
+
+                </DropButton>
+                
+              </Box>
+              <Link to="/">
+                  
+              <Image src={logo} alt="love peace and records" width="130px"/>
+              </Link>
+              <Box direction="row"
+              >
+              <Link to="/checkout/">
+                    <Shop color="white" size="medium" />
+              
+              </Link>
+              <Text style={{ color: "#7D4487", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
+                  {this.context.getTotalQuantity()}
+                  
+                </Text>
+              </Box>
+              
+            </Header>
+            ) : (
+              <Header
               justify="between"
-              background="purple"
+              background="#EAB691"
               pad="small"
               height="15rem"
-            >
+              style={{borderRadius: "0 0 60% 60% / 0 0 30% 30%"}}
+              >
+                 <Box display="block"
+              direction="row"
+              alignContent="start"
+              style={{padding: "44px"}
+            }
+              >
+                <DropButton
+                  alignSelf="center"
+                  margin={{ vertical: "small" }}
+                  dropContent={this.renderMenuItems()}
+                  dropProps={{ align: { top: "bottom" } }}
+                  
+                >
+                <Image src={burger} alt="peace burger"  width="45px" height="45px"/>
+
+                </DropButton>
+                
+              </Box>
               <Box>
                 <Link to="/">
-                  <h1>Love Peace & Records</h1>
+                <Image src={logo} alt="love peace and records" />
+
                 </Link>
-              </Box>
-              <Box
-                direction="row"
-                align="center"
-                justify="center"
-                margin={{ left: "large" }}
-              >
-                <img src={flower} alt="flower" />
-                <Button
-                  style={{ color: "white", border: "none" }}
-                  onClick={() => {
-                    this.toggleModal();
-                  }}
-                  label="Register"
-                  default
-                ></Button>
-                <Button margin={{ right: "medium" }}>
-                  <User color="white" size="medium" />
-                </Button>
-                <div>
-                <p style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
-                  {this.context.getTotalQuantity()}
-                </p>
-                </div>
-                <Button>
-                  <Link to="/checkout/">
+              </Box> 
+              <Box direction="row">
+
+              <Link to="/checkout/">
                     <Shop color="white" size="medium" />
-                  </Link>
-                </Button>
-                <Button
-                  style={{ color: "white", border: "black" }}
-                  label="Sign in"
-                  onClick={() => this.toggleLoginModal()}
-                ></Button>
-                 <Link to="/admin">
-                <Button
-                  style={{ color: "white", border: "black" }}
-                  label="Admin"
-                ></Button>
-                </Link>
+              </Link>
+              
+                <Text style={{ color: "purple", background: "orange", width: "1.5rem", height: "1.5rem", borderRadius: "50%"}}>
+                  {this.context.getTotalQuantity()}
+                </Text>
               </Box>
-            </Header>
-          )}
+                
+              
+              </Header>
+            )}
+            
         </ResponsiveContext.Consumer>
-        {this.modal}
+        
+        
+      {this.modal} 
       </>
     );
   }

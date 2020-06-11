@@ -5,7 +5,8 @@ import "./Products.css";
 import ProductList from './ProductList';
 import { Link } from "react-router-dom";
 
-import UserContext from '../context/userContext'
+import UserContext from '../context/userContext';
+import "./Admin.css";
 
 class Products extends React.Component {
   static contextType = UserContext
@@ -29,15 +30,11 @@ class Products extends React.Component {
         {this.context.renderRedirect()}
         <ResponsiveContext.Consumer>
           {(size) => (
-            <Box>
+            <Box className="adminContainer">
               <Link to="/admin">
                 <h1>←</h1>
               </Link>
               <h1>Products</h1>
-              <p>Uppgifter</p>
-              <p>Edit category/genre of product VG</p>
-              <p>Delete product VG </p>
-              <p>Update stock_quantity of product G </p>
               <Accordion>  
               {this.state.products.map((product) =>
                 <ProductList 
