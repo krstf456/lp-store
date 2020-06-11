@@ -49,3 +49,51 @@
 .dropdown:hover {
     opacity: 1;
 }
+
+.burgerFlower1{
+    position: absolute;
+    height: 2em;
+    bottom: 0.5em;
+}
+
+.burgerFlower2{
+    position: absolute;
+    height: 2em;
+    bottom: 1em;
+    right: 1em;
+}
+ 
+.burgerFlower3{
+    position: absolute;
+    height: 1.5em;
+    bottom: 1em;
+    left: 1em;
+}
+
+.burgerFlower4{
+    position: absolute;
+    height: 2em;
+    bottom: 1em;
+    left: 2.5em;
+}
+
+.burgerFlower5{
+    position: absolute;
+    height: 0.9em;
+    bottom: 0.5em;
+    right: 2.9em;
+}
+
+.burgerFlower6{
+    position: absolute;
+    height: 0.9em;
+    bottom: 1.5em;
+    right: 3.3em;
+}
+
+.burgerFlower7{
+    position: absolute;
+    height: 0.9em;
+    bottom: 0.4em;
+    left: 2.3em;
+}
