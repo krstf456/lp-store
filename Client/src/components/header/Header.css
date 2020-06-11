@@ -1,6 +1,6 @@
   .modal {
-    background-color: orange;
-    color: purple;
+    background-color: #7D4487;
+    color: #EAB691;
     border-radius: 5%;
     position: absolute;
     top: 25%;
@@ -9,21 +9,30 @@
     height: 30rem;
     align-items: center;
     padding: 2rem;
+    text-align: center;
 }  
 
 .login {
    margin-top: 1rem;
+   align-items: center;
 
+}
+
+.loginFlower {
+    height: 6rem;
+    width: 6rem;
 }
 
 .loginTextInput {
     margin: 1rem;
     background-color: white;
+    color: black;
 }
 
 .buttonBox {
     margin: 1rem;
 }
+
 
 .modalCloseButton {
     position: absolute;
