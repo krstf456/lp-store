@@ -110,34 +110,41 @@ class Header1 extends React.Component {
     width="xsmall"
     align="center"
     >
-      <Text className="dropdown"
-      style={{ cursor: 'pointer'}}
-      onClick={() => this.toggleLoginModal()}
-      
-      >Login</Text>
+      {
+        !userState.isLoggedIn?
+        <Text className="dropdown"
+        style={{ cursor: 'pointer'}}
+        onClick={() => this.toggleLoginModal()}
+        
+        >Login</Text>:
       <Text className="dropdown"
       onClick={() => userState.onSignOut()}
       style={{ cursor: 'pointer'}}
+      >Logout
+      </Text>
+      }{
 
-      >Logout</Text>
-      <Text className="dropdown"
-        style={{ cursor: 'pointer'}}
-        onClick={() => this.toggleModal()}
-        label="Register"
-      >Register</Text>
-      <Link to="/admin"
-      className="link"
-      color="red"
-      style={{textDecoration: "none"}}>
-      <Text className="dropdown"
+        !userState.isLoggedIn?
+        <Text className="dropdown"
+          style={{ cursor: 'pointer'}}
+          onClick={() => this.toggleModal()}
+          label="Register"
+        >Register</Text>:
+        <></>
+      }{
+        userState.isAdmin?
+        <Link to="/admin"
+        className="link"
+        color="red"
+        style={{textDecoration: "none"}}>
+        <Text className="dropdown"
       
         style={{ color: "white", border: "black" }}
         label="Admin"
-      
-      
-      
       >Admin</Text>
-      </Link>
+      </Link>:
+      <></>
+      }
     </Box>
     )}
     </UserConsumer>
@@ -229,6 +236,7 @@ class Header1 extends React.Component {
   }
 
   render() {
+
     return (
       <>
       
