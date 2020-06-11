@@ -41,9 +41,10 @@
 }
 
 .dropdown {
-    
+    font-family: 'Spicy Rice', cursive;
     opacity: 0.8;
     transition: 0.3s;
+    margin: 0.5em;
 }
 .dropdown:hover {
     opacity: 1;

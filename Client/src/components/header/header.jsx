@@ -103,7 +103,7 @@ class Header1 extends React.Component {
 				{(userState) => (
     <Box 
     background="#7D4487"
-    width="xsmall"
+    width="small"
     align="center"
     >
       {
@@ -141,6 +141,7 @@ class Header1 extends React.Component {
       </Link>:
       <></>
       }
+      <br/>
     </Box>
     )}
     </UserConsumer>
