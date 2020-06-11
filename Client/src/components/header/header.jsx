@@ -150,7 +150,7 @@ class Header1 extends React.Component {
         <Modal>
           <Box className="modal">
             <Box className="modalContainer">
-              <Box className="modalCloseButton">
+              <Box>
                 <Button
                   onClick={() => {
                     this.toggleModal();
@@ -205,7 +205,7 @@ class Header1 extends React.Component {
         <Modal>
           <Box className="modal">
             <Box className="modalContainer">
-              <Box className="modalCloseButton">
+              <Box>
                 <Button
                   onClick={() => {
                     this.toggleLoginModal();
