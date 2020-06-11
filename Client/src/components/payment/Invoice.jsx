@@ -1,17 +1,22 @@
 import React from "react";
-import { FormField } from "grommet";
+import { FormField, Box } from "grommet";
+import UserContext from "../context/userContext";
 
 
 export default class Invoice extends React.Component {
+    //This will enable the use of context-functions and states
+    static contextType = UserContext;
+  
   render() {
-    return (
-          <FormField
-            name="email"
-            label="Email"
-            type="text"
-            required
-            autoComplete="email"
-          />
+    return ( 
+      <>
+      {this.context.isLoggedIn &&
+      <Box style={{border: "1px solid black", textAlign: "left", paddingBottom: "1rem", paddingLeft: "1rem"}}>
+      <h4>The invoice will be sent to your registered email:</h4>
+      <p>{this.context.email}</p>
+      </Box>
+      }
+    </>
     );
   }
 }
