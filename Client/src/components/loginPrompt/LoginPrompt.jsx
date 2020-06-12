@@ -84,7 +84,7 @@ var promptStyle = {
 
 var innerStyle = {
 	marginTop: '1rem',
-	background: 'rgba(255,255,255,0.9)',
+	// background: 'rgba(255,255,255,0.9)',
 	borderRadius: '10%',
 
 	boxShadow: '10px 20px 30px rgba(0,0,0,0.7)',
