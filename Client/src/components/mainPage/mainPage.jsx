@@ -38,37 +38,30 @@ class MainPage extends React.Component {
 
   handleOnClickAll = () => {
     this.setState({ activeCategory: '' })
-    console.log(this.state.activeCategory)
   }
 
   handleOnClickRock = () => {
     this.setState({ activeCategory: 'Rock' })
-    console.log(this.state.activeCategory)
   }
 
   handleOnClickSoul = () => {
     this.setState({ activeCategory: 'Soul' })
-    console.log(this.state.activeCategory)
   }
 
   handleOnClickPop = () => {
     this.setState({ activeCategory: 'Pop' })
-    console.log(this.state.activeCategory)
   }
 
   handleOnClickPsychedelic = () => {
     this.setState({ activeCategory: 'Psychedelic' })
-    console.log(this.state.activeCategory)
   }
 
   handleOnClickProg = () => {
     this.setState({  activeCategory: 'Prog'})
-    console.log(this.state.activeCategory)
   }
 
   handleOnClickOther = () => {
     this.setState({ activeCategory: 'Other' })
-    console.log(this.state.activeCategory)
   }
 
   renderMenuItems = () => (

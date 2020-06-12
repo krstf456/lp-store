@@ -140,7 +140,6 @@ export class Provider extends React.Component {
 
  decreaseQuantity = (product) => {
   const cloneShoppingCart = Object.assign([], this.state.shoppingCart);
-  //console.log(product, cloneShoppingCart)
   const productInCart = cloneShoppingCart.find((element) => element.product._id === product._id);
   
   

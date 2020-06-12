@@ -13,7 +13,6 @@ class ProductPage extends React.Component {
 
   componentDidMount = async () => {
     let product = await this.context.getOneProduct(this.props.match.params.id);
-    console.log(product);
     this.setState({ product: product });
     return product;
   };
