@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import UserContext from '../context/userContext'
 import {getFromStorage} from '../../utils/storage'
 import "./Admin.css";
+import { Rewind } from 'grommet-icons';
 
 class UploadProduct extends React.Component {
 
@@ -92,7 +93,7 @@ class UploadProduct extends React.Component {
           }
           else {
             this.setState({
-                errorMessage: "The album is uploaded",
+                errorMessage: "Wow dude. The album is uploaded",
                 artist: "", album: "", description: "", price: "", stock_quantity: "", genre: ""
             })
           }
@@ -118,7 +119,7 @@ class UploadProduct extends React.Component {
       ){
         isCorrect = false
         this.setState({
-          errorMessage: "Some data is missing",
+          errorMessage: "Some data is, like missing or stuff.",
         })
       } else if(
         isNaN(price) ||
@@ -126,19 +127,19 @@ class UploadProduct extends React.Component {
       ){
         isCorrect = false
         this.setState({
-          errorMessage: "Not a number",
+          errorMessage: "Dude. That's not a number. Try something. Like 4...",
         })
       } else if(image === ""){
         this.setState({
-          errorMessage: 'Missing album cover'
+          errorMessage: 'Man. A album cover would be nice. '
         })
       } else if(!['image/jpeg', 'image/gif', 'image/png'].includes(image.type)) {
         this.setState({
-          errorMessage: 'Only images are allowed.'
+          errorMessage: "Dude. That's not a picture. Not cool."
         })
       } else if(image.size > 2 * 1024 * 1024) { // check file size (< 2MB)
         this.setState({
-          errorMessage: 'File must be less than 2MB.'
+          errorMessage: 'It would be groovy i the file was smaller than 2MB.'
         })
       }
       return isCorrect
@@ -149,8 +150,8 @@ class UploadProduct extends React.Component {
         <>
         {this.context.renderRedirect()}
         <Box style={{minHeight: "85vh"}} className="uploadBox">
-          <Link to="/admin">
-            <h1>←</h1>
+          <Link to="/admin" style={{marginTop:"1em"}}>
+            <Rewind size="large" color="#7D4487"/>
           </Link>
           <Form>
             <FormField label="Album Cover">
@@ -158,24 +159,28 @@ class UploadProduct extends React.Component {
             </FormField>
             <FormField label="Artist">
               <TextInput name="artist" 
-                        value={this.state.artist} 
+                        value={this.state.artist}
+                        style={{textAlign:"center"}}
                         onChange={this.handleInput} 
                       />
             </FormField>
             <FormField label="Album" >
               <TextInput name="album" 
                         value={this.state.album} 
+                        style={{textAlign:"center"}}
                         onChange={this.handleInput} 
                       />
             </FormField>
             <FormField label="Description" >
               <TextInput name="description" 
+                        style={{textAlign:"center"}}
                         value={this.state.description} 
                         onChange={this.handleInput} 
                       />
             </FormField>
             <FormField label="Price" >
               <TextInput name="price" 
+                        style={{textAlign:"center"}}
                         value={this.state.price} 
                         onChange={this.handleInput} 
                         type="number"
@@ -184,13 +189,15 @@ class UploadProduct extends React.Component {
             <FormField label="Stock Quantity" >
               <TextInput name="stock_quantity" 
                         value={this.state.stock_quantity} 
-                        onChange={this.handleInput} 
+                        onChange={this.handleInput}
+                        style={{textAlign:"center"}}
                         type="number"
                       />
             </FormField>
             <FormField label="Genre" >
               <TextInput name="genre" 
                         value={this.state.genre} 
+                        style={{textAlign:"center"}}
                         onChange={this.handleInput} 
                       />
             </FormField>
