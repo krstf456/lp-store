@@ -27,7 +27,7 @@ class Layout extends React.Component {
         
         <Switch>
           <Route path="/checkout/">
-            <Checkout selectedShipping={this.context.selectedShipping}/>
+            <Checkout selectedShipping={this.context.selectedShipping} getTotalQuantity={this.context.getTotalQuantity}/>
           </Route>
           <Route
                 path="/productpage/:id"

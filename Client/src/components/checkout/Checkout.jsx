@@ -108,6 +108,7 @@ class Checkout extends React.Component {
 							})
 							localStorage.removeItem('cart')
 						}
+						this.props.getTotalQuantity()
 					})
 			}
 		} else {
