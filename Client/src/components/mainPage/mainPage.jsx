@@ -35,11 +35,17 @@ class MainPage extends React.Component {
     });
   };
 
+
+  //Makes the active category appear
+
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.activeCategory !== this.state.activeCategory) {
       this.context.updateProducts(this.state.activeCategory);
     }
   };
+
+
+  //Get the right category through onClick
 
   handleOnClickAll = () => {
     this.setState({ activeCategory: "" });
@@ -183,7 +189,10 @@ class MainPage extends React.Component {
                       <img
                         style={{ backgroundImage: `url(${product.image})` }}
                         className="imgProduct"
+                        // This alt creates bug
+                        // alt="imgProduct"
                       />
+                  
                       <Box
                         style={{
                           display: "flex",

@@ -42,6 +42,7 @@ class OrderList extends React.Component {
     }
     this.setState({
       products: newProducts,
+  
       totalSum: sum,
     });
   };

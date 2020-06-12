@@ -46,37 +46,6 @@ function verifyToken(req, res) {
 	}
 }
 
-
-// refreshToken = async (req, res, next) => {
-// 	try {
-// 		const refreshToken = req.body.token
-
-// 		if (refreshToken == null) {
-// 			return res.status(401).json({ message: 'Unauthorized: No Token' })
-// 		}
-// 		if (!refreshTokens.includes(refreshToken)) {
-// 			return res.sendStatus(403).json('Forbidden: Invalid Token')
-// 		} else {
-// 			jwt.verify(
-// 				refreshToken,
-// 				process.env.REFRESH_TOKEN_SECRET,
-// 				(err, user) => {
-// 					if (err) return res.sendStatus(403)
-// 					const accessToken = generateAccessToken({ _id: user._id })
-// 					res.json({ accessToken: accessToken })
-// 				}
-// 			)
-// 		}
-// 	} catch (err) {
-// 		next(err)
-// 	}
-// }
-
-// logout = async (req, res, next) => {
-// const { token } = req.body
-// refreshTokens = refreshTokens.filter(token => t !== token )
-// }
-
 module.exports = {
 	auth,
 	isAdminTrue,
