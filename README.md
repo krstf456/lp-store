@@ -9,7 +9,7 @@ Products put in the shoppingcart should be saved in the local storage.
 A logged in admin should be able to control the stock and check all orders.
 
 # More info
-We used grommet and MongoDB Atlas to vreate this page
+We used grommet and MongoDB Atlas to create this page.
 
 ## Known bugg
 Sometimes the capital letter in row 7 "import Admin from "./components/admin/[a]dmin" in the file ./Client/src/App.js swaps. Just change it if you get this error.
@@ -39,7 +39,7 @@ Then:
  - If this is the **first time** you run this project: run **npm install** and after that **npm start** in this terminal. 
 - If you've **runned it before**: just type **npm start** in this terminal.
 
-A nodemon server will start an express api server on http://localhost:9000
+Node will start an express api server on http://localhost:5000
 
 ---------------
 
@@ -49,12 +49,12 @@ A nodemon server will start an express api server on http://localhost:9000
 Log in with:
 
 default-admin user
-username: admin
-password: admin
+username: Viktor
+password: 123
 
 default-nonAdmin user
-username: password
-password: password
+username: Skurt
+password: 123
 
 # Creators
 - [Kristóf Vörösváczki](https://github.com/krstf456) 
