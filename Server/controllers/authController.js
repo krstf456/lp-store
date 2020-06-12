@@ -20,7 +20,7 @@ isAdminTrue = async (req, res, next) => {
 		console.log('isAdminTrue', req.user.isAdmin)
 		next()
 	} else {
-		res.status(401).send('You are not an admin')
+		res.status(401).send("Cool it. You're not an admin")
 	}
 }
 

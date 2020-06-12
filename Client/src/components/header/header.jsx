@@ -359,7 +359,7 @@ class Header1 extends React.Component {
                     <Image src={logo} alt="love peace and records" />
                   </Link>
                 </Box>
-                <Box direction="row">
+                <Box direction="row" style={{margin:"1em"}}>
                   <Link to="/checkout/">
                     <Shop color="white" size="medium" />
                   </Link>
