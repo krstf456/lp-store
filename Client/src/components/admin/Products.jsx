@@ -6,6 +6,7 @@ import ProductList from './ProductList';
 import { Link } from "react-router-dom";
 import UserContext from '../context/userContext';
 import "./Admin.css";
+import { Rewind } from 'grommet-icons';
 
 class Products extends React.Component {
   static contextType = UserContext
@@ -30,8 +31,8 @@ class Products extends React.Component {
         <ResponsiveContext.Consumer>
           {(size) => (
             <Box style={{minHeight: "85vh"}} className="heightContainer">
-              <Link to="/admin">
-                <h1>←</h1>
+              <Link to="/admin" style={{marginTop:"1em"}}>
+                <Rewind size="large" color="#7D4487"/>
               </Link>
               <h1>Products</h1>
               <Accordion>  
