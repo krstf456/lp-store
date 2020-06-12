@@ -13,7 +13,6 @@ class ProductPage extends React.Component {
 
   componentDidMount = async () => {
     let product = await this.context.getOneProduct(this.props.match.params.id);
-    console.log(product);
     this.setState({ product: product });
     return product;
   };
@@ -24,7 +23,11 @@ class ProductPage extends React.Component {
 
     return (
       <>
-        <Box style={{minHeight: "80vh"}} direction="row-responsive" className="productBox">
+        <Box
+          style={{ minHeight: "80vh" }}
+          direction="row-responsive"
+          className="productBox"
+        >
           <img
             style={{ backgroundImage: `url(${product.image})` }}
             className="productImg"
@@ -40,13 +43,15 @@ class ProductPage extends React.Component {
             </Box>
             <p>Price: {product.price} :-</p>
             <Box className="addToCartButton">
-            <Button
-              color="#4AAEAE"
-              label="Add to cart"
-              onClick={() => {
-                this.context.addToCart(product);
-              }}
-            ><h2>Add To Cart</h2></Button>
+              <Button
+                color="#4AAEAE"
+                label="Add to cart"
+                onClick={() => {
+                  this.context.addToCart(product);
+                }}
+              >
+                <h2>Add To Cart</h2>
+              </Button>
             </Box>
           </Box>
         </Box>

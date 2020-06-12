@@ -15,9 +15,7 @@ function auth(req, res, next) {
 }
 
 isAdminTrue = async (req, res, next) => {
-	// console.log("USERN" + req)
 	if (req.user.isAdmin === true) {
-		console.log('isAdminTrue', req.user.isAdmin)
 		next()
 	} else {
 		res.status(401).send("Cool it. You're not an admin")
@@ -25,7 +23,6 @@ isAdminTrue = async (req, res, next) => {
 }
 
 function generateAccessToken(user) {
-	// console.log('user:', user)
 	return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
 }
 
@@ -43,7 +40,6 @@ function verifyToken(req, res) {
 	try {
 		const verified = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 		req.user = verified
-		console.log(req.user)
 		res.status(200).json(req.user)
 	} catch (err) {
 		res.status(400).json({ message: 'Invalid Token' })

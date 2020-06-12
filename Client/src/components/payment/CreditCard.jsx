@@ -49,4 +49,4 @@ class CreditCard extends React.Component {
   }
 }
 
-export default CreditCard 
+export default CreditCard;
