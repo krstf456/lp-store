@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import Context from "../context/context";
-import { Box, ResponsiveContext, Menu, Button } from "grommet";
+import { Box, ResponsiveContext, Menu, DropButton, Text, Button, Image} from "grommet";
 import "./MainPage.css"
 import flower from "./flower11.png";
+import lp from "./lp1.png";
+
+
 
 class MainPage extends React.Component {
   constructor() {
@@ -68,34 +71,107 @@ class MainPage extends React.Component {
     console.log(this.state.activeCategory)
   }
 
+  renderMenuItems = () => (
+    
+      
+        <Box background="#7D4487" width="102%" align="center" >
+          <Text
+            className="dropdownText"
+            onClick= { () => this.handleOnClickAll()}
+            style={{ cursor: "pointer" }}
+
+          >
+            All Albums
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickRock()}
+            style={{ cursor: "pointer" }}
+
+          >
+            Rock
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickSoul()}
+            style={{ cursor: "pointer" }}
+
+          >
+            Soul
+          </Text>
+          
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickPop()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Pop
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickPsychedelic()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Psychedelic
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickProg()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Prog
+          </Text>
+          <Text
+                      className="dropdownText"
+
+            onClick= { () => this.handleOnClickOther()}
+            style={{ cursor: "pointer" }}
+
+            >
+              Other
+          </Text>
+          
+        </Box>
+     
+  );
+
   render() {
     
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
           <Box>
-            <Box align="center" pad="xlarge">
-              <Menu
-                className="dropDown"
-                dropProps={{
-                  align: { top: "bottom", left: "left" },
-                  elevation: "xlarge"
-                }}
-                label="Genre"
-                style={{
-                  fontFamily: 'Spicy Rice',
-                  color: "wheat"
-                }}
-                items={[
-                  { label: "All Albums", onClick: () => {this.handleOnClickAll()} },
-                  { label: "Rock", onClick: () => {this.handleOnClickRock()} },
-                  { label: "Soul", onClick: () => {this.handleOnClickSoul()} },
-                  { label: "Pop", onClick: () => {this.handleOnClickPop()} },
-                  { label: "Psychedelic", onClick: () => {this.handleOnClickPsychedelic()} },
-                  { label: "Prog", onClick: () => {this.handleOnClickProg()} },
-                  { label: "Other", onClick: () => {this.handleOnClickOther()} },
-                ]}
-              />
+            <Box align="center" pad="xlarge" 
+            
+            >
+
+              <DropButton
+                    alignSelf="center"
+                    margin={{ vertical: "small" }}
+                    dropContent={this.renderMenuItems()}
+                    dropProps={{ align: { top: "bottom" } }}
+                    
+                  >
+                    <Box direction="row">
+
+                    <Box direction="row" className="chooseCategory"><Text className="lilacolor">C</Text><Text className="greenish">h</Text><Text className="lilacolor">o</Text><Text className="greenish">o</Text><Text className="lilacolor">s</Text><Text className="lastOne">e</Text><Text className="lilacolor">C</Text><Text className="greenish">a</Text><Text className="lilacolor">t</Text><Text className="greenish">e</Text><Text className="lilacolor">g</Text><Text className="greenish">o</Text><Text className="lilacolor">r</Text><Text className="greenish">y</Text></Box>
+                    <Image
+                      src={lp}
+                      alt="peace burger"
+                      width="80px"
+                      height="80px"
+                      />
+                      </Box>
+                  </DropButton>
+              
             </Box>
             <Box
               justify="center"

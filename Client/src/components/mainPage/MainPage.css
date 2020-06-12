@@ -1,0 +1,47 @@
+.dropdownText {
+   
+    font-family: 'Spicy Rice', cursive;
+    opacity: 0.7;
+    transition: 0.3s;
+    
+  }
+
+.dropdownText:hover {
+    opacity: 1;
+    
+}
+.chooseCategory {
+    font-size: 35px;
+    background-color: #EAB691; 
+    border-radius: 10px; 
+    height: 27px;
+    position: relative;
+    bottom: -27px;
+    padding: 0 4px 0 4px;
+    border: 1px solid #7D4487;
+    
+    justify-self: center;
+}
+.lilacolor {
+    color: #7D4487;
+    
+    
+    
+    
+    
+}
+.greenish {
+    color: #4AAEAE;
+    
+
+    
+    
+}
+
+.lastOne {
+    color: #4AAEAE;
+    letter-spacing: 5px;
+    
+
+    
+}
