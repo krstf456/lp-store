@@ -64,11 +64,8 @@ class OrderList extends React.Component {
                 justifyContent: "space-around"
               }}
             >
-              <Box  style={{
-                display: "flex",
-                flexDirection: "column",
-                textAlign: "left",
-                margin: "0 8rem"
+              <Box style={{
+                margin: "0.2rem"
               }}>
                 <h3>User Info</h3>
                 <p><strong>First Name: </strong>{this.props.orderData.adress[0].first_name}</p>
@@ -79,13 +76,17 @@ class OrderList extends React.Component {
                 <p><strong>User Id: </strong>{this.props.orderData.adress[0]._id}</p>
                 
               </Box>
-              <Box>
+              <Box style={{
+                margin: "0.2rem"
+              }}>
               <h3>Shipping & Payment</h3>
                 <p><strong>Shipping Method: </strong>{this.props.orderData.shipping[0].company}</p>
                 <p><strong>Shipping Price: </strong>{this.props.orderData.shipping[0].price}</p>
                 <p><strong>Payment Method: </strong>{this.props.orderData.payment_method}</p>
               </Box>
-              <Box>
+              <Box style={{
+                margin: "0.2rem"
+              }}>
               <h3>Product Info</h3>
               <table>
                 <thead>
