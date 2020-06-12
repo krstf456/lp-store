@@ -85,7 +85,7 @@ export default class OrderPage extends React.Component {
 						))}
 						<tfoot>
 							<tr>
-								<td></td>
+								<td>Shipping Cost</td>
 								<td></td>
 								<td></td>
 								<td></td>
