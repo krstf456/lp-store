@@ -37,7 +37,7 @@ export default class ShoppingCart extends React.Component {
               </Text>
               <Cart color="brand"></Cart>
             </Box>
-            <Box style={cartboxContainer(size)}>
+            <Box>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -117,6 +117,3 @@ export default class ShoppingCart extends React.Component {
   }
 }
 
-const cartboxContainer = (size) => ({
-  fontSize: size == "small" ? "8pt" : size == "medium" ? "12pt" : "16pt"
-});
