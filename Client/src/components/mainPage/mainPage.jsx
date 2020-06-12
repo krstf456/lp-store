@@ -148,7 +148,7 @@ class MainPage extends React.Component {
     return (
       <ResponsiveContext.Consumer>
         {(size) => (
-          <Box>
+          <Box style={{minHeight: "85vh"}}>
             <Box align="center" pad="xlarge" 
             
             >

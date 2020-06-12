@@ -38,7 +38,7 @@ export class Provider extends React.Component {
   };
 
 
-  displayAllAlbums = () => {
+  /* displayAllAlbums = () => {
     if (!this.state.products.length) return null;
     
     return this.state.products.map((product, index) => (
@@ -61,7 +61,7 @@ export class Provider extends React.Component {
           onClick={() => this.addToCart(product)}>ADDTOCART</Button>
     </Box>
     ));
-  };
+  }; */
 
 
   componentDidMount = () => {
