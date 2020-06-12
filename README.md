@@ -62,3 +62,77 @@ password: 123
 - [Louise Bäckström](https://github.com/LouiseBackstrom)
 - [Oskar Lindblad](https://github.com/ozckarr)
 - [Viktor Ödman](https://github.com/solkatt)
+
+
+# Betygskrav
+Alla sidor skall vara responsiva. (G)
+- Uppfylld, via Grommet
+	
+Arbetet ska implementeras med en React frontend och en Express backend. (G)
+- Uppfylld, genom att stycka projektet i en Server/Client del
+
+Skapa ett ER diagram och koddiagram, detta ska lämnas in vid idégodkännandet G) 
+- Godkänt av lärare
+
+Beskriv er företagsidé i en kort textuell presentation, detta ska lämnas in vid idégodkännandet (G)
+- Godkänt av lärare
+		 					
+All data som programmet utnyttjar ska vara sparat i en Mongo-databas (produkter, beställningar, konton mm) (G)
+- Uppfylld, se server
+
+Man ska kunna logga in som administratör i systemet (G) 
+- Uppfylld med hjälp av en authentication middleware
+ 			
+Man ska kunna registrera sig som administratör på sidan, nya användare ska sparas i databasen (VG) 
+- Ej uppfyllt
+ 			
+En administratör behöver godkännas av en tidigare administratör innan man kan logga in fösta gången (VG) 
+- Ej uppfyllt
+			
+Inga Lösenord får sparas i klartext i databasen (G) 
+- Uppfylld, med hjälp av kryptering med bcrypt
+ 										
+En besökare ska kunna beställa produkter från sidan, detta ska uppdatera lagersaldot i databasen (G) 
+- Uppfyllt, uppdateras via endpointen när en order skapas
+ 									
+Administratörer ska kunna uppdatera antalet produkter i lager från admin delen av sidan (G) 
+- Uppfyllt. I admin-delen på sidan kan admin redigera antalet i lager på alla produkter, under “All products” i admin-delen. 
+ 										
+Administratörer ska kunna se en lista på alla gjorda beställningar (G)
+- Ja, in admin, orders.	
+
+Administratörer ska kunna markera beställningar som skickade (VG) 
+- Ej uppfyllt
+ 										
+Sidans produkter ska delas upp i kategorier, en produkt ska tillhöra minst en kategori, men kan tillhöra flera (G) 
+- Uppfyllt.
+		
+Från hemsidan ska man kunna se en lista över alla produkter, och man ska kunna lista bara dom produkter som tillhör en kategori (G) 
+- Uppfyllt. Vi sorterar kategorier/genrer i en dropdown menu på klienten. Genrerna sorteras via en endpoint.
+			
+Besökare ska kunna lägga produkterna i en kundkorg, som är sparad i local-storage på klienten (G) 
+- Uppfyllt, produkter sparas i en array i LS. 
+			
+En besökare som gör en beställning ska få möjligheten att registrera sig samt logga in och måste vara inloggad som kund innan beställningen skapas (G) 
+- Uppfyllt. Inloggning krävs via authController. Registrering sker via frontend-sidans meny.
+			
+När man är inloggad som kund ska man kunna se sina gjorda beställning och om det är skickade eller inte (VG) 
+- Ej uppfyllt
+ 			
+Besökare ska kunna välja ett av flera fraktalternativ (G) 
+- Uppfyllt. Klienten har 3 radiobuttons i checkout-flödet där user får välja mellan alternativen.
+ 			
+Tillgängliga fraktalternativ ska vara hämtade från databasen (G) 
+- Uppfyllt. 3 st fraktalternativ tillagda med POST till databasen och sedan fetchade i klienten. 
+			
+Administratörer ska kunna redigera vilka kategorier en produkt tillhör (VG)  
+- Ej uppfyllt
+ 													 								
+Administratörer ska kunna lägga till och ta bort produkter (VG)  
+- Uppfyllt, via file upload
+ 							
+Backendapplikationen måste ha en fungerande global felhantering (VG) 
+- Uppfyllt, i handleError.js
+ 							
+Checkoutflödet i frontendapplikationen ska ha validering på samtliga fält (G) 
+- Uppfylld. Alla delar i checkout är “required”.
