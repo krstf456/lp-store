@@ -1,7 +1,6 @@
 import React from "react";
 import { Accordion, Box, ResponsiveContext } from "grommet";
 import axios from "axios";
-import "./Products.css";
 import ProductList from './ProductList';
 import { Link } from "react-router-dom";
 import UserContext from '../context/userContext';

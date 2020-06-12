@@ -1,9 +1,8 @@
 import React from "react";
 import { Box, Text, RadioButton } from "grommet";
 import { Deliver } from "grommet-icons";
-import axios from "axios";
 import Context from "../context/context";
-import "./Checkout.css"
+import "./Checkout.css";
 
 export default class ShippingBox extends React.Component {
   static contextType = Context;
@@ -15,7 +14,9 @@ export default class ShippingBox extends React.Component {
   getDeliveryDate = () => {
     const date = new Date();
     const delivery = new Date(date);
-    delivery.setDate(delivery.getDate() + this.context.selectedShipping.shipping_time);
+    delivery.setDate(
+      delivery.getDate() + this.context.selectedShipping.shipping_time
+    );
     return delivery.toDateString();
   };
 
@@ -29,10 +30,18 @@ export default class ShippingBox extends React.Component {
           <Deliver color="brand"></Deliver>
         </Box>
         <Box gap="small" direction="column">
-          {this.context.shippingAlternatives.map(shipping => (
+          {this.context.shippingAlternatives.map((shipping) => (
             <div key={shipping._id}>
               <RadioButton
-                label={shipping.company + " " + "(" + shipping.shipping_time + " " + "days" + ")"}
+                label={
+                  shipping.company +
+                  " " +
+                  "(" +
+                  shipping.shipping_time +
+                  " " +
+                  "days" +
+                  ")"
+                }
                 name={shipping.company}
                 checked={shipping === this.context.selectedShipping}
                 onChange={() => this.context.setSelectedShipping(shipping)}

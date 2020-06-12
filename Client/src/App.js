@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import { Provider } from "./components/context/context";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./components/context/userContext";
-import "./App.css";
 
 class App extends React.Component {
   render() {

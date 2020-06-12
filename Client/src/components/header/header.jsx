@@ -45,15 +45,14 @@ class Header1 extends React.Component {
     password: "",
   };
 
-
-
-  //To open modal call this function on a button
+  //To open modal
   toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
     });
   };
 
+   //To open modal
   toggleLoginModal = () => {
     this.setState({
       showLoginModal: !this.state.showLoginModal,
@@ -108,89 +107,68 @@ class Header1 extends React.Component {
 
   renderMenuItems = () => (
     <UserConsumer>
-				{(userState) => (
-    <Box 
-    background="#7D4487"
-    width="small"
-    align="center"
-    >
-      {
-        !userState.isLoggedIn?
-        <Text className="dropdown"
-        style={{ cursor: 'pointer'}}
-        onClick={() => this.toggleLoginModal()}
-        
-        >Sign In</Text>:
-      <Text className="dropdown"
-      onClick={() => userState.onSignOut()}
-      style={{ cursor: 'pointer'}}
-      >Sign Out
-      </Text>
-      }{
+      {(userState) => (
+        <Box background="#7D4487" width="small" align="center">
+          {!userState.isLoggedIn ? (
+            <Text
+              className="dropdown"
+              style={{ cursor: "pointer" }}
+              onClick={() => this.toggleLoginModal()}
+            >
+              Sign In
+            </Text>
+          ) : (
+            <Text
+              className="dropdown"
+              onClick={() => userState.onSignOut()}
+              style={{ cursor: "pointer" }}
+            >
+              Sign Out
+            </Text>
+          )}
+          {!userState.isLoggedIn ? (
+            <Text
+              className="dropdown"
+              style={{ cursor: "pointer" }}
+              onClick={() => this.toggleModal()}
+              label="Register"
+            >
+              Register
+            </Text>
+          ) : (
+            <></>
+          )}
+          {userState.isAdmin ? (
+            <Link
+              to="/admin"
+              className="link"
+              color="red"
+              style={{ textDecoration: "none" }}
+            >
+              <Text
+                className="dropdown"
+                style={{ color: "white", border: "black" }}
+                label="Admin"
+              >
+                Admin
+              </Text>
+            </Link>
+          ) : (
+            <></>
+          )}
+          <br />
 
-        !userState.isLoggedIn?
-        <Text className="dropdown"
-          style={{ cursor: 'pointer'}}
-          onClick={() => this.toggleModal()}
-          label="Register"
-        >Register</Text>:
-        <></>
-      }{
-        userState.isAdmin?
-        <Link to="/admin"
-        className="link"
-        color="red"
-        style={{textDecoration: "none"}}>
-        <Text className="dropdown"
-      
-        style={{ color: "white", border: "black" }}
-        label="Admin"
-      >Admin</Text>
-      </Link>:
-      <></>
-      }
-      <br/>
-
-      <br/>
-      <br/>
-      <Image
-        src={flower6}
-        alt="a flower"
-        className="burgerFlower1"
-      />
-      <Image
-        src={flower8}
-        alt="a flower"
-        className="burgerFlower2"
-      />
-      <Image
-        src={flower5}
-        alt="a flower"
-        className="burgerFlower3"
-      />
-      <Image
-        src={flower2}
-        alt="a flower"
-        className="burgerFlower4"
-      />
-      <Image
-        src={flower14}
-        alt="a flower"
-        className="burgerFlower5"
-      />
-      <Image
-        src={flower16}
-        alt="a flower"
-        className="burgerFlower6"
-      />
-      <Image
-        src={flower16}
-        alt="a flower"
-        className="burgerFlower7"
-      />
-
-    </Box>
-    )}
+          <br />
+          <br />
+          <Image src={flower6} alt="a flower" className="burgerFlower1" />
+          <Image src={flower8} alt="a flower" className="burgerFlower2" />
+          <Image src={flower5} alt="a flower" className="burgerFlower3" />
+          <Image src={flower2} alt="a flower" className="burgerFlower4" />
+          <Image src={flower14} alt="a flower" className="burgerFlower5" />
+          <Image src={flower16} alt="a flower" className="burgerFlower6" />
+          <Image src={flower16} alt="a flower" className="burgerFlower7" />
+        </Box>
+      )}
     </UserConsumer>
   );
 
@@ -275,7 +253,6 @@ class Header1 extends React.Component {
   }
 
   render() {
-
     return (
       <>
         <ResponsiveContext.Consumer>
@@ -361,7 +338,7 @@ class Header1 extends React.Component {
                     <Image src={logo} alt="love peace and records" />
                   </Link>
                 </Box>
-                <Box direction="row" style={{margin:"1em"}}>
+                <Box direction="row" style={{ margin: "1em" }}>
                   <Link to="/checkout/">
                     <Shop color="white" size="medium" />
                   </Link>
