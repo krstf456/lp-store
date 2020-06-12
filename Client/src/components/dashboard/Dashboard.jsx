@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
                     <h1>
                       Hey {this.state.username} <br /> you're signed in dude.
                     </h1>
-                    <img className="loginFlower" src={flower} />
+                    <img className="loginFlower" src={flower} alt="flower" />
                   </>
                 ) : (
                   this.loginForm()

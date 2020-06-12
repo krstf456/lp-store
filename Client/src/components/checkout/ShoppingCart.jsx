@@ -66,6 +66,7 @@ export default class ShoppingCart extends React.Component {
                             <img
                               style={{ height: "3rem", width: "3rem" }}
                               src={product.image}
+                              alt="product"
                               className="smallerScreen"
                             />
                           </TableCell>
