@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import Context from "../context/context";
 import { Box, ResponsiveContext, Menu, DropButton, Text, Button, Image} from "grommet";
-import { Disc } from "grommet-icons"
 import "./MainPage.css"
 import flower from "./flower11.png";
 import lp from "./lp1.png";
@@ -172,29 +171,7 @@ class MainPage extends React.Component {
                       />
                       </Box>
                   </DropButton>
-              {/* <Menu
-                className="dropDown"
-                dropProps={{
-                  align: { top: "bottom", left: "left" },
-                  elevation: "xlarge"
-                }}
-                label="Genre"
-                style={{
-                  fontFamily: 'Spicy Rice',
-                  color: "wheat"
-                  
-                }}
-                icon={<Disc/>}
-                items={[
-                  { label: "All Albums", onClick: () => {this.handleOnClickAll()} },
-                  { label: "Rock", onClick: () => {this.handleOnClickRock()} },
-                  { label: "Soul", onClick: () => {this.handleOnClickSoul()} },
-                  { label: "Pop", onClick: () => {this.handleOnClickPop()} },
-                  { label: "Psychedelic", onClick: () => {this.handleOnClickPsychedelic()} },
-                  { label: "Prog", onClick: () => {this.handleOnClickProg()} },
-                  { label: "Other", onClick: () => {this.handleOnClickOther()} },
-                ]}
-              /> */}
+              
             </Box>
             <Box
               justify="center"
