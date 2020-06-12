@@ -3,8 +3,8 @@ import UserContext from '../context/userContext'
 import './LoginPrompt.css'
 import Modal from '../modal/modal'
 import { Box, Button } from 'grommet'
-import LoadingAnimation from './LoadingAnimation'
-import ErrorAnimation from './ErrorAnimation'
+// import LoadingAnimation from '../animations/LoadingAnimation'
+import ErrorAnimation from '../animations/ErrorAnimation'
 
 class LoginPrompt extends React.Component {
 	//This will enable the use of context-functions and states
@@ -35,10 +35,9 @@ class LoginPrompt extends React.Component {
 						id='loginPrompt'
 						style={{
 							display: 'flex',
-							position: 'absolute',
-							left: '33vw',
-							top: '10%',
+							// position: 'absolute',
 							position: 'sticky',
+							alignSelf: 'center',
 							height: '0rem',
 						}}
 						background='dark-1'
@@ -46,28 +45,24 @@ class LoginPrompt extends React.Component {
 						height='30rem'
 						align='center'
 					>
-						<Button
-							style={{ zIndex: '2' }}
-							onClick={() => {
-								this.toggleModal()
-							}}
-						>
-							Close
-						</Button>
-						<h2 style={{ zIndex: '2' }}>Hey Dude!</h2>
+						<div style={innerStyle}>
+							<Button
+								id='closeBtn'
+								onClick={() => {
+									this.toggleModal()
+								}}
+							>
+								x
+							</Button>
+							<h2 id='bigText'>Bummer Dude!</h2>
 
-						<LoadingAnimation />
-						<ErrorAnimation />
+							{/* <LoadingAnimation /> */}
+							<ErrorAnimation />
 
-						<h2
-							style={{
-								zIndex: '2',
-								position: 'relative',
-							}}
-						>
-							Dude. You need to be logged in to place an order!
-						</h2>
-						<div id='bm'></div>
+							<h2 style={smallTextStyle}>
+								You need to be logged in to order!
+							</h2>
+						</div>
 					</Box>
 				</>
 				//	</Modal>
@@ -85,6 +80,24 @@ var promptStyle = {
 	width: '100%',
 	position: 'absolute',
 	zIndex: '1',
+}
+
+var innerStyle = {
+	marginTop: '1rem',
+	// background: 'rgba(255,255,255,0.9)',
+	borderRadius: '10%',
+
+	boxShadow: '10px 20px 30px rgba(0,0,0,0.7)',
+}
+
+var smallTextStyle = {
+	zIndex: '2',
+	position: 'relative',
+	color: 'black',
+	background: 'rgba(234, 182, 145, 0.9)',
+	padding: '1rem',
+	margin: '1rem 0 0 0',
+	borderRadius: '0 0 15% 15%',
 }
 
 export default LoginPrompt
