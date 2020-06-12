@@ -37,7 +37,7 @@ export default class ShoppingCart extends React.Component {
               </Text>
               <Cart color="brand"></Cart>
             </Box>
-            <Box /* style={cartboxContainer(size)} */>
+            <Box style={cartboxContainer(size)}>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -101,7 +101,7 @@ export default class ShoppingCart extends React.Component {
                     <TableCell>
                     </TableCell>
                     <TableCell>
-                      <strong>total</strong>
+                      <strong>Total</strong>
                     </TableCell>
                     <TableCell>
                 <strong>{this.context.calculateSum() + " " + ":-"}</strong>
@@ -117,6 +117,6 @@ export default class ShoppingCart extends React.Component {
   }
 }
 
-/* const cartboxContainer = (size: string): CSSProperties => ({
+const cartboxContainer = (size) => ({
   fontSize: size == "small" ? "8pt" : size == "medium" ? "12pt" : "16pt"
-}); */
+});
