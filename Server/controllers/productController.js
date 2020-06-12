@@ -10,7 +10,7 @@ addProduct = async (req, res, next) => {
       await product.save();
       res.send(product);
     } else {
-      res.status(404).json({message : "Album already exists"})
+      res.status(404).json({message : "Funky, man. The album already exists."})
     }
   } catch (err) {
     next(err)
@@ -50,7 +50,7 @@ deleteProduct = async (req, res, next) => {
     const product = await productModel.findByIdAndDelete(req.params.id);
 
     if (!product) res.status(404).json("No item found");
-    res.status(200).json("Album has been deleted");
+    res.status(200).json("Salty. The album has been deleted.");
   } catch (err) {
     next(err)
   }
@@ -61,7 +61,7 @@ getGenre = async (req, res, next) => {
     //Find genre and read
     const genre = await productModel.find({ genre: req.params.genre });
     if (genre.length == 0) {
-      res.status(404).json({message: "Genre not found"})
+      res.status(404).json({message: "Trippy. The genre not found"})
     } else {
       res.status(200).send(genre);
     }
@@ -75,7 +75,7 @@ getOneProduct = async (req, res, next) => {
     //Find id and read
     const oneProduct = await productModel.findById(req.params.id);
     if (oneProduct.length == 0) {
-      res.status(404).json({message: "Product not found"})
+      res.status(404).json({message: "No product found, man."})
     } else {
       res.status(200).send(oneProduct);
     }
