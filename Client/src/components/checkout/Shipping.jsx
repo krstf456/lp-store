@@ -26,7 +26,7 @@ export default class ShippingBox extends React.Component {
           <Text size="large" alignSelf="start" weight="bold">
             Shipping
           </Text>
-          <Deliver color="orange"></Deliver>
+          <Deliver color="brand"></Deliver>
         </Box>
         <Box gap="small" direction="column">
           {this.context.shippingAlternatives.map(shipping => (

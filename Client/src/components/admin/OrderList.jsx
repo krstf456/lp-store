@@ -26,6 +26,8 @@ class OrderList extends React.Component {
       sum = products[i].price + sum
     }
     for (let i = 0; i < products.length; i++){
+      // Yes, every album is unique, but the model need a Product Code In the future.
+      // Models will account for this in the future.
       const notInCart = newProducts.some((item) => item.album === products[i].album)
       if(!notInCart){
         newProducts.push(products[i])

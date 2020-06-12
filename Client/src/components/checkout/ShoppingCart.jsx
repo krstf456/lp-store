@@ -11,7 +11,7 @@ import {
 } from "grommet";
 import { Cart, FormAdd, FormSubtract, FormTrash } from "grommet-icons";
 import Context from "../context/context";
-import "./Checkout.css";
+import "./ShoppingCart.css";
 
 export default class ShoppingCart extends React.Component {
   static contextType = Context;
@@ -42,7 +42,7 @@ export default class ShoppingCart extends React.Component {
                 <TableHeader>
                   <TableRow>
                     <TableCell scope="col">
-                      <strong>Items</strong>
+                      <strong className="smallerScreen">Items</strong>
                     </TableCell>
                     <TableCell size="xsmall" scope="col">
                       <strong>Album</strong>
@@ -66,6 +66,7 @@ export default class ShoppingCart extends React.Component {
                           <img
                             style={{ height: "3rem", width: "3rem" }}
                             src={product.image}
+                            className="smallerScreen"
                           />
                         </TableCell>
 
@@ -73,7 +74,7 @@ export default class ShoppingCart extends React.Component {
                         <TableCell>{quantity}</TableCell>
                         <TableCell style={{fontSize:"0.7em"}}>{product.price}:- /pp</TableCell>
                         <TableCell>
-                        {product.price * quantity} :-
+                        {product.price * quantity}:-
 
                         </TableCell>
                         <TableCell>
@@ -104,7 +105,7 @@ export default class ShoppingCart extends React.Component {
                       <strong>Total</strong>
                     </TableCell>
                     <TableCell>
-                <strong>{this.context.calculateSum() + " " + ":-"}</strong>
+                <strong>{this.context.calculateSum() + ":-"}</strong>
                 </TableCell>
                   </TableRow>
                 </TableBody>

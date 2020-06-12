@@ -1,0 +1,5 @@
+@media screen and (max-width: 22em) {
+    .smallerScreen{
+        display:none
+    }
+}
