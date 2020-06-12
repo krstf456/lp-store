@@ -12,7 +12,7 @@ export default class OrderPage extends React.Component {
         pad="large"
         gap="large"
         width="large"
-        style={{ textAlign: "center", lineHeight: "normal" }}
+        style={{ minHeight: "85vh", textAlign: "center", lineHeight: "normal" }}
       >
         <Box align="center">
           <h1>Your order has been placed!</h1>
