@@ -84,7 +84,6 @@ export class UserProvider extends React.Component {
   };
 
   onSignIn = (username, password) => {
-    // const { username, password } = this.state
 
     this.setState({
       isLoading: true,
@@ -120,8 +119,7 @@ export class UserProvider extends React.Component {
 
     const obj = getFromStorage("storage-object");
     if (obj && obj.token) {
-      // const { token } = obj
-
+ 
       removeFromStorage("storage-object", {
         token: obj.token,
       });

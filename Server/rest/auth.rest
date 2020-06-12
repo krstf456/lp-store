@@ -1,10 +1,9 @@
 
-###Route with jwt auth middleware
+### Route with jwt auth middleware
 ### GET userID
 GET http://localhost:5000/verify
 Content-Type: application/json
 auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTVlZTE1OGMwMTciLCJ1c2VybmFtZSI6IlZpa3RvciIsImlzQWRtaW4iOnRydWUsImVtYWlsIjoidmljQHRlc3QuY29tIiwiaWF0IjoxNTkxMTA5NjgyLCJleHAiOjE1OTExOTYwODJ9.WS13qPjS9Xf3LXPgWuwUKIs0Pw3S9pfwOOqBWPm24lc
-
 
 ####
 
@@ -18,22 +17,16 @@ Content-Type: application/json
     "password": "123"
 }
 
-#####
-### get orders test with jwt auth middleware
-### GET Users Order based on user ID
+####
+
+### Get orders test with jwt auth middleware
 ##
 POST http://localhost:5000/verify
 Content-Type: application/json
 auth-token: eyJhbGciOiJIU1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQwYmJmOGE0OTQ1NTVlZTE1OGMwMTciLCJ1c2VybmFtZSI6IlZpa3RvciIsImlzQWRtaW4iOnRydWUsImVtYWlsIjoidmljQHRlc3QuY29tIiwiaWF0IjoxNTkxMTA1OTc5LCJleHAiOjE1OTExOTIzNzl9.x1rTlkKzZ9rkItOtVu-Snna1kUUYba3zMx2qrPd5ecA
-##
 
+####
 
-
-
-
-
-
-//////////////////////////////////////
 ## REFRESH TOKEN
 POST http://localhost:5000/verify
 Content-Type: application/json

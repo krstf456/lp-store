@@ -4,10 +4,3 @@ Content-Type: application/json
 {"username": "Skurt",
   "password": "123"}
 
-#####
-
-
-
-####
-
-POST http://localhost:5000/token
