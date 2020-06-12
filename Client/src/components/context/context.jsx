@@ -3,7 +3,6 @@ import axios from "axios";
 import { Box, Button } from "grommet";
 import { Link } from "react-router-dom";
 import style from "./Context.css";
-//import AddtoCartButton from "../checkout/AddToCart";
 
 const Context = React.createContext();
 
@@ -36,32 +35,6 @@ export class Provider extends React.Component {
       this.setState({ products: response.data });
     });
   };
-
-
-  /* displayAllAlbums = () => {
-    if (!this.state.products.length) return null;
-    
-    return this.state.products.map((product, index) => (
-      <Box key={index} className="boxStyle">
-      <Link
-        to={{
-          pathname: "/productpage/" + product._id,
-        }}
-      >
-        <div
-          style={{ backgroundImage: `url(${product.image})` }}
-          className="imgStyle"
-        ></div>
-        <h3>{product.album}</h3>
-        <h4>{product.artist}</h4>
-        <p>{product.price}</p>
-        <p>{product.genre}</p>
-      </Link>
-      <Button
-          onClick={() => this.addToCart(product)}>ADDTOCART</Button>
-    </Box>
-    ));
-  }; */
 
 
   componentDidMount = () => {
