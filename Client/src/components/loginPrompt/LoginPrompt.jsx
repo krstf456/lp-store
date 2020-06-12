@@ -3,8 +3,8 @@ import UserContext from '../context/userContext'
 import './LoginPrompt.css'
 import Modal from '../modal/modal'
 import { Box, Button } from 'grommet'
-// import LoadingAnimation from '../animations/LoadingAnimation'
 import ErrorAnimation from '../animations/ErrorAnimation'
+import { Close } from 'grommet-icons'
 
 class LoginPrompt extends React.Component {
 	//This will enable the use of context-functions and states
@@ -52,7 +52,7 @@ class LoginPrompt extends React.Component {
 									this.toggleModal()
 								}}
 							>
-								x
+								<Close color='black' />
 							</Button>
 							<h2 id='bigText'>Bummer Dude!</h2>
 
