@@ -148,6 +148,7 @@ class Header1 extends React.Component {
       <></>
       }
       <br/>
+
       <br/>
       <br/>
       <Image
@@ -185,6 +186,7 @@ class Header1 extends React.Component {
         alt="a flower"
         className="burgerFlower7"
       />
+
     </Box>
     )}
     </UserConsumer>
@@ -357,7 +359,7 @@ class Header1 extends React.Component {
                     <Image src={logo} alt="love peace and records" />
                   </Link>
                 </Box>
-                <Box direction="row">
+                <Box direction="row" style={{margin:"1em"}}>
                   <Link to="/checkout/">
                     <Shop color="white" size="medium" />
                   </Link>

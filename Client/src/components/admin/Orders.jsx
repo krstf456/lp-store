@@ -6,6 +6,7 @@ import OrderList from "./OrderList";
 import UserContext from "../context/userContext";
 import { getFromStorage } from "../../utils/storage";
 import "./Admin.css";
+import { Rewind } from 'grommet-icons';
 
 class Orders extends React.Component {
   static contextType = UserContext;
@@ -51,8 +52,8 @@ class Orders extends React.Component {
         <ResponsiveContext.Consumer>
           {(size) => (
             <Box style={{minHeight: "85vh"}} className="heightContainer">
-              <Link to="/admin">
-                <h1>←</h1>
+              <Link to="/admin" style={{marginTop:"1em"}}>
+                <Rewind size="large" color="#7D4487"/>
               </Link>
               <h1>Orders</h1>
 

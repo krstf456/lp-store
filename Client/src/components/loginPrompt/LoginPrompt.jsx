@@ -22,7 +22,7 @@ class LoginPrompt extends React.Component {
 	}
 
 	successfullyCreatedUser = () => {
-		alert('You were successfully registered!')
+		alert('Wow, man. You one of us now!')
 	}
 
 	//Place modal-content in here
