@@ -185,8 +185,15 @@ deleteProduct = (product) => {
 
 getTotalQuantity = () => {
   let totalQuantity = 0;
-  for (const product of this.state.shoppingCart) {
-    totalQuantity += product.quantity;
+  let shoppingCart = JSON.parse(localStorage.getItem("cart"))
+  if(shoppingCart != null){
+    for (const product of shoppingCart) {
+      totalQuantity += product.quantity;
+    }
+  } else {
+    localStorage.setItem('cart', JSON.stringify([]))
+    this.setState({ shoppingCart: [] });
+
   }
   return totalQuantity;
 };
