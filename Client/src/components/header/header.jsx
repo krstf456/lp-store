@@ -45,6 +45,8 @@ class Header1 extends React.Component {
     password: "",
   };
 
+
+
   //To open modal call this function on a button
   toggleModal = () => {
     this.setState({
@@ -315,8 +317,8 @@ class Header1 extends React.Component {
                   </Link>
                   <Text
                     style={{
-                      color: "#7D4487",
-                      background: "orange",
+                      color: "white",
+                      background: "#BD6369",
                       width: "1.5rem",
                       height: "1.5rem",
                       borderRadius: "50%",
@@ -366,8 +368,8 @@ class Header1 extends React.Component {
 
                   <Text
                     style={{
-                      color: "purple",
-                      background: "orange",
+                      color: "white",
+                      background: "#BD6369",
                       width: "1.5rem",
                       height: "1.5rem",
                       borderRadius: "50%",
