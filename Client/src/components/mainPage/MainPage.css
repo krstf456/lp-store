@@ -10,19 +10,19 @@
     opacity: 1;
     
 }
-.textBox {
+.chooseCategory {
     font-size: 35px;
     background-color: #EAB691; 
     border-radius: 10px; 
     height: 27px;
     position: relative;
     bottom: -27px;
-    padding: 0 16px 0 3px;
+    padding: 0 4px 0 4px;
     border: 1px solid #7D4487;
     
     justify-self: center;
 }
-.text {
+.lilacolor {
     color: #7D4487;
     
     
@@ -30,7 +30,7 @@
     
     
 }
-.text2 {
+.greenish {
     color: #4AAEAE;
     
 
@@ -38,7 +38,7 @@
     
 }
 
-.text3 {
+.lastOne {
     color: #4AAEAE;
     letter-spacing: 5px;
     

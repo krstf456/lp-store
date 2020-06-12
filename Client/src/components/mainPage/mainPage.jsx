@@ -163,7 +163,7 @@ class MainPage extends React.Component {
                   >
                     <Box direction="row">
 
-                    <Box direction="row" className="textBox"><Text className="text">C</Text><Text className="text2">h</Text><Text className="text">o</Text><Text className="text2">o</Text><Text className="text">s</Text><Text className="text3">e</Text><Text className="text">C</Text><Text className="text2">a</Text><Text className="text">t</Text><Text className="text2">e</Text><Text className="text">g</Text><Text className="text2">o</Text><Text className="text">r</Text><Text className="text2">y</Text></Box>
+                    <Box direction="row" className="chooseCategory"><Text className="lilacolor">C</Text><Text className="greenish">h</Text><Text className="lilacolor">o</Text><Text className="greenish">o</Text><Text className="lilacolor">s</Text><Text className="lastOne">e</Text><Text className="lilacolor">C</Text><Text className="greenish">a</Text><Text className="lilacolor">t</Text><Text className="greenish">e</Text><Text className="lilacolor">g</Text><Text className="greenish">o</Text><Text className="lilacolor">r</Text><Text className="greenish">y</Text></Box>
                     <Image
                       src={lp}
                       alt="peace burger"
