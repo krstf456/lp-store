@@ -35,11 +35,9 @@ class LoginPrompt extends React.Component {
 						id='loginPrompt'
 						style={{
 							display: 'flex',
-							alignSelf: 'center',
-							// left: '33vw',
-							// top: '10%',
-
+							// position: 'absolute',
 							position: 'sticky',
+							alignSelf: 'center',
 							height: '0rem',
 						}}
 						background='dark-1'
@@ -49,20 +47,20 @@ class LoginPrompt extends React.Component {
 					>
 						<div style={innerStyle}>
 							<Button
-								style={{ zIndex: '2' }}
+								id='closeBtn'
 								onClick={() => {
 									this.toggleModal()
 								}}
 							>
-								Close
+								x
 							</Button>
-							<h2 style={bigTextStyle}>Hey Dude!</h2>
+							<h2 id='bigText'>Bummer Dude!</h2>
 
 							{/* <LoadingAnimation /> */}
 							<ErrorAnimation />
 
 							<h2 style={smallTextStyle}>
-								You need to be logged in to place an order!
+								You need to be logged in to order!
 							</h2>
 						</div>
 					</Box>
@@ -85,20 +83,21 @@ var promptStyle = {
 }
 
 var innerStyle = {
-	background: 'rgba(255,255,255,0.4)',
-	borderRadius: '100%',
-}
+	marginTop: '1rem',
+	background: 'rgba(255,255,255,0.9)',
+	borderRadius: '10%',
 
-var bigTextStyle = {
-	zIndex: '2',
-	color: 'black',
-	fontSize: '3rem',
+	boxShadow: '10px 20px 30px rgba(0,0,0,0.7)',
 }
 
 var smallTextStyle = {
 	zIndex: '2',
 	position: 'relative',
 	color: 'black',
+	background: 'rgba(234, 182, 145, 0.9)',
+	padding: '1rem',
+	margin: '1rem 0 0 0',
+	borderRadius: '0 0 15% 15%',
 }
 
 export default LoginPrompt

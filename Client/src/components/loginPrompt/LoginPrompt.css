@@ -1,0 +1,37 @@
+#bigText {
+    position: relative;
+    z-index: 2;
+    color: black;
+    font-size: 3rem;
+    background: rgba(234, 182, 145, 0.9);
+    padding: 1rem;
+    margin: 0 0 1rem 0;
+    border-radius: 15% 15% 0 0;
+}
+
+#closeBtn {
+    z-index: 3;
+    position: absolute;
+    font-size: 2rem;
+    color: #7D4487;
+    top: 2rem;
+    right: 3rem;
+}
+
+
+@media screen and (max-width: 600px) {
+    #bigText {
+        font-size: 2rem;
+    }
+
+
+}
+
+@media screen and (max-width: 420px) {
+    #closeBtn {
+        right: 1rem;
+
+    }
+
+
+}
