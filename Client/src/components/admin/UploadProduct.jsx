@@ -25,9 +25,14 @@ class UploadProduct extends React.Component {
   handleInput = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
+
+  addGenre = (event) => {
+    const { name } = event.target;
+    this.setState(prevstate => ({ genre: prevstate.genre + " " + name}));
+  }
 
   handleChange = (event) => {
     this.setState({
@@ -197,6 +202,22 @@ class UploadProduct extends React.Component {
               />
             </FormField>
             <FormField label="Genre">
+              <p>Dude, you can write the genres, or if you are lazy add them with the buttons and edit afterward. Just doublecheck, bro.</p>
+              <Box              
+                style={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent: "space-around",
+                }}
+              >
+                <Button name="Rock" label="Rock" onClick={this.addGenre}/>
+                <Button name="Soul" label="Soul" onClick={this.addGenre}/>
+                <Button name="Pop" label="Pop" onClick={this.addGenre}/>
+                <Button name="Psychedelic" label="Psychedelic" onClick={this.addGenre}/>
+                <Button name="Prog" label="Prog" onClick={this.addGenre}/>
+                <Button name="Other" label="Other" onClick={this.addGenre}/>
+              </Box>
               <TextInput
                 name="genre"
                 value={this.state.genre}
@@ -204,7 +225,7 @@ class UploadProduct extends React.Component {
                 onChange={this.handleInput}
               />
             </FormField>
-            <p style={{ color: "red" }}>{this.state.errorMessage}</p>
+            <p style={{ color: "#3f0000" }}>{this.state.errorMessage}</p>
             <Button type="submit" label="Submit" onClick={this.submit} />
           </Form>
         </Box>
