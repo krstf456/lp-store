@@ -59,7 +59,7 @@ deleteProduct = async (req, res, next) => {
 getGenre = async (req, res, next) => {
   try {
     //Find genre and read
-    const genre = await productModel.find({ genre: req.params.genre });
+    const genre = await productModel.find({ genre: {$regex: req.params.genre} });
     if (genre.length == 0) {
       res.status(404).json({message: "Trippy. The genre not found"})
     } else {
